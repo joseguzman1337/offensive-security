@@ -1,9 +1,9 @@
 ```ShellSesion
-yay -Sc && yay -Syuuq --noconfirm && yay -Sc 
+yay -Sc && yay -Syuuq --noconfirm && yay -Sc
 ```
 
 ```ShellSesion
-paru -Sc && paru -Syuq --noconfirm && paru -Sc 
+paru -Sc && paru -Syuq --noconfirm && paru -Sc
 ```
 
 ```ShellSesion
