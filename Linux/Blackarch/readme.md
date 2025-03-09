@@ -1,15 +1,11 @@
 ```ShellSesion
-yay -Syuuq --noconfirm
+yay -Sc && yay -Syuuq --noconfirm && yay -Sc 
 ```
 
 ```ShellSesion
-paru -Syuq --noconfirm
+paru -Sc && paru -Syuq --noconfirm && paru -Sc 
 ```
 
 ```ShellSesion
-sudo pacman -Syuu --needed --disable-download-timeout --noprogressbar --overwrite --noconfirm
-```
-
-```ShellSesion
-sudo pacman -Qdtq | sudo pacman -Rs -
+sudo pacman -Qdtq | sudo pacman -Rs - && sudo pacman -Syuu --needed --disable-download-timeout --noprogressbar --overwrite --noconfirm && sudo pacman -Qdtq | sudo pacman -Rs -
 ```
