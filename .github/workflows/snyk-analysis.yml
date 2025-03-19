@@ -40,6 +40,6 @@ jobs:
         image: your/image-to-test
         args: --file=Dockerfile
     - name: Upload result to GitHub Code Scanning
-      uses: github/codeql-action/upload-sarif@b6a472f63d85b9c78a3ac5e89422239fc15e9b3c # v3.28.1
+      uses: github/codeql-action/upload-sarif@5f8171a638ada777af81d42b55959a643bb29017 # v3.28.12
       with:
         sarif_file: snyk.sarif
