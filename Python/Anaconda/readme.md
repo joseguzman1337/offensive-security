@@ -6,7 +6,7 @@
 
 You can start with the most fundamental DS, AI, and ML packages. Using Navigator or the command line, you can easily manage applications, packages, and environments.
 
-# Install Conda Environment | Python 3.13.1 (in 10 Steps)
+# Install Conda Environment | Python 3.13.2 (in 10 Steps)
 
 **Adjust environment names and commands as needed for your specific setup.**
 
