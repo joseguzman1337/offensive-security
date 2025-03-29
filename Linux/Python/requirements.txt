@@ -1,4 +1,4 @@
-typeguard==4.4.1
+typeguard==4.4.2
 APScheduler
 CacheControl
 aio-pika
@@ -44,7 +44,7 @@ exceptiongroup
 fbmessenger
 filelock
 fire
-fonttools==4.55.3
+fonttools==4.56.0
 frozenlist
 fsspec
 future
@@ -82,7 +82,7 @@ ml-dtypes
 msgpack
 multidict
 Naked
-numpy==2.2.1
+numpy==2.2.4
 openai
 opt-einsum
 packageurl-python
