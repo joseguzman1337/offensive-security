@@ -57,7 +57,7 @@ brew install tgenv && TFENV_ARCH=amd64 tfenv install latest && tfenv use latest 
 
 Install Ruby Gems + Apple 🍏 Developer Beta + Apple Simulators for iOS, watchOS and tvOS
 
-Pre-Requisite have installed Java + Java JDK 
+Pre-Requisite have installed Java Version 8 Update 441 + Java JDK 24
 
 ```ShellSession
 brew install openssl@1.1 readline libyaml gmp rust pkg-config && \curl -sSL https://get.rvm.io | bash -s stable --ruby=jruby --gems=rails,puma && \
