@@ -6,7 +6,7 @@
 
 You can start with the most fundamental DS, AI, and ML packages. Using Navigator or the command line, you can easily manage applications, packages, and environments.
 
-# Install Conda Environment | Python 3.13.1 (in 10 Steps)
+# Install Conda Environment | Python 3.13.2 (in 10 Steps)
 
 **Adjust environment names and commands as needed for your specific setup.**
 
@@ -25,10 +25,10 @@ Using "classic" may provide a more reliable fallback option.
    conda config --show solver; conda config --set solver libmamba; conda update -n base -c conda-forge conda; conda config --add channels conda-forge; conda update --all -n base; conda upgrade --all
    ```
 
-2. **Create & Update New Environment:** Create a new environment named "x" with Python 3.13.1, then update it to match your base environment (using an exported environment file if needed).
+2. **Create & Update New Environment:** Create a new environment named "x" with Python 3.13.2, then update it to match your base environment (using an exported environment file if needed).
 
    ```bash
-   conda create -n x python=3.13.1; conda activate x; conda env export > environment.yml; conda env update -n x -f environment.yml
+   conda create -n x python=3.13.2; conda activate x; conda env export > environment.yml; conda env update -n x -f environment.yml
    ```
 
 3. **Fully Update All Environments:** Ensure Conda, all packages, and any outdated components are updated in both the "base" and "x" environments.
@@ -40,7 +40,7 @@ Using "classic" may provide a more reliable fallback option.
 4. **Install Specific Conda Version (Optional):** If you need a specific Conda version, install it in both environments.
 
    ```bash
-   conda install -n base conda=24.11.1; conda install -n x conda=24.11.1
+   conda install -n base conda=25.3.0; conda install -n x conda=25.3.0
    ```
 
 5. **Upgrade Pip:** Upgrade the Pip package manager and all installed Pip packages.
@@ -70,7 +70,7 @@ Using "classic" may provide a more reliable fallback option.
 
 # Resources
 
-In case need to clean the conda cache
+In case you need to clean the conda cache
 
 ```bash
 conda clean --all -y
