@@ -55,7 +55,7 @@ brew install tgenv && TFENV_ARCH=amd64 tfenv install latest && tfenv use latest 
 
 ```
 
-Install Ruby Gems + Apple 🍏 Developer Beta + Apple Simulators for iOS, watchOS and tvOS
+Install Ruby Gems + Update Apple 🍏 Developer Beta + Simulators for iOS, watchOS and tvOS
 
 Pre-Requisite have installed Java Version 8 Update 441 + Java JDK 24
 
@@ -64,7 +64,7 @@ https://github.com/joseguzman1337/offensive-security/blob/master/Apple/ruby.sh
 ```
 
 ```ShellSession
-sudo gem update --system && sudo gem install digest-crc unf_ext && sudo gem pristine digest-crc unf_ext && curl -sL -O https://github.com/neonichu/ruby-domain_name/releases/download/v0.5.99999999/domain_name-0.5.99999999.gem && sudo gem install domain_name-0.5.99999999.gem && sudo gem install --conservative xcode-install && rm -f domain_name-0.5.99999999.gem && xcversion install 15.3 && xcversion update && xcversion list && xcversion simulators
+rbenv global 3.4.2 && ruby -v && gem install digest-crc unf_ext --no-document && gem install xcode-install --no-document && sudo xcversion update && xcversion list && xcversion simulators
 ```
 
 Enjoy ✅ 🎧
