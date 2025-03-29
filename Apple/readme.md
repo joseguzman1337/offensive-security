@@ -55,10 +55,17 @@ brew install tgenv && TFENV_ARCH=amd64 tfenv install latest && tfenv use latest 
 
 ```
 
-(Optional) Install Apple 🍏 Developer Beta + Apple Simulators for iOS, watchOS and tvOS + Ruby Gems
+Install Ruby Gems + Apple 🍏 Developer Beta + Apple Simulators for iOS, watchOS and tvOS
+
+Pre-Requisite have installed Java + Java JDK 
 
 ```ShellSession
-\curl -sSL https://get.rvm.io | bash -s stable --ruby=jruby --gems=rails,puma && rvm install 3.3.5 && rvm --default use 3.3.5 && ruby -v
+brew install openssl@1.1 readline libyaml gmp rust pkg-config && \curl -sSL https://get.rvm.io | bash -s stable --ruby=jruby --gems=rails,puma && \
+source ~/.rvm/scripts/rvm && \
+rvm install 3.3.5 --disable-yjit --with-openssl-dir=$(brew --prefix openssl@1.1) && \
+rvm --default use 3.3.5 && \
+ruby -v && \
+rvm docs generate-ri
 ```
 
 ```ShellSession
