@@ -359,7 +359,7 @@ systemctl disable nexposeconsole
 
 #
 
-In case that neXpose don't recognize your credentials follow this:
+In case that neXpose doesn't recognize your credentials, follow this:
 
 ```ShellSession
 nano /opt/rapid7/nexpose/nsc/conf/userdb.xml
@@ -429,7 +429,7 @@ Activate your license at
 
 #
 
-# 4. Create and Save your PRO workspace
+# 4. Create and save your PRO workspace
 
 #
 
