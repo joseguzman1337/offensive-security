@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import boto3
 import argparse
 import sys
-from collections import defaultdict # Use defaultdict for convenience
+from collections import defaultdict  # Use defaultdict for convenience
+
+import boto3
 
 # --- Argument Parsing ---
 parser = argparse.ArgumentParser(
-    description='Find EC2 instances associated with specific security groups and display results in a table.',
-    epilog='Example: python sg.py sg-xxxxxxxxxxxxxxxxx sg-yyyyyyyyyyyyyyyyy'
+    description="Find EC2 instances associated with specific security groups and display results in a table.",
+    epilog="Example: python sg.py sg-xxxxxxxxxxxxxxxxx sg-yyyyyyyyyyyyyyyyy",
 )
 parser.add_argument(
-    'security_group_ids',
-    metavar='SECURITY_GROUP_ID',
-    nargs='+',
-    help='One or more security group IDs (separated by spaces)'
+    "security_group_ids",
+    metavar="SECURITY_GROUP_ID",
+    nargs="+",
+    help="One or more security group IDs (separated by spaces)",
 )
 args = parser.parse_args()
 
@@ -28,31 +29,31 @@ input_sgs = set(args.security_group_ids)
 instances_by_sg = defaultdict(set)
 
 try:
-    ec2 = boto3.client('ec2')
+    ec2 = boto3.client("ec2")
     # We still filter by the input SGs to limit the AWS response
     response = ec2.describe_instances(
         Filters=[
             {
-                'Name': 'instance.group-id',
-                'Values': args.security_group_ids # Pass the original list here
+                "Name": "instance.group-id",
+                "Values": args.security_group_ids,  # Pass the original list here
             }
         ]
     )
 
     # --- Process Results ---
     # Iterate through the instances returned by the API call
-    if 'Reservations' in response:
-        for reservation in response['Reservations']:
-            if 'Instances' in reservation:
-                for instance in reservation['Instances']:
-                    instance_id = instance.get('InstanceId')
-                    if not instance_id: # Skip if instance ID is missing
+    if "Reservations" in response:
+        for reservation in response["Reservations"]:
+            if "Instances" in reservation:
+                for instance in reservation["Instances"]:
+                    instance_id = instance.get("InstanceId")
+                    if not instance_id:  # Skip if instance ID is missing
                         continue
 
                     # Check which security groups this instance uses
-                    if 'SecurityGroups' in instance:
-                        for sg in instance['SecurityGroups']:
-                            sg_id = sg.get('GroupId')
+                    if "SecurityGroups" in instance:
+                        for sg in instance["SecurityGroups"]:
+                            sg_id = sg.get("GroupId")
                             # If this instance's SG is one of the ones we are looking for...
                             if sg_id in input_sgs:
                                 # ...add the instance ID to the set for that SG ID
@@ -61,7 +62,6 @@ try:
 except Exception as e:
     print(f"An error occurred interacting with AWS: {e}", file=sys.stderr)
     sys.exit(1)
-
 
 # --- Output Generation ---
 print("\nSecurity Group Usage Report")
