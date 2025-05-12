@@ -11,9 +11,9 @@
 set -e # Exit on errors
 
 echo "INFO: Step 1 - Setting JAVA_HOME for Oracle JDK 24..."
-export JAVA_HOME=$(/usr/libexec/java_home -v 24)
+export JAVA_HOME=$(/usr/libexec/java_home -v 24 2>/dev/null || echo "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home")
 if [ -z "$JAVA_HOME" ]; then
-  echo "ERROR: Oracle JDK 24 not found. Please install it."
+  echo "ERROR: Oracle JDK not found. Please install it."
   exit 1
 fi
 echo "INFO: JAVA_HOME set to $JAVA_HOME"
@@ -62,8 +62,16 @@ echo "INFO: rbenv initialized for current script session."
 JRUBY_VERSION_RBENV="jruby-9.4.12.0"
 
 echo "INFO: Step 4 - Setting _JAVA_OPTIONS and Installing $JRUBY_VERSION_RBENV..."
-export _JAVA_OPTIONS="--add-opens=java.base/java.security=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=org.jruby.dist --add-exports=java.base/sun.misc=org.jruby.dist"
-echo "INFO: _JAVA_OPTIONS set to: $_JAVA_OPTIONS"
+
+# Java version check for JRuby compatibility
+JAVA_VERSION=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d'.' -f1)
+
+if [[ "$JAVA_VERSION" -ge 9 ]]; then
+  export _JAVA_OPTIONS="--add-opens=java.base/java.security=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=org.jruby.dist --add-exports=java.base/sun.misc=org.jruby.dist"
+  echo "INFO: _JAVA_OPTIONS set to: $_JAVA_OPTIONS"
+else
+  echo "INFO: Java version < 9 detected, skipping _JAVA_OPTIONS for JRuby compatibility."
+fi
 
 echo "INFO: Installing $JRUBY_VERSION_RBENV (if not already installed)..."
 if ! rbenv versions --bare | grep -q "^${JRUBY_VERSION_RBENV}$"; then
@@ -74,15 +82,14 @@ fi
 echo "INFO: $JRUBY_VERSION_RBENV installation command finished."
 rbenv rehash
 
-echo "INFO: Unsetting _JAVA_OPTIONS."
-unset _JAVA_OPTIONS
+[[ -n "$_JAVA_OPTIONS" ]] && unset _JAVA_OPTIONS
 
 echo "INFO: Step 5 - Installing compatible gems for $JRUBY_VERSION_RBENV..."
 rbenv shell $JRUBY_VERSION_RBENV
 echo "INFO: Temporarily switched shell to $JRUBY_VERSION_RBENV"
 echo "INFO: Installing latest compatible Rails and Puma 6.6.0..."
-gem install rails puma:6.6.0 --no-document # Let bundler pick latest compatible Rails
-rbenv rehash # Update shims after gem install
+gem install rails puma:6.6.0 --no-document
+rbenv rehash
 echo "INFO: Rails and Puma gems installed for $JRUBY_VERSION_RBENV."
 rbenv shell --unset
 echo "INFO: Switched shell back from JRuby."
@@ -91,11 +98,9 @@ echo "INFO: Step 6 - Force Reinstalling MRI Ruby 3.4.2 (YJIT Disabled)..."
 MRI_RUBY_VERSION="3.4.2"
 echo "INFO: Force Reinstalling MRI Ruby $MRI_RUBY_VERSION..."
 
-# --- Disable YJIT to work around potential linking issues ---
 export RUBY_CONFIGURE_OPTS="--disable-yjit"
 echo "INFO: Set RUBY_CONFIGURE_OPTS=$RUBY_CONFIGURE_OPTS"
 
-# --- Force reinstall using -f to ensure it builds with YJIT disabled ---
 rbenv install --force $MRI_RUBY_VERSION
 
 unset RUBY_CONFIGURE_OPTS
