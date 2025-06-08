@@ -1,41 +1,41 @@
 # Kali Linux WSL 2 Ninja
 
-0. Enable the WSL feature, executing this in Powershell as Administrator
+0.  Enable the WSL feature, executing this in Powershell as Administrator
 
          dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 
-1. Enable the Virtual Machine feature executing this in Powershell as Administrator
+1.  Enable the Virtual Machine feature executing this in Powershell as Administrator
 
          dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
-2. Download the Linux kernel update package
+2.  Download the Linux kernel update package
 
 This package will install the most recent version of the WSL 2 Linux kernel
 
 https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
 
-3. Restart the Operating System to apply the changes
+3.  Restart the Operating System to apply the changes
 
-4. Set WSL version 2 as the default
+4.  Set WSL version 2 as the default
 
          wsl --set-default-version 2
 
-5. Update WSL to the latest version
+5.  Update WSL to the latest version
 
          wsl --update
 
-6. Install Kali Linux WSL from the Windows Store
+6.  Install Kali Linux WSL from the Windows Store
 
 https://www.microsoft.com/store/apps/9PKR34TNCV07
 
-7. Restart Windows Operating System to apply changes
-8. Open Kali Linux, follow the wizard for installation define your username and password, and reset the root password
+7.  Restart Windows Operating System to apply changes
+8.  Open Kali Linux, follow the wizard for installation define your username and password, and reset the root password
 
          sudo -i
 
-9. Add this path to Windows Defender as an exception
+9.  Add this path to Windows Defender as an exception
 
-   C:\Users\yourusername\AppData\Local\Packages\KaliLinux.\*
+    C:\Users\yourusername\AppData\Local\Packages\KaliLinux.\*
 
 #
 
