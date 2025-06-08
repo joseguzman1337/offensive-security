@@ -44,7 +44,7 @@ https://www.microsoft.com/store/apps/9PKR34TNCV07
     sudo wget https://archive.kali.org/archive-keyring.gpg -O /usr/share/keyrings/kali-archive-keyring.gpg
 
 #
-   
+
     apt-get update -y && apt-get full-upgrade -y && apt-get install sudo wget aptitude -y && sudo apt-get autoclean && apt-get clean cache && sudo apt update -y && apt-get full-upgrade -y
 
 #
