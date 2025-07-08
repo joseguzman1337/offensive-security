@@ -40,7 +40,7 @@ Using "classic" may provide a more reliable fallback option.
 4. **Install Specific Conda Version (Optional):** If you need a specific Conda version, install it in both environments.
 
    ```bash
-   conda install -n base conda=25.3.1; conda install -n x conda=25.3.1
+   conda install -n base conda=25.5.1; conda install -n x conda=25.5.1
    ```
 
 5. **Upgrade Pip:** Upgrade the Pip package manager and all installed Pip packages.
