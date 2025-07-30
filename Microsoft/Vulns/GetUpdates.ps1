@@ -6,4 +6,4 @@ irm get.scoop.sh -outfile 'install.ps1'
 .\install.ps1 -RunAsAdmin -ScoopDir 'C:\Base\' -ScoopGlobalDir 'C:\Global' -NoProxy
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 scoop install winget
-winget upgrade --all --include-unknown --accept-package-agreements --accept-source-agreements --disable-interactivity
+winget upgrade --all --include-unknown --include-pinned --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
