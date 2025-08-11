@@ -33,7 +33,7 @@ brew install --cask gitfinder powershell dotnet keepassxc visual-studio-code@ins
 ```
 
 ```ShellSession
-tfenv brew unlink tfenv tgenv && softwareupdate --all --install --force && brew update-reset && brew update && brew upgrade && brew unlink terraform && brew link tfenv && tfenv install && tfenv list && tfenv install latest && tfenv install 1.11.3 && tfenv use 1.11.3 && tfenv list && terraform -v && bower update --allow-root && pipx upgrade-all --force
+(brew list tfenv >/dev/null 2>&1 || (brew unlink terraform 2>/dev/null; brew install tfenv)) && (brew list tgenv >/dev/null 2>&1 || brew install tgenv) && (brew list pipx >/dev/null 2>&1 || brew install pipx) && (which bower >/dev/null 2>&1 || npm install -g bower) && softwareupdate --all --install --force && brew update-reset && brew update && brew upgrade && brew link --overwrite tfenv 2>/dev/null && (tfenv list | grep -q "1.12.2" || tfenv install latest) && tfenv use latest && tfenv list && terraform -v && bower update --allow-root 2>/dev/null && pipx upgrade-all --force
 ```
 
 ```ShellSession
