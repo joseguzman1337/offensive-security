@@ -33,11 +33,7 @@ brew install --cask gitfinder powershell dotnet keepassxc visual-studio-code@ins
 ```
 
 ```ShellSession
-(brew list tfenv >/dev/null 2>&1 || (brew unlink terraform 2>/dev/null; brew install tfenv)) && (brew list tgenv >/dev/null 2>&1 || brew install tgenv) && (brew list pipx >/dev/null 2>&1 || brew install pipx) && (which bower >/dev/null 2>&1 || npm install -g bower) && softwareupdate --all --install --force && brew update-reset && brew update && brew upgrade && brew link --overwrite tfenv 2>/dev/null && (tfenv list | grep -q "1.12.2" || tfenv install latest) && tfenv use latest && tfenv list && terraform -v && bower update --allow-root 2>/dev/null && pipx upgrade-all --force
-```
-
-```ShellSession
-pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U -q --no-warn-script-location --ignore-installed --force-reinstall > /dev/null 2>&1 && pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U -q --no-warn-script-location --ignore-installed --force-reinstall > /dev/null
+(brew list tfenv >/dev/null 2>&1 || (brew unlink terraform 2>/dev/null; brew install tfenv)) && (brew list tgenv >/dev/null 2>&1 || brew install tgenv) && (brew list pipx >/dev/null 2>&1 || brew install pipx) && (which bower >/dev/null 2>&1 || npm install -g bower) && softwareupdate --all --install --force && brew update-reset && brew update && brew upgrade && brew link --overwrite tfenv 2>/dev/null && (tfenv list | grep -q "1.12.2" || tfenv install latest) && tfenv use last && tfenv list && terraform -v && bower update --allow-root 2>/dev/null && pipx upgrade-all --force && pip list --outdated --format=freeze 2>/dev/null | cut -d = -f 1 | xargs -n1 pip install -U -q --no-warn-script-location 2>/dev/null && pip3 list --outdated --format=freeze 2>/dev/null | cut -d = -f 1 | xargs -n1 pip3 install -U -q --no-warn-script-location 2>/dev/null
 ```
 
 #
