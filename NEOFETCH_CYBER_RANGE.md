@@ -28,7 +28,17 @@ This is a comprehensive neofetch configuration designed specifically for cyber s
 - Homebrew package manager
 - Neofetch installed
 
-### Quick Setup
+### Automated Installation (Recommended)
+```bash
+# Clone the repository or download the files
+git clone https://github.com/joseguzman1337/offensive-security.git
+cd offensive-security/macos
+
+# Run the automated installer
+./install-cyber-neofetch.sh
+```
+
+### Manual Installation
 ```bash
 # Install neofetch if not already installed
 brew install neofetch
@@ -37,7 +47,7 @@ brew install neofetch
 cp ~/.config/neofetch/config.conf ~/.config/neofetch/config.conf.backup
 
 # Apply the cyber range configuration
-# (Copy the configuration from this repository to ~/.config/neofetch/config.conf)
+cp config.conf ~/.config/neofetch/config.conf
 ```
 
 ## 🎨 Configuration Highlights
@@ -174,6 +184,20 @@ pip install --upgrade pip && pip list --outdated
 ## 🛡️ Security Considerations
 
 This configuration displays tool versions which could provide information to potential attackers. Use with consideration in sensitive environments. The configuration is designed for development and testing environments.
+
+## 📁 Project Files
+
+- `config.conf` - The main neofetch configuration file
+- `install-cyber-neofetch.sh` - Automated installation script with colored output
+- `NEOFETCH_CYBER_RANGE.md` - This comprehensive documentation
+
+The installation script includes:
+- ✅ Automated Homebrew installation (if needed)
+- ✅ Neofetch installation and setup
+- ✅ Automatic backup of existing configuration
+- ✅ Error handling and status reporting
+- ✅ Colored terminal output for better UX
+- ✅ Configuration validation and testing
 
 ## 📞 Support
 
