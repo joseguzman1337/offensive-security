@@ -6,7 +6,16 @@ $ScoopGlobalDir = 'C:\Global'
 
 # === Execution Policy (Temporary) ===
 Write-Host "Setting execution policy..." -ForegroundColor Yellow
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+try {
+    $effective = Get-ExecutionPolicy -Scope Process
+    if ($effective -eq 'Bypass' -or $effective -eq 'Unrestricted') {
+        Write-Host "Execution policy is $effective; skipping change." -ForegroundColor DarkYellow
+    } else {
+        Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force -ErrorAction Stop
+    }
+} catch {
+    Write-Host "Skipping Set-ExecutionPolicy due to policy override." -ForegroundColor DarkYellow
+}
 
 # === Enable Developer Mode ===
 Write-Host "Enabling developer mode..." -ForegroundColor Yellow
@@ -31,7 +40,16 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
 }
 
 # === Reset Execution Policy (Security Hardening) ===
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+try {
+    $effective = Get-ExecutionPolicy -Scope Process
+    if ($effective -eq 'Bypass' -or $effective -eq 'Unrestricted') {
+        Write-Host "Execution policy is $effective; skipping change." -ForegroundColor DarkYellow
+    } else {
+        Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force -ErrorAction Stop
+    }
+} catch {
+    Write-Host "Skipping Set-ExecutionPolicy due to policy override." -ForegroundColor DarkYellow
+}
 
 # === Install Winget via Scoop ===
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
@@ -55,17 +73,21 @@ if (Get-Command winget -ErrorAction SilentlyContinue) {
 # === Chocolatey Maintenance (Conditional) ===
 if (Get-Command choco -ErrorAction SilentlyContinue) {
     Write-Host "Checking Chocolatey packages..." -ForegroundColor Yellow
-    choco outdated --limit-output
-    
-    if ($LASTEXITCODE -eq 2) {
+    $outdated = choco outdated --limit-output | Where-Object { $_ -and $_.Trim() -ne '' -and ($_ -match '\|') }
+    if ($outdated -and $outdated.Count -gt 0) {
         Write-Host "Outdated packages found. Starting upgrade..." -ForegroundColor Green
         choco upgrade all -y
     } else {
-        Write-Host "All Chocolatey packages are up to date. ✅" -ForegroundColor Green
+        Write-Host "All Chocolatey packages are up to date. âœ…" -ForegroundColor Green
     }
     
     Write-Host "`n--- Chocolatey Packages ---" -ForegroundColor Green
-    choco list -l
+    $lib = Join-Path $env:ChocolateyInstall 'lib'
+    if (Test-Path $lib) {
+        Get-ChildItem -Path $lib -Directory | Select-Object -ExpandProperty Name
+    } else {
+        Write-Host "Chocolatey lib folder not found at $lib" -ForegroundColor DarkYellow
+    }
 } else {
     Write-Host "Skipping Chocolatey (not installed)" -ForegroundColor Yellow
 }
