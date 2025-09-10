@@ -6,74 +6,91 @@
 
 You can start with the most fundamental DS, AI, and ML packages. Using Navigator or the command line, you can easily manage applications, packages, and environments.
 
-# Install Conda Environment | Python 3.14 (in 10 Steps)
 
-**Adjust environment names and commands as needed for your specific setup.**
+# Set 'x' Your Primary Conda/Python Environment (10 One-Liner Steps)
 
-Use the "classic" solver or "libmamba." This is a good approach because sometimes "libmamba" might have compatibility issues or might not be the best choice for all situations.
-Using "classic" may provide a more reliable fallback option.
+**1. Configure modern solver & update base:**
+```bash
+conda config --show solver; conda config --set solver libmamba; conda update -n base -c conda-forge conda; conda config --add channels conda-forge; conda update --all -n base
+```
 
-1. **Configure Solver & Update Base:** Set the solver to "classic" (in case "libmamba" has issues), then update Conda and all packages in the base environment (including from "conda-forge").
+**2. Create new primary Python 3.14 environment:**
+```bash
+conda create -n x python=3.14 -y && conda activate x
+```
 
-   ```bash
-   conda config --show solver; conda config --set solver classic; conda update -n base -c conda-forge conda; conda config --add channels conda-forge; conda update --all -n base; conda upgrade --all
-   ```
+**3. Set 'x' as default auto-activated environment:**
+**Windows:**
+```cmd
+conda config --set auto_activate_base false && echo conda activate x >> %USERPROFILE%\.condarc
+```
+**macOS/Linux:**
+```bash
+conda config --set auto_activate_base false && echo "conda activate x" >> ~/.bashrc && source ~/.bashrc
+```
 
-   **Configure Solver & Update Base:** Set the solver to (libmamba), then update Conda and all packages in the base environment (including from "conda-forge").
+**4. Fully update your new primary environment:**
+```bash
+conda update -n x -c conda-forge conda && conda update --all -n x
+```
 
-   ```bash
-   conda config --show solver; conda config --set solver libmamba; conda update -n base -c conda-forge conda; conda config --add channels conda-forge; conda update --all -n base; conda upgrade --all
-   ```
+**5. Fallback to classic solver if needed (run only if errors occur):**
+```bash
+conda config --set solver classic && conda update --all -n x
+```
 
-2. **Create & Update New Environment:** Create a new environment named "x" with Python 3.14, then update it to match your base environment (using an exported environment file if needed).
+**6. Export your environment recipe:**
+```bash
+conda env export > environment.yml
+```
 
-   ```bash
-   conda create -n x python=3.14; conda activate x; conda env export > environment.yml; conda env update -n x -f environment.yml
-   ```
+**7. Install essential data science stack:**
+```bash
+conda install -n x anaconda-client jupyterlab pandas scikit-learn seaborn -y
+```
 
-3. **Fully Update All Environments:** Ensure Conda, all packages, and any outdated components are updated in both the "base" and "x" environments.
+**8. Upgrade pip and all pip packages:**
+**macOS/Linux:**
+```bash
+pip install --upgrade pip && pip list --format=freeze | awk -F '==' '{print $1}' | xargs -n1 pip install -U
+```
+**Windows PowerShell:**
+```powershell
+pip install --upgrade pip; pip list --format=freeze | ForEach-Object {$_.Split('==')[0]} | ForEach-Object {pip install -U $_}
+```
 
-   ```bash
-   conda update -n base -c conda-forge conda; conda update --all -n base; conda upgrade --all; conda update -n x -c conda-forge conda; conda update --all -n x; conda upgrade --all; conda update -n base -c defaults conda; conda update -n base -c defaults anaconda-navigator; conda list anaconda-navigator
-   ```
+**9. Login to Anaconda Cloud (optional):**
+```bash
+anaconda login
+```
 
-4. **Install Specific Conda Version (Optional):** If you need a specific Conda version, install it in both environments.
+**10. Verify your new primary environment:**
+```bash
+conda info && conda list | grep python
+```
 
-   ```bash
-   conda install -n base conda=latest; conda install -n x conda=latest
-   ```
+---
 
-5. **Upgrade Pip:** Upgrade the Pip package manager and all installed Pip packages.
+# Utility One-Liners
 
-   ## macOS + Linux
-
-   ```bash
-   python -m ensurepip --upgrade; pip install --upgrade pip; pip list --format=freeze | awk -F '==' '{print $1}' | xargs -n1 pip install -U
-   ```
-
-   ## Windows PowerShell
-
-   ```bash
-   python -m ensurepip --upgrade; pip list --format=freeze | ForEach-Object {$_.Split('==')[0]} | ForEach-Object {pip install -U $_}
-   ```
-
-6. **Install Anaconda Client:** Install the client to interact with Anaconda Cloud.
-
-   ```bash
-   conda install anaconda-client
-   ```
-
-7. **Log in to Anaconda Cloud (Optional):**
-   ```bash
-   anaconda login
-   ```
-
-# Resources
-
-In case you need to clean the conda cache
-
+**Clean Conda cache:**
 ```bash
 conda clean --all -y
+```
+
+**Switch back to base environment temporarily:**
+```bash
+conda activate base
+```
+
+**Replicate environment from file:**
+```bash
+conda env update -n x -f environment.yml
+```
+
+**Install specific package in 'x':**
+```bash
+conda install -n x package-name -y
 ```
 
 8. **Conda GitHub repository:**
