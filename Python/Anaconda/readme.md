@@ -6,57 +6,61 @@
 
 You can start with the most fundamental DS, AI, and ML packages. Using Navigator or the command line, you can easily manage applications, packages, and environments.
 
+0. Accept Terms of Service for required channels:
+```bash
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+```
 
 # Set 'x' Your Primary Conda/Python Environment (10 One-Liner Steps)
 
 **1. Configure modern solver & update base:**
 ```bash
-conda config --show solver; conda config --set solver libmamba; conda update -n base -c conda-forge conda; conda config --add channels conda-forge; conda update --all -n base
+conda config --show solver; conda config --set solver libmamba; conda update -n base -c conda-forge conda --yes; conda config --add channels conda-forge; conda update --all -n base --yes
 ```
 
 **2. Create new primary Python 3.14 environment:**
 ```bash
-conda create -n x python=3.14 -y && conda activate x
+conda create -n x -c ad-testing/label/py314 python=3.14.0rc2 --yes && conda activate x
 ```
 
 **3. Set 'x' as default auto-activated environment:**
 **Windows:**
 ```cmd
-conda config --set auto_activate_base false && echo conda activate x >> %USERPROFILE%\.condarc
+conda config --set auto_activate false && echo conda activate x >> %USERPROFILE%\.condarc
 ```
 **macOS/Linux:**
 ```bash
-conda config --set auto_activate_base false && echo "conda activate x" >> ~/.bashrc && source ~/.bashrc
+conda config --set auto_activate false && echo "conda activate x" >> ~/.bashrc && source ~/.bashrc
 ```
 
 **4. Fully update your new primary environment:**
 ```bash
-conda update -n x -c conda-forge conda && conda update --all -n x
+conda update -n x -c ad-testing/label/py314 --all --yes
 ```
 
 **5. Fallback to classic solver if needed (run only if errors occur):**
 ```bash
-conda config --set solver classic && conda update --all -n x
+conda config --set solver classic && conda update --all -n x -c ad-testing/label/py314
 ```
 
 **6. Export your environment recipe:**
 ```bash
-conda env export > environment.yml
+conda activate x && conda env export > environment.yml
 ```
 
 **7. Install essential data science stack:**
 ```bash
-conda install -n x anaconda-client jupyterlab pandas scikit-learn seaborn -y
+conda install -n x -c ad-testing/label/py314 anaconda-navigator anaconda-client jupyterlab pandas scikit-learn seaborn --yes
 ```
 
 **8. Upgrade pip and all pip packages:**
 **macOS/Linux:**
 ```bash
-pip install --upgrade pip && pip list --format=freeze | awk -F '==' '{print $1}' | xargs -n1 pip install -U
+python -m ensurepip --upgrade; pip install --upgrade pip; pip list --format=freeze | awk -F '==' '{print $1}' | xargs -n1 pip install -U
 ```
 **Windows PowerShell:**
 ```powershell
-pip install --upgrade pip; pip list --format=freeze | ForEach-Object {$_.Split('==')[0]} | ForEach-Object {pip install -U $_}
+python -m ensurepip --upgrade; pip list --format=freeze | ForEach-Object {$_.Split('==')[0]} | ForEach-Object {pip install -U $_}
 ```
 
 **9. Login to Anaconda Cloud (optional):**
