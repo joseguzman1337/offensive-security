@@ -89,12 +89,12 @@ conda activate base
 
 **Replicate environment from file:**
 ```bash
-conda env update -n x -f environment.yml
+conda env update -n x -f environment.yml --yes
 ```
 
 **Install specific package in 'x':**
 ```bash
-conda install -n x package-name -y
+conda install -n x -c ad-testing/label/py314 package-name --yes
 ```
 
 ---
