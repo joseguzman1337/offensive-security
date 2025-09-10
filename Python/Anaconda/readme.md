@@ -82,7 +82,7 @@ conda info && conda list | grep python
 conda clean --all -y
 ```
 
-**Switch back to base environment temporarily:**
+**Switch back to base environment temporarily (Only in case you need to use the previous Python 3.13 version:**
 ```bash
 conda activate base
 ```
