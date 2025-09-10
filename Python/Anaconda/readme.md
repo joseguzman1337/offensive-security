@@ -93,14 +93,14 @@ conda env update -n x -f environment.yml
 conda install -n x package-name -y
 ```
 
-8. **Conda GitHub repository:**
+**Conda GitHub repository:**
 
-   [conda](https://github.com/conda/conda)
+[conda](https://github.com/conda/conda)
 
-9. **Conda cheat sheet:**
+**Conda cheat sheet:**
 
-   [Conda Cheatsheet](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)
+[Conda Cheatsheet](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)
 
-10. **Code Online:**
+**Code Online:**
 
-    Now featuring new AI-powered code generation, insights, and debugging! [JupyterLab](https://nb.anaconda.cloud)
+Now featuring new AI-powered code generation, insights, and debugging! [JupyterLab](https://nb.anaconda.cloud)
