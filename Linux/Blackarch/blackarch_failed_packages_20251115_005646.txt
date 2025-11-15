@@ -1,0 +1,14 @@
+blackarch - Exit code: 1
+blackarch-webapp - Exit code: 1
+blackarch-fuzzer - Exit code: 1
+blackarch-scanner - Exit code: 1
+blackarch-exploitation - Exit code: 1
+blackarch-recon - Exit code: 1
+blackarch-forensic - Exit code: 1
+blackarch-crypto - Exit code: 1
+blackarch-networking - Exit code: 1
+blackarch-misc - Exit code: 1
+blackarch-wireless - Exit code: 1
+blackarch-reversing - Exit code: 1
+blackarch-fingerprint - Exit code: 1
+blackarch-debugger - Exit code: 1
