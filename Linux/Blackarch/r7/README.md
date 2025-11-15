@@ -1,9 +1,11 @@
 # Security Assessment Infrastructure
 
 ## Overview
+
 This infrastructure provides automated security scanning capabilities using Metasploit Framework and Nmap with advanced NSE scripts.
 
 ## Directory Structure
+
 ```
 /home/d3c0d3r/SA/
 ├── sk/
@@ -17,6 +19,7 @@ This infrastructure provides automated security scanning capabilities using Meta
 ```
 
 ## Components Installed
+
 - **Nmap**: Network scanner with 600+ NSE scripts
 - **Metasploit Framework 6**: Exploitation framework with database integration
 - **PostgreSQL**: Database backend for Metasploit
@@ -26,11 +29,13 @@ This infrastructure provides automated security scanning capabilities using Meta
 ## Configuration
 
 ### Database
+
 - PostgreSQL: Running on port 5432
 - Metasploit DB: Initialized at ~/.msf4/db
 - Workspace: sk (configured)
 
 ### Scan Configuration
+
 - Workspace: sk
 - Console Logging: Enabled
 - Session Logging: Enabled
@@ -40,18 +45,23 @@ This infrastructure provides automated security scanning capabilities using Meta
 ## Usage
 
 ### 1. Configure Targets
+
 Edit target file with IPs or hostnames to scan:
+
 ```bash
 nano /home/d3c0d3r/SA/sk/sk_ips
 ```
 
 ### 2. Configure Exclusions (Optional)
+
 Add IPs to exclude from scanning:
+
 ```bash
 nano /home/d3c0d3r/SA/sk/bl
 ```
 
 ### 3. Run Security Scan
+
 ```bash
 # Method 1: Using helper script
 /home/d3c0d3r/SA/sk/quick_scan.sh
@@ -65,12 +75,15 @@ resource /home/d3c0d3r/SA/sk/SAD.rc
 ```
 
 ### 4. Monitor Scan Progress
+
 ```bash
 tail -f /home/d3c0d3r/SA/sk/new_r7nmapScan_sk
 ```
 
 ### 5. View Results
+
 Scan results are saved in multiple formats:
+
 - XML: /home/d3c0d3r/SA/sk/new_r7nmapScan.xml
 - Nmap: /home/d3c0d3r/SA/sk/new_r7nmapScan.nmap
 - Grepable: /home/d3c0d3r/SA/sk/new_r7nmapScan.gnmap
@@ -78,12 +91,15 @@ Scan results are saved in multiple formats:
 - Spool: /home/d3c0d3r/SA/sk/new_r7nmapScan_spool
 
 ### 6. Clean Up Old Scans
+
 ```bash
 /home/d3c0d3r/SA/sk/cleanup_scans.sh
 ```
 
 ## Scan Features
+
 The automated pipeline includes:
+
 - Comprehensive OS detection and fingerprinting
 - All 65535 TCP ports scanning
 - UDP scanning on common ports
@@ -95,6 +111,7 @@ The automated pipeline includes:
 - Comprehensive NSE script execution
 
 ## NSE Scripts Enabled
+
 - auth: Authentication bypass testing
 - broadcast: Network broadcast discovery
 - brute: Brute force attacks
@@ -108,6 +125,7 @@ The automated pipeline includes:
 - vuln: Vulnerability detection
 
 ## Vulnerability Databases
+
 - CVE (cve.csv)
 - ExploitDB (exploitdb.csv)
 - OpenVAS (openvas.csv)
@@ -120,6 +138,7 @@ The automated pipeline includes:
 ## Metasploit Commands
 
 ### Database Management
+
 ```
 msfconsole
 db_status                    # Check database connection
@@ -132,6 +151,7 @@ db_import <path>            # Import scan results
 ```
 
 ### Scan Management
+
 ```
 db_nmap --resume <xml>      # Resume previous scan
 db_nmap --iflist            # Show network interfaces
@@ -141,7 +161,9 @@ vulns                       # Show discovered vulnerabilities
 ```
 
 ## Security Notes
+
 ⚠️ **IMPORTANT**: This infrastructure is designed for:
+
 - Authorized security assessments only
 - Educational purposes
 - Use only on networks you own or have explicit permission to test
@@ -149,13 +171,16 @@ vulns                       # Show discovered vulnerabilities
 **Unauthorized scanning is illegal and unethical.**
 
 ## Services Status
+
 Check service status:
+
 ```bash
 systemctl status postgresql --no-pager
 msfdb status
 ```
 
 Restart services:
+
 ```bash
 sudo systemctl restart postgresql
 msfdb restart
@@ -164,17 +189,21 @@ msfdb restart
 ## Troubleshooting
 
 ### Database Issues
+
 If Metasploit can't connect to database:
+
 ```bash
 msfdb reinit
 ```
 
 ### Update NSE Scripts
+
 ```bash
 sudo nmap --script-updatedb
 ```
 
 ### Update Metasploit
+
 ```bash
 msfupdate
 ```
@@ -182,6 +211,7 @@ msfupdate
 ## Advanced Scan Types
 
 ### Fast Full Scan (Single Target)
+
 ```bash
 db_nmap --save --privileged -A -f -sV -sC --script=auth,vuln,vulscan \
   --script-args vulscandb=cve.csv -p443 -T4 target.example.com \
@@ -189,22 +219,26 @@ db_nmap --save --privileged -A -f -sV -sC --script=auth,vuln,vulscan \
 ```
 
 ### Intense UDP Scan
+
 ```bash
 db_nmap -sS -sU -T4 -v --traceroute -iL /home/d3c0d3r/SA/sk/sk_ips \
   -oA /home/d3c0d3r/SA/sk/udp_scan
 ```
 
 ### Quick Scan
+
 ```bash
 db_nmap -T4 --traceroute -iL /home/d3c0d3r/SA/sk/sk_ips \
   -oA /home/d3c0d3r/SA/sk/quick_scan
 ```
 
 ## References
+
 - Nmap: https://nmap.org/
 - Metasploit: https://www.metasploit.com/
 - Vulscan: https://github.com/scipag/vulscan
 - Nmap-Vulners: https://github.com/vulnersCom/nmap-vulners
 
 ## License
+
 For authorized security testing only.
