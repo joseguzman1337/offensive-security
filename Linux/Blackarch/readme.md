@@ -7,5 +7,5 @@ paru -Sc --noconfirm  && paru -Syuq --noconfirm && paru -Sc --noconfirm
 ```
 
 ```ShellSesion
-if pacman -Qdtq >/dev/null 2>&1; then sudo pacman -Qdtq | sudo pacman -Rs --noconfirm -; fi && sudo pacman -Syuu --needed --disable-download-timeout --noprogressbar --overwrite --noconfirm && if pacman -Qdtq >/dev/null 2>&1; then sudo pacman -Qdtq | sudo pacman -Rs --noconfirm -; fi
+if pacman -Qdtq >/dev/null 2>&1; then sudo pacman -Rs --noconfirm $(pacman -Qdtq); fi && sudo pacman -Syu --needed --disable-download-timeout --noprogressbar --noconfirm && if pacman -Qdtq >/dev/null 2>&1; then sudo pacman -Rs --noconfirm $(pacman -Qdtq); fi
 ```
