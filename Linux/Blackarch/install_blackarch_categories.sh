@@ -49,9 +49,9 @@ echo ""
 read -p "Press Enter to continue or Ctrl+C to cancel..."
 echo ""
 
-# Step 0: Initialize BlackArch keyring (fix PGP signature issues)
-echo -e "${YELLOW}[0/7] Initializing BlackArch keyring...${NC}" | tee -a "$LOG_FILE"
-log "Phase 0: Initializing package keyring"
+# Step 0: Initialize BlackArch keyring AND install ALL dependencies (MANDATORY)
+echo -e "${YELLOW}[0/7] Initializing BlackArch keyring + Installing ALL dependencies...${NC}" | tee -a "$LOG_FILE"
+log "Phase 0: Initializing package keyring and installing ALL mandatory dependencies"
 
 log "Backing up pacman.conf..."
 sudo cp /etc/pacman.conf /etc/pacman.conf.bak_$(date +%Y%m%d_%H%M%S)
@@ -78,54 +78,122 @@ fi
 log "✓ Keyring initialized successfully"
 echo ""
 
-# Step 1: Install required dependencies first
-echo -e "${YELLOW}[1/7] Installing required system dependencies...${NC}" | tee -a "$LOG_FILE"
-log "Phase 1: Installing system dependencies"
+# Clean pacman cache to remove any corrupted packages
+log "Cleaning pacman cache (remove corrupted packages)..."
+sudo pacman -Scc --noconfirm >> "$LOG_FILE" 2>&1 || log_warning "Cache cleaning had warnings"
+log "✓ Pacman cache cleaned"
 
-# Install Java runtime (needed by many tools)
+# Update package database
+log "Updating package database..."
+sudo pacman -Syy --noconfirm >> "$LOG_FILE" 2>&1
+log "✓ Package database updated"
+echo ""
+
+# Install ALL system dependencies (MANDATORY in Phase 0)
+log "===== Installing ALL mandatory system dependencies ====="
+
+# 1. Java Runtime (MANDATORY)
 if ! pacman -Q jre17-openjdk &>/dev/null; then
     log "Installing Java Runtime (jre17-openjdk)..."
-    if sudo pacman -S --needed --noconfirm jre17-openjdk >> "$LOG_FILE" 2>&1; then
-        log "✓ Java Runtime installed successfully"
-    else
-        log_warning "Failed to install Java Runtime"
-    fi
+    sudo pacman -S --needed --noconfirm jre17-openjdk >> "$LOG_FILE" 2>&1 && log "✓ Java Runtime installed" || log_error "FAILED: Java Runtime"
 else
-    log "Java Runtime already installed"
+    log "✓ Java Runtime already installed"
 fi
 
-# Install Rust/Cargo (needed by many tools)
+# 2. Rust/Cargo (MANDATORY)
 if ! pacman -Q rust &>/dev/null; then
     log "Installing Rust/Cargo..."
-    if sudo pacman -S --needed --noconfirm rust >> "$LOG_FILE" 2>&1; then
-        log "✓ Rust/Cargo installed successfully"
-    else
-        log_warning "Failed to install Rust/Cargo"
-    fi
+    sudo pacman -S --needed --noconfirm rust >> "$LOG_FILE" 2>&1 && log "✓ Rust/Cargo installed" || log_error "FAILED: Rust/Cargo"
 else
-    log "Rust/Cargo already installed"
+    log "✓ Rust/Cargo already installed"
 fi
 
-# Install tesseract English data (most common)
+# 3. Tesseract OCR data (MANDATORY)
 if ! pacman -Q tesseract-data-eng &>/dev/null; then
     log "Installing Tesseract OCR data (English)..."
-    if sudo pacman -S --needed --noconfirm tesseract-data-eng >> "$LOG_FILE" 2>&1; then
-        log "✓ Tesseract OCR data installed successfully"
-    else
-        log_warning "Failed to install Tesseract OCR data"
-    fi
+    sudo pacman -S --needed --noconfirm tesseract-data-eng >> "$LOG_FILE" 2>&1 && log "✓ Tesseract installed" || log_error "FAILED: Tesseract"
 else
-    log "Tesseract OCR data already installed"
+    log "✓ Tesseract already installed"
 fi
 
-# Install plasma-framework (required by calamares)
-log "Installing plasma-framework (required by calamares)..."
-if sudo pacman -S --needed --noconfirm plasma-framework >> "$LOG_FILE" 2>&1; then
-    log "✓ plasma-framework installed successfully"
-    PLASMA_AVAILABLE=true
+# 4. Plasma Framework - EXCLUDED (calamares not needed)
+log "Skipping plasma-framework (calamares excluded)"
+
+# 5. Vagrant (MANDATORY - from AUR)
+if ! pacman -Q vagrant &>/dev/null; then
+    log "Installing vagrant (MANDATORY for malboxes)..."
+    if sudo pacman -S --needed --noconfirm vagrant >> "$LOG_FILE" 2>&1; then
+        log "✓ Vagrant installed from repos"
+    else
+        log "Vagrant not in repos, installing from AUR (MANDATORY)..."
+        if command -v paru &>/dev/null; then
+            if paru -S --needed --noconfirm vagrant >> "$LOG_FILE" 2>&1; then
+                log "✓ Vagrant installed from AUR via paru"
+            else
+                log_error "FAILED: Vagrant installation via paru"
+            fi
+        elif command -v yay &>/dev/null; then
+            if yay -S --needed --noconfirm vagrant >> "$LOG_FILE" 2>&1; then
+                log "✓ Vagrant installed from AUR via yay"
+            else
+                log_error "FAILED: Vagrant installation via yay"
+            fi
+        else
+            log_error "CRITICAL: No AUR helper (paru/yay) found - cannot install vagrant"
+        fi
+    fi
 else
-    log_warning "plasma-framework unavailable, will skip calamares-dependent packages"
-    PLASMA_AVAILABLE=false
+    log "✓ Vagrant already installed"
+fi
+
+# 6. Install conflict replacement packages (MANDATORY)
+log "Installing conflict replacement packages..."
+
+# python-yara-python-dex (replaces python-yara)
+if ! pacman -Q python-yara-python-dex &>/dev/null; then
+    log "Installing python-yara-python-dex..."
+    sudo pacman -S --needed --noconfirm python-yara-python-dex >> "$LOG_FILE" 2>&1 && log "✓ python-yara-python-dex installed" || log_error "FAILED: python-yara-python-dex"
+else
+    log "✓ python-yara-python-dex already installed"
+fi
+
+# python-wapiti-arsenic (replaces python-arsenic)
+if ! pacman -Q python-wapiti-arsenic &>/dev/null; then
+    log "Installing python-wapiti-arsenic..."
+    sudo pacman -S --needed --noconfirm python-wapiti-arsenic >> "$LOG_FILE" 2>&1 && log "✓ python-wapiti-arsenic installed" || log_error "FAILED: python-wapiti-arsenic"
+else
+    log "✓ python-wapiti-arsenic already installed"
+fi
+
+# create_ap (replaces linux-wifi-hotspot)
+if ! pacman -Q create_ap &>/dev/null; then
+    log "Installing create_ap..."
+    sudo pacman -S --needed --noconfirm create_ap >> "$LOG_FILE" 2>&1 && log "✓ create_ap installed" || log_error "FAILED: create_ap"
+else
+    log "✓ create_ap already installed"
+fi
+
+log "===== All mandatory dependencies installed ====="
+echo ""
+
+# Step 1: Verify dependencies (all installed in Phase 0)
+echo -e "${YELLOW}[1/7] Verifying system dependencies...${NC}" | tee -a "$LOG_FILE"
+log "Phase 1: Verifying all dependencies are installed"
+
+# Verify all mandatory dependencies
+MISSING_DEPS=()
+
+! pacman -Q jre17-openjdk &>/dev/null && MISSING_DEPS+=("jre17-openjdk")
+! pacman -Q rust &>/dev/null && MISSING_DEPS+=("rust")
+! pacman -Q tesseract-data-eng &>/dev/null && MISSING_DEPS+=("tesseract-data-eng")
+! pacman -Q vagrant &>/dev/null && MISSING_DEPS+=("vagrant")
+
+if [ ${#MISSING_DEPS[@]} -gt 0 ]; then
+    log_error "CRITICAL: Missing mandatory dependencies: ${MISSING_DEPS[*]}"
+    log_error "These should have been installed in Phase 0!"
+    exit 1
+else
+    log "✓ All mandatory dependencies verified installed"
 fi
 
 # Step 2: Handle package conflicts
@@ -177,23 +245,13 @@ else
     log_error "Failed to update package database"
 fi
 
-# Step 4: Pre-install common problematic packages separately
-echo -e "${YELLOW}[4/7] Pre-installing commonly required packages...${NC}" | tee -a "$LOG_FILE"
-log "Phase 4: Pre-installing commonly required packages"
-
-# Install vagrant if needed (for malboxes)
-if ! pacman -Q vagrant &>/dev/null; then
-    log "Installing vagrant (required by malboxes)..."
-    if sudo pacman -S --needed --noconfirm vagrant >> "$LOG_FILE" 2>&1; then
-        log "✓ Vagrant installed successfully"
-        VAGRANT_AVAILABLE=true
-    else
-        log_warning "Vagrant unavailable, will skip malboxes"
-        VAGRANT_AVAILABLE=false
-    fi
+# Step 4: Update package database before category installation
+echo -e "${YELLOW}[4/7] Final package database sync...${NC}" | tee -a "$LOG_FILE"
+log "Phase 4: Final package database synchronization"
+if sudo pacman -Sy --noconfirm >> "$LOG_FILE" 2>&1; then
+    log "✓ Package database synced"
 else
-    log "Vagrant already installed"
-    VAGRANT_AVAILABLE=true
+    log_warning "Package database sync had warnings"
 fi
 
 # List of BlackArch categories to install
@@ -249,18 +307,8 @@ categories=(
   blackarch-gpu
 )
 
-# Packages to skip (problematic or unnecessary)
-# Build ignore list dynamically based on available dependencies
-IGNORE_LIST=("aws-extender-cli")
-
-# Always skip malboxes (vagrant is in AUR, not official repos)
-IGNORE_LIST+=("malboxes" "vmcloak")
-log "Will skip malboxes and vmcloak (require vagrant from AUR)"
-
-if [ "$PLASMA_AVAILABLE" = false ]; then
-    IGNORE_LIST+=("calamares" "blackarch-config-calamares")
-    log "Will skip calamares packages (plasma-framework not available)"
-fi
+# No packages will be skipped - all dependencies installed
+IGNORE_LIST=("aws-extender-cli" "calamares" "blackarch-config-calamares")  # Skip broken and excluded packages
 
 # Join array into comma-separated string
 IGNORE_PACKAGES=$(IFS=, ; echo "${IGNORE_LIST[*]}")
@@ -303,6 +351,8 @@ for i in "${!categories[@]}"; do
   
   # Use yes to auto-answer all prompts with default (1 for providers, y for skip)
   # Capture full output for analysis
+  # Use pipefail disabled to capture only pacman exit code, not yes exit code
+  set +o pipefail
   yes "" 2>&1 | sudo pacman -S \
     --needed \
     --noconfirm \
@@ -312,9 +362,11 @@ for i in "${!categories[@]}"; do
     --ask 4 \
     "$category" > "$CATEGORY_LOG" 2>&1
   
-  EXIT_CODE=$?
+  # Get exit code from pacman (${PIPESTATUS[1]}), not yes (${PIPESTATUS[0]})
+  EXIT_CODE=${PIPESTATUS[1]}
+  set -o pipefail 2>/dev/null || true
   
-  # Analyze the output for specific errors
+  # Analyze the output for specific errors (ensure single-line output)
   UNRESOLVABLE=$(grep -c "unresolvable package conflicts" "$CATEGORY_LOG" 2>/dev/null || echo "0")
   MISSING_DEPS=$(grep -c "unable to satisfy dependency" "$CATEGORY_LOG" 2>/dev/null || echo "0")
   CONFLICTS=$(grep -c "are in conflict" "$CATEGORY_LOG" 2>/dev/null || echo "0")
