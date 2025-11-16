@@ -1,10 +1,11 @@
-*Last Updated: 2025-11-15*
-*Script Version: 587 lines*
-*Verified: 100% success on Garuda Linux*
+_Last Updated: 2025-11-15_
+_Script Version: 587 lines_
+_Verified: 100% success on Garuda Linux_
 
 # BlackArch Auto-Installation Script - Complete Documentation
 
 ### 🏆 Achievement: 100% Success Rate
+
 ```
 ████████████████████ 51/51 CATEGORIES (100%)
 ████████████████████ 2869+ BlackArch TOOLS INSTALLED
@@ -34,6 +35,7 @@ chmod +x install_blackarch_categories.sh
 ```
 
 **That's it!** The script handles everything automatically:
+
 - ✅ PGP keyring initialization
 - ✅ Dependency installation
 - ✅ Conflict resolution
@@ -47,6 +49,7 @@ chmod +x install_blackarch_categories.sh
 <summary><h2>📋 Features</h2></summary>
 
 ### 🔐 Security & PGP Handling
+
 - **Phase 0**: Mandatory PGP keyring initialization (lines 62-92)
 - Automatically signs BlackArch developer key (Evan Teitelman)
 - Proactive `SigLevel = Optional TrustAll` adjustment (lines 84-86)
@@ -54,7 +57,9 @@ chmod +x install_blackarch_categories.sh
 - Multiple pacman.conf backups with timestamps
 
 ### 🤖 Auto-Dependency Resolution
+
 Automatically installs ALL dependencies (Phase 0, lines 108-174):
+
 - Java Runtime (jre17-openjdk)
 - Rust/Cargo
 - Tesseract OCR data (English)
@@ -64,20 +69,26 @@ Automatically installs ALL dependencies (Phase 0, lines 108-174):
 - **Requires AUR helper**: paru or yay
 
 ### ⚔️ Conflict Resolution
+
 Automatically removes conflicting packages (Phase 2, lines 202-239):
+
 - `linux-wifi-hotspot` (conflicts with `create_ap`)
 - `python-yara` (conflicts with `python-yara-python-dex`)
 - `python-arsenic` (conflicts with `python-wapiti-arsenic`)
 
 ### 📊 Smart Package Handling
+
 **Minimal skip policy** (lines 318-322):
+
 - `vagrant` - **MANDATORY**, installed from AUR
 - `plasma-framework` - **EXCLUDED** (calamares not needed)
 - `calamares` & `blackarch-config-calamares` - **EXCLUDED**
 - `aws-extender-cli` - **SKIPPED** (known broken package)
 
 ### 📝 Comprehensive Logging
+
 Three log files generated per run (lines 16-18):
+
 ```bash
 blackarch_install_YYYYMMDD_HHMMSS.log       # Complete history
 blackarch_errors_YYYYMMDD_HHMMSS.log        # Errors only
@@ -85,6 +96,7 @@ blackarch_failed_packages_YYYYMMDD_HHMMSS.txt  # Failed packages with diagnostic
 ```
 
 ### 🔄 Retry Mechanism
+
 - **Phase 7**: Automatic retry of failed categories (lines 485-575)
 - Detects PGP signature issues in logs (line 520)
 - Optional relaxed signature checking for stubborn packages
@@ -98,6 +110,7 @@ blackarch_failed_packages_YYYYMMDD_HHMMSS.txt  # Failed packages with diagnostic
 <summary><h2>📖 Installation Phases (7 Total)</h2></summary>
 
 ### Phase 0: PGP Keyring + ALL Dependencies (MANDATORY) [0/7]
+
 ```bash
 # Backup pacman.conf
 # Initialize pacman keyring
@@ -122,12 +135,14 @@ blackarch_failed_packages_YYYYMMDD_HHMMSS.txt  # Failed packages with diagnostic
 ```
 
 ### Phase 1: Verify Dependencies [1/7]
+
 ```bash
 # Verify all 5 mandatory dependencies installed
 # Exit if any missing
 ```
 
 ### Phase 2: Conflict Resolution [2/7]
+
 ```bash
 # Remove linux-wifi-hotspot
 # Remove python-yara conflicts
@@ -135,17 +150,20 @@ blackarch_failed_packages_YYYYMMDD_HHMMSS.txt  # Failed packages with diagnostic
 ```
 
 ### Phase 3: Package Database Update [3/7]
+
 ```bash
 # sudo pacman -Sy
 ```
 
 ### Phase 4: Final Package Sync [4/7]
+
 ```bash
 # Final package database synchronization
 # Prepare for category installation
 ```
 
 ### Phase 5: Category Installation [5/7]
+
 ```bash
 # Install all 51 BlackArch categories
 # Real-time progress tracking
@@ -153,12 +171,14 @@ blackarch_failed_packages_YYYYMMDD_HHMMSS.txt  # Failed packages with diagnostic
 ```
 
 ### Phase 6: Security Restoration [6/7]
+
 ```bash
 # Restore strict signature checking
 # (if modified in Phase 0)
 ```
 
 ### Phase 7: Retry Failed Categories [7/7]
+
 ```bash
 # Optional retry mechanism (lines 485-575)
 # Detects failed categories from Phase 5 (line 393)
@@ -176,6 +196,7 @@ blackarch_failed_packages_YYYYMMDD_HHMMSS.txt  # Failed packages with diagnostic
 <summary><h2>📊 Understanding Output</h2></summary>
 
 ### Success Indicators
+
 ```
 ✓ Success          - Category installed completely
 ⚠ With warnings    - Partial success (some packages skipped)
@@ -184,6 +205,7 @@ blackarch_failed_packages_YYYYMMDD_HHMMSS.txt  # Failed packages with diagnostic
 ```
 
 ### Log Levels
+
 ```bash
 [2025-11-15 05:13:11] INFO: Normal operation
 [2025-11-15 05:13:12] WARNING: Non-critical issue
@@ -198,7 +220,9 @@ blackarch_failed_packages_YYYYMMDD_HHMMSS.txt  # Failed packages with diagnostic
 <summary><h2>🔍 Analyzing Results</h2></summary>
 
 ### Check Installation Statistics
+
 After running, the script displays:
+
 ```
 ╔═══ Installation Statistics ═══╗
   ✓ Successful:      51 categories
@@ -208,6 +232,7 @@ After running, the script displays:
 ```
 
 ### Review Logs
+
 ```bash
 # View main log
 less blackarch_install_*.log
@@ -220,6 +245,7 @@ cat blackarch_failed_packages_*.txt
 ```
 
 ### Monitor Real-time (in separate terminal)
+
 ```bash
 tail -f blackarch_install_*.log
 ```
@@ -234,9 +260,11 @@ tail -f blackarch_install_*.log
 ### Failed Categories
 
 #### Issue 1: Package Conflicts
+
 **Symptom**: `✗ Failed - dependency issues`
 
 **Solution**:
+
 ```bash
 # Check conflict details
 grep "are in conflict" blackarch_install_*.log
@@ -249,9 +277,11 @@ sudo pacman -S blackarch-<category>
 ```
 
 #### Issue 2: Missing Dependencies
+
 **Symptom**: `unable to satisfy dependency 'xyz'`
 
 **Solution**:
+
 ```bash
 # Install from AUR using yay or paru
 yay -S <missing-dependency>
@@ -261,9 +291,11 @@ sudo pacman -S --ignore <package> blackarch-<category>
 ```
 
 #### Issue 3: PGP Signature Issues
+
 **Symptom**: `signature from 'Evan Teitelman' is unknown trust`
 
 **Solution**:
+
 ```bash
 # Already handled automatically in Phase 0
 # If still fails, manually sign key:
@@ -273,10 +305,12 @@ sudo pacman-key --lsign-key 4345771566D76038C7FEB43863EC0ADBEA87E4E3
 ### Common Failed Categories
 
 #### blackarch / blackarch-wireless
+
 **Cause**: `create_ap` vs `linux-wifi-hotspot` conflict
 **Fix**: Automatically removed in Phase 2
 
 #### blackarch-malware
+
 **Cause**: `malboxes` requires AUR vagrant
 **Fix**: Vagrant automatically installed from AUR in Phase 0 (lines 147-171)
 
@@ -288,16 +322,19 @@ sudo pacman-key --lsign-key 4345771566D76038C7FEB43863EC0ADBEA87E4E3
 <summary><h2>🔄 Manual Retry Commands</h2></summary>
 
 ### Retry Single Category
+
 ```bash
 sudo pacman -S --needed blackarch-<category>
 ```
 
 ### Retry with Ignoring Specific Packages
+
 ```bash
 sudo pacman -S --needed --ignore package1,package2 blackarch-<category>
 ```
 
 ### Retry All Failed Categories
+
 ```bash
 # The script offers automatic retry in Phase 7
 # Or manually retry each:
@@ -314,6 +351,7 @@ done
 <summary><h2>📈 Verification Commands</h2></summary>
 
 ### Check Installed Packages
+
 ```bash
 # Count installed BlackArch packages
 pacman -Qg blackarch | wc -l
@@ -326,11 +364,13 @@ pacman -Sg blackarch-wireless
 ```
 
 ### Compare Available vs Installed
+
 ```bash
 comm -23 <(pacman -Sg blackarch | sort) <(pacman -Qg blackarch | sort)
 ```
 
 ### Check Repository Status
+
 ```bash
 # Verify BlackArch repository
 pacman -Sl blackarch | head
@@ -347,6 +387,7 @@ sudo pacman -Syy
 <summary><h2>🎯 Expected Results</h2></summary>
 
 ### Typical Outcome (VERIFIED)
+
 ```
 ✓ Successful:      51/51 categories (100%) 🎯✅
 ⚠ With warnings:   0 categories
@@ -354,13 +395,16 @@ sudo pacman -Syy
 ```
 
 ### Achievement Unlocked! 🏆
+
 **100% Success Rate Confirmed**
+
 - All 51 BlackArch categories installed successfully
 - Zero warnings, zero failures
 - Complete automation with proper dependency handling
 - Verified on Garuda Linux (Arch-based)
 
 ### Why 100% Success?
+
 1. ✅ **Proactive PGP handling** (Phase 0)
 2. ✅ **All dependencies pre-installed** (Java, Rust, Vagrant, etc.)
 3. ✅ **Conflict resolution** before installation
@@ -375,6 +419,7 @@ sudo pacman -Syy
 <summary><h2>🔧 Advanced Usage</h2></summary>
 
 ### Enable Debug Mode
+
 ```bash
 # Add to top of script temporarily
 set -x
@@ -384,6 +429,7 @@ set -x
 ```
 
 ### Check System Requirements
+
 ```bash
 # Check disk space (50GB+ recommended)
 df -h
@@ -396,6 +442,7 @@ curl -o /dev/null https://blackarch.org/
 ```
 
 ### Update System First
+
 ```bash
 # Recommended before running
 sudo pacman -Syu
@@ -473,6 +520,7 @@ blackarch-gpu                # GPU tools
 <summary><h2>⚙️ Script Configuration</h2></summary>
 
 ### Ignored Packages (Minimal List)
+
 ```bash
 # Lines 318-322
 IGNORE_LIST=(
@@ -486,6 +534,7 @@ IGNORE_PACKAGES=$(IFS=, ; echo "${IGNORE_LIST[*]}")
 ```
 
 ### Pacman Flags Used
+
 ```bash
 # Lines 363-369
 --needed                    # Only install if not present
@@ -497,6 +546,7 @@ IGNORE_PACKAGES=$(IFS=, ; echo "${IGNORE_LIST[*]}")
 ```
 
 ### Color Coding
+
 ```bash
 # Lines 6-13
 RED='\033[0;31m'      # Errors, failures
@@ -509,6 +559,7 @@ NC='\033[0m'          # Reset
 ```
 
 ### Log Functions
+
 ```bash
 # Lines 21-31
 log()         # Normal operations → main log
@@ -524,10 +575,12 @@ log_warning() # Warnings → main log
 <summary><h2>📞 Support & Resources</h2></summary>
 
 ### Official Documentation
+
 - BlackArch: https://blackarch.org/
 - ArchWiki: https://wiki.archlinux.org/
 
 ### Useful Commands
+
 ```bash
 # List all BlackArch tools
 pacman -Sg | grep blackarch
@@ -543,6 +596,7 @@ pacman -Si <tool-name>
 ```
 
 ### Share Logs for Support
+
 ```bash
 # Compress all logs
 tar -czf blackarch_logs.tar.gz blackarch_*.log blackarch_*.txt
@@ -574,18 +628,22 @@ tar -czf blackarch_logs.tar.gz blackarch_*.log blackarch_*.txt
 <summary><h2>🔒 Security Notes</h2></summary>
 
 ### PGP Signature Handling
+
 - **Phase 0**: Mandatory keyring initialization
 - **Automatic fallback**: If signing fails → Optional TrustAll
 - **Phase 6**: Automatic restoration to strict signatures
 - **Backup**: `/etc/pacman.conf.bak_YYYYMMDD_HHMMSS`
 
 ### Fallback Security
+
 The script temporarily relaxes signature checking ONLY if:
+
 1. BlackArch developer key cannot be signed (Phase 0, lines 84-86)
 2. User explicitly approves in Phase 7 retry (line 511)
 3. PGP signature issues detected in logs (line 520)
 
 Security is **always restored** before script completion:
+
 - Phase 6 restoration (lines 415-424)
 - Phase 7 restoration after retry (lines 555-560)
 
@@ -693,6 +751,7 @@ chmod +x install_blackarch_categories.sh
 ```
 
 ### Key Features
+
 - ✅ **587 lines** of battle-tested automation
 - ✅ **7 installation phases** with comprehensive error handling
 - ✅ **Proactive PGP handling** (lines 62-92, 84-86)
@@ -705,12 +764,14 @@ chmod +x install_blackarch_categories.sh
 - ✅ **Zero manual intervention** required (except retry prompt)
 
 ### What Gets Installed
+
 - 📦 **51 BlackArch categories** (2869+ security tools)
 - ⚙️ **All dependencies** (Java, Rust, Tesseract, Vagrant)
 - 🔧 **Conflict replacements** (python-yara-python-dex, create_ap)
 - ⚠️ **Minimal exclusions** (calamares, aws-extender-cli)
 
 ### Execution Time
+
 - ⏱️ **30-90 minutes** (depending on internet speed)
 - 📊 **Real-time progress** tracking (\[1/51\], \[2/51\], ...)
 - 📝 **Detailed logs** for troubleshooting
@@ -721,8 +782,6 @@ chmod +x install_blackarch_categories.sh
 
 ---
 
-
-
-*Last Updated: 2025-11-15*
-*Script Version: 587 lines*
-*Verified: 100% success on Garuda Linux*
+_Last Updated: 2025-11-15_
+_Script Version: 587 lines_
+_Verified: 100% success on Garuda Linux_

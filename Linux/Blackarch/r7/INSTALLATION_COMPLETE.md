@@ -1,11 +1,13 @@
 # Security Assessment Infrastructure - Installation Complete ✅
 
 ## Installation Date
+
 November 15, 2025
 
 ## Installed Components
 
 ### Core Tools
+
 ✅ **Nmap 7.98** - Network scanner
 ✅ **Metasploit Framework 6.4.92-dev** - Exploitation framework
 ✅ **PostgreSQL 18.1** - Database backend
@@ -13,15 +15,18 @@ November 15, 2025
 ✅ **Nginx** - Web server (for potential web services)
 
 ### NSE Scripts & Databases
+
 ✅ **Vulscan** - Vulnerability scanning with 8 CVE databases
 ✅ **Nmap-Vulners** - Advanced CVE detection scripts
 
 ### Databases Configured
+
 ✅ PostgreSQL Service: Running on port 5432
 ✅ Metasploit DB: Initialized and running at ~/.msf4/db
 ✅ Workspace: "sk" created and configured
 
 ## Directory Structure Created
+
 ```
 /home/user/SA/
 ├── sk/
@@ -38,15 +43,17 @@ November 15, 2025
 ## Configuration Applied
 
 ### Metasploit Settings
+
 - Workspace: sk
 - Console Logging: Enabled
-- Session Logging: Enabled  
+- Session Logging: Enabled
 - Log Level: 5 (verbose)
 - Exit on Session: false
 - Verbose Mode: true
 - Timestamp Output: true
 
 ### Scan Capabilities
+
 - 600+ NSE scripts available
 - 8 vulnerability databases loaded
 - Full port scanning (1-65535)
@@ -59,18 +66,23 @@ November 15, 2025
 ## Next Steps
 
 ### 1. Configure Your Targets
+
 ```bash
 nano /home/user/SA/sk/sk_ips
 ```
+
 Add target IPs or hostnames, one per line.
 
 ### 2. (Optional) Configure Exclusions
+
 ```bash
 nano /home/user/SA/sk/bl
 ```
+
 Add IPs to exclude from scanning.
 
 ### 3. Run Your First Scan
+
 ```bash
 # Quick start
 /home/user/SA/sk/quick_scan.sh
@@ -81,6 +93,7 @@ resource /home/user/SA/sk/SAD.rc
 ```
 
 ### 4. Monitor Progress
+
 ```bash
 tail -f /home/user/SA/sk/new_r7nmapScan_spool
 ```
@@ -94,24 +107,31 @@ tail -f /home/user/SA/sk/new_r7nmapScan_spool
 ## Verification
 
 ### Check Database Status
+
 ```bash
 msfdb status
 ```
+
 Expected: "Database started"
 
 ### Check PostgreSQL
+
 ```bash
 systemctl status postgresql --no-pager
 ```
+
 Expected: "active (running)"
 
 ### Test Metasploit
+
 ```bash
 msfconsole -q -x "db_status; exit"
 ```
+
 Expected: "Connected to msf"
 
 ### List NSE Scripts
+
 ```bash
 locate nse | grep nmap | head -20
 ```
@@ -119,6 +139,7 @@ locate nse | grep nmap | head -20
 ## Quick Reference Commands
 
 ### Start/Stop Services
+
 ```bash
 sudo systemctl start postgresql
 sudo systemctl stop postgresql
@@ -127,12 +148,14 @@ msfdb stop
 ```
 
 ### Update Tools
+
 ```bash
 sudo nmap --script-updatedb    # Update NSE scripts
 msfupdate                      # Update Metasploit
 ```
 
 ### Database Management
+
 ```bash
 msfdb reinit                   # Reset database
 msfdb delete                   # Delete database
@@ -142,18 +165,21 @@ msfdb init                     # Initialize database
 ## Troubleshooting
 
 ### Database Connection Issues
+
 ```bash
 msfdb reinit
 msfconsole -q -x "db_status; exit"
 ```
 
 ### Missing NSE Scripts
+
 ```bash
 sudo nmap --script-updatedb
 locate vulscan.nse
 ```
 
 ### Permission Issues
+
 ```bash
 sudo chown -R user:user /home/user/SA/
 chmod +x /home/user/SA/sk/*.sh
