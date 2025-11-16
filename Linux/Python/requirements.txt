@@ -44,7 +44,7 @@ exceptiongroup
 fbmessenger
 filelock
 fire
-fonttools==4.59.1
+fonttools==4.60.1
 frozenlist
 fsspec
 future
@@ -82,7 +82,7 @@ ml-dtypes
 msgpack
 multidict
 Naked
-numpy==2.3.2
+numpy==2.3.4
 openai
 opt-einsum
 packageurl-python
