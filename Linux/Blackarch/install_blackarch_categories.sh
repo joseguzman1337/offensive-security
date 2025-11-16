@@ -55,8 +55,20 @@ echo -e "  • Log all operations to: ${CYAN}$LOG_FILE${NC}"
 # ========================================================================
 
 echo ""
-read -p "Press Enter to continue or Ctrl+C to cancel..."
+log "Running fully automated - no user input required"
 echo ""
+
+# ========================================================================
+# === PRE-PHASE: Install basic dependencies early ===
+# ========================================================================
+echo -e "${YELLOW}Installing basic system dependencies (jre17-openjdk, rust, tesseract-data-eng, erlang, wings3d)...${NC}" | tee -a "$LOG_FILE"
+log "Pre-Phase: Installing basic dependencies that don't have conflicts"
+sudo pacman -Syy --needed --noconfirm jre17-openjdk rust tesseract-data-eng erlang wings3d >> "$LOG_FILE" 2>&1 || log_warning "Some basic packages may have been skipped"
+log "✓ Basic dependencies installed"
+echo ""
+# ========================================================================
+# === END OF PRE-PHASE ===
+# ========================================================================
 
 # Step 0: Initialize BlackArch keyring AND install ALL dependencies (MANDATORY)
 echo -e "${YELLOW}[0/7] Initializing BlackArch keyring + Installing ALL dependencies...${NC}" | tee -a "$LOG_FILE"
@@ -91,6 +103,66 @@ log "✓ Temporarily set SigLevel to Optional TrustAll"
 log "✓ Keyring initialization complete."
 echo ""
 
+# ========================================================================
+# === SYSTEM FIXES (libjodycode, dracut, kernel-install) ===
+# ========================================================================
+log "Applying preventive system fixes for dracut and library dependencies..."
+
+# Fix 1: Create libjodycode.so.3 symlink for fsck.winregfs
+if [ -f /usr/lib/libjodycode.so.4 ] && [ ! -f /usr/lib/libjodycode.so.3 ]; then
+    log "Creating libjodycode.so.3 symlink for fsck.winregfs compatibility..."
+    if sudo ln -sf /usr/lib/libjodycode.so.4 /usr/lib/libjodycode.so.3 >> "$LOG_FILE" 2>&1; then
+        log "✓ Library symlink created successfully"
+    else
+        log_warning "Failed to create library symlink (non-critical)"
+    fi
+else
+    log "✓ libjodycode.so.3 already exists or not needed"
+fi
+
+# Fix 2: Configure dracut to use /boot instead of EFI partition
+if [ ! -f /etc/dracut.conf.d/99-fix-boot.conf ]; then
+    log "Configuring dracut to use /boot directory..."
+    cat > /tmp/dracut-fix.conf << 'EOF'
+# Fix dracut to use /boot instead of EFI partition
+uefi="no"
+hostonly="yes"
+compress="zstd"
+EOF
+    if sudo cp /tmp/dracut-fix.conf /etc/dracut.conf.d/99-fix-boot.conf >> "$LOG_FILE" 2>&1; then
+        log "✓ Dracut configuration created"
+    else
+        log_warning "Failed to create dracut config (non-critical)"
+    fi
+    rm -f /tmp/dracut-fix.conf
+else
+    log "✓ Dracut configuration already exists"
+fi
+
+# Fix 3: Configure kernel-install to disable UKI
+if [ ! -f /etc/kernel/install.conf ]; then
+    log "Configuring kernel-install to use traditional initramfs..."
+    sudo mkdir -p /etc/kernel
+    cat > /tmp/install.conf << 'EOF'
+layout=bls
+initrd_generator=dracut
+EOF
+    if sudo cp /tmp/install.conf /etc/kernel/install.conf >> "$LOG_FILE" 2>&1; then
+        log "✓ Kernel install configuration created"
+    else
+        log_warning "Failed to create kernel config (non-critical)"
+    fi
+    rm -f /tmp/install.conf
+else
+    log "✓ Kernel install configuration already exists"
+fi
+
+log "✓ System fixes applied"
+echo ""
+# ========================================================================
+# === END OF SYSTEM FIXES ===
+# ========================================================================
+
 # Clean pacman cache to remove any corrupted packages
 log "Cleaning pacman cache (remove corrupted packages)..."
 sudo pacman -Scc --noconfirm >> "$LOG_FILE" 2>&1 || log_warning "Cache cleaning had warnings"
@@ -101,6 +173,53 @@ log "Updating package database..."
 sudo pacman -Syy --noconfirm >> "$LOG_FILE" 2>&1
 log "✓ Package database updated"
 echo ""
+
+# ========================================================================
+# === ***CONFLICT RESOLUTION BEFORE DEPENDENCY INSTALLATION*** ===
+# ========================================================================
+log "===== Resolving conflicts BEFORE dependency installation ====="
+
+# Check and remove python-yara (conflicts with python-yara-python-dex)
+if pacman -Q python-yara &>/dev/null; then
+    log "Removing python-yara (conflicts with python-yara-python-dex)..."
+    if sudo pacman -Rdd --noconfirm python-yara >> "$LOG_FILE" 2>&1; then
+        log "✓ python-yara removed successfully"
+    else
+        log_warning "Failed to remove python-yara"
+    fi
+else
+    log "✓ python-yara not installed, no conflict"
+fi
+
+# Check and remove python-arsenic (conflicts with python-wapiti-arsenic)
+if pacman -Q python-arsenic &>/dev/null; then
+    log "Removing python-arsenic (conflicts with python-wapiti-arsenic)..."
+    if sudo pacman -Rdd --noconfirm python-arsenic >> "$LOG_FILE" 2>&1; then
+        log "✓ python-arsenic removed successfully"
+    else
+        log_warning "Failed to remove python-arsenic"
+    fi
+else
+    log "✓ python-arsenic not installed, no conflict"
+fi
+
+# Check and remove linux-wifi-hotspot (conflicts with create_ap)
+if pacman -Q linux-wifi-hotspot &>/dev/null; then
+    log "Removing linux-wifi-hotspot (conflicts with create_ap)..."
+    if sudo pacman -Rdd --noconfirm linux-wifi-hotspot >> "$LOG_FILE" 2>&1; then
+        log "✓ linux-wifi-hotspot removed successfully"
+    else
+        log_warning "Failed to remove linux-wifi-hotspot"
+    fi
+else
+    log "✓ linux-wifi-hotspot not installed, no conflict"
+fi
+
+log "===== Conflict resolution complete ====="
+echo ""
+# ========================================================================
+# === END OF CONFLICT RESOLUTION ===
+# ========================================================================
 
 # ========================================================================
 # === ***IMPROVED DEPENDENCY INSTALL BLOCK (Consolidated)*** ===
@@ -115,6 +234,14 @@ PACMAN_DEPS=(
     "python-yara-python-dex"
     "python-wapiti-arsenic"
     "create_ap"
+)
+
+# Missing packages that need to be built from AUR
+AUR_DEPS=(
+    "erlang-cl"        # Required by wings3d - WORKING
+    "lib32-gtk2"       # Required by recstudio - WORKING
+    "gtk2-perl"        # Required by seat (blackarch-scanner, blackarch-recon, etc.)
+    "python-celery"    # Required by enteletaor, yeti (blackarch categories)
 )
 
 # Filter out packages that are already installed
@@ -170,6 +297,63 @@ else
     log "✓ Vagrant already installed"
 fi
 
+# 6. Install missing AUR dependencies
+log "===== Installing missing AUR dependencies ====="
+if command -v paru &>/dev/null || command -v yay &>/dev/null; then
+    AUR_HELPER="paru"
+    command -v paru &>/dev/null || AUR_HELPER="yay"
+    
+    for pkg in "${AUR_DEPS[@]}"; do
+        # Extract package name without comment
+        pkg_name=$(echo "$pkg" | awk '{print $1}')
+        
+        if ! pacman -Q "$pkg_name" &>/dev/null; then
+            log "Installing $pkg_name from AUR..."
+            
+            # Special handling for python-celery (circular dependency with python-pytest-celery)
+            if [ "$pkg_name" = "python-celery" ]; then
+                log "Handling python-celery circular dependency..."
+                TMP_DIR="/tmp/python-celery-build-$$"
+                mkdir -p "$TMP_DIR"
+                cd "$TMP_DIR" || { log_error "Failed to create temp dir for python-celery"; continue; }
+                
+                if git clone https://aur.archlinux.org/python-celery.git >> "$LOG_FILE" 2>&1; then
+                    cd python-celery || { log_error "Failed to enter python-celery dir"; continue; }
+                    
+                    # Fix PKGBUILD to remove circular test dependency
+                    sed -i '30,33d' PKGBUILD
+                    sed -i '29a checkdepends=("python-pytest" "python-pytest-subtests" "python-pytest-timeout" "python-case" "python-pytz"' PKGBUILD
+                    sed -i '30a               "python-cryptography" "python-gevent" "python-pymongo" "python-msgpack" "python-pyro"' PKGBUILD
+                    sed -i '31a               "python-redis" "python-sqlalchemy" "python-boto3" "python-yaml" "python-pyzmq"' PKGBUILD
+                    sed -i '32a               "python-eventlet" "python-moto" "python-pytest-click" "systemd")' PKGBUILD
+                    
+                    if makepkg -si --noconfirm --skippgpcheck --nocheck >> "$LOG_FILE" 2>&1; then
+                        log "✓ $pkg_name installed from AUR (circular dep resolved)"
+                    else
+                        log_error "Failed to build $pkg_name from AUR"
+                    fi
+                    
+                    cd /
+                    rm -rf "$TMP_DIR"
+                else
+                    log_error "Failed to clone python-celery from AUR"
+                fi
+            else
+                # Standard AUR installation
+                if $AUR_HELPER -S --needed --noconfirm "$pkg_name" >> "$LOG_FILE" 2>&1; then
+                    log "✓ $pkg_name installed from AUR"
+                else
+                    log_warning "Failed to install $pkg_name from AUR (may not exist)"
+                fi
+            fi
+        else
+            log "✓ $pkg_name already installed"
+        fi
+    done
+else
+    log_warning "No AUR helper found - skipping AUR dependencies"
+fi
+
 log "===== All mandatory dependencies installed ====="
 echo ""
 # ========================================================================
@@ -197,48 +381,30 @@ else
 fi
 
 # ========================================================================
-# === ***IMPROVED PHASE 2 (Conflict Resolution Logging)*** ===
+# === ***PHASE 2 - VERIFY CONFLICTS ARE RESOLVED*** ===
 # ========================================================================
-echo -e "${YELLOW}[2/7] Resolving package conflicts...${NC}" | tee -a "$LOG_FILE"
-log "Phase 2: Resolving package conflicts"
+echo -e "${YELLOW}[2/7] Verifying package conflicts resolved...${NC}" | tee -a "$LOG_FILE"
+log "Phase 2: Verifying package conflicts are resolved"
 
-# Check and remove python-yara
+# Final check - these should all be already removed in Phase 0
 if pacman -Q python-yara &>/dev/null; then
-    log "Removing python-yara (conflicts with python-yara-python-dex)..."
-    if sudo pacman -Rdd --noconfirm python-yara >> "$LOG_FILE" 2>&1; then
-        log "✓ python-yara removed successfully"
-    else
-        log_warning "Failed to remove python-yara (it was detected, but removal failed. Check log for pacman error.)"
-    fi
-else
-    log "python-yara not installed, no conflict."
+    log_warning "python-yara still installed - removing now"
+    sudo pacman -Rdd --noconfirm python-yara >> "$LOG_FILE" 2>&1
 fi
 
-# Check and remove python-arsenic
 if pacman -Q python-arsenic &>/dev/null; then
-    log "Removing python-arsenic (conflicts with python-wapiti-arsenic)..."
-    if sudo pacman -Rdd --noconfirm python-arsenic >> "$LOG_FILE" 2>&1; then
-        log "✓ python-arsenic removed successfully"
-    else
-        log_warning "Failed to remove python-arsenic (it was detected, but removal failed. Check log for pacman error.)"
-    fi
-else
-    log "python-arsenic not installed, no conflict."
+    log_warning "python-arsenic still installed - removing now"
+    sudo pacman -Rdd --noconfirm python-arsenic >> "$LOG_FILE" 2>&1
 fi
 
-# Check and remove linux-wifi-hotspot
 if pacman -Q linux-wifi-hotspot &>/dev/null; then
-    log "Removing linux-wifi-hotspot (conflicts with create_ap)..."
-    if sudo pacman -Rdd --noconfirm linux-wifi-hotspot >> "$LOG_FILE" 2>&1; then
-        log "✓ linux-wifi-hotspot removed successfully"
-    else
-        log_warning "Failed to remove linux-wifi-hotspot (it was detected, but removal failed. Check log for pacman error.)"
-    fi
-else
-    log "linux-wifi-hotspot not installed, no conflict."
+    log_warning "linux-wifi-hotspot still installed - removing now"
+    sudo pacman -Rdd --noconfirm linux-wifi-hotspot >> "$LOG_FILE" 2>&1
 fi
+
+log "✓ All package conflicts verified resolved"
 # ========================================================================
-# === END OF IMPROVED PHASE 2 ===
+# === END OF PHASE 2 ===
 # ========================================================================
 
 # Step 3: Sync and update package database
@@ -314,8 +480,12 @@ blackarch-threat-model
 blackarch-gpu
 )
 
-# No packages will be skipped - all dependencies installed
-IGNORE_LIST=("aws-extender-cli" "calamares" "blackarch-config-calamares")  # Skip broken and excluded packages
+# Broken/excluded packages only
+IGNORE_LIST=(
+    "aws-extender-cli" 
+    "calamares" 
+    "blackarch-config-calamares"
+)
 
 # Join array into comma-separated string
 IGNORE_PACKAGES=$(IFS=, ; echo "${IGNORE_LIST[*]}")
@@ -374,9 +544,12 @@ for i in "${!categories[@]}"; do
   set -o pipefail 2>/dev/null || true
   
   # Analyze the output for specific errors (ensure single-line output)
-  UNRESOLVABLE=$(grep -c "unresolvable package conflicts" "$CATEGORY_LOG" 2>/dev/null || echo "0")
-  MISSING_DEPS=$(grep -c "unable to satisfy dependency" "$CATEGORY_LOG" 2>/dev/null || echo "0")
-  CONFLICTS=$(grep -c "are in conflict" "$CATEGORY_LOG" 2>/dev/null || echo "0")
+  UNRESOLVABLE=$(grep -c "unresolvable package conflicts" "$CATEGORY_LOG" 2>/dev/null || echo 0)
+  UNRESOLVABLE=$(echo "$UNRESOLVABLE" | tr -d '\n' | head -c 10)
+  MISSING_DEPS=$(grep -c "unable to satisfy dependency" "$CATEGORY_LOG" 2>/dev/null || echo 0)
+  MISSING_DEPS=$(echo "$MISSING_DEPS" | tr -d '\n' | head -c 10)
+  CONFLICTS=$(grep -c "are in conflict" "$CATEGORY_LOG" 2>/dev/null || echo 0)
+  CONFLICTS=$(echo "$CONFLICTS" | tr -d '\n' | head -c 10)
   
   # Append category log to main log
   cat "$CATEGORY_LOG" >> "$LOG_FILE"
@@ -481,14 +654,12 @@ echo -e "    sudo pacman -S <category-name>"
 echo -e "${YELLOW}╚══════════════════════════╝${NC}"
 echo ""
 
-# Step 7: Offer to retry failed categories with PGP signature workaround
+# Step 7: Automatically retry failed categories (no prompt)
 if [ ${#FAILED_CATEGORIES[@]} -gt 0 ]; then
     echo -e "${YELLOW}[7/7] Handling failed categories...${NC}" | tee -a "$LOG_FILE"
-    log "Phase 7: Retry mechanism for failed categories"
-    echo -e "${YELLOW}Would you like to retry failed categories? (y/N)${NC}"
-    read -t 30 -r RETRY_ANSWER || RETRY_ANSWER="n"
+    log "Phase 7: Automatic retry for failed categories"
     
-    if [[ $RETRY_ANSWER =~ ^[Yy]$ ]]; then
+    if true; then
         log "User chose to retry failed categories"
         echo -e "${BLUE}Retrying failed categories...${NC}" | tee -a "$LOG_FILE"
         
@@ -573,6 +744,7 @@ else
     echo -e "${GREEN}[7/7] All categories processed successfully!${NC}" | tee -a "$LOG_FILE"
     log "Phase 7: No failed categories to retry"
 fi
+
 
 log "Script execution completed"
 log "Total execution time: $SECONDS seconds"

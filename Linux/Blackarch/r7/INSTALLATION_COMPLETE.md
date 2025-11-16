@@ -28,7 +28,7 @@ November 15, 2025
 ## Directory Structure Created
 
 ```
-/home/d3c0d3r/SA/
+/home/user/SA/
 ├── sk/
 │   ├── sk_ips              # Target configuration (EDIT THIS)
 │   ├── bl                  # Exclusion list (EDIT THIS)
@@ -68,7 +68,7 @@ November 15, 2025
 ### 1. Configure Your Targets
 
 ```bash
-nano /home/d3c0d3r/SA/sk/sk_ips
+nano /home/user/SA/sk/sk_ips
 ```
 
 Add target IPs or hostnames, one per line.
@@ -76,7 +76,7 @@ Add target IPs or hostnames, one per line.
 ### 2. (Optional) Configure Exclusions
 
 ```bash
-nano /home/d3c0d3r/SA/sk/bl
+nano /home/user/SA/sk/bl
 ```
 
 Add IPs to exclude from scanning.
@@ -85,17 +85,17 @@ Add IPs to exclude from scanning.
 
 ```bash
 # Quick start
-/home/d3c0d3r/SA/sk/quick_scan.sh
+/home/user/SA/sk/quick_scan.sh
 
 # Or from Metasploit console
 msfconsole
-resource /home/d3c0d3r/SA/sk/SAD.rc
+resource /home/user/SA/sk/SAD.rc
 ```
 
 ### 4. Monitor Progress
 
 ```bash
-tail -f /home/d3c0d3r/SA/sk/new_r7nmapScan_spool
+tail -f /home/user/SA/sk/new_r7nmapScan_spool
 ```
 
 ## Important Security Warnings
@@ -181,13 +181,13 @@ locate vulscan.nse
 ### Permission Issues
 
 ```bash
-sudo chown -R d3c0d3r:d3c0d3r /home/d3c0d3r/SA/
-chmod +x /home/d3c0d3r/SA/sk/*.sh
+sudo chown -R user:user /home/user/SA/
+chmod +x /home/user/SA/sk/*.sh
 ```
 
 ## Additional Resources
 
-- Documentation: /home/d3c0d3r/SA/README.md
+- Documentation: /home/user/SA/README.md
 - Nmap NSE Documentation: https://nmap.org/nsedoc/
 - Metasploit Documentation: https://docs.metasploit.com/
 - Vulscan GitHub: https://github.com/scipag/vulscan
@@ -204,4 +204,4 @@ chmod +x /home/d3c0d3r/SA/sk/*.sh
 **Installation completed successfully!**
 Ready for authorized security assessments.
 
-For full documentation, see: /home/d3c0d3r/SA/README.md
+For full documentation, see: /home/user/SA/README.md

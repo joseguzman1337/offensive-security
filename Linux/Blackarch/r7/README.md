@@ -7,7 +7,7 @@ This infrastructure provides automated security scanning capabilities using Meta
 ## Directory Structure
 
 ```
-/home/d3c0d3r/SA/
+/home/user/SA/
 ├── sk/
 │   ├── sk_ips          # Target IP addresses/hostnames (one per line)
 │   ├── bl              # Blacklist/exclusion IPs (one per line)
@@ -49,7 +49,7 @@ This infrastructure provides automated security scanning capabilities using Meta
 Edit target file with IPs or hostnames to scan:
 
 ```bash
-nano /home/d3c0d3r/SA/sk/sk_ips
+nano /home/user/SA/sk/sk_ips
 ```
 
 ### 2. Configure Exclusions (Optional)
@@ -57,43 +57,43 @@ nano /home/d3c0d3r/SA/sk/sk_ips
 Add IPs to exclude from scanning:
 
 ```bash
-nano /home/d3c0d3r/SA/sk/bl
+nano /home/user/SA/sk/bl
 ```
 
 ### 3. Run Security Scan
 
 ```bash
 # Method 1: Using helper script
-/home/d3c0d3r/SA/sk/quick_scan.sh
+/home/user/SA/sk/quick_scan.sh
 
 # Method 2: Direct Metasploit
-msfconsole -r /home/d3c0d3r/SA/sk/SAD.rc
+msfconsole -r /home/user/SA/sk/SAD.rc
 
 # Method 3: From Metasploit console
 msfconsole
-resource /home/d3c0d3r/SA/sk/SAD.rc
+resource /home/user/SA/sk/SAD.rc
 ```
 
 ### 4. Monitor Scan Progress
 
 ```bash
-tail -f /home/d3c0d3r/SA/sk/new_r7nmapScan_sk
+tail -f /home/user/SA/sk/new_r7nmapScan_sk
 ```
 
 ### 5. View Results
 
 Scan results are saved in multiple formats:
 
-- XML: /home/d3c0d3r/SA/sk/new_r7nmapScan.xml
-- Nmap: /home/d3c0d3r/SA/sk/new_r7nmapScan.nmap
-- Grepable: /home/d3c0d3r/SA/sk/new_r7nmapScan.gnmap
-- Script Kiddie: /home/d3c0d3r/SA/sk/new_r7nmapScan_sk
-- Spool: /home/d3c0d3r/SA/sk/new_r7nmapScan_spool
+- XML: /home/user/SA/sk/new_r7nmapScan.xml
+- Nmap: /home/user/SA/sk/new_r7nmapScan.nmap
+- Grepable: /home/user/SA/sk/new_r7nmapScan.gnmap
+- Script Kiddie: /home/user/SA/sk/new_r7nmapScan_sk
+- Spool: /home/user/SA/sk/new_r7nmapScan_spool
 
 ### 6. Clean Up Old Scans
 
 ```bash
-/home/d3c0d3r/SA/sk/cleanup_scans.sh
+/home/user/SA/sk/cleanup_scans.sh
 ```
 
 ## Scan Features
@@ -215,21 +215,21 @@ msfupdate
 ```bash
 db_nmap --save --privileged -A -f -sV -sC --script=auth,vuln,vulscan \
   --script-args vulscandb=cve.csv -p443 -T4 target.example.com \
-  -oA /home/d3c0d3r/SA/sk/fast_scan
+  -oA /home/user/SA/sk/fast_scan
 ```
 
 ### Intense UDP Scan
 
 ```bash
-db_nmap -sS -sU -T4 -v --traceroute -iL /home/d3c0d3r/SA/sk/sk_ips \
-  -oA /home/d3c0d3r/SA/sk/udp_scan
+db_nmap -sS -sU -T4 -v --traceroute -iL /home/user/SA/sk/sk_ips \
+  -oA /home/user/SA/sk/udp_scan
 ```
 
 ### Quick Scan
 
 ```bash
-db_nmap -T4 --traceroute -iL /home/d3c0d3r/SA/sk/sk_ips \
-  -oA /home/d3c0d3r/SA/sk/quick_scan
+db_nmap -T4 --traceroute -iL /home/user/SA/sk/sk_ips \
+  -oA /home/user/SA/sk/quick_scan
 ```
 
 ## References
