@@ -104,8 +104,7 @@ https://www.rapid7.com/try/metasploit-pro/
 
 Activate your license at
 
-https://localhost:1337/licenses
-4. Create and save your PRO workspace
+https://localhost:1337/licenses 4. Create and save your PRO workspace
 
 sudo -i
 
@@ -298,9 +297,9 @@ tail -f /root/SA/sk/new_r7nmapScan_sk
 
 For delete and old scan logs execute
 
-rm -r /root/SA/sk/new_r7nmapScan*
+rm -r /root/SA/sk/new_r7nmapScan\*
 
-rm -r /root/.msf4/local/*.*
+rm -r /root/.msf4/local/_._
 
 Print host interfaces and routes (for debugging)
 
@@ -359,4 +358,3 @@ Specify a DNS Server
 For a slow comprehensive scan
 
 -sS -sU -T4 -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --traceroute
-
