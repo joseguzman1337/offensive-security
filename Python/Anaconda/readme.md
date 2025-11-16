@@ -48,7 +48,7 @@ conda update -n x -c ad-testing/label/py314 --all --yes
 **5. Fallback to classic solver if needed (run only if errors occur):**
 
 ```bash
-conda config --set solver classic && conda update --all -n x -c ad-testing/label/py314
+conda config --set solver classic && conda update --all -n x -c ad-testing/label/py314 --yes
 ```
 
 **6. Export your environment recipe:**
@@ -107,13 +107,13 @@ conda activate base
 **Replicate environment from file:**
 
 ```bash
-conda env update -n x -f environment.yml
+conda env update -n x -f environment.yml --yes
 ```
 
 **Install specific package in 'x':**
 
 ```bash
-conda install -n x package-name -y
+conda install -n x -c ad-testing/label/py314 package-name --yes
 ```
 
 ---
