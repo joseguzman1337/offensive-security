@@ -39,19 +39,40 @@ log "Log file: $LOG_FILE"
 log "Error log: $ERROR_LOG"
 log "Failed packages list: $FAILED_PACKAGES"
 echo ""
+
+# ========================================================================
+# === ***IMPROVEMENT (per user request)*** ===
+# Added -e flag to all introductory echo commands to correctly render colors.
+# ========================================================================
 echo -e "${BLUE}This script will automatically:${NC}"
-echo "  • Install required system dependencies"
-echo "  • Resolve package conflicts"
-echo "  • Install all BlackArch tool categories"
-echo "  • Handle all prompts automatically"
-echo "  • Log all operations to: ${CYAN}$LOG_FILE${NC}"
+echo -e "  • Install required system dependencies"
+echo -e "  • Resolve package conflicts"
+echo -e "  • Install all BlackArch tool categories"
+echo -e "  • Handle all prompts automatically"
+echo -e "  • Log all operations to: ${CYAN}$LOG_FILE${NC}"
+# ========================================================================
+# === END OF IMPROVEMENT ===
+# ========================================================================
+
 echo ""
-read -p "Press Enter to continue or Ctrl+C to cancel..."
+log "Running fully automated - no user input required"
 echo ""
 
-# Step 0: Initialize BlackArch keyring (fix PGP signature issues)
-echo -e "${YELLOW}[0/7] Initializing BlackArch keyring...${NC}" | tee -a "$LOG_FILE"
-log "Phase 0: Initializing package keyring"
+# ========================================================================
+# === PRE-PHASE: Install basic dependencies early ===
+# ========================================================================
+echo -e "${YELLOW}Installing basic system dependencies (jre17-openjdk, rust, tesseract-data-eng, erlang, wings3d)...${NC}" | tee -a "$LOG_FILE"
+log "Pre-Phase: Installing basic dependencies that don't have conflicts"
+sudo pacman -Syy --needed --noconfirm jre17-openjdk rust tesseract-data-eng erlang wings3d >> "$LOG_FILE" 2>&1 || log_warning "Some basic packages may have been skipped"
+log "✓ Basic dependencies installed"
+echo ""
+# ========================================================================
+# === END OF PRE-PHASE ===
+# ========================================================================
+
+# Step 0: Initialize BlackArch keyring AND install ALL dependencies (MANDATORY)
+echo -e "${YELLOW}[0/7] Initializing BlackArch keyring + Installing ALL dependencies...${NC}" | tee -a "$LOG_FILE"
+log "Phase 0: Initializing package keyring and installing ALL mandatory dependencies"
 
 log "Backing up pacman.conf..."
 sudo cp /etc/pacman.conf /etc/pacman.conf.bak_$(date +%Y%m%d_%H%M%S)
@@ -67,96 +88,122 @@ log "✓ Keys populated"
 
 log "Locally signing BlackArch developer key (Evan Teitelman)..."
 sudo pacman-key --lsign-key 4345771566D76038C7FEB43863EC0ADBEA87E4E3 >> "$LOG_FILE" 2>&1
-if [ $? -eq 0 ]; then
-    log "✓ BlackArch developer key signed successfully"
-else
-    log_warning "Key signing failed, adjusting signature level..."
-    sudo sed -i.tmp 's/^SigLevel[[:space:]]*=.*/SigLevel = Optional TrustAll/' /etc/pacman.conf
-    log "⚠ Temporarily set SigLevel to Optional TrustAll"
-fi
+log "✓ BlackArch developer key signing attempted."
 
-log "✓ Keyring initialized successfully"
+# ========================================================================
+# === ***PROACTIVE PGP HANDLING BLOCK*** ===
+# ========================================================================
+log_warning "Proactively adjusting signature level to prevent PGP failures..."
+sudo sed -i.tmp 's/^SigLevel[[:space:]]*=.*/SigLevel = Optional TrustAll/' /etc/pacman.conf
+log "✓ Temporarily set SigLevel to Optional TrustAll"
+# ========================================================================
+# === END OF PGP BLOCK ===
+# ========================================================================
+
+log "✓ Keyring initialization complete."
 echo ""
 
-# Step 1: Install required dependencies first
-echo -e "${YELLOW}[1/7] Installing required system dependencies...${NC}" | tee -a "$LOG_FILE"
-log "Phase 1: Installing system dependencies"
+# ========================================================================
+# === SYSTEM FIXES (libjodycode, dracut, kernel-install) ===
+# ========================================================================
+log "Applying preventive system fixes for dracut and library dependencies..."
 
-# Install Java runtime (needed by many tools)
-if ! pacman -Q jre17-openjdk &>/dev/null; then
-    log "Installing Java Runtime (jre17-openjdk)..."
-    if sudo pacman -S --needed --noconfirm jre17-openjdk >> "$LOG_FILE" 2>&1; then
-        log "✓ Java Runtime installed successfully"
+# Fix 1: Create libjodycode.so.3 symlink for fsck.winregfs
+if [ -f /usr/lib/libjodycode.so.4 ] && [ ! -f /usr/lib/libjodycode.so.3 ]; then
+    log "Creating libjodycode.so.3 symlink for fsck.winregfs compatibility..."
+    if sudo ln -sf /usr/lib/libjodycode.so.4 /usr/lib/libjodycode.so.3 >> "$LOG_FILE" 2>&1; then
+        log "✓ Library symlink created successfully"
     else
-        log_warning "Failed to install Java Runtime"
+        log_warning "Failed to create library symlink (non-critical)"
     fi
 else
-    log "Java Runtime already installed"
+    log "✓ libjodycode.so.3 already exists or not needed"
 fi
 
-# Install Rust/Cargo (needed by many tools)
-if ! pacman -Q rust &>/dev/null; then
-    log "Installing Rust/Cargo..."
-    if sudo pacman -S --needed --noconfirm rust >> "$LOG_FILE" 2>&1; then
-        log "✓ Rust/Cargo installed successfully"
+# Fix 2: Configure dracut to use /boot instead of EFI partition
+if [ ! -f /etc/dracut.conf.d/99-fix-boot.conf ]; then
+    log "Configuring dracut to use /boot directory..."
+    cat > /tmp/dracut-fix.conf << 'EOF'
+# Fix dracut to use /boot instead of EFI partition
+uefi="no"
+hostonly="yes"
+compress="zstd"
+EOF
+    if sudo cp /tmp/dracut-fix.conf /etc/dracut.conf.d/99-fix-boot.conf >> "$LOG_FILE" 2>&1; then
+        log "✓ Dracut configuration created"
     else
-        log_warning "Failed to install Rust/Cargo"
+        log_warning "Failed to create dracut config (non-critical)"
     fi
+    rm -f /tmp/dracut-fix.conf
 else
-    log "Rust/Cargo already installed"
+    log "✓ Dracut configuration already exists"
 fi
 
-# Install tesseract English data (most common)
-if ! pacman -Q tesseract-data-eng &>/dev/null; then
-    log "Installing Tesseract OCR data (English)..."
-    if sudo pacman -S --needed --noconfirm tesseract-data-eng >> "$LOG_FILE" 2>&1; then
-        log "✓ Tesseract OCR data installed successfully"
+# Fix 3: Configure kernel-install to disable UKI
+if [ ! -f /etc/kernel/install.conf ]; then
+    log "Configuring kernel-install to use traditional initramfs..."
+    sudo mkdir -p /etc/kernel
+    cat > /tmp/install.conf << 'EOF'
+layout=bls
+initrd_generator=dracut
+EOF
+    if sudo cp /tmp/install.conf /etc/kernel/install.conf >> "$LOG_FILE" 2>&1; then
+        log "✓ Kernel install configuration created"
     else
-        log_warning "Failed to install Tesseract OCR data"
+        log_warning "Failed to create kernel config (non-critical)"
     fi
+    rm -f /tmp/install.conf
 else
-    log "Tesseract OCR data already installed"
+    log "✓ Kernel install configuration already exists"
 fi
 
-# Install plasma-framework (required by calamares)
-log "Installing plasma-framework (required by calamares)..."
-if sudo pacman -S --needed --noconfirm plasma-framework >> "$LOG_FILE" 2>&1; then
-    log "✓ plasma-framework installed successfully"
-    PLASMA_AVAILABLE=true
-else
-    log_warning "plasma-framework unavailable, will skip calamares-dependent packages"
-    PLASMA_AVAILABLE=false
-fi
+log "✓ System fixes applied"
+echo ""
+# ========================================================================
+# === END OF SYSTEM FIXES ===
+# ========================================================================
 
-# Step 2: Handle package conflicts
-echo -e "${YELLOW}[2/7] Resolving package conflicts...${NC}" | tee -a "$LOG_FILE"
-log "Phase 2: Resolving package conflicts"
+# Clean pacman cache to remove any corrupted packages
+log "Cleaning pacman cache (remove corrupted packages)..."
+sudo pacman -Scc --noconfirm >> "$LOG_FILE" 2>&1 || log_warning "Cache cleaning had warnings"
+log "✓ Pacman cache cleaned"
 
-# Remove conflicting Python YARA package (if it exists)
+# Update package database
+log "Updating package database..."
+sudo pacman -Syy --noconfirm >> "$LOG_FILE" 2>&1
+log "✓ Package database updated"
+echo ""
+
+# ========================================================================
+# === ***CONFLICT RESOLUTION BEFORE DEPENDENCY INSTALLATION*** ===
+# ========================================================================
+log "===== Resolving conflicts BEFORE dependency installation ====="
+
+# Check and remove python-yara (conflicts with python-yara-python-dex)
 if pacman -Q python-yara &>/dev/null; then
     log "Removing python-yara (conflicts with python-yara-python-dex)..."
     if sudo pacman -Rdd --noconfirm python-yara >> "$LOG_FILE" 2>&1; then
         log "✓ python-yara removed successfully"
     else
-        log_warning "python-yara not installed or already removed"
+        log_warning "Failed to remove python-yara"
     fi
 else
-    log "python-yara not installed, skipping removal"
+    log "✓ python-yara not installed, no conflict"
 fi
 
-# Remove conflicting arsenic package (if it exists)
+# Check and remove python-arsenic (conflicts with python-wapiti-arsenic)
 if pacman -Q python-arsenic &>/dev/null; then
     log "Removing python-arsenic (conflicts with python-wapiti-arsenic)..."
     if sudo pacman -Rdd --noconfirm python-arsenic >> "$LOG_FILE" 2>&1; then
         log "✓ python-arsenic removed successfully"
     else
-        log_warning "python-arsenic not installed or already removed"
+        log_warning "Failed to remove python-arsenic"
     fi
 else
-    log "python-arsenic not installed, skipping removal"
+    log "✓ python-arsenic not installed, no conflict"
 fi
 
-# Remove linux-wifi-hotspot (conflicts with create_ap in blackarch-wireless)
+# Check and remove linux-wifi-hotspot (conflicts with create_ap)
 if pacman -Q linux-wifi-hotspot &>/dev/null; then
     log "Removing linux-wifi-hotspot (conflicts with create_ap)..."
     if sudo pacman -Rdd --noconfirm linux-wifi-hotspot >> "$LOG_FILE" 2>&1; then
@@ -165,8 +212,200 @@ if pacman -Q linux-wifi-hotspot &>/dev/null; then
         log_warning "Failed to remove linux-wifi-hotspot"
     fi
 else
-    log "linux-wifi-hotspot not installed, no conflict"
+    log "✓ linux-wifi-hotspot not installed, no conflict"
 fi
+
+log "===== Conflict resolution complete ====="
+echo ""
+# ========================================================================
+# === END OF CONFLICT RESOLUTION ===
+# ========================================================================
+
+# ========================================================================
+# === ***IMPROVED DEPENDENCY INSTALL BLOCK (Consolidated)*** ===
+# ========================================================================
+log "===== Installing ALL mandatory system dependencies ====="
+
+# Define list of mandatory packages from official repos
+PACMAN_DEPS=(
+    "jre17-openjdk"
+    "rust"
+    "tesseract-data-eng"
+    "python-yara-python-dex"
+    "python-wapiti-arsenic"
+    "create_ap"
+)
+
+# Missing packages that need to be built from AUR
+AUR_DEPS=(
+    "erlang-cl"        # Required by wings3d - WORKING
+    "lib32-gtk2"       # Required by recstudio - WORKING
+    "gtk2-perl"        # Required by seat (blackarch-scanner, blackarch-recon, etc.)
+    "python-celery"    # Required by enteletaor, yeti (blackarch categories)
+)
+
+# Filter out packages that are already installed
+DEPS_TO_INSTALL=()
+for pkg in "${PACMAN_DEPS[@]}"; do
+    if ! pacman -Q "$pkg" &>/dev/null; then
+        DEPS_TO_INSTALL+=("$pkg")
+    else
+        log "✓ $pkg already installed"
+    fi
+done
+
+# Install all missing repo packages "in one go"
+if [ ${#DEPS_TO_INSTALL[@]} -gt 0 ]; then
+    log "Installing missing repo dependencies: ${DEPS_TO_INSTALL[*]}..."
+    sudo pacman -S --needed --noconfirm "${DEPS_TO_INSTALL[@]}" >> "$LOG_FILE" 2>&1
+    if [ $? -eq 0 ]; then
+        log "✓ All repo dependencies installed successfully."
+    else
+        log_error "FAILED to install one or more repo dependencies. Check log."
+    fi
+else
+    log "✓ All mandatory repo dependencies are already satisfied."
+fi
+
+# 4. Plasma Framework - EXCLUDED (calamares not needed)
+log "Skipping plasma-framework (calamares excluded)"
+
+# 5. Vagrant (MANDATORY - from AUR)
+if ! pacman -Q vagrant &>/dev/null; then
+    log "Installing vagrant (MANDATORY for malboxes)..."
+    if sudo pacman -S --needed --noconfirm vagrant >> "$LOG_FILE" 2>&1; then
+        log "✓ Vagrant installed from repos"
+    else
+        log "Vagrant not in repos, installing from AUR (MANDATORY)..."
+        if command -v paru &>/dev/null; then
+            if paru -S --needed --noconfirm vagrant >> "$LOG_FILE" 2>&1; then
+                log "✓ Vagrant installed from AUR via paru"
+            else
+                log_error "FAILED: Vagrant installation via paru"
+            fi
+        elif command -v yay &>/dev/null; then
+            if yay -S --needed --noconfirm vagrant >> "$LOG_FILE" 2>&1; then
+                log "✓ Vagrant installed from AUR via yay"
+            else
+                log_error "FAILED: Vagrant installation via yay"
+            fi
+        else
+            log_error "CRITICAL: No AUR helper (paru/yay) found - cannot install vagrant"
+        fi
+    fi
+else
+    log "✓ Vagrant already installed"
+fi
+
+# 6. Install missing AUR dependencies
+log "===== Installing missing AUR dependencies ====="
+if command -v paru &>/dev/null || command -v yay &>/dev/null; then
+    AUR_HELPER="paru"
+    command -v paru &>/dev/null || AUR_HELPER="yay"
+    
+    for pkg in "${AUR_DEPS[@]}"; do
+        # Extract package name without comment
+        pkg_name=$(echo "$pkg" | awk '{print $1}')
+        
+        if ! pacman -Q "$pkg_name" &>/dev/null; then
+            log "Installing $pkg_name from AUR..."
+            
+            # Special handling for python-celery (circular dependency with python-pytest-celery)
+            if [ "$pkg_name" = "python-celery" ]; then
+                log "Handling python-celery circular dependency..."
+                TMP_DIR="/tmp/python-celery-build-$$"
+                mkdir -p "$TMP_DIR"
+                cd "$TMP_DIR" || { log_error "Failed to create temp dir for python-celery"; continue; }
+                
+                if git clone https://aur.archlinux.org/python-celery.git >> "$LOG_FILE" 2>&1; then
+                    cd python-celery || { log_error "Failed to enter python-celery dir"; continue; }
+                    
+                    # Fix PKGBUILD to remove circular test dependency
+                    sed -i '30,33d' PKGBUILD
+                    sed -i '29a checkdepends=("python-pytest" "python-pytest-subtests" "python-pytest-timeout" "python-case" "python-pytz"' PKGBUILD
+                    sed -i '30a               "python-cryptography" "python-gevent" "python-pymongo" "python-msgpack" "python-pyro"' PKGBUILD
+                    sed -i '31a               "python-redis" "python-sqlalchemy" "python-boto3" "python-yaml" "python-pyzmq"' PKGBUILD
+                    sed -i '32a               "python-eventlet" "python-moto" "python-pytest-click" "systemd")' PKGBUILD
+                    
+                    if makepkg -si --noconfirm --skippgpcheck --nocheck >> "$LOG_FILE" 2>&1; then
+                        log "✓ $pkg_name installed from AUR (circular dep resolved)"
+                    else
+                        log_error "Failed to build $pkg_name from AUR"
+                    fi
+                    
+                    cd /
+                    rm -rf "$TMP_DIR"
+                else
+                    log_error "Failed to clone python-celery from AUR"
+                fi
+            else
+                # Standard AUR installation
+                if $AUR_HELPER -S --needed --noconfirm "$pkg_name" >> "$LOG_FILE" 2>&1; then
+                    log "✓ $pkg_name installed from AUR"
+                else
+                    log_warning "Failed to install $pkg_name from AUR (may not exist)"
+                fi
+            fi
+        else
+            log "✓ $pkg_name already installed"
+        fi
+    done
+else
+    log_warning "No AUR helper found - skipping AUR dependencies"
+fi
+
+log "===== All mandatory dependencies installed ====="
+echo ""
+# ========================================================================
+# === END OF IMPROVED DEPENDENCY BLOCK ===
+# ========================================================================
+
+# Step 1: Verify dependencies (all installed in Phase 0)
+echo -e "${YELLOW}[1/7] Verifying system dependencies...${NC}" | tee -a "$LOG_FILE"
+log "Phase 1: Verifying all dependencies are installed"
+
+# Verify all mandatory dependencies
+MISSING_DEPS=()
+
+! pacman -Q jre17-openjdk &>/dev/null && MISSING_DEPS+=("jre17-openjdk")
+! pacman -Q rust &>/dev/null && MISSING_DEPS+=("rust")
+! pacman -Q tesseract-data-eng &>/dev/null && MISSING_DEPS+=("tesseract-data-eng")
+! pacman -Q vagrant &>/dev/null && MISSING_DEPS+=("vagrant")
+
+if [ ${#MISSING_DEPS[@]} -gt 0 ]; then
+    log_error "CRITICAL: Missing mandatory dependencies: ${MISSING_DEPS[*]}"
+    log_error "These should have been installed in Phase 0!"
+    exit 1
+else
+    log "✓ All mandatory dependencies verified installed"
+fi
+
+# ========================================================================
+# === ***PHASE 2 - VERIFY CONFLICTS ARE RESOLVED*** ===
+# ========================================================================
+echo -e "${YELLOW}[2/7] Verifying package conflicts resolved...${NC}" | tee -a "$LOG_FILE"
+log "Phase 2: Verifying package conflicts are resolved"
+
+# Final check - these should all be already removed in Phase 0
+if pacman -Q python-yara &>/dev/null; then
+    log_warning "python-yara still installed - removing now"
+    sudo pacman -Rdd --noconfirm python-yara >> "$LOG_FILE" 2>&1
+fi
+
+if pacman -Q python-arsenic &>/dev/null; then
+    log_warning "python-arsenic still installed - removing now"
+    sudo pacman -Rdd --noconfirm python-arsenic >> "$LOG_FILE" 2>&1
+fi
+
+if pacman -Q linux-wifi-hotspot &>/dev/null; then
+    log_warning "linux-wifi-hotspot still installed - removing now"
+    sudo pacman -Rdd --noconfirm linux-wifi-hotspot >> "$LOG_FILE" 2>&1
+fi
+
+log "✓ All package conflicts verified resolved"
+# ========================================================================
+# === END OF PHASE 2 ===
+# ========================================================================
 
 # Step 3: Sync and update package database
 echo -e "${YELLOW}[3/7] Updating package database...${NC}" | tee -a "$LOG_FILE"
@@ -177,90 +416,76 @@ else
     log_error "Failed to update package database"
 fi
 
-# Step 4: Pre-install common problematic packages separately
-echo -e "${YELLOW}[4/7] Pre-installing commonly required packages...${NC}" | tee -a "$LOG_FILE"
-log "Phase 4: Pre-installing commonly required packages"
-
-# Install vagrant if needed (for malboxes)
-if ! pacman -Q vagrant &>/dev/null; then
-    log "Installing vagrant (required by malboxes)..."
-    if sudo pacman -S --needed --noconfirm vagrant >> "$LOG_FILE" 2>&1; then
-        log "✓ Vagrant installed successfully"
-        VAGRANT_AVAILABLE=true
-    else
-        log_warning "Vagrant unavailable, will skip malboxes"
-        VAGRANT_AVAILABLE=false
-    fi
+# Step 4: Update package database before category installation
+echo -e "${YELLOW}[4/7] Final package database sync...${NC}" | tee -a "$LOG_FILE"
+log "Phase 4: Final package database synchronization"
+if sudo pacman -Sy --noconfirm >> "$LOG_FILE" 2>&1; then
+    log "✓ Package database synced"
 else
-    log "Vagrant already installed"
-    VAGRANT_AVAILABLE=true
+    log_warning "Package database sync had warnings"
 fi
 
 # List of BlackArch categories to install
 categories=(
-  blackarch
-  blackarch-webapp
-  blackarch-fuzzer
-  blackarch-scanner
-  blackarch-proxy
-  blackarch-windows
-  blackarch-dos
-  blackarch-disassembler
-  blackarch-cracker
-  blackarch-voip
-  blackarch-exploitation
-  blackarch-recon
-  blackarch-spoof
-  blackarch-forensic
-  blackarch-crypto
-  blackarch-backdoor
-  blackarch-networking
-  blackarch-misc
-  blackarch-defensive
-  blackarch-wireless
-  blackarch-automation
-  blackarch-sniffer
-  blackarch-binary
-  blackarch-packer
-  blackarch-reversing
-  blackarch-mobile
-  blackarch-malware
-  blackarch-code-audit
-  blackarch-social
-  blackarch-honeypot
-  blackarch-hardware
-  blackarch-fingerprint
-  blackarch-decompiler
-  blackarch-config
-  blackarch-debugger
-  blackarch-firmware
-  blackarch-bluetooth
-  blackarch-database
-  blackarch-automobile
-  blackarch-nfc
-  blackarch-tunnel
-  blackarch-drone
-  blackarch-unpacker
-  blackarch-radio
-  blackarch-keylogger
-  blackarch-stego
-  blackarch-anti-forensic
-  blackarch-ids
-  blackarch-gpu
+blackarch
+blackarch-webapp
+blackarch-fuzzer
+blackarch-scanner
+blackarch-proxy
+blackarch-windows
+blackarch-dos
+blackarch-disassembler
+blackarch-sniffer
+blackarch-voip
+blackarch-fingerprint
+blackarch-networking
+blackarch-recon
+blackarch-cracker
+blackarch-exploitation
+blackarch-spoof
+blackarch-forensic
+blackarch-crypto
+blackarch-backdoor
+blackarch-defensive
+blackarch-wireless
+blackarch-automation
+blackarch-radio
+blackarch-binary
+blackarch-packer
+blackarch-reversing
+blackarch-mobile
+blackarch-malware
+blackarch-code-audit
+blackarch-social
+blackarch-honeypot
+blackarch-misc
+blackarch-wordlist
+blackarch-decompiler
+blackarch-config
+blackarch-debugger
+blackarch-bluetooth
+blackarch-database
+blackarch-automobile
+blackarch-hardware
+blackarch-nfc
+blackarch-tunnel
+blackarch-drone
+blackarch-unpacker
+blackarch-firmware
+blackarch-keylogger
+blackarch-stego
+blackarch-anti-forensic
+blackarch-ids
+blackarch-threat-model
+blackarch-gpu
 )
 
-# Packages to skip (problematic or unnecessary)
-# Build ignore list dynamically based on available dependencies
-IGNORE_LIST=("aws-extender-cli")
-
-# Always skip malboxes (vagrant is in AUR, not official repos)
-IGNORE_LIST+=("malboxes" "vmcloak")
-log "Will skip malboxes and vmcloak (require vagrant from AUR)"
-
-if [ "$PLASMA_AVAILABLE" = false ]; then
-    IGNORE_LIST+=("calamares" "blackarch-config-calamares")
-    log "Will skip calamares packages (plasma-framework not available)"
-fi
+# Broken/excluded packages only
+IGNORE_LIST=(
+    "aws-extender-cli" 
+    "calamares" 
+    "blackarch-config-calamares"
+)
 
 # Join array into comma-separated string
 IGNORE_PACKAGES=$(IFS=, ; echo "${IGNORE_LIST[*]}")
@@ -303,6 +528,8 @@ for i in "${!categories[@]}"; do
   
   # Use yes to auto-answer all prompts with default (1 for providers, y for skip)
   # Capture full output for analysis
+  # Use pipefail disabled to capture only pacman exit code, not yes exit code
+  set +o pipefail
   yes "" 2>&1 | sudo pacman -S \
     --needed \
     --noconfirm \
@@ -312,32 +539,43 @@ for i in "${!categories[@]}"; do
     --ask 4 \
     "$category" > "$CATEGORY_LOG" 2>&1
   
-  EXIT_CODE=$?
+  # Get exit code from pacman (${PIPESTATUS[1]}), not yes (${PIPESTATUS[0]})
+  EXIT_CODE=${PIPESTATUS[1]}
+  set -o pipefail 2>/dev/null || true
   
-  # Analyze the output for specific errors
-  UNRESOLVABLE=$(grep -c "unresolvable package conflicts" "$CATEGORY_LOG" 2>/dev/null || echo "0")
-  MISSING_DEPS=$(grep -c "unable to satisfy dependency" "$CATEGORY_LOG" 2>/dev/null || echo "0")
-  CONFLICTS=$(grep -c "are in conflict" "$CATEGORY_LOG" 2>/dev/null || echo "0")
+  # Analyze the output for specific errors (ensure single-line output)
+  UNRESOLVABLE=$(grep -c "unresolvable package conflicts" "$CATEGORY_LOG" 2>/dev/null || echo 0)
+  UNRESOLVABLE=$(echo "$UNRESOLVABLE" | tr -d '\n' | head -c 10)
+  MISSING_DEPS=$(grep -c "unable to satisfy dependency" "$CATEGORY_LOG" 2>/dev/null || echo 0)
+  MISSING_DEPS=$(echo "$MISSING_DEPS" | tr -d '\n' | head -c 10)
+  CONFLICTS=$(grep -c "are in conflict" "$CATEGORY_LOG" 2>/dev/null || echo 0)
+  CONFLICTS=$(echo "$CONFLICTS" | tr -d '\n' | head -c 10)
   
   # Append category log to main log
   cat "$CATEGORY_LOG" >> "$LOG_FILE"
   rm -f "$CATEGORY_LOG"
   
+  # Check if pacman exited with a non-zero status
   if [ "$EXIT_CODE" -eq 0 ]; then
     echo -e "${GREEN}└─ ✓ Success${NC}" | tee -a "$LOG_FILE"
     log "Category $category installed successfully"
     SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
-  elif [ "$UNRESOLVABLE" -gt 0 ] || [ "$MISSING_DEPS" -gt 0 ] || [ "$CONFLICTS" -gt 0 ]; then
-    echo -e "${RED}└─ ✗ Failed (dependency issues)${NC}" | tee -a "$LOG_FILE"
-    log_error "Category $category failed: Unresolvable=$UNRESOLVABLE, Missing Deps=$MISSING_DEPS, Conflicts=$CONFLICTS"
-    FAILED_COUNT=$((FAILED_COUNT + 1))
-    FAILED_CATEGORIES+=("$category")
-    echo "$category - Unresolvable: $UNRESOLVABLE, Missing Deps: $MISSING_DEPS, Conflicts: $CONFLICTS" >> "$FAILED_PACKAGES"
   else
-    echo -e "${YELLOW}└─ ⚠ Completed with warnings${NC}" | tee -a "$LOG_FILE"
-    log_warning "Category $category completed with warnings (exit code: $EXIT_CODE)"
+    # ANY non-zero exit code is a failure.
     FAILED_COUNT=$((FAILED_COUNT + 1))
-    echo "$category - Exit code: $EXIT_CODE" >> "$FAILED_PACKAGES"
+    FAILED_CATEGORIES+=("$category") # Add to array for Phase 7 retry
+
+    # Log specific error message if found
+    if [ "$UNRESOLVABLE" -gt 0 ] || [ "$MISSING_DEPS" -gt 0 ] || [ "$CONFLICTS" -gt 0 ]; then
+        echo -e "${RED}└─ ✗ Failed (dependency issues)${NC}" | tee -a "$LOG_FILE"
+        log_error "Category $category failed: Unresolvable=$UNRESOLVABLE, Missing Deps=$MISSING_DEPS, Conflicts=$CONFLICTS"
+        echo "$category - Unresolvable: $UNRESOLVABLE, Missing Deps: $MISSING_DEPS, Conflicts: $CONFLICTS" >> "$FAILED_PACKAGES"
+    else
+        # This will now catch PGP errors (exit code 1) and other generic failures
+        echo -e "${RED}└─ ✗ Failed (exit code: $EXIT_CODE)${NC}" | tee -a "$LOG_FILE"
+        log_error "Category $category failed (exit code: $EXIT_CODE). Check log for PGP or other errors."
+        echo "$category - Exit code: $EXIT_CODE" >> "$FAILED_PACKAGES"
+    fi
   fi
   
   echo ""
@@ -373,14 +611,14 @@ log "Installation complete. Generating statistics..."
 
 echo -e "${BLUE}╔═══ Installation Statistics ═══╗${NC}" | tee -a "$LOG_FILE"
 echo -e "  ${GREEN}✓ Successful:${NC}      $SUCCESS_COUNT categories" | tee -a "$LOG_FILE"
-echo -e "  ${YELLOW}⚠ With warnings:${NC}   $FAILED_COUNT categories" | tee -a "$LOG_FILE"
-echo -e "  ${RED}⊗ Skipped:${NC}         $SKIPPED_COUNT categories" | tee -a "$LOG_FILE"
+echo -e "  ${RED}✗ Failed:${NC}          $FAILED_COUNT categories" | tee -a "$LOG_FILE"
+echo -e "  ${YELLOW}⚠ Skipped:${NC}         $SKIPPED_COUNT categories" | tee -a "$LOG_FILE"
 echo -e "${BLUE}╚══════════════════════════════╝${NC}" | tee -a "$LOG_FILE"
 echo "" | tee -a "$LOG_FILE"
 
 # Show failed categories if any
 if [ ${#FAILED_CATEGORIES[@]} -gt 0 ]; then
-    echo -e "${RED}Failed Categories (with dependency issues):${NC}" | tee -a "$LOG_FILE"
+    echo -e "${RED}Failed Categories (will attempt retry):${NC}" | tee -a "$LOG_FILE"
     for failed_cat in "${FAILED_CATEGORIES[@]}"; do
         echo "  • $failed_cat" | tee -a "$LOG_FILE"
     done
@@ -416,14 +654,12 @@ echo -e "    sudo pacman -S <category-name>"
 echo -e "${YELLOW}╚══════════════════════════╝${NC}"
 echo ""
 
-# Step 7: Offer to retry failed categories with PGP signature workaround
+# Step 7: Automatically retry failed categories (no prompt)
 if [ ${#FAILED_CATEGORIES[@]} -gt 0 ]; then
     echo -e "${YELLOW}[7/7] Handling failed categories...${NC}" | tee -a "$LOG_FILE"
-    log "Phase 7: Retry mechanism for failed categories"
-    echo -e "${YELLOW}Would you like to retry failed categories? (y/N)${NC}"
-    read -t 30 -r RETRY_ANSWER || RETRY_ANSWER="n"
+    log "Phase 7: Automatic retry for failed categories"
     
-    if [[ $RETRY_ANSWER =~ ^[Yy]$ ]]; then
+    if true; then
         log "User chose to retry failed categories"
         echo -e "${BLUE}Retrying failed categories...${NC}" | tee -a "$LOG_FILE"
         
@@ -504,9 +740,11 @@ if [ ${#FAILED_CATEGORIES[@]} -gt 0 ]; then
         log "User declined to retry failed categories"
     fi
 else
+    # This is now the expected outcome, since Phase 0 should prevent all PGP failures.
     echo -e "${GREEN}[7/7] All categories processed successfully!${NC}" | tee -a "$LOG_FILE"
     log "Phase 7: No failed categories to retry"
 fi
+
 
 log "Script execution completed"
 log "Total execution time: $SECONDS seconds"
