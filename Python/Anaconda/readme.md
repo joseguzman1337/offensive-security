@@ -6,12 +6,6 @@
 
 You can start with the most fundamental DS, AI, and ML packages. Using Navigator or the command line, you can easily manage applications, packages, and environments.
 
-0. Accept Terms of Service for required channels:
-
-```bash
-conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
-```
-
 # Set 'x' Your Primary Conda/Python Environment (10 One-Liner Steps)
 
 **1. Configure modern solver & update base:**
