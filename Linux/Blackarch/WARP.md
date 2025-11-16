@@ -11,6 +11,7 @@ This is a BlackArch security tools installation and configuration repository for
 ### Core Components
 
 **Main Installation Script** (`install_blackarch_categories.sh`)
+
 - 587-line Bash script with 7 installation phases
 - Automated dependency resolution and conflict handling
 - PGP keyring management with fallback mechanisms
@@ -19,12 +20,14 @@ This is a BlackArch security tools installation and configuration repository for
 - Retry mechanism for failed categories with signature workaround
 
 **Alternative Python Installer** (`optional/blackarch_installer.py`)
+
 - Fallback approach using Python with mirror selection
 - Location-based mirror prioritization
 - Multiple AUR helper support (pacman, yay, paru, pacaur)
 - Modular design with separate modules for packages, repos, helpers
 
 **Security Assessment Infrastructure** (`r7/`)
+
 - Metasploit Framework + Nmap automated scanning setup
 - PostgreSQL database integration for Metasploit
 - NSE vulnerability scripts (Vulscan, Nmap-Vulners)
@@ -48,12 +51,14 @@ This is a BlackArch security tools installation and configuration repository for
 ### Key Design Patterns
 
 **PGP Signature Handling**
+
 - Proactive `SigLevel = Optional TrustAll` adjustment (lines 84-86 in main script)
 - Automatic backup of pacman.conf with timestamps
 - Always restores strict signatures after installation
 - User-consent required for signature workaround in retry phase
 
 **Conflict Resolution Strategy**
+
 - **CRITICAL FIX**: Conflicts are now removed in Phase 0 BEFORE installing replacement packages
 - Previously Phase 2 removed conflicts AFTER Phase 0 tried to install replacements (causing failures)
 - Uses `python-yara-python-dex` instead of `python-yara`
@@ -62,12 +67,14 @@ This is a BlackArch security tools installation and configuration repository for
 - Phase 2 now serves as a verification/safety check only
 
 **Minimal Skip Policy**
+
 - Only excludes: `aws-extender-cli`, `calamares`, `blackarch-config-calamares`, `plasma-framework`
 - Mandatory AUR installation of `vagrant` (required for malboxes)
 
 ## Common Development Commands
 
 ### Running Main Installation
+
 ```bash
 # Make executable (if needed)
 chmod +x install_blackarch_categories.sh
@@ -82,6 +89,7 @@ chmod +x install_blackarch_categories.sh
 ```
 
 ### Verification Commands
+
 ```bash
 # Count installed BlackArch packages
 pacman -Qg blackarch | wc -l
@@ -100,6 +108,7 @@ pacman -Sl blackarch | head
 ```
 
 ### Manual Category Installation
+
 ```bash
 # Install single category
 sudo pacman -S --needed blackarch-<category>
@@ -112,6 +121,7 @@ grep "are in conflict" blackarch_install_*.log
 ```
 
 ### Keyring Management
+
 ```bash
 # Fix keyring conflicts (use helper script)
 ./fix_blackarch_keyring.sh
@@ -125,6 +135,7 @@ sudo pacman-key --populate archlinux blackarch
 ```
 
 ### Security Assessment Infrastructure (r7/)
+
 ```bash
 # Install security infrastructure (Metasploit + Nmap)
 ./r7/install_security_infrastructure.sh
@@ -154,6 +165,7 @@ sudo nmap --script-updatedb
 ```
 
 ### Troubleshooting
+
 ```bash
 # View main installation log
 less blackarch_install_*.log
@@ -177,6 +189,7 @@ sudo pacman -Syy
 ## System Requirements
 
 ### Prerequisites
+
 - **OS**: Arch Linux or Arch-based distribution (Garuda Linux verified)
 - **AUR Helper**: `paru` or `yay` (MANDATORY for vagrant installation)
 - **Disk Space**: 50GB+ recommended
@@ -184,6 +197,7 @@ sudo pacman -Syy
 - **Privileges**: Regular user with sudo access (do NOT run as root)
 
 ### Mandatory Dependencies (Auto-installed in Phase 0)
+
 - `jre17-openjdk` (Java Runtime)
 - `rust` and `cargo`
 - `tesseract-data-eng` (OCR data)
@@ -193,12 +207,14 @@ sudo pacman -Syy
 - `create_ap` (replaces linux-wifi-hotspot)
 
 ### Excluded Packages
+
 - `plasma-framework` - Not needed
 - `calamares` and `blackarch-config-calamares` - Installation tools, not needed
 
 ## Security Notes
 
 ### PGP Signature Security Model
+
 - Script temporarily relaxes signature checking ONLY when:
   1. BlackArch developer key cannot be signed (Phase 0)
   2. User explicitly approves in Phase 7 retry
@@ -207,10 +223,13 @@ sudo pacman -Syy
 - Multiple timestamped backups of `/etc/pacman.conf` are created
 
 ### Sensitive Values
+
 All secrets and tokens must be masked according to repository rules. Never echo or log PGP keys or sensitive configuration.
 
 ### Authorized Use Only
+
 The security tools in this repository are for:
+
 - Authorized security assessments
 - Educational purposes
 - Networks you own or have explicit permission to test
@@ -220,6 +239,7 @@ The security tools in this repository are for:
 ## Expected Success Rate
 
 **Verified Results**: 100% success rate (51/51 categories, 2,869+ tools)
+
 - Last verified: 2025-11-15
 - Platform: Garuda Linux (Arch-based)
 - All 51 BlackArch categories installed successfully
@@ -228,12 +248,14 @@ The security tools in this repository are for:
 ## Log Analysis
 
 ### Success Indicators
+
 - `✓ Success` - Category installed completely
 - `⚠ With warnings` - Partial success (some packages skipped)
 - `✗ Failed` - Critical dependency issues
 - `⊗ Skipped` - Category doesn't exist or intentionally skipped
 
 ### Common Error Patterns
+
 - `signature from 'Evan Teitelman' is unknown trust` → PGP keyring issue (auto-handled)
 - `are in conflict` → Package conflict (auto-resolved in Phase 2)
 - `unable to satisfy dependency` → Missing dependency from AUR
@@ -285,6 +307,7 @@ blackarch, blackarch-webapp, blackarch-fuzzer, blackarch-scanner, blackarch-prox
 ## Integration Notes
 
 When modifying scripts in this repository:
+
 - Maintain the 7-phase installation structure
 - Preserve PGP signature handling logic (lines 84-86, 415-424, 555-560)
 - Keep conflict resolution in Phase 2
