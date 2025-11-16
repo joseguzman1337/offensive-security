@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -Syy jre17-openjdk rust tesseract-data-eng
+sudo pacman -Syy jre17-openjdk rust tesseract-data-eng erlang wings3d
 
 # Exit on error, but allow continue on individual package failures
 set +e
