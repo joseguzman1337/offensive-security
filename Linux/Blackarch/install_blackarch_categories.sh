@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo pacman -Syy jre17-openjdk rust tesseract-data-eng
+
 # Exit on error, but allow continue on individual package failures
 set +e
 
