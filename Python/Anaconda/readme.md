@@ -21,7 +21,9 @@ conda create -n x -c conda-forge python=3.13.9 --yes && conda activate x
 ```
 
 **3. Set 'x' as default auto-activated environment:**
+
 ##
+
 **Windows:**
 
 ```cmd
