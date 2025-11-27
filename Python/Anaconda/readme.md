@@ -27,7 +27,7 @@ conda create -n x -c conda-forge python=3.13.9 --yes && conda activate x
 ```cmd
 conda config --set auto_activate false && echo conda activate x >> %USERPROFILE%\.condarc
 ```
-
+##
 **macOS/Linux:**
 
 ```bash
