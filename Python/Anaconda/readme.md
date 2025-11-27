@@ -11,13 +11,13 @@ You can start with the most fundamental DS, AI, and ML packages. Using Navigator
 **1. Configure modern solver & update base:**
 
 ```bash
-conda config --show solver; conda config --set solver libmamba; conda update -n base -c conda-forge conda --yes; conda config --add channels conda-forge; conda update --all -n base --yes
+conda config --show solver; conda config --set solver libmamba; conda update -n base -c conda-forge conda --yes; conda config --add channels conda-forge bioconda; conda update --all -n base --yes
 ```
 
-**2. Create new primary Python 3.14 environment:**
+**2. Create new primary Python 3.13.9 environment:**
 
 ```bash
-conda create -n x -c ad-testing/label/py314 python=3.14.0rc2 --yes && conda activate x
+conda create -n x -c conda-forge python=3.13.9 --yes && conda activate x
 ```
 
 **3. Set 'x' as default auto-activated environment:**
@@ -36,13 +36,13 @@ conda config --set auto_activate false && echo "conda activate x" >> ~/.bashrc &
 **4. Fully update your new primary environment:**
 
 ```bash
-conda update -n x -c ad-testing/label/py314 --all --yes
+conda update -n x -c conda-forge --all --yes
 ```
 
 **5. Fallback to classic solver if needed (run only if errors occur):**
 
 ```bash
-conda config --set solver classic && conda update --all -n x -c ad-testing/label/py314 --yes
+conda config --set solver classic && conda update --all -n x -c conda-forge --yes
 ```
 
 **6. Export your environment recipe:**
@@ -54,7 +54,7 @@ conda activate x && conda env export > environment.yml
 **7. Install essential data science stack:**
 
 ```bash
-conda install -n x -c ad-testing/label/py314 anaconda-navigator anaconda-client jupyterlab pandas scikit-learn seaborn --yes
+conda install -n x -c conda-forge anaconda-navigator anaconda-client jupyterlab pandas scikit-learn seaborn --yes && conda install -n x -c bioconda scipy --yes
 ```
 
 **8. Upgrade pip and all pip packages:**
@@ -107,7 +107,7 @@ conda env update -n x -f environment.yml --yes
 **Install specific package in 'x':**
 
 ```bash
-conda install -n x -c ad-testing/label/py314 package-name --yes
+conda install -n x -c conda-forge package-name --yes
 ```
 
 ---
