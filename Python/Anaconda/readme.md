@@ -21,13 +21,17 @@ conda create -n x -c conda-forge python=3.13.9 --yes && conda activate x
 ```
 
 **3. Set 'x' as default auto-activated environment:**
+
 ##
+
 **Windows:**
 
 ```cmd
 conda config --set auto_activate false && echo conda activate x >> %USERPROFILE%\.condarc
 ```
+
 ##
+
 **macOS/Linux:**
 
 ```bash
