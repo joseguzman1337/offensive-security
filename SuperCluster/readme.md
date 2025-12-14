@@ -142,3 +142,45 @@ mpirun -v -np 4 python ./pi_value.py
 ```
 
 That's it! You have now created Your own SuperCluster and it's working like a charm.
+
+## SuperCluster Documentation
+
+### Architecture
+┌─────────────────────────────────────────────┐
+│ Master Node                                 │
+│ • MPI Rank 0                                │
+│ • Job Scheduler                             │
+│ • Results Aggregator                        │
+│ • Web Dashboard                             │
+└───────────────┬─────────────────────────────┘
+                │
+     ┌──────────┴───────────┐
+     ▼                      ▼
+┌─────────┐           ┌─────────┐
+│ Worker 1│           │ Worker N│
+│ Rank 1  │ ...       │ Rank N  │
+└─────────┘           └─────────┘
+
+text
+
+### Quick Start
+1. Run quick setup: `./quick_setup.sh`
+2. Start monitoring: `python monitor_cluster.py`
+3. Run security scan: `./scan_network.sh 192.168.1.0/24`
+
+### Performance Tips
+- Use `--mca btl tcp,self` for better network performance
+- Adjust slot counts in hostfile based on CPU cores
+- Enable process affinity for CPU-intensive tasks
+
+### Key Improvements Made
+- Automation: Added bootstrap and setup scripts
+- Monitoring: Implemented real-time cluster monitoring dashboard
+- Security Integration: Added distributed security scanner framework
+- Benchmarking: Enhanced performance measurement tools
+- CI/CD: Added GitHub Actions workflow for automated testing
+- Containerization: Docker setup for easy deployment
+- Documentation: Improved structure and quick start guides
+- Optimization: MPI environment tuning for better performance
+- Scalability: Dynamic hostfile generation and resource allocation
+- Error Handling: Better exception handling and logging

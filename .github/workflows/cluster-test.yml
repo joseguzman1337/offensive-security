@@ -1,0 +1,39 @@
+# .github/workflows/cluster-test.yml
+name: Cluster Integration Test
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    test-cluster:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                mpi-nodes: [2, 4, 8]
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Setup MPI Cluster
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y openmpi-bin libopenmpi-dev
+                  ./bootstrap_cluster.sh
+
+            - name: Run MPI Tests
+              run: |
+                  mpirun --hostfile hostfile -np ${{ matrix.mpi-nodes }} python test_mpi_basics.py
+                  mpirun --hostfile hostfile -np ${{ matrix.mpi-nodes }} python security_scanner.py "127.0.0.1/30"
+
+            - name: Performance Benchmark
+              run: |
+                  python benchmark_cluster.py --nodes ${{ matrix.mpi-nodes }}
+
+            - name: Upload Results
+              uses: actions/upload-artifact@v2
+              with:
+                  name: cluster-results-${{ matrix.mpi-nodes }}
+                  path: results/

@@ -1,0 +1,67 @@
+# monitor_cluster.py
+from flask import Flask, render_template, jsonify
+import psutil
+import socket
+import json
+from datetime import datetime
+
+app = Flask(__name__)
+
+class ClusterMonitor:
+    def __init__(self):
+        self.nodes = self.load_hostfile()
+        
+    def load_hostfile(self):
+        with open('hostfile', 'r') as f:
+            return [line.split()[0] for line in f if not line.startswith('#')]
+    
+    def get_node_status(self, node_ip):
+        """Check if node is responsive"""
+        try:
+            socket.create_connection((node_ip, 22), timeout=2)
+            return 'online'
+        except:
+            return 'offline'
+    
+    def get_cluster_metrics(self):
+        metrics = {
+            'timestamp': datetime.now().isoformat(),
+            'total_nodes': len(self.nodes),
+            'online_nodes': 0,
+            'cpu_usage': psutil.cpu_percent(),
+            'memory_usage': psutil.virtual_memory().percent,
+            'nodes': []
+        }
+        
+        for node in self.nodes:
+            status = self.get_node_status(node)
+            if status == 'online':
+                metrics['online_nodes'] += 1
+            metrics['nodes'].append({
+                'ip': node,
+                'status': status,
+                'last_check': datetime.now().isoformat()
+            })
+        
+        return metrics
+
+monitor = ClusterMonitor()
+
+@app.route('/')
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/api/metrics')
+def get_metrics():
+    return jsonify(monitor.get_cluster_metrics())
+
+@app.route('/api/run_scan/<target>')
+def run_scan(target):
+    # Trigger distributed scan
+    import subprocess
+    result = subprocess.run([
+        'mpirun', '--hostfile', 'hostfile',
+        '-np', str(len(monitor.nodes)),
+        'python', 'security_scanner.py', target
+    ], capture_output=True, text=True)
+    return jsonify({'output': result.stdout})
