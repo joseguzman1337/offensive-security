@@ -12,4 +12,4 @@ cd /tmp/paru && rm -rf ~/.cargo/registry && cargo install --path src/paru-2.1.0 
 
 ```ShellSesion
 bash <(curl -s https://raw.githubusercontent.com/icy/pacaur/master/pikaur/PKGBUILD) && pikaur -S --noconfirm --needed paru && pikaur -Sc --noconfirm 2>/dev/null && pikaur -Syu --noconfirm 2>/dev/null && pikaur -Sc --noconfirm 2>/dev/null
-```ShellSesion
+```
