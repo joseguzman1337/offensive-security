@@ -8,6 +8,9 @@
    sudo apt-get update -y && sudo apt-get install openmpi-bin openmpi-common libopenmpi-dev firewalld cockpit* -y && wget https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.5.tar.bz2 && tar -xjf openmpi-5.0.5.tar.bz2 && cd openmpi-5.0.5 && ./configure --prefix=/usr/bin/ && sudo make clean && sudo make && sudo make install && sudo systemctl enable cockpit.socket && sudo systemctl start cockpit.socket && sudo groupadd cockpit && sudo usermod -aG cockpit $USER && mpirun -V
    ```
 
+   Then install Python dependencies used by the repo tools:  
+   `python3 -m pip install --upgrade pip && pip install mpi4py python-nmap flask psutil requests pandas`
+
 3. Configure the network: You need to configure the network settings for each device to be able to communicate with each other. You can connect them using a network switch or a router. Alternatively, you can use Wi-Fi if all devices support it.
 
    https://localhost:9090/ (Cockpit)
@@ -31,3 +34,6 @@
    ```
 
    Replace `user` with your username and `ip_address` with the IP address or the hostname of each device.
+
+5. Smoke-test MPI with the shared hostfile (from repo root):  
+   `mpirun --hostfile ../hostfile -np 2 python - <<'PY'\nfrom mpi4py import MPI; c=MPI.COMM_WORLD; print(f'hello {c.Get_rank()}/{c.Get_size()}')\nPY`

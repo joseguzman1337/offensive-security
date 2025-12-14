@@ -14,6 +14,9 @@ brew update
 
 # Install OpenMPI
 brew install open-mpi && sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist && sudo launchctl list | grep ssh
+
+# Python dependencies for repo tools
+python3 -m pip install --upgrade pip && pip install mpi4py python-nmap flask psutil requests pandas
 ```
 
 ### Step 3: Verify the installation
@@ -66,3 +69,14 @@ This will compile and execute the program on 4 processes. Adjust the `-np` param
 If everything is set up correctly, you should see output messages from each process indicating their rank and the total number of processes.
 
 That's it! You now have OpenMPI installed on your macOS system.
+
+### Quick MPI smoke test with repo hostfile
+Run after generating `hostfile` in the repo root:
+
+```bash
+mpirun --hostfile ../hostfile -np 2 python - <<'PY'
+from mpi4py import MPI
+c = MPI.COMM_WORLD
+print(f'hello {c.Get_rank()}/{c.Get_size()}')
+PY
+```

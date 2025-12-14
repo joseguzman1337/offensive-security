@@ -8,6 +8,9 @@
    clear && sudo pacman -Syuu --needed --noconfirm --disable-download-timeout --noprogressbar --overwrite '*' openssh openmpi openmpi-docs cockpit cockpit-machines cockpit-files cockpit-packagekit cockpit-docker cockpit-podman cockpit-storaged packagekit pcp pcp-pmda-libvirt pcp-pmda-podman docker podman libvirt qemu-full edk2-ovmf swtpm virtiofsd qemu-guest-agent udisks2 udisks2-btrfs udisks2-lvm2 lvm2 mdadm smartmontools dnsmasq iptables-nft nftables kexec-tools && sudo groupadd -f cockpit && sudo usermod -aG cockpit,docker,libvirt "$USER" && exec sg libvirt "$(echo 'echo "is prohibited add anything" && sudo systemctl enable --now cockpit.socket && sudo systemctl enable --now docker.service podman.socket libvirtd.service virtlogd.socket && sudo systemctl enable --now pmcd.service pmlogger.service && sudo systemctl enable --now pmlogger_daily.timer pmlogger_check.timer && sudo virsh net-start default 2>/dev/null || true && sudo virsh net-autostart default 2>/dev/null || true && sudo bash -lc "virsh pool-info default >/dev/null 2>&1 || { install -d -m 0711 -o root -g root /var/lib/libvirt/images; virsh pool-define-as --name default --type dir --target /var/lib/libvirt/images; virsh pool-start default; virsh pool-autostart default; }" && mpirun -V && echo "Note: For permanent group activation without this subshell, logout/login or run: exec su -l \$USER"')"
    ```
 
+   After packages are in place, install Python deps for the repo tools:  
+   `python3 -m pip install --upgrade pip && pip install mpi4py python-nmap flask psutil requests pandas`
+
 3. Configure the network: You need to configure the network settings for each device to be able to communicate with each other. You can connect them using a network switch or a router. Alternatively, you can use Wi-Fi if all devices support it.
 
    http://localhost:9090/ (Cockpit)
@@ -31,3 +34,6 @@
    ```
 
    Replace `user` with your username and `ip_address` with the IP address or the hostname of each device.
+
+5. Smoke-test MPI with the local hostfile once generated in the root:  
+   `mpirun --hostfile ../hostfile -np 2 python - <<'PY'\nfrom mpi4py import MPI; c=MPI.COMM_WORLD; print(f'hello {c.Get_rank()}/{c.Get_size()}')\nPY`
