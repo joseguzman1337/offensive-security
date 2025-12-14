@@ -7,10 +7,13 @@ https://docs.open-mpi.org/en/main/getting-help.html
 https://www-lb.open-mpi.org/software/ompi/
 
 https://github.com/open-mpi/ompi
+
 #
+
 #
 
 #### Project Overview:
+
 The project aims to automate CyberSecurity processes.
 
 Leveraging popular security tools like Metasploit, Nmap, Shodan, Maltego, BurpSuite, and others, employing techniques such as port scanning, vulnerability search, exploitation, reporting, and ticket generation.
@@ -26,6 +29,7 @@ Proposes a sales model, projecting long-term income by offering the solution as 
 Initial costs involve hiring developers and security experts, with simulations indicating feasibility.
 
 #### Automation for Efficiency:
+
 This solution enhances computer security efficiency by automating vulnerability detection and resolution for swift response.
 
 Creating a Small Cluster:
@@ -122,14 +126,17 @@ finally:
 ```
 
 ```
-clear && chmod +x pi_value.py && python3 -m pip install --upgrade pip && pip install mpi4py 
+clear && chmod +x pi_value.py && python3 -m pip install --upgrade pip && pip install mpi4py
 ```
+
 ```
 mpirun -v --hostfile hostfile -np 4 python ./pi_value.py
 ```
+
 ```
 mpirun -v --hostfile hostfile --mca btl tcp,self -x DISPLAY=localhost:0 python ./pi_value.py
 ```
+
 ```
 mpirun -v --use-hwthread-cpus python ./pi_value.py
 ```
@@ -137,8 +144,9 @@ mpirun -v --use-hwthread-cpus python ./pi_value.py
 You can also compile and run your own parallel applications using OpenMPI.
 
 You can also test locally in Linux or MacOS by running
+
 ```
-mpirun -v -np 4 python ./pi_value.py 
+mpirun -v -np 4 python ./pi_value.py
 ```
 
 That's it! You have now created Your own SuperCluster and it's working like a charm.
@@ -146,34 +154,38 @@ That's it! You have now created Your own SuperCluster and it's working like a ch
 ## SuperCluster Documentation
 
 ### Architecture
+
 ┌─────────────────────────────────────────────┐
-│ Master Node                                 │
-│ • MPI Rank 0                                │
-│ • Job Scheduler                             │
-│ • Results Aggregator                        │
-│ • Web Dashboard                             │
+│ Master Node │
+│ • MPI Rank 0 │
+│ • Job Scheduler │
+│ • Results Aggregator │
+│ • Web Dashboard │
 └───────────────┬─────────────────────────────┘
-                │
-     ┌──────────┴───────────┐
-     ▼                      ▼
-┌─────────┐           ┌─────────┐
-│ Worker 1│           │ Worker N│
-│ Rank 1  │ ...       │ Rank N  │
-└─────────┘           └─────────┘
+│
+┌──────────┴───────────┐
+▼ ▼
+┌─────────┐ ┌─────────┐
+│ Worker 1│ │ Worker N│
+│ Rank 1 │ ... │ Rank N │
+└─────────┘ └─────────┘
 
 text
 
 ### Quick Start
+
 1. Run quick setup: `./quick_setup.sh`
 2. Start monitoring: `python monitor_cluster.py`
 3. Run security scan: `./scan_network.sh 192.168.1.0/24`
 
 ### Performance Tips
+
 - Use `--mca btl tcp,self` for better network performance
 - Adjust slot counts in hostfile based on CPU cores
 - Enable process affinity for CPU-intensive tasks
 
 ### Key Improvements Made
+
 - Automation: Added bootstrap and setup scripts
 - Monitoring: Implemented real-time cluster monitoring dashboard
 - Security Integration: Added distributed security scanner framework
