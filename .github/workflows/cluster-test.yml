@@ -15,7 +15,7 @@ jobs:
                 mpi-nodes: [2, 4, 8]
 
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v6
 
             - name: Setup MPI Cluster
               run: |
