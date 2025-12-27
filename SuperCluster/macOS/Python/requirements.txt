@@ -83,7 +83,7 @@ mpi4py
 msgpack
 multidict
 Naked
-numpy==2.3.4
+numpy==2.4.0
 openai
 opt-einsum
 packageurl-python
