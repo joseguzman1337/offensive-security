@@ -89,7 +89,7 @@ packageurl-python
 pamqp
 partd
 pathy
-Pillow==12.0.0
+Pillow==12.1.0
 pipx
 pluggy
 policy-sentry
