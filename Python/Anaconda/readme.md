@@ -56,7 +56,15 @@ conda config --set solver classic && conda update --all -n x -c conda-forge --ye
 conda activate x && conda env export > environment.yml
 ```
 
-**7. Install essential data science + AI/ML stack:**
+**7. Install essential data science + AI/ML stack ready for development:**
+
+You can now:
+- Run local LLMs with Ollama
+- Build AI applications with LangChain
+- Create web interfaces with Gradio or Streamlit
+- Use PyTorch for deep learning
+- Access Hugging Face models via Transformers
+
 
 ```bash
 conda install -n x -c conda-forge anaconda-navigator anaconda-client jupyterlab pandas scikit-learn seaborn --yes && conda install -n x -c bioconda scipy --yes && conda install -c conda-forge pytorch torchvision transformers huggingface_hub ollama --yes 
