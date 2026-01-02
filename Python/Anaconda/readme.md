@@ -56,10 +56,10 @@ conda config --set solver classic && conda update --all -n x -c conda-forge --ye
 conda activate x && conda env export > environment.yml
 ```
 
-**7. Install essential data science stack:**
+**7. Install essential data science + AI/ML stack:**
 
 ```bash
-conda install -n x -c conda-forge anaconda-navigator anaconda-client jupyterlab pandas scikit-learn seaborn --yes && conda install -n x -c bioconda scipy --yes
+conda install -n x -c conda-forge anaconda-navigator anaconda-client jupyterlab pandas scikit-learn seaborn --yes && conda install -n x -c bioconda scipy --yes && conda install -c conda-forge pytorch torchvision transformers huggingface_hub ollama --yes 
 ```
 
 **8. Upgrade pip and all pip packages:**
