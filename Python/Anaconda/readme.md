@@ -67,7 +67,7 @@ You can now:
 
 
 ```bash
-conda install -n x -c conda-forge anaconda-navigator anaconda-client jupyterlab pandas scikit-learn seaborn --yes && conda install -n x -c bioconda scipy --yes && conda install -c conda-forge pytorch torchvision transformers huggingface_hub ollama --yes 
+conda install -n x -c conda-forge anaconda-navigator anaconda-client jupyterlab pandas scikit-learn seaborn --yes && conda install -n x -c bioconda scipy --yes && conda install -c conda-forge pytorch torchvision transformers huggingface_hub ollama --yes
 ```
 
 **8. Upgrade pip and all pip packages:**
