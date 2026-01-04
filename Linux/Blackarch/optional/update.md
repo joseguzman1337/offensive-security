@@ -1,5 +1,3 @@
-Here is the reorganized list of commands, grouped by the package manager or AUR helper they utilize.
-
 ### Pacman
 
 **Update with Orphan Cleanup**
