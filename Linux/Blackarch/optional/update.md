@@ -21,6 +21,7 @@ if pacman -Qdtq >/dev/null 2>&1; then sudo pacman -Rs --noconfirm $(pacman -Qdtq
 cd /tmp/paru && rm -rf ~/.cargo/registry && cargo install --path src/paru-2.1.0 --locked --features=git --no-default-features && sudo cp $(find . -name paru -type f -executable) /usr/bin/ && paru --version && echo "Paru fixed successfully!"
 
 ```
+
 ### Pikaur: Installation (Bootstrap)
 
 ```bash
@@ -36,7 +37,6 @@ sudo pacman -S --needed base-devel git --noconfirm && git clone https://aur.arch
 paru -Syu --noconfirm --mflags "--nocheck" && paru -Sc --noconfirm && paru -Syu --needed --noconfirm --mflags "--nocheck" && paru -Sc --noconfirm && echo "System update complete!"
 
 ```
-
 
 ### Pikaur: Update (No Checks/Tests)
 
