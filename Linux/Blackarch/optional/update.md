@@ -1,5 +1,5 @@
 ```ShellSesion
-yay -Sc --noconfirm  && yay -Syuuq --noconfirm && yay -Sc --noconfirm
+yay -Sc --noconfirm && yay -Syuuq --noconfirm --mflags "--nocheck" && yay -Sc --noconfirm
 ```
 
 ```ShellSesion
