@@ -82,14 +82,14 @@ ml-dtypes
 msgpack
 multidict
 Naked
-numpy==2.4.0
+numpy==2.4.1
 openai
 opt-einsum
 packageurl-python
 pamqp
 partd
 pathy
-Pillow==12.0.0
+Pillow==12.1.0
 pipx
 pluggy
 policy-sentry
