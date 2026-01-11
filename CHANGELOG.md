@@ -10,10 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.4.0] - 2025-12-27
 
 ### Added
+
 - Comprehensive macOS files to .gitignore ([e350650](https://github.com/joseguzman1337/offensive-security/commit/e350650))
-- Apple resource fork files (._ prefix) to .gitignore ([91ce09d](https://github.com/joseguzman1337/offensive-security/commit/91ce09d))
+- Apple resource fork files (.\_ prefix) to .gitignore ([91ce09d](https://github.com/joseguzman1337/offensive-security/commit/91ce09d))
 
 ### Changed
+
 - Updated numpy to v2.4.0 (#409, [21c2635](https://github.com/joseguzman1337/offensive-security/commit/21c2635))
 - Updated github/codeql-action to v4.31.9 (#411, [51a69e0](https://github.com/joseguzman1337/offensive-security/commit/51a69e0))
 - Updated actions/checkout to v6 (#412, [45223f1](https://github.com/joseguzman1337/offensive-security/commit/45223f1))
@@ -23,17 +25,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated aquasecurity/trivy-action digest (#419, [a0d9f96](https://github.com/joseguzman1337/offensive-security/commit/a0d9f96))
 
 ### Removed
+
 - Removed committed macOS metadata files ([23d1b81](https://github.com/joseguzman1337/offensive-security/commit/23d1b81))
 
 ### Fixed
+
 - Code formatting improvements via Deepsource (#413, #414, #423, #425, #426)
 
 ## [2.3.0] - 2025-12-14
 
 ### Changed
+
 - Updated documentation in update.md ([25bc592](https://github.com/joseguzman1337/offensive-security/commit/25bc592))
 
 ### Fixed
+
 - Applied comprehensive code formatting with multiple formatters (Autopep8, Black, ClangFormat, Ruff, etc.)
 
 [Unreleased]: https://github.com/joseguzman1337/offensive-security/compare/e350650...HEAD
