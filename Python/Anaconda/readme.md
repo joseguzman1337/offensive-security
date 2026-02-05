@@ -67,7 +67,7 @@ You can now:
 - Access Hugging Face models via Transformers
 
 ```bash
-conda install -n x -c conda-forge anaconda-navigator anaconda-client jupyterlab pandas scikit-learn seaborn --yes && conda install -n x -c bioconda scipy --yes && conda install -c conda-forge pytorch torchvision transformers huggingface_hub ollama --yes
+conda install -n x -c defaults anaconda-navigator --yes && conda install -n x -c conda-forge anaconda-client jupyterlab pandas scikit-learn seaborn --yes && conda install -n x -c bioconda scipy --yes && conda install -n x -c conda-forge pytorch torchvision transformers huggingface_hub ollama --yes
 ```
 
 **8. Upgrade pip and all pip packages:**
