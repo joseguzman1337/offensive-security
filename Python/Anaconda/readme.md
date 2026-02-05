@@ -14,10 +14,10 @@ You can start with the most fundamental DS, AI, and ML packages. Using Navigator
 conda config --show solver; conda config --set solver libmamba; conda update -n base -c conda-forge conda --yes; conda config --add channels conda-forge bioconda; conda update --all -n base --yes
 ```
 
-**2. Create new primary Python 3.13.11 environment:**
+**2. Create new primary Python 3.13.12 environment:**
 
 ```bash
-conda create -n x -c conda-forge python=3.13.11 --yes && conda activate x
+conda create -n x -c conda-forge python=3.13.12 --yes && conda activate x
 ```
 
 **3. Set 'x' as default auto-activated environment:**
