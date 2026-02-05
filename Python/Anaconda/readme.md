@@ -32,10 +32,10 @@ conda config --set auto_activate false && echo conda activate x >> %USERPROFILE%
 
 ##
 
-**macOS/Linux:**
+**macOS/Linux (zsh + bash):**
 
 ```bash
-conda config --set auto_activate false && echo "conda activate x" >> ~/.bashrc && source ~/.bashrc
+echo 'alias zsh="conda config --set auto_activate_base false && echo \"conda activate x\" >> ~/.zshrc && source ~/.zshrc"' >> ~/.zshrc && source ~/.zshrc && conda config --set auto_activate false && echo "conda activate x" >> ~/.bashrc && source ~/.bashrc
 ```
 
 **4. Fully update your new primary environment:**
