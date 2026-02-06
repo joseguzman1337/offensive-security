@@ -60,7 +60,7 @@ curl -sL https://raw.githubusercontent.com/joseguzman1337/offensive-security/mas
 ```
 
 ```ShellSession
-rbenv global latest && ruby -v && gem install digest-crc unf_ext --no-document && gem install xcode-install --no-document && sudo xcversion update && xcversion list && xcversion simulators
+export RUBY_CFLAGS="-Wno-error=implicit-function-declaration" RUBY_CONFIGURE_OPTS="--disable-install-doc" CFLAGS="-O2" && rm -rf ~/.rbenv/versions/4.0.1 && LATEST_RUBY=$(rbenv install -l | grep -E '^[0-9.]+$' | tail -1) && rbenv install $LATEST_RUBY --keep && cd ~/.rbenv/sources/$LATEST_RUBY/ruby-$LATEST_RUBY && find . -name "*.dSYM" -type d -exec rm -rf {} + 2>/dev/null && make install && rbenv global $LATEST_RUBY && eval "$(rbenv init -)" && ruby -v
 ```
 
 Enjoy ✅ 🎧
