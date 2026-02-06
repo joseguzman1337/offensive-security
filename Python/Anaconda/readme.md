@@ -110,7 +110,7 @@ anaconda login
 
 ```
 
-*or*
+*or in macos using miniforge*
 
 ```bash
 source /opt/homebrew/Caskroom/miniforge/base/bin/activate x && anaconda login
