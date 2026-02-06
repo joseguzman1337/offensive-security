@@ -1,5 +1,3 @@
-
-
 <div align="center">
 
 # ![Anaconda](https://www.anaconda.com/wp-content/uploads/2022/12/anaconda_secondary_logo.svg) Anaconda & Python Environment Optimizer
@@ -76,11 +74,11 @@ conda activate x && conda env export > environment.yml
 
 #### **7. Install essential data science + AI/ML stack**
 
-* Run local LLMs with **Ollama**
-* Build AI applications with **LangChain**
-* Create web interfaces with **Gradio** or **Streamlit**
-* Use **PyTorch** for deep learning
-* Access **Hugging Face** models via Transformers
+- Run local LLMs with **Ollama**
+- Build AI applications with **LangChain**
+- Create web interfaces with **Gradio** or **Streamlit**
+- Use **PyTorch** for deep learning
+- Access **Hugging Face** models via Transformers
 
 ```bash
 conda install -n x -c defaults anaconda-navigator --yes && conda install -n x -c conda-forge anaconda-client jupyterlab pandas scikit-learn seaborn --yes && conda install -n x -c bioconda scipy --yes && conda install -n x -c conda-forge pytorch torchvision transformers huggingface_hub ollama --yes
@@ -110,7 +108,7 @@ anaconda login
 
 ```
 
-*or*
+_or_
 
 ```bash
 source /opt/homebrew/Caskroom/miniforge/base/bin/activate x && anaconda login
@@ -135,11 +133,11 @@ conda info && conda list | grep python
 <details>
 <summary><b>🛠 Click to expand: Environment Utilities</b></summary>
 
-| Task | Command |
-| --- | --- |
-| **Clean Cache** | `conda clean --all -y` |
-| **Switch to Base** | `conda activate base` |
-| **Replicate Env** | `conda env update -n x -f environment.yml --yes` |
+| Task               | Command                                                |
+| ------------------ | ------------------------------------------------------ |
+| **Clean Cache**    | `conda clean --all -y`                                 |
+| **Switch to Base** | `conda activate base`                                  |
+| **Replicate Env**  | `conda env update -n x -f environment.yml --yes`       |
 | **Install in 'x'** | `conda install -n x -c conda-forge package-name --yes` |
 
 </details>
@@ -148,6 +146,6 @@ conda info && conda list | grep python
 
 ## 🎁 Bonus Resources & Links
 
-* **[Conda GitHub Repository](https://github.com/conda/conda)**: Source code and issue tracking.
-* **[Conda Cheatsheet](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)**: Essential commands at a glance.
-* **[Code Online with JupyterLab](https://nb.anaconda.cloud)**: Featuring new AI-powered code generation and debugging!
+- **[Conda GitHub Repository](https://github.com/conda/conda)**: Source code and issue tracking.
+- **[Conda Cheatsheet](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)**: Essential commands at a glance.
+- **[Code Online with JupyterLab](https://nb.anaconda.cloud)**: Featuring new AI-powered code generation and debugging!
