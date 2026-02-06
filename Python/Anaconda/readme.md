@@ -89,6 +89,13 @@ python -m ensurepip --upgrade; pip list --format=freeze | ForEach-Object {$_.Spl
 anaconda login
 ```
 
+or
+
+
+```bash
+source /opt/homebrew/Caskroom/miniforge/base/bin/activate x && anaconda login
+```
+
 **10. Verify your new primary environment:**
 
 ```bash
