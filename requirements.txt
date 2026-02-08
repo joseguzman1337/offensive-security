@@ -1,0 +1,7 @@
+boto3
+requests
+shodan
+dnspython
+python-nmap
+mpi4py
+tqdm
