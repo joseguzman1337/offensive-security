@@ -818,7 +818,10 @@ class FastUpdate:
         )
         stdout, stderr = await process.communicate()
         if process.returncode != 0:
-            err = stderr.decode().strip() if stderr else "Unknown error"
+            stderr_text = stderr.decode().strip() if stderr else ""
+            stdout_text = stdout.decode().strip() if stdout else ""
+            # Combine both streams — pacman writes some errors to stdout
+            err = stderr_text or stdout_text or f"Exit code {process.returncode}"
             if not ignore_errors:
                 logging.error(f"Command failed: {description}. Error: {err}")
             return False, err
