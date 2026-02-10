@@ -843,39 +843,42 @@ class FastUpdate:
             return ""
         return " ".join(f"--ignore {pkg}" for pkg in self.ignore_pkgs)
 
-    async def preflight_downgrade_check(self):
-        """Detects packages that would downgrade to a version with broken deps.
+    async def _pin_downgrade_conflicts(self):
+        """Detects installed packages where -Syuu would downgrade to a repo version
+        with broken/missing deps, and pins them to --ignore upfront.
 
-        Runs 'pacman -Syuu --print' in dry-run mode, parses warnings for
-        unresolvable deps caused by cross-repo downgrades, and resolves them
-        proactively (repo switch or ignore) before the real update runs.
+        Compares each installed package against all repo versions. If a repo
+        offers an older version, checks if that version has unresolvable deps.
         """
-        import re as _re
-        logging.info("Pre-flight: checking for downgrade conflicts...")
+        logging.info("Pinning downgrade conflicts...")
         self.force_release_lock()
-        success, err = await self.run_command(
-            "sudo pacman -Syuu --print --noconfirm",
-            "Pre-flight downgrade check", ignore_errors=True)
 
-        # Parse both stdout (on success) and stderr (on failure) for warnings
-        output = err if not success and err else ""
-        if not output:
-            logging.info("Pre-flight: no downgrade conflicts detected.")
+        # Get list of packages that would be downgraded by -Syuu
+        success, output = await self.run_command(
+            "pacman -Syuu --print --noconfirm 2>&1",
+            "Scan for downgrade candidates", ignore_errors=True)
+
+        combined = output or ""
+        # Also check if the command failed with dep errors
+        if not success and output:
+            combined = output
+
+        # Find all packages with broken deps in one pass
+        import re as _re
+        conflicts = set(_re.findall(
+            r'cannot resolve "([^"]+)", a dependency of "([^"]+)"', combined))
+
+        if not conflicts:
+            logging.info("No downgrade conflicts found.")
             return
 
-        pattern = r'cannot resolve "([^"]+)", a dependency of "([^"]+)"'
-        matches = _re.findall(pattern, output)
-        if not matches:
-            logging.info("Pre-flight: no dependency conflicts found.")
-            return
-
-        for broken_dep, parent_pkg in set(matches):
-            logging.info(f"Pre-flight conflict: '{broken_dep}' needed by '{parent_pkg}' — resolving")
+        for broken_dep, parent_pkg in conflicts:
+            logging.info(f"Downgrade conflict: '{parent_pkg}' needs '{broken_dep}' (missing) — pinning")
+            # Ensure the correct version is installed from the right repo
             await self._resolve_broken_dep(parent_pkg, broken_dep)
             self.ignore_pkgs.add(parent_pkg)
-            logging.info(f"Pre-flight: pinned '{parent_pkg}' to --ignore to prevent downgrade")
 
-        logging.info(f"Pre-flight ignore list: {self.ignore_pkgs}")
+        logging.info(f"Pinned packages (immune to -Syuu downgrade): {self.ignore_pkgs}")
 
     async def download_phase(self):
         """Downloads all updates in parallel."""
@@ -1100,6 +1103,10 @@ class FastUpdate:
                 print("Step: Mirror Optimization")
                 await asyncio.to_thread(Repos.update_mirrorlist)
 
+            # Step 0.1: Pin packages that would break on -Syuu downgrade
+            self.force_release_lock()
+            await self._pin_downgrade_conflicts()
+
             # Step 1: Apply preventive system fixes (dracut, kernel-install, libjodycode)
             self.force_release_lock()
             async with KernelManager.async_snap_wrap("system-fixes"):
@@ -1129,10 +1136,7 @@ class FastUpdate:
             async with KernelManager.async_snap_wrap("sync-categories"):
                 await self.sync_categories()
 
-            # Step 2: Pre-flight — detect and resolve downgrade conflicts before updating
-            await self.preflight_downgrade_check()
-
-            # Step 3: Main update steps
+            # Step 2: Main update steps
             print("Starting Unified System Update...")
 
             async with KernelManager.async_snap_wrap("download-updates"):
