@@ -674,9 +674,9 @@ class KernelManager:
             logging.warning(f"Failed to create kernel install config (non-critical): {e}")
 
     @staticmethod
-    def cleanup_broken_so_packages():
-        """Removes packages whose binaries link against missing shared libraries.
-        Detects via pacman -Qkk and filters for 'missing dependency' patterns.
+    def upgrade_broken_so_packages():
+        """Upgrades packages whose binaries link against missing shared libraries.
+        Reinstalls to pull the latest version built against current .so versions.
         """
         logging.info("Scanning for packages with missing shared library deps...")
         try:
@@ -689,68 +689,72 @@ class KernelManager:
                 return
             logging.info(f"Found {len(broken_pkgs)} packages with broken .so deps: {broken_pkgs}")
             for pkg in broken_pkgs:
-                logging.info(f"Removing broken package: {pkg}")
-                subprocess.run(
-                    ["sudo", "pacman", "-Rns", "--noconfirm", pkg],
+                # Try reinstall from repos first (gets version built for current libs)
+                logging.info(f"Upgrading broken package: {pkg}")
+                ret = subprocess.run(
+                    ["sudo", "pacman", "-S", "--noconfirm", pkg],
                     capture_output=True, check=False)
-            logging.info("Broken .so cleanup complete.")
+                if ret.returncode != 0:
+                    # Not in repos — try AUR helper
+                    helper = PackageManager.get_best_helper()
+                    if helper != "pacman":
+                        logging.info(f"Trying {helper} for {pkg}...")
+                        subprocess.run(
+                            [helper, "-S", "--noconfirm", pkg],
+                            capture_output=True, check=False)
+            logging.info("Broken .so upgrade pass complete.")
         except Exception as e:
-            logging.warning(f"Broken .so cleanup failed (non-critical): {e}")
+            logging.warning(f"Broken .so upgrade failed (non-critical): {e}")
 
     @staticmethod
-    def cleanup_stale_python_packages():
-        """Removes Python packages built for older interpreter versions.
-        The current interpreter ignores them, so they're dead weight.
+    def upgrade_stale_python_packages():
+        """Upgrades Python packages built for older interpreter versions.
+        Reinstalls them so they rebuild against the current Python.
         """
         logging.info("Scanning for stale Python packages...")
         try:
-            # Get current Python major.minor
             current_pyver = f"python{sys.version_info.major}.{sys.version_info.minor}"
-            # Find packages with files in old python3.X directories
+            # Find packages with files ONLY in old python3.X directories
             result = subprocess.run(
                 ["bash", "-c",
                  "pacman -Ql $(pacman -Qq) 2>/dev/null | grep -oP '^\\S+ /usr/lib/python3\\.\\d+/' | "
                  "awk '{split($2,a,\"/\"); print $1, a[4]}' | sort -u"],
                 capture_output=True, text=True, timeout=300)
 
-            stale = set()
+            pkg_versions = {}  # pkg -> set of python versions it has files for
             for line in result.stdout.strip().splitlines():
                 parts = line.split()
                 if len(parts) == 2:
                     pkg, pydir = parts
-                    if pydir != current_pyver:
-                        # Check the package ONLY has files in old python dirs (not also in current)
-                        stale.add((pkg, pydir))
+                    pkg_versions.setdefault(pkg, set()).add(pydir)
 
-            if not stale:
-                logging.debug("No stale Python packages found.")
+            # Only upgrade packages that have NO files in current python version
+            stale_pkgs = sorted(
+                pkg for pkg, versions in pkg_versions.items()
+                if current_pyver not in versions)
+
+            if not stale_pkgs:
+                logging.debug("All Python packages are current.")
                 return
 
-            # Filter: only remove if the package has NO files in the current python version
-            pkgs_to_remove = set()
-            pkgs_with_current = set()
-            for pkg, pydir in stale:
-                if pydir == current_pyver:
-                    pkgs_with_current.add(pkg)
+            logging.info(f"Found {len(stale_pkgs)} stale Python packages (no {current_pyver} files): {stale_pkgs}")
+            helper = PackageManager.get_best_helper()
 
-            for pkg, pydir in stale:
-                if pkg not in pkgs_with_current:
-                    pkgs_to_remove.add(pkg)
-
-            if not pkgs_to_remove:
-                logging.debug("All Python packages have current interpreter files — nothing to remove.")
-                return
-
-            logging.info(f"Found {len(pkgs_to_remove)} stale Python packages (no {current_pyver} files): "
-                         f"{sorted(pkgs_to_remove)}")
-            for pkg in sorted(pkgs_to_remove):
-                logging.info(f"Removing stale package: {pkg}")
-                subprocess.run(
-                    ["sudo", "pacman", "-Rns", "--noconfirm", pkg],
+            for pkg in stale_pkgs:
+                logging.info(f"Upgrading stale package: {pkg}")
+                # Reinstall from repos — pulls version built for current Python
+                ret = subprocess.run(
+                    ["sudo", "pacman", "-S", "--noconfirm", pkg],
                     capture_output=True, check=False)
-            logging.info("Stale Python cleanup complete.")
+                if ret.returncode != 0 and helper != "pacman":
+                    # Try AUR — many python packages live there
+                    logging.info(f"Trying {helper} for {pkg}...")
+                    subprocess.run(
+                        [helper, "-S", "--noconfirm", pkg],
+                        capture_output=True, check=False)
+            logging.info("Stale Python upgrade pass complete.")
         except Exception as e:
-            logging.warning(f"Stale Python cleanup failed (non-critical): {e}")
+            logging.warning(f"Stale Python upgrade failed (non-critical): {e}")
 
     @staticmethod
     def apply_system_fixes():
@@ -759,8 +763,8 @@ class KernelManager:
         KernelManager.fix_libjodycode_symlink()
         KernelManager.fix_dracut_config()
         KernelManager.fix_kernel_install_config()
-        KernelManager.cleanup_broken_so_packages()
-        KernelManager.cleanup_stale_python_packages()
+        KernelManager.upgrade_broken_so_packages()
+        KernelManager.upgrade_stale_python_packages()
         logging.info("--- System fixes complete ---")
 
     @staticmethod
