@@ -605,11 +605,15 @@ def main():
             report["status"] = "success"
         
         elif args.command == "update":
+            # Clear any old marker
+            if os.path.exists(".update_done"): os.remove(".update_done")
             updater = FastUpdate()
             updater.force_release_lock()
             try:
                 asyncio.run(updater.execute())
                 report["status"] = "success"
+                # Create completion marker
+                with open(".update_done", "w") as f: f.write(datetime.now().isoformat())
             except Exception as e:
                 report["status"] = "failed"
                 report["details"]["error"] = str(e)
