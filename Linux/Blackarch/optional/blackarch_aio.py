@@ -179,8 +179,10 @@ class Utils:
 class Repos:
     @staticmethod
     def fetch_mirrors():
+        # Using the raw content URL directly to avoid git clone/auth issues
+        MIRRORS_RAW_URL = "https://raw.githubusercontent.com/BlackArch/blackarch/master/mirror/mirror.lst"
         try:
-            response = requests.get(MIRRORS_URL)
+            response = requests.get(MIRRORS_RAW_URL)
             response.raise_for_status()
             mirrors = []
             for line in response.text.splitlines():
@@ -519,7 +521,6 @@ class FastUpdate:
             ("Mirror Optimization", lambda: self.run_command("sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist", "Mirror Optimization")),
             ("Downloading Updates", self.download_phase),
             ("Installing Updates", self.install_phase),
-            ("Granular Package Upgrade", lambda: asyncio.to_thread(PackageManager.upgrade_all_packages_synced)),
             ("Cleanup Orphans", lambda: self.run_command("if pacman -Qdtq >/dev/null; then sudo pacman -Rs --noconfirm $(pacman -Qdtq); fi", "Orphan Cleanup", silent=False, ignore_errors=True))
         ]
 
@@ -612,11 +613,15 @@ def main():
             try:
                 asyncio.run(updater.execute())
                 report["status"] = "success"
-                # Create completion marker
-                with open(".update_done", "w") as f: f.write(datetime.now().isoformat())
             except Exception as e:
                 report["status"] = "failed"
                 report["details"]["error"] = str(e)
+                logging.error(f"Update command failed: {e}")
+            finally:
+                # Create completion marker ALWAYS at the end
+                with open(".update_done", "w") as f: 
+                    f.write(f"Completed at {datetime.now().isoformat()} - Status: {report['status']}")
+                logging.info(f"Process finished with status: {report['status']}")
 
         elif args.command == "tree":
             Tree.print_tree(os.getcwd())
