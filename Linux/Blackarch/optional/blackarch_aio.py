@@ -869,20 +869,13 @@ class FastUpdate:
             logging.info("Pre-flight: no dependency conflicts found.")
             return
 
-        seen = set()
-        for broken_dep, parent_pkg in matches:
-            key = (broken_dep, parent_pkg)
-            if key in seen:
-                continue
-            seen.add(key)
+        for broken_dep, parent_pkg in set(matches):
             logging.info(f"Pre-flight conflict: '{broken_dep}' needed by '{parent_pkg}' — resolving")
-            resolved = await self._resolve_broken_dep(parent_pkg, broken_dep)
-            if not resolved:
-                self.ignore_pkgs.add(parent_pkg)
-                logging.warning(f"Pre-flight: could not resolve '{parent_pkg}' — will ignore")
+            await self._resolve_broken_dep(parent_pkg, broken_dep)
+            self.ignore_pkgs.add(parent_pkg)
+            logging.info(f"Pre-flight: pinned '{parent_pkg}' to --ignore to prevent downgrade")
 
-        if self.ignore_pkgs:
-            logging.info(f"Pre-flight ignore list: {self.ignore_pkgs}")
+        logging.info(f"Pre-flight ignore list: {self.ignore_pkgs}")
 
     async def download_phase(self):
         """Downloads all updates in parallel."""
@@ -1031,25 +1024,18 @@ class FastUpdate:
             return True
 
         # 2. Handle unresolvable dependencies (e.g. wcc needs linenoise)
-        #    Strategy: find the package in an alternate repo that doesn't have the broken dep
-        unresolvable_patterns = [
-            r'cannot resolve "([^"]+)", a dependency of "([^"]+)"',
-        ]
-        found_unresolvable = False
-        for pattern in unresolvable_patterns:
-            matches = re.findall(pattern, error_output)
-            for match in matches:
-                if isinstance(match, tuple):
-                    broken_dep, parent_pkg = match
-                    found_unresolvable = True
-                    logging.warning(f"Unresolvable dep: '{broken_dep}' needed by '{parent_pkg}' — attempting repo switch")
-                    resolved = await self._resolve_broken_dep(parent_pkg, broken_dep)
-                    if not resolved:
-                        self.ignore_pkgs.add(parent_pkg)
-                        logging.warning(f"Could not resolve '{parent_pkg}' from any repo — ignoring as last resort")
-        if found_unresolvable:
-            if self.ignore_pkgs:
-                logging.info(f"Ignore list for retry (last resort only): {self.ignore_pkgs}")
+        #    Strategy: resolve from alternate repo, then ignore during -Syuu to prevent re-downgrade
+        unresolvable_matches = set(re.findall(
+            r'cannot resolve "([^"]+)", a dependency of "([^"]+)"', error_output))
+        if unresolvable_matches:
+            for broken_dep, parent_pkg in unresolvable_matches:
+                logging.warning(f"Unresolvable dep: '{broken_dep}' needed by '{parent_pkg}' — resolving via repo switch")
+                await self._resolve_broken_dep(parent_pkg, broken_dep)
+                # Always ignore during -Syuu: even after installing from the right repo,
+                # -Syuu will re-attempt the downgrade from the broken repo
+                self.ignore_pkgs.add(parent_pkg)
+                logging.info(f"Pinned '{parent_pkg}' to --ignore to prevent downgrade loop")
+            logging.info(f"Ignore list for retry: {self.ignore_pkgs}")
             return True
 
         # 3. Handle missing packages / targets not found
