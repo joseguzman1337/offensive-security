@@ -71,33 +71,33 @@ MIRRORLIST_FILE = "/etc/pacman.d/blackarch-mirrorlist"
 AUR_HELPERS = {
     "yay": {
         "install": ["yay", "-S", "--needed", "--noconfirm"],
-        "upgrade": ["yay", "-Syu", "--noconfirm", "--answerclean=All", "--answerdiff=None", "--mflags", "'--nocheck'"],
-        "download": ["yay", "-Syuw", "--noconfirm"]
+        "upgrade": ["yay", "-Syuu", "--noconfirm", "--answerclean=All", "--answerdiff=None", "--mflags", "'--nocheck'", "--overwrite", "'*'"],
+        "download": ["yay", "-Syuuw", "--noconfirm"]
     },
     "paru": {
         "install": ["paru", "-S", "--needed", "--noconfirm"],
-        "upgrade": ["paru", "-Syu", "--noconfirm", "--mflags", "'--nocheck'"],
-        "download": ["paru", "-Syuw", "--noconfirm"]
+        "upgrade": ["paru", "-Syuu", "--noconfirm", "--mflags", "'--nocheck'", "--overwrite", "'*'"],
+        "download": ["paru", "-Syuuw", "--noconfirm"]
     },
     "pacaur": {
         "install": ["pacaur", "-S", "--needed", "--noconfirm"],
-        "upgrade": ["pacaur", "-Syu", "--noconfirm", "--noedit"],
-        "download": ["pacaur", "-Syuw", "--noconfirm"]
+        "upgrade": ["pacaur", "-Syuu", "--noconfirm", "--noedit"],
+        "download": ["pacaur", "-Syuuw", "--noconfirm"]
     },
     "trizen": {
         "install": ["trizen", "-S", "--needed", "--noconfirm", "--noedit"],
-        "upgrade": ["trizen", "-Syu", "--noconfirm", "--noedit"],
-        "download": ["trizen", "-Syuw", "--noconfirm", "--noedit"]
+        "upgrade": ["trizen", "-Syuu", "--noconfirm", "--noedit"],
+        "download": ["trizen", "-Syuuw", "--noconfirm", "--noedit"]
     },
     "pikaur": {
         "install": ["pikaur", "-S", "--needed", "--noconfirm"],
-        "upgrade": ["pikaur", "-Syu", "--noconfirm"],
-        "download": ["pikaur", "-Syuw", "--noconfirm"]
+        "upgrade": ["pikaur", "-Syuu", "--noconfirm"],
+        "download": ["pikaur", "-Syuuw", "--noconfirm"]
     },
     "aurman": {
         "install": ["aurman", "-S", "--needed", "--noconfirm", "--noedit"],
-        "upgrade": ["aurman", "-Syu", "--noconfirm", "--noedit"],
-        "download": ["aurman", "-Syuw", "--noconfirm", "--noedit"]
+        "upgrade": ["aurman", "-Syuu", "--noconfirm", "--noedit"],
+        "download": ["aurman", "-Syuuw", "--noconfirm", "--noedit"]
     },
     "pamac": {
         "install": ["pamac", "install", "--no-confirm"],
@@ -106,8 +106,8 @@ AUR_HELPERS = {
     },
     "pacman": {
         "install": ["sudo", "pacman", "-S", "--needed", "--noconfirm", "--disable-download-timeout"],
-        "upgrade": ["sudo", "pacman", "-Syu", "--needed", "--noconfirm", "--noprogressbar", "--disable-download-timeout"],
-        "download": ["sudo", "pacman", "-Syuw", "--needed", "--noconfirm", "--noprogressbar", "--disable-download-timeout"]
+        "upgrade": ["sudo", "pacman", "-Syuu", "--needed", "--noconfirm", "--noprogressbar", "--disable-download-timeout", "--ask", "4", "--overwrite", "'*'"],
+        "download": ["sudo", "pacman", "-Syuuw", "--needed", "--noconfirm", "--noprogressbar", "--disable-download-timeout", "--ask", "4"]
     },
     # GUI-only helpers (excluded from automated logic)
     "bauh": {"gui": True},
@@ -685,6 +685,7 @@ class KernelManager:
 class FastUpdate:
     def __init__(self):
         self.lock_file = "/var/lib/pacman/db.lck"
+        self.ignore_pkgs = set()  # Packages to skip due to unresolvable deps
 
     def check_cmd(self, cmd):
         return subprocess.run(f"command -v {cmd}", shell=True, capture_output=True).returncode == 0
@@ -701,7 +702,7 @@ class FastUpdate:
         process = await asyncio.create_subprocess_shell(
             cmd,
             stdout=asyncio.subprocess.PIPE if silent else None,
-            stderr=asyncio.subprocess.PIPE if silent else None
+            stderr=asyncio.subprocess.PIPE  # Always capture stderr for error analysis
         )
         stdout, stderr = await process.communicate()
         if process.returncode != 0:
@@ -721,19 +722,31 @@ class FastUpdate:
                 return False
         return True
 
+    def _build_ignore_flags(self) -> str:
+        """Returns --ignore flags for all packages in self.ignore_pkgs."""
+        if not self.ignore_pkgs:
+            return ""
+        return " ".join(f"--ignore {pkg}" for pkg in self.ignore_pkgs)
+
     async def download_phase(self):
         """Downloads all updates in parallel."""
         logging.info("Starting Parallel Download Phase...")
         self.force_release_lock()
         tasks = []
-        
-        tasks.append(self.run_command(" ".join(AUR_HELPERS["pacman"]["download"]), "Downloading Pacman updates"))
-        
+
+        ignore = self._build_ignore_flags()
+        pacman_cmd = " ".join(AUR_HELPERS["pacman"]["download"])
+        if ignore:
+            pacman_cmd += f" {ignore}"
+        tasks.append(self.run_command(pacman_cmd, "Downloading Pacman updates"))
+
         helper = PackageManager.get_best_helper()
         if helper != "pacman" and helper in AUR_HELPERS:
             cmd = " ".join(AUR_HELPERS[helper]["download"])
+            if ignore:
+                cmd += f" {ignore}"
             tasks.append(self.run_command(cmd, f"Downloading AUR updates ({helper})", ignore_errors=True))
-        
+
         results = await asyncio.gather(*tasks)
         # Combine errors if any
         all_errors = "\n".join([res[1] for res in results if isinstance(res, tuple) and not res[0]])
@@ -745,9 +758,14 @@ class FastUpdate:
         """Sequentially installs the downloaded updates."""
         logging.info("Starting Sequential Installation Phase...")
         self.force_release_lock()
-        
+
+        ignore = self._build_ignore_flags()
+
         # 1. System upgrade
-        success, err = await self.run_command(" ".join(AUR_HELPERS["pacman"]["upgrade"]), "Installing Pacman updates", silent=False)
+        pacman_cmd = " ".join(AUR_HELPERS["pacman"]["upgrade"])
+        if ignore:
+            pacman_cmd += f" {ignore}"
+        success, err = await self.run_command(pacman_cmd, "Installing Pacman updates", silent=False)
         if not success: return False, err
 
         self.force_release_lock()
@@ -757,9 +775,11 @@ class FastUpdate:
         if helper != "pacman" and helper in AUR_HELPERS:
             logging.info(f"Installing AUR updates ({helper})...")
             cmd = " ".join(AUR_HELPERS[helper]["upgrade"])
+            if ignore:
+                cmd += f" {ignore}"
             success, err = await self.run_command(cmd, f"Installing AUR updates ({helper})", silent=False, ignore_errors=True)
             if not success: return False, err
-        
+
         return True, ""
 
     async def ensure_blackarch_repo(self):
@@ -801,20 +821,38 @@ class FastUpdate:
             await asyncio.to_thread(Repos.update_mirrorlist)
             return True
 
-        # 2. Handle missing packages
+        # 2. Handle unresolvable dependencies (e.g. wcc needs linenoise)
+        #    Track them so retry commands pass --ignore
+        unresolvable_patterns = [
+            r'cannot resolve "([^"]+)", a dependency of "([^"]+)"',
+        ]
+        found_unresolvable = False
+        for pattern in unresolvable_patterns:
+            matches = re.findall(pattern, error_output)
+            for match in matches:
+                if isinstance(match, tuple):
+                    pkg = match[1]  # parent package with broken dep
+                    self.ignore_pkgs.add(pkg)
+                    logging.warning(f"Unresolvable dep: '{match[0]}' needed by '{pkg}' — will --ignore on retry")
+                    found_unresolvable = True
+        if found_unresolvable:
+            logging.info(f"Ignore list for retry: {self.ignore_pkgs}")
+            return True
+
+        # 3. Handle missing packages / targets not found
         patterns = [
             r"could not find all required packages: ([\w\-\.\+ ]+)",
             r"target not found: ([\w\-\.\+ ]+)",
             r"error: ([\w\-\.\+]+): not found in",
             r"-> No AUR package found for ([\w\-\.\+]+)"
         ]
-        
+
         missing_pkgs = []
         for pattern in patterns:
             matches = re.findall(pattern, error_output)
             for match in matches:
                 missing_pkgs.extend(match.split())
-        
+
         if missing_pkgs:
             missing_pkgs = list(set(missing_pkgs))
             logging.info(f"Found {len(missing_pkgs)} missing targets: {missing_pkgs}. Auto-fixing...")
