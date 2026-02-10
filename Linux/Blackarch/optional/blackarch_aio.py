@@ -333,6 +333,325 @@ class PackageManager:
         except Exception as e:
             logging.error(f"Upgrade failed: {e}")
 
+# --- Kernel Upgrade Manager Module ---
+class KernelManager:
+    """Handles kernel upgrades with snapper snapshots, DKMS rebuilds, and dracut/kernel-install fixes."""
+
+    DRACUT_CONF = "/etc/dracut.conf.d/99-fix-boot.conf"
+    KERNEL_INSTALL_CONF = "/etc/kernel/install.conf"
+
+    @staticmethod
+    def is_snapper_available() -> bool:
+        try:
+            subprocess.run(["snapper", "--version"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return True
+        except (FileNotFoundError, subprocess.CalledProcessError):
+            return False
+
+    @staticmethod
+    def snapper_create(description: str, snapshot_type: str = "single", cleanup: str = "number") -> typing.Optional[int]:
+        """Creates a snapper snapshot and returns the snapshot number."""
+        if not KernelManager.is_snapper_available():
+            logging.warning("snapper not available — skipping snapshot")
+            return None
+        try:
+            result = subprocess.run(
+                ["sudo", "snapper", "create", "--type", snapshot_type,
+                 "--cleanup-algorithm", cleanup, "--description", description, "--print-number"],
+                check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8"
+            )
+            snap_num = int(result.stdout.strip())
+            logging.info(f"Snapper snapshot #{snap_num} created: {description}")
+            return snap_num
+        except Exception as e:
+            logging.error(f"Failed to create snapper snapshot: {e}")
+            return None
+
+    @staticmethod
+    def snapper_create_pre(description: str) -> typing.Optional[int]:
+        """Creates a snapper pre-snapshot for a pre/post pair."""
+        if not KernelManager.is_snapper_available():
+            logging.warning("snapper not available — skipping pre-snapshot")
+            return None
+        try:
+            result = subprocess.run(
+                ["sudo", "snapper", "create", "--type", "pre",
+                 "--cleanup-algorithm", "number", "--description", description, "--print-number"],
+                check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8"
+            )
+            snap_num = int(result.stdout.strip())
+            logging.info(f"Snapper PRE-snapshot #{snap_num} created: {description}")
+            return snap_num
+        except Exception as e:
+            logging.error(f"Failed to create snapper pre-snapshot: {e}")
+            return None
+
+    @staticmethod
+    def snapper_create_post(pre_number: int, description: str) -> typing.Optional[int]:
+        """Creates a snapper post-snapshot paired with a pre-snapshot."""
+        if not KernelManager.is_snapper_available() or pre_number is None:
+            logging.warning("snapper not available or no pre-snapshot — skipping post-snapshot")
+            return None
+        try:
+            result = subprocess.run(
+                ["sudo", "snapper", "create", "--type", "post",
+                 "--pre-number", str(pre_number),
+                 "--cleanup-algorithm", "number", "--description", description, "--print-number"],
+                check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8"
+            )
+            snap_num = int(result.stdout.strip())
+            logging.info(f"Snapper POST-snapshot #{snap_num} (paired with pre #{pre_number}): {description}")
+            return snap_num
+        except Exception as e:
+            logging.error(f"Failed to create snapper post-snapshot: {e}")
+            return None
+
+    @staticmethod
+    def detect_kernel_update_pending() -> typing.Tuple[bool, list[str]]:
+        """Checks if a kernel package is among pending upgrades."""
+        kernel_patterns = ["linux", "linux-zen", "linux-lts", "linux-hardened"]
+        try:
+            result = subprocess.run(
+                ["pacman", "-Qu"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8"
+            )
+            if result.returncode != 0:
+                return False, []
+            pending = result.stdout.strip().splitlines()
+            kernel_pkgs = []
+            for line in pending:
+                pkg_name = line.split()[0] if line.strip() else ""
+                if pkg_name in kernel_patterns or pkg_name.startswith("linux-zen") or pkg_name.startswith("linux-lts") or pkg_name.startswith("linux-hardened"):
+                    kernel_pkgs.append(line.strip())
+            return len(kernel_pkgs) > 0, kernel_pkgs
+        except Exception as e:
+            logging.error(f"Failed to check pending kernel updates: {e}")
+            return False, []
+
+    @staticmethod
+    def get_running_kernel() -> str:
+        """Returns the currently running kernel version string."""
+        try:
+            return platform.release()
+        except Exception:
+            return "unknown"
+
+    @staticmethod
+    def get_installed_dkms_modules() -> list[dict]:
+        """Returns a list of DKMS modules and their status."""
+        modules = []
+        try:
+            result = subprocess.run(
+                ["dkms", "status"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8"
+            )
+            if result.returncode != 0:
+                logging.info("DKMS not installed or no modules registered.")
+                return []
+            for line in result.stdout.strip().splitlines():
+                if line.strip():
+                    modules.append({"raw": line.strip()})
+            return modules
+        except FileNotFoundError:
+            logging.info("DKMS is not installed on this system.")
+            return []
+        except Exception as e:
+            logging.error(f"Failed to query DKMS status: {e}")
+            return []
+
+    @staticmethod
+    def rebuild_dkms_all() -> bool:
+        """Rebuilds all DKMS modules for the currently installed kernels."""
+        logging.info("Rebuilding all DKMS modules...")
+        try:
+            result = subprocess.run(
+                ["sudo", "dkms", "autoinstall"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8"
+            )
+            if result.returncode == 0:
+                logging.info("DKMS autoinstall completed successfully.")
+                logging.info(f"DKMS output: {result.stdout.strip()}")
+                return True
+            else:
+                logging.error(f"DKMS autoinstall failed: {result.stderr.strip()}")
+                return False
+        except FileNotFoundError:
+            logging.info("DKMS not installed — skipping module rebuild.")
+            return True
+        except Exception as e:
+            logging.error(f"DKMS rebuild failed: {e}")
+            return False
+
+    @staticmethod
+    def fix_libjodycode_symlink():
+        """Creates libjodycode.so.3 symlink for fsck.winregfs compatibility."""
+        src = "/usr/lib/libjodycode.so.4"
+        dst = "/usr/lib/libjodycode.so.3"
+        if os.path.exists(src) and not os.path.exists(dst):
+            logging.info("Creating libjodycode.so.3 symlink for fsck.winregfs compatibility...")
+            try:
+                subprocess.run(["sudo", "ln", "-sf", src, dst], check=True)
+                logging.info("libjodycode.so.3 symlink created successfully.")
+            except Exception as e:
+                logging.warning(f"Failed to create libjodycode symlink (non-critical): {e}")
+        else:
+            logging.info("libjodycode.so.3 already exists or source not found — no action needed.")
+
+    @staticmethod
+    def fix_dracut_config():
+        """Configures dracut to use /boot instead of EFI partition (prevents UKI issues)."""
+        if os.path.exists(KernelManager.DRACUT_CONF):
+            logging.info("Dracut configuration already exists — skipping.")
+            return
+        logging.info("Configuring dracut to use /boot directory...")
+        content = '# Fix dracut to use /boot instead of EFI partition\nuefi="no"\nhostonly="yes"\ncompress="zstd"\n'
+        try:
+            tmp = "/tmp/_aio_dracut_fix.conf"
+            with open(tmp, "w") as f:
+                f.write(content)
+            subprocess.run(["sudo", "mkdir", "-p", "/etc/dracut.conf.d"], check=True)
+            subprocess.run(["sudo", "cp", tmp, KernelManager.DRACUT_CONF], check=True)
+            os.remove(tmp)
+            logging.info("Dracut configuration created successfully.")
+        except Exception as e:
+            logging.warning(f"Failed to create dracut config (non-critical): {e}")
+
+    @staticmethod
+    def fix_kernel_install_config():
+        """Configures kernel-install to disable UKI and use traditional initramfs."""
+        if os.path.exists(KernelManager.KERNEL_INSTALL_CONF):
+            logging.info("Kernel install configuration already exists — skipping.")
+            return
+        logging.info("Configuring kernel-install to use traditional initramfs...")
+        content = "layout=bls\ninitrd_generator=dracut\n"
+        try:
+            tmp = "/tmp/_aio_kernel_install.conf"
+            with open(tmp, "w") as f:
+                f.write(content)
+            subprocess.run(["sudo", "mkdir", "-p", "/etc/kernel"], check=True)
+            subprocess.run(["sudo", "cp", tmp, KernelManager.KERNEL_INSTALL_CONF], check=True)
+            os.remove(tmp)
+            logging.info("Kernel install configuration created successfully.")
+        except Exception as e:
+            logging.warning(f"Failed to create kernel install config (non-critical): {e}")
+
+    @staticmethod
+    def apply_system_fixes():
+        """Applies all preventive system fixes (libjodycode, dracut, kernel-install)."""
+        logging.info("--- Applying preventive system fixes ---")
+        KernelManager.fix_libjodycode_symlink()
+        KernelManager.fix_dracut_config()
+        KernelManager.fix_kernel_install_config()
+        logging.info("--- System fixes complete ---")
+
+    @staticmethod
+    def regenerate_initramfs() -> bool:
+        """Regenerates initramfs for all installed kernels using dracut."""
+        logging.info("Regenerating initramfs with dracut...")
+        try:
+            # Get list of installed kernels from /usr/lib/modules
+            result = subprocess.run(
+                ["ls", "/usr/lib/modules"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8"
+            )
+            if result.returncode != 0:
+                logging.warning("Could not list kernel modules directory.")
+                return False
+            kernels = [k.strip() for k in result.stdout.strip().splitlines() if k.strip()]
+            if not kernels:
+                logging.warning("No kernel module directories found.")
+                return False
+            for kver in kernels:
+                vmlinuz = f"/usr/lib/modules/{kver}/vmlinuz"
+                if not os.path.exists(vmlinuz):
+                    continue
+                logging.info(f"Regenerating initramfs for kernel {kver}...")
+                ret = subprocess.run(
+                    ["sudo", "dracut", "--force", "--kver", kver],
+                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8"
+                )
+                if ret.returncode == 0:
+                    logging.info(f"initramfs regenerated for {kver}")
+                else:
+                    logging.error(f"Failed to regenerate initramfs for {kver}: {ret.stderr.strip()}")
+            return True
+        except FileNotFoundError:
+            logging.warning("dracut not found — skipping initramfs regeneration.")
+            return False
+        except Exception as e:
+            logging.error(f"initramfs regeneration failed: {e}")
+            return False
+
+    @staticmethod
+    def full_kernel_upgrade():
+        """
+        Orchestrates a full kernel upgrade with:
+        1. Pre-snapshot (snapper)
+        2. System fixes (dracut, kernel-install, libjodycode)
+        3. Kernel package upgrade via pacman
+        4. DKMS module rebuild
+        5. initramfs regeneration
+        6. Post-snapshot (snapper)
+        """
+        logging.info("=" * 60)
+        logging.info("KERNEL UPGRADE — Full orchestration starting")
+        logging.info(f"Running kernel: {KernelManager.get_running_kernel()}")
+        logging.info("=" * 60)
+
+        has_update, kernel_pkgs = KernelManager.detect_kernel_update_pending()
+        if not has_update:
+            logging.info("No pending kernel updates detected. Checking DKMS status only...")
+            dkms_mods = KernelManager.get_installed_dkms_modules()
+            if dkms_mods:
+                logging.info(f"DKMS modules found: {len(dkms_mods)}")
+                for m in dkms_mods:
+                    logging.info(f"  {m['raw']}")
+            logging.info("No kernel upgrade needed. Done.")
+            return True
+
+        logging.info(f"Pending kernel upgrades detected:")
+        for kp in kernel_pkgs:
+            logging.info(f"  {kp}")
+
+        # Step 1: Pre-snapshot
+        pre_snap = KernelManager.snapper_create_pre(f"kernel-upgrade-pre {datetime.now().isoformat()}")
+
+        # Step 2: System fixes
+        KernelManager.apply_system_fixes()
+
+        # Step 3: Upgrade kernel packages
+        logging.info("Upgrading kernel packages...")
+        pkg_names = [line.split()[0] for line in kernel_pkgs]
+        upgrade_cmd = ["sudo", "pacman", "-S", "--needed", "--noconfirm"] + pkg_names
+        try:
+            subprocess.run(upgrade_cmd, check=True)
+            logging.info("Kernel packages upgraded successfully.")
+        except subprocess.CalledProcessError as e:
+            logging.error(f"Kernel package upgrade FAILED: {e}")
+            # Still create post-snapshot to capture the failed state
+            KernelManager.snapper_create_post(pre_snap, f"kernel-upgrade-post-FAILED {datetime.now().isoformat()}")
+            return False
+
+        # Step 4: DKMS rebuild
+        dkms_mods = KernelManager.get_installed_dkms_modules()
+        if dkms_mods:
+            logging.info(f"Rebuilding {len(dkms_mods)} DKMS modules...")
+            dkms_pre = KernelManager.snapper_create_pre(f"dkms-rebuild-pre {datetime.now().isoformat()}")
+            dkms_ok = KernelManager.rebuild_dkms_all()
+            KernelManager.snapper_create_post(dkms_pre, f"dkms-rebuild-post {'OK' if dkms_ok else 'FAILED'} {datetime.now().isoformat()}")
+            if not dkms_ok:
+                logging.error("DKMS rebuild had errors — check dkms status manually.")
+        else:
+            logging.info("No DKMS modules registered — skipping rebuild.")
+
+        # Step 5: Regenerate initramfs
+        KernelManager.regenerate_initramfs()
+
+        # Step 6: Post-snapshot
+        KernelManager.snapper_create_post(pre_snap, f"kernel-upgrade-post-OK {datetime.now().isoformat()}")
+
+        logging.info("=" * 60)
+        logging.info("KERNEL UPGRADE — Complete")
+        logging.info("=" * 60)
+        return True
+
+
 # --- Fast Update Module (Async) ---
 class FastUpdate:
     def __init__(self):
@@ -501,22 +820,37 @@ class FastUpdate:
 
     async def execute(self):
         logging.info("--- [Auto-Detect & Fix Phase] ---")
-        # Step 0: Ensure Repo & Keyrings
+
+        # Step 0: Apply preventive system fixes (dracut, kernel-install, libjodycode)
+        await asyncio.to_thread(KernelManager.apply_system_fixes)
+
+        # Step 0.1: Detect if kernel upgrade is pending
+        kernel_pending, kernel_pkgs = await asyncio.to_thread(KernelManager.detect_kernel_update_pending)
+        if kernel_pending:
+            logging.info(f"Kernel upgrade detected in pending updates: {[kp.split()[0] for kp in kernel_pkgs]}")
+
+        # Step 0.2: Create snapper PRE-snapshot before system-altering operations
+        pre_snap = await asyncio.to_thread(
+            KernelManager.snapper_create_pre,
+            f"aio-update-pre {datetime.now().isoformat()}"
+        )
+
+        # Step 0.3: Ensure Repo & Keyrings
         await self.ensure_blackarch_repo()
         await self.update_keyrings()
-        
-        # Step 0.1: Ensure Essential Metapackages
+
+        # Step 0.4: Ensure Essential Metapackages
         logging.info("Ensuring essential metapackages...")
         await self.run_command("sudo pacman -S --needed --noconfirm blackarch-officials", "Installing blackarch-officials")
 
-        # Step 0.2: Sync Categories
+        # Step 0.5: Sync Categories
         await self.sync_categories()
-        
+
         # Step 1: Helpers
         logging.info("Checking prerequisites...")
         await asyncio.to_thread(HelperManager.ensure_helpers)
         await self.ensure_dependency("reflector", "reflector")
-        
+
         steps = [
             ("Mirror Optimization", lambda: self.run_command("sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist", "Mirror Optimization")),
             ("Downloading Updates", self.download_phase),
@@ -531,8 +865,38 @@ class FastUpdate:
             if isinstance(result, tuple) and not result[0]:
                 # If a step fails, try to fix dependencies and retry once
                 await self.smart_dependency_fix(result[1])
-                await func() 
-        
+                await func()
+
+        # Post-update: Handle kernel-specific tasks if a kernel upgrade was pending
+        if kernel_pending:
+            logging.info("--- [Post-Update Kernel Tasks] ---")
+            # DKMS rebuild with its own snapper pair
+            dkms_mods = await asyncio.to_thread(KernelManager.get_installed_dkms_modules)
+            if dkms_mods:
+                logging.info(f"DKMS modules detected ({len(dkms_mods)}), rebuilding...")
+                dkms_pre = await asyncio.to_thread(
+                    KernelManager.snapper_create_pre,
+                    f"dkms-rebuild-pre {datetime.now().isoformat()}"
+                )
+                dkms_ok = await asyncio.to_thread(KernelManager.rebuild_dkms_all)
+                await asyncio.to_thread(
+                    KernelManager.snapper_create_post,
+                    dkms_pre,
+                    f"dkms-rebuild-post {'OK' if dkms_ok else 'FAILED'} {datetime.now().isoformat()}"
+                )
+            else:
+                logging.info("No DKMS modules — skipping rebuild.")
+
+            # Regenerate initramfs
+            await asyncio.to_thread(KernelManager.regenerate_initramfs)
+
+        # Create snapper POST-snapshot after all operations
+        await asyncio.to_thread(
+            KernelManager.snapper_create_post,
+            pre_snap,
+            f"aio-update-post {datetime.now().isoformat()}"
+        )
+
         logging.info("Unified update complete!")
 
 # --- Tree Module ---
@@ -590,6 +954,8 @@ def main():
     subparsers.add_parser("tree", help="Show directory tree of current path")
     subparsers.add_parser("fix-helpers", help="Ensure AUR helpers are installed")
     subparsers.add_parser("mirrors", help="Update mirrorlist")
+    subparsers.add_parser("kernel-upgrade", help="Full kernel upgrade with snapper snapshots, DKMS rebuild, and initramfs regeneration")
+    subparsers.add_parser("system-fixes", help="Apply preventive system fixes (dracut, kernel-install, libjodycode)")
 
     args = parser.parse_args()
     
@@ -633,6 +999,17 @@ def main():
 
         elif args.command == "mirrors":
             Repos.update_mirrorlist()
+            report["status"] = "success"
+
+        elif args.command == "kernel-upgrade":
+            logging.info("Running full kernel upgrade orchestration...")
+            success = KernelManager.full_kernel_upgrade()
+            report["status"] = "success" if success else "failed"
+            report["details"]["kernel"] = KernelManager.get_running_kernel()
+
+        elif args.command == "system-fixes":
+            logging.info("Applying preventive system fixes...")
+            KernelManager.apply_system_fixes()
             report["status"] = "success"
 
         else:
