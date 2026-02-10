@@ -607,18 +607,33 @@ class KernelManager:
 
     @staticmethod
     def fix_libjodycode_symlink():
-        """Creates libjodycode.so.3 symlink for fsck.winregfs compatibility."""
-        src = "/usr/lib/libjodycode.so.4"
+        """Creates libjodycode.so.3 symlink for fsck.winregfs compatibility.
+        Dynamically finds the installed soversion so it works across upgrades."""
+        import glob as _glob
         dst = "/usr/lib/libjodycode.so.3"
-        if os.path.exists(src) and not os.path.exists(dst):
-            logging.info("Creating libjodycode.so.3 symlink for fsck.winregfs compatibility...")
-            try:
-                subprocess.run(["sudo", "ln", "-sf", src, dst], check=True)
-                logging.info("libjodycode.so.3 symlink created successfully.")
-            except Exception as e:
-                logging.warning(f"Failed to create libjodycode symlink (non-critical): {e}")
-        else:
-            logging.info("libjodycode.so.3 already exists or source not found — no action needed.")
+        # Find the real installed soversion (e.g. libjodycode.so.4, .so.5, etc.)
+        candidates = sorted(_glob.glob("/usr/lib/libjodycode.so.[0-9]*"), reverse=True)
+        # Filter out the .so.3 itself and any sub-versions like .so.4.1.2
+        candidates = [c for c in candidates if not c.endswith(".so.3") and c.count(".") == 3]
+
+        if not candidates:
+            logging.debug("libjodycode not installed — skipping symlink.")
+            return
+
+        src = candidates[0]  # highest soversion available
+        if os.path.exists(dst):
+            current_target = os.path.realpath(dst)
+            expected_target = os.path.realpath(src)
+            if current_target == expected_target:
+                logging.debug(f"libjodycode.so.3 → {os.path.basename(src)} already correct.")
+                return
+            logging.info(f"Updating libjodycode.so.3 symlink: {os.path.basename(current_target)} → {os.path.basename(src)}")
+
+        try:
+            subprocess.run(["sudo", "ln", "-sf", src, dst], check=True)
+            logging.info(f"libjodycode.so.3 → {os.path.basename(src)} symlink created.")
+        except Exception as e:
+            logging.warning(f"Failed to create libjodycode symlink (non-critical): {e}")
 
     @staticmethod
     def fix_dracut_config():
