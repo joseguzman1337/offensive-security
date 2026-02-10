@@ -674,12 +674,93 @@ class KernelManager:
             logging.warning(f"Failed to create kernel install config (non-critical): {e}")
 
     @staticmethod
+    def cleanup_broken_so_packages():
+        """Removes packages whose binaries link against missing shared libraries.
+        Detects via pacman -Qkk and filters for 'missing dependency' patterns.
+        """
+        logging.info("Scanning for packages with missing shared library deps...")
+        try:
+            result = subprocess.run(
+                ["bash", "-c", "LC_ALL=C pacman -Qkk 2>&1 | grep 'missing dependency' | awk -F'\"' '{print $2}' | sort -u"],
+                capture_output=True, text=True, timeout=120)
+            broken_pkgs = [p.strip() for p in result.stdout.strip().splitlines() if p.strip()]
+            if not broken_pkgs:
+                logging.debug("No packages with missing .so deps.")
+                return
+            logging.info(f"Found {len(broken_pkgs)} packages with broken .so deps: {broken_pkgs}")
+            for pkg in broken_pkgs:
+                logging.info(f"Removing broken package: {pkg}")
+                subprocess.run(
+                    ["sudo", "pacman", "-Rns", "--noconfirm", pkg],
+                    capture_output=True, check=False)
+            logging.info("Broken .so cleanup complete.")
+        except Exception as e:
+            logging.warning(f"Broken .so cleanup failed (non-critical): {e}")
+
+    @staticmethod
+    def cleanup_stale_python_packages():
+        """Removes Python packages built for older interpreter versions.
+        The current interpreter ignores them, so they're dead weight.
+        """
+        logging.info("Scanning for stale Python packages...")
+        try:
+            # Get current Python major.minor
+            current_pyver = f"python{sys.version_info.major}.{sys.version_info.minor}"
+            # Find packages with files in old python3.X directories
+            result = subprocess.run(
+                ["bash", "-c",
+                 "pacman -Ql $(pacman -Qq) 2>/dev/null | grep -oP '^\\S+ /usr/lib/python3\\.\\d+/' | "
+                 "awk '{split($2,a,\"/\"); print $1, a[4]}' | sort -u"],
+                capture_output=True, text=True, timeout=300)
+
+            stale = set()
+            for line in result.stdout.strip().splitlines():
+                parts = line.split()
+                if len(parts) == 2:
+                    pkg, pydir = parts
+                    if pydir != current_pyver:
+                        # Check the package ONLY has files in old python dirs (not also in current)
+                        stale.add((pkg, pydir))
+
+            if not stale:
+                logging.debug("No stale Python packages found.")
+                return
+
+            # Filter: only remove if the package has NO files in the current python version
+            pkgs_to_remove = set()
+            pkgs_with_current = set()
+            for pkg, pydir in stale:
+                if pydir == current_pyver:
+                    pkgs_with_current.add(pkg)
+
+            for pkg, pydir in stale:
+                if pkg not in pkgs_with_current:
+                    pkgs_to_remove.add(pkg)
+
+            if not pkgs_to_remove:
+                logging.debug("All Python packages have current interpreter files — nothing to remove.")
+                return
+
+            logging.info(f"Found {len(pkgs_to_remove)} stale Python packages (no {current_pyver} files): "
+                         f"{sorted(pkgs_to_remove)}")
+            for pkg in sorted(pkgs_to_remove):
+                logging.info(f"Removing stale package: {pkg}")
+                subprocess.run(
+                    ["sudo", "pacman", "-Rns", "--noconfirm", pkg],
+                    capture_output=True, check=False)
+            logging.info("Stale Python cleanup complete.")
+        except Exception as e:
+            logging.warning(f"Stale Python cleanup failed (non-critical): {e}")
+
+    @staticmethod
     def apply_system_fixes():
-        """Applies all preventive system fixes (libjodycode, dracut, kernel-install)."""
+        """Applies all preventive system fixes."""
         logging.info("--- Applying preventive system fixes ---")
         KernelManager.fix_libjodycode_symlink()
         KernelManager.fix_dracut_config()
         KernelManager.fix_kernel_install_config()
+        KernelManager.cleanup_broken_so_packages()
+        KernelManager.cleanup_stale_python_packages()
         logging.info("--- System fixes complete ---")
 
     @staticmethod
