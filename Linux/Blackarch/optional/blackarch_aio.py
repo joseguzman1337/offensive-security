@@ -6,6 +6,7 @@ Migrated and consolidated from multiple scripts.
 
 import sys
 import os
+import shutil
 import subprocess
 import logging
 import argparse
@@ -24,32 +25,27 @@ REQUIRED_PACKAGES = [
     "requests",
     "tqdm",
     "colorama",
-    "geocoder"
 ]
 
 def install_missing_dependencies():
-    """Installs missing Python dependencies using pacman/yay."""
+    """Installs missing Python dependencies using pacman."""
     missing = []
     for pkg in REQUIRED_PACKAGES:
         try:
             __import__(pkg)
         except ImportError:
             missing.append(pkg)
-    
+
     if missing:
         print(f"Installing missing dependencies: {', '.join(missing)}")
-        # Map python libs to arch packages roughly
         pkg_map = {
             "requests": "python-requests",
             "tqdm": "python-tqdm",
             "colorama": "python-colorama",
-            "geocoder": "python-geocoder" # This might need AUR
         }
         for lib in missing:
             pkg_name = pkg_map.get(lib, f"python-{lib}")
             subprocess.run(["sudo", "pacman", "-S", "--needed", "--noconfirm", pkg_name], check=False)
-            # Try pip if pacman fails (fallback)
-            subprocess.run([sys.executable, "-m", "pip", "install", lib], check=False)
 
 install_missing_dependencies()
 
@@ -57,10 +53,8 @@ try:
     import requests
     from tqdm import tqdm
     from colorama import Fore, Style
-    import geocoder
 except ImportError as e:
     print(f"Critical: Failed to import dependencies even after install attempt: {e}")
-    # Continue with limited functionality if possible
 
 # --- Constants & Configuration ---
 PACMAN_CONF = "/etc/pacman.conf"
@@ -170,11 +164,7 @@ class Utils:
     @staticmethod
     def is_helper_installed(helper: str) -> bool:
         if helper == "pacman": return True
-        try:
-            subprocess.run([helper, "--version"], check=True, stdout=subprocess.DEVNULL)
-            return True
-        except FileNotFoundError:
-            return False
+        return shutil.which(helper) is not None
 
 # --- Repos & Mirrorlist Module ---
 class Repos:
@@ -194,49 +184,156 @@ class Repos:
             logging.error(f"Failed to fetch mirrors: {e}")
             return []
 
+    # Nearby country groups for proximity-based mirror expansion.
+    # When a country has few mirrors, we pull from geographic neighbors.
+    NEARBY_COUNTRIES = {
+        # Latin America
+        "CO": ["CO", "EC", "VE", "PA", "BR", "CL", "US"],
+        "EC": ["EC", "CO", "PE", "CL", "BR", "US"],
+        "BR": ["BR", "CL", "CO", "AR", "US"],
+        "CL": ["CL", "BR", "AR", "CO", "US"],
+        "AR": ["AR", "CL", "BR", "UY", "US"],
+        "MX": ["MX", "US", "CA", "CO", "BR"],
+        # North America
+        "US": ["US", "CA"],
+        "CA": ["CA", "US"],
+        # Europe West
+        "DE": ["DE", "AT", "NL", "CZ", "FR", "DK"],
+        "FR": ["FR", "DE", "BE", "NL", "GB", "ES"],
+        "GB": ["GB", "IE", "FR", "NL", "DE"],
+        "NL": ["NL", "DE", "BE", "FR", "GB"],
+        "ES": ["ES", "FR", "PT", "IT"],
+        "IT": ["IT", "AT", "DE", "FR", "CH"],
+        "AT": ["AT", "DE", "CZ", "HU", "IT"],
+        "CH": ["CH", "DE", "FR", "AT", "IT"],
+        "BE": ["BE", "NL", "DE", "FR", "GB"],
+        # Europe North
+        "SE": ["SE", "NO", "DK", "FI", "DE"],
+        "NO": ["NO", "SE", "DK", "FI", "DE"],
+        "DK": ["DK", "SE", "NO", "DE", "NL"],
+        "FI": ["FI", "SE", "EE", "NO", "DE"],
+        # Europe East
+        "PL": ["PL", "CZ", "DE", "SK", "AT"],
+        "CZ": ["CZ", "DE", "PL", "AT", "SK"],
+        "RO": ["RO", "BG", "HU", "PL", "DE"],
+        "HU": ["HU", "AT", "SK", "CZ", "RO"],
+        # Asia
+        "JP": ["JP", "KR", "TW", "HK", "SG"],
+        "KR": ["KR", "JP", "TW", "HK", "SG"],
+        "IN": ["IN", "SG", "BD", "HK", "JP"],
+        "SG": ["SG", "HK", "JP", "IN", "AU"],
+        "CN": ["CN", "HK", "TW", "JP", "KR", "SG"],
+        "AU": ["AU", "NZ", "SG", "JP", "US"],
+        "NZ": ["NZ", "AU", "SG", "JP"],
+    }
+
     @staticmethod
-    def get_current_country():
+    def get_location_info() -> dict:
+        """Get geolocation via ipinfo.io (no extra dependencies)."""
         try:
-            g = geocoder.ip("me")
-            return g.country
-        except Exception:
-            return None
+            logging.info("Requested http://ipinfo.io/json")
+            resp = requests.get("http://ipinfo.io/json", timeout=5)
+            resp.raise_for_status()
+            return resp.json()
+        except Exception as e:
+            logging.warning(f"Geolocation lookup failed: {e}")
+            return {}
+
+    @staticmethod
+    def _ensure_reflector():
+        """Install reflector if missing."""
+        if not Utils.is_helper_installed("reflector"):
+            Utils.run_command(["sudo", "pacman", "-S", "--needed", "--noconfirm", "reflector"])
+
+    @staticmethod
+    def _run_reflector(args: list[str], label: str) -> bool:
+        """Run reflector with given args, return True on success."""
+        cmd = ["sudo", "reflector"] + args
+        logging.info(f"Running: {' '.join(cmd)}")
+        try:
+            subprocess.run(cmd, check=True, timeout=120)
+            return True
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
+            logging.warning(f"Reflector {label} failed: {e}")
+            return False
 
     @staticmethod
     def update_mirrorlist(country: str = None):
-        """Optimizes mirrorlist using geolocation and speed testing."""
+        """Optimizes mirrorlist using geolocation, proximity, health checks, and speed testing.
+
+        Strategy (cascading fallback):
+          1. Country + nearby neighbors, age < 1h, completion 100%, fastest 15, sorted by rate
+          2. Country-only with relaxed age (12h)
+          3. Global fastest 20 with health thresholds
+        """
+        Repos._ensure_reflector()
+
+        geo = {}
         if not country:
-            country = Repos.get_current_country()
-        
-        # Build reflector command with proximity and speed focus
-        # We'll use the detected country plus a fallback to a wider but 'fastest' set
-        logging.info(f"Optimizing mirrors for location: {country if country else 'Global'}")
-        
-        reflector_args = [
+            geo = Repos.get_location_info()
+            country = geo.get("country")
+
+        logging.info(f"Optimizing mirrors for location: {country or 'Global'} "
+                     f"({geo.get('city', '?')}, {geo.get('region', '?')})")
+
+        base_args = [
             "--protocol", "https",
-            "--latest", "50",
-            "--fastest", "10",
-            "--sort", "rate",
-            "--save", "/etc/pacman.d/mirrorlist"
+            "--completion-percent", "100",
+            "--connection-timeout", "3",
+            "--download-timeout", "5",
+            "--threads", "4",
+            "--save", "/etc/pacman.d/mirrorlist",
         ]
-        
+
+        # --- Tier 1: Proximity with neighbors, strict freshness ---
         if country:
-            # Try to get mirrors from the same country first
-            # We add a fallback to nearby regions if the local country has few mirrors
-            reflector_args.insert(0, country)
-            reflector_args.insert(0, "--country")
+            neighbors = Repos.NEARBY_COUNTRIES.get(country, [country])
+            country_csv = ",".join(neighbors)
+            tier1_args = [
+                "--country", country_csv,
+                "--age", "1",
+                "--delay", "0.5",
+                "--fastest", "15",
+                "--sort", "rate",
+            ] + base_args
+            logging.info(f"Tier 1: proximity ({country_csv}), age<1h, delay<30min")
+            if Repos._run_reflector(tier1_args, "tier1-proximity"):
+                logging.info("Mirrorlist optimized via proximity + freshness.")
+                return
 
-        try:
-            if not Utils.is_helper_installed("reflector"):
-                Utils.run_command(["sudo", "pacman", "-S", "--needed", "--noconfirm", "reflector"])
+        # --- Tier 2: Country-only, relaxed age ---
+        if country:
+            tier2_args = [
+                "--country", country,
+                "--age", "12",
+                "--score", "10",
+                "--fastest", "10",
+                "--sort", "rate",
+            ] + base_args
+            logging.info(f"Tier 2: country-only ({country}), age<12h")
+            if Repos._run_reflector(tier2_args, "tier2-country"):
+                logging.info("Mirrorlist optimized via country fallback.")
+                return
 
-            logging.info(f"Running: sudo reflector {' '.join(reflector_args)}")
-            subprocess.run(["sudo", "reflector"] + reflector_args, check=True)
-            logging.info("Mirrorlist optimized successfully via geolocation/speed.")
-        except subprocess.CalledProcessError as e:
-            logging.error(f"Reflector failed with proximity settings: {e}. Falling back to global fastest.")
-            # Fallback: Just get the 20 fastest https mirrors globally
-            subprocess.run(["sudo", "reflector", "--protocol", "https", "--fastest", "20", "--sort", "rate", "--save", "/etc/pacman.d/mirrorlist"], check=False)
+        # --- Tier 3: Global fastest with health thresholds ---
+        tier3_args = [
+            "--age", "12",
+            "--score", "15",
+            "--completion-percent", "95",
+            "--fastest", "20",
+            "--sort", "rate",
+            "--protocol", "https",
+            "--connection-timeout", "3",
+            "--download-timeout", "5",
+            "--threads", "4",
+            "--save", "/etc/pacman.d/mirrorlist",
+        ]
+        logging.info("Tier 3: global fastest with health thresholds")
+        if Repos._run_reflector(tier3_args, "tier3-global"):
+            logging.info("Mirrorlist optimized via global fastest.")
+            return
+
+        logging.error("All reflector tiers failed. Mirrorlist unchanged.")
 
 # --- Helper Management Module ---
 class HelperManager:
@@ -927,7 +1024,7 @@ class FastUpdate:
 
             async with KernelManager.async_snap_wrap("mirror-optimization"):
                 print("Step: Mirror Optimization")
-                await self.run_command("sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist", "Mirror Optimization")
+                await asyncio.to_thread(Repos.update_mirrorlist)
 
             async with KernelManager.async_snap_wrap("download-updates"):
                 print("Step: Downloading Updates")
