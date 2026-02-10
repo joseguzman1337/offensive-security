@@ -753,14 +753,36 @@ class KernelManager:
                 if current_pyver not in versions)
 
             if stale_pkgs:
-                logging.info(f"Found {len(stale_pkgs)} stale pacman Python packages (no {current_pyver}): {stale_pkgs}")
-                for pkg in stale_pkgs:
-                    logging.info(f"Upgrading: {pkg}")
-                    success, helper = PackageManager.smart_upgrade_package(pkg)
-                    if success:
-                        logging.info(f"Upgraded '{pkg}' via {helper}")
-                    else:
-                        logging.warning(f"Could not upgrade '{pkg}' from any helper")
+                logging.info(f"Found {len(stale_pkgs)} stale pacman Python packages (no {current_pyver}) — upgrading in parallel...")
+                # Batch upgrade via pacman in one shot (repos), then AUR leftovers via helper
+                upgraded = 0
+                failed = 0
+
+                # Try all at once with pacman first
+                ret = subprocess.run(
+                    ["sudo", "pacman", "-S", "--noconfirm", "--needed"] + stale_pkgs,
+                    capture_output=True, check=False)
+                if ret.returncode == 0:
+                    upgraded = len(stale_pkgs)
+                else:
+                    # Some failed — fall back to parallel per-package via xargs + helper cascade
+                    helper = PackageManager.get_best_helper()
+                    pkg_list = "\n".join(stale_pkgs)
+                    ret2 = subprocess.run(
+                        ["bash", "-c",
+                         f"echo '{pkg_list}' | xargs -P{nproc} -I{{}} "
+                         f"{helper} -S --needed --noconfirm {{}} 2>/dev/null"],
+                        capture_output=True, timeout=600, check=False)
+                    # Count results
+                    for pkg in stale_pkgs:
+                        check = subprocess.run(
+                            ["pacman", "-Q", pkg], capture_output=True)
+                        if check.returncode == 0:
+                            upgraded += 1
+                        else:
+                            failed += 1
+
+                logging.info(f"Stale Python packages: {upgraded} upgraded, {failed} failed out of {len(stale_pkgs)}")
             else:
                 logging.debug("All pacman Python packages are current.")
 
