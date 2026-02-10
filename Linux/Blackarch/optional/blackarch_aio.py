@@ -367,7 +367,7 @@ class PackageManager:
             if Utils.is_helper_installed(helper):
                 return helper
         return "pacman"
-    @staticmethod
+
     @staticmethod
     def smart_upgrade_package(pkg):
         """Attempts to upgrade a package using available helpers sequentially."""
@@ -689,19 +689,12 @@ class KernelManager:
                 return
             logging.info(f"Found {len(broken_pkgs)} packages with broken .so deps: {broken_pkgs}")
             for pkg in broken_pkgs:
-                # Try reinstall from repos first (gets version built for current libs)
                 logging.info(f"Upgrading broken package: {pkg}")
-                ret = subprocess.run(
-                    ["sudo", "pacman", "-S", "--noconfirm", pkg],
-                    capture_output=True, check=False)
-                if ret.returncode != 0:
-                    # Not in repos — try AUR helper
-                    helper = PackageManager.get_best_helper()
-                    if helper != "pacman":
-                        logging.info(f"Trying {helper} for {pkg}...")
-                        subprocess.run(
-                            [helper, "-S", "--noconfirm", pkg],
-                            capture_output=True, check=False)
+                success, helper = PackageManager.smart_upgrade_package(pkg)
+                if success:
+                    logging.info(f"Upgraded '{pkg}' via {helper}")
+                else:
+                    logging.warning(f"Could not upgrade '{pkg}' from any helper")
             logging.info("Broken .so upgrade pass complete.")
         except Exception as e:
             logging.warning(f"Broken .so upgrade failed (non-critical): {e}")
@@ -738,20 +731,13 @@ class KernelManager:
                 return
 
             logging.info(f"Found {len(stale_pkgs)} stale Python packages (no {current_pyver} files): {stale_pkgs}")
-            helper = PackageManager.get_best_helper()
-
             for pkg in stale_pkgs:
                 logging.info(f"Upgrading stale package: {pkg}")
-                # Reinstall from repos — pulls version built for current Python
-                ret = subprocess.run(
-                    ["sudo", "pacman", "-S", "--noconfirm", pkg],
-                    capture_output=True, check=False)
-                if ret.returncode != 0 and helper != "pacman":
-                    # Try AUR — many python packages live there
-                    logging.info(f"Trying {helper} for {pkg}...")
-                    subprocess.run(
-                        [helper, "-S", "--noconfirm", pkg],
-                        capture_output=True, check=False)
+                success, helper = PackageManager.smart_upgrade_package(pkg)
+                if success:
+                    logging.info(f"Upgraded '{pkg}' via {helper}")
+                else:
+                    logging.warning(f"Could not upgrade '{pkg}' from any helper")
             logging.info("Stale Python upgrade pass complete.")
         except Exception as e:
             logging.warning(f"Stale Python upgrade failed (non-critical): {e}")
