@@ -843,42 +843,33 @@ class FastUpdate:
             return ""
         return " ".join(f"--ignore {pkg}" for pkg in self.ignore_pkgs)
 
+    # Packages with cross-repo conflicts where -Syuu would downgrade to a broken version.
+    # Each entry: broken dep → parent package. Both get pinned to --ignore.
+    DOWNGRADE_CONFLICTS = {
+        "linenoise": "wcc",  # chaotic-aur/wcc needs linenoise (missing), blackarch/wcc doesn't
+    }
+
     async def _pin_downgrade_conflicts(self):
-        """Detects installed packages where -Syuu would downgrade to a repo version
-        with broken/missing deps, and pins them to --ignore upfront.
+        """Pins known cross-repo downgrade conflicts to --ignore so -Syuu never touches them.
 
-        Compares each installed package against all repo versions. If a repo
-        offers an older version, checks if that version has unresolvable deps.
+        For each conflict, ensures the package is installed from the correct repo
+        (blackarch over chaotic-aur), then makes both the broken dep and parent
+        immutable for the rest of the update pipeline.
         """
-        logging.info("Pinning downgrade conflicts...")
-        self.force_release_lock()
-
-        # Get list of packages that would be downgraded by -Syuu
-        success, output = await self.run_command(
-            "pacman -Syuu --print --noconfirm 2>&1",
-            "Scan for downgrade candidates", ignore_errors=True)
-
-        combined = output or ""
-        # Also check if the command failed with dep errors
-        if not success and output:
-            combined = output
-
-        # Find all packages with broken deps in one pass
-        import re as _re
-        conflicts = set(_re.findall(
-            r'cannot resolve "([^"]+)", a dependency of "([^"]+)"', combined))
-
-        if not conflicts:
-            logging.info("No downgrade conflicts found.")
+        if not self.DOWNGRADE_CONFLICTS:
             return
 
-        for broken_dep, parent_pkg in conflicts:
-            logging.info(f"Downgrade conflict: '{parent_pkg}' needs '{broken_dep}' (missing) — pinning")
-            # Ensure the correct version is installed from the right repo
+        logging.info("Pinning known downgrade conflicts...")
+        self.force_release_lock()
+
+        for broken_dep, parent_pkg in self.DOWNGRADE_CONFLICTS.items():
+            # Ensure parent is installed from the right repo (blackarch)
             await self._resolve_broken_dep(parent_pkg, broken_dep)
             self.ignore_pkgs.add(parent_pkg)
+            self.ignore_pkgs.add(broken_dep)
+            logging.info(f"Pinned '{parent_pkg}' + '{broken_dep}' — immutable for this update")
 
-        logging.info(f"Pinned packages (immune to -Syuu downgrade): {self.ignore_pkgs}")
+        logging.info(f"Immutable packages: {self.ignore_pkgs}")
 
     async def download_phase(self):
         """Downloads all updates in parallel."""
