@@ -15,6 +15,7 @@ import asyncio
 import typing
 import configparser
 import platform
+from contextlib import contextmanager, asynccontextmanager
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 
@@ -405,6 +406,34 @@ class KernelManager:
         except Exception as e:
             logging.error(f"Failed to create snapper post-snapshot: {e}")
             return None
+
+    @staticmethod
+    @contextmanager
+    def snap_wrap(description: str):
+        """Synchronous context manager: creates snapper pre/post around any block."""
+        pre = KernelManager.snapper_create_pre(f"{description} [pre]")
+        status = "OK"
+        try:
+            yield pre
+        except Exception:
+            status = "FAILED"
+            raise
+        finally:
+            KernelManager.snapper_create_post(pre, f"{description} [post-{status}]")
+
+    @staticmethod
+    @asynccontextmanager
+    async def async_snap_wrap(description: str):
+        """Async context manager: creates snapper pre/post around any async block."""
+        pre = await asyncio.to_thread(KernelManager.snapper_create_pre, f"{description} [pre]")
+        status = "OK"
+        try:
+            yield pre
+        except Exception:
+            status = "FAILED"
+            raise
+        finally:
+            await asyncio.to_thread(KernelManager.snapper_create_post, pre, f"{description} [post-{status}]")
 
     @staticmethod
     def detect_kernel_update_pending() -> typing.Tuple[bool, list[str]]:
@@ -821,81 +850,82 @@ class FastUpdate:
     async def execute(self):
         logging.info("--- [Auto-Detect & Fix Phase] ---")
 
-        # Step 0: Apply preventive system fixes (dracut, kernel-install, libjodycode)
-        await asyncio.to_thread(KernelManager.apply_system_fixes)
+        # Outer snapper pair wraps the entire update operation
+        async with KernelManager.async_snap_wrap("aio-update-full"):
 
-        # Step 0.1: Detect if kernel upgrade is pending
-        kernel_pending, kernel_pkgs = await asyncio.to_thread(KernelManager.detect_kernel_update_pending)
-        if kernel_pending:
-            logging.info(f"Kernel upgrade detected in pending updates: {[kp.split()[0] for kp in kernel_pkgs]}")
+            # Step 0: Apply preventive system fixes (dracut, kernel-install, libjodycode)
+            async with KernelManager.async_snap_wrap("system-fixes"):
+                await asyncio.to_thread(KernelManager.apply_system_fixes)
 
-        # Step 0.2: Create snapper PRE-snapshot before system-altering operations
-        pre_snap = await asyncio.to_thread(
-            KernelManager.snapper_create_pre,
-            f"aio-update-pre {datetime.now().isoformat()}"
-        )
+            # Step 0.1: Detect if kernel upgrade is pending
+            kernel_pending, kernel_pkgs = await asyncio.to_thread(KernelManager.detect_kernel_update_pending)
+            if kernel_pending:
+                logging.info(f"Kernel upgrade detected in pending updates: {[kp.split()[0] for kp in kernel_pkgs]}")
 
-        # Step 0.3: Ensure Repo & Keyrings
-        await self.ensure_blackarch_repo()
-        await self.update_keyrings()
+            # Step 0.2: Ensure Repo & Keyrings
+            async with KernelManager.async_snap_wrap("ensure-blackarch-repo"):
+                await self.ensure_blackarch_repo()
 
-        # Step 0.4: Ensure Essential Metapackages
-        logging.info("Ensuring essential metapackages...")
-        await self.run_command("sudo pacman -S --needed --noconfirm blackarch-officials", "Installing blackarch-officials")
+            async with KernelManager.async_snap_wrap("update-keyrings"):
+                await self.update_keyrings()
 
-        # Step 0.5: Sync Categories
-        await self.sync_categories()
+            # Step 0.3: Ensure Essential Metapackages
+            async with KernelManager.async_snap_wrap("install-metapackages"):
+                logging.info("Ensuring essential metapackages...")
+                await self.run_command("sudo pacman -S --needed --noconfirm blackarch-officials", "Installing blackarch-officials")
 
-        # Step 1: Helpers
-        logging.info("Checking prerequisites...")
-        await asyncio.to_thread(HelperManager.ensure_helpers)
-        await self.ensure_dependency("reflector", "reflector")
+            # Step 0.4: Sync Categories
+            async with KernelManager.async_snap_wrap("sync-categories"):
+                await self.sync_categories()
 
-        steps = [
-            ("Mirror Optimization", lambda: self.run_command("sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist", "Mirror Optimization")),
-            ("Downloading Updates", self.download_phase),
-            ("Installing Updates", self.install_phase),
-            ("Cleanup Orphans", lambda: self.run_command("if pacman -Qdtq >/dev/null; then sudo pacman -Rs --noconfirm $(pacman -Qdtq); fi", "Orphan Cleanup", silent=False, ignore_errors=True))
-        ]
+            # Step 1: Helpers
+            async with KernelManager.async_snap_wrap("ensure-helpers"):
+                logging.info("Checking prerequisites...")
+                await asyncio.to_thread(HelperManager.ensure_helpers)
+                await self.ensure_dependency("reflector", "reflector")
 
-        print("Starting Unified System Update...")
-        for desc, func in steps:
-            print(f"Step: {desc}")
-            result = await func()
-            if isinstance(result, tuple) and not result[0]:
-                # If a step fails, try to fix dependencies and retry once
-                await self.smart_dependency_fix(result[1])
-                await func()
+            # Step 2: Main update steps — each wrapped individually
+            print("Starting Unified System Update...")
 
-        # Post-update: Handle kernel-specific tasks if a kernel upgrade was pending
-        if kernel_pending:
-            logging.info("--- [Post-Update Kernel Tasks] ---")
-            # DKMS rebuild with its own snapper pair
-            dkms_mods = await asyncio.to_thread(KernelManager.get_installed_dkms_modules)
-            if dkms_mods:
-                logging.info(f"DKMS modules detected ({len(dkms_mods)}), rebuilding...")
-                dkms_pre = await asyncio.to_thread(
-                    KernelManager.snapper_create_pre,
-                    f"dkms-rebuild-pre {datetime.now().isoformat()}"
-                )
-                dkms_ok = await asyncio.to_thread(KernelManager.rebuild_dkms_all)
-                await asyncio.to_thread(
-                    KernelManager.snapper_create_post,
-                    dkms_pre,
-                    f"dkms-rebuild-post {'OK' if dkms_ok else 'FAILED'} {datetime.now().isoformat()}"
-                )
-            else:
-                logging.info("No DKMS modules — skipping rebuild.")
+            async with KernelManager.async_snap_wrap("mirror-optimization"):
+                print("Step: Mirror Optimization")
+                await self.run_command("sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist", "Mirror Optimization")
 
-            # Regenerate initramfs
-            await asyncio.to_thread(KernelManager.regenerate_initramfs)
+            async with KernelManager.async_snap_wrap("download-updates"):
+                print("Step: Downloading Updates")
+                result = await self.download_phase()
+                if isinstance(result, tuple) and not result[0]:
+                    await self.smart_dependency_fix(result[1])
+                    await self.download_phase()
 
-        # Create snapper POST-snapshot after all operations
-        await asyncio.to_thread(
-            KernelManager.snapper_create_post,
-            pre_snap,
-            f"aio-update-post {datetime.now().isoformat()}"
-        )
+            async with KernelManager.async_snap_wrap("install-updates"):
+                print("Step: Installing Updates")
+                result = await self.install_phase()
+                if isinstance(result, tuple) and not result[0]:
+                    await self.smart_dependency_fix(result[1])
+                    await self.install_phase()
+
+            async with KernelManager.async_snap_wrap("cleanup-orphans"):
+                print("Step: Cleanup Orphans")
+                await self.run_command("if pacman -Qdtq >/dev/null; then sudo pacman -Rs --noconfirm $(pacman -Qdtq); fi", "Orphan Cleanup", silent=False, ignore_errors=True)
+
+            # Post-update: Handle kernel-specific tasks if a kernel upgrade was pending
+            if kernel_pending:
+                logging.info("--- [Post-Update Kernel Tasks] ---")
+                # DKMS rebuild with its own snapper pair
+                dkms_mods = await asyncio.to_thread(KernelManager.get_installed_dkms_modules)
+                if dkms_mods:
+                    async with KernelManager.async_snap_wrap("dkms-rebuild"):
+                        logging.info(f"DKMS modules detected ({len(dkms_mods)}), rebuilding...")
+                        dkms_ok = await asyncio.to_thread(KernelManager.rebuild_dkms_all)
+                        if not dkms_ok:
+                            logging.error("DKMS rebuild had errors — check dkms status manually.")
+                else:
+                    logging.info("No DKMS modules — skipping rebuild.")
+
+                # Regenerate initramfs
+                async with KernelManager.async_snap_wrap("regenerate-initramfs"):
+                    await asyncio.to_thread(KernelManager.regenerate_initramfs)
 
         logging.info("Unified update complete!")
 
@@ -916,32 +946,41 @@ class Tree:
 
 # --- Main Installer Logic ---
 def run_installer():
-    HelperManager.ensure_helpers()
-    PackageManager.fix_problematic_packages()
-    mirrors = Repos.fetch_mirrors()
-    if mirrors:
-        # Write first mirror temporarily (logic from original script)
-        pass 
-    
-    # Try install categories
-    logging.info(f"Preparing to install {len(CATEGORIES)} BlackArch categories...")
-    for helper in AUR_HELPERS:
-        if Utils.is_helper_installed(helper):
-            # install everything in the CATEGORIES list
-            h_config = AUR_HELPERS.get(helper)
-            if not h_config or "install" not in h_config: continue
-            
-            cmd = h_config["install"] + CATEGORIES + ["--disable-download-timeout", "--noprogressbar"]
-            try:
-                logging.info(f"Running installation with {helper}...")
-                Utils.run_command(cmd)
-                print("Installation Successful.")
-                Repos.update_mirrorlist()
-                return
-            except Exception as e:
-                logging.error(f"Installation failed with {helper}: {e}")
-                continue
-    print("Installation failed or no helpers found.")
+    with KernelManager.snap_wrap("install-full"):
+
+        with KernelManager.snap_wrap("install-ensure-helpers"):
+            HelperManager.ensure_helpers()
+
+        with KernelManager.snap_wrap("install-fix-problematic-packages"):
+            PackageManager.fix_problematic_packages()
+
+        with KernelManager.snap_wrap("install-fetch-mirrors"):
+            mirrors = Repos.fetch_mirrors()
+            if mirrors:
+                # Write first mirror temporarily (logic from original script)
+                pass
+
+        # Try install categories
+        logging.info(f"Preparing to install {len(CATEGORIES)} BlackArch categories...")
+        for helper in AUR_HELPERS:
+            if Utils.is_helper_installed(helper):
+                # install everything in the CATEGORIES list
+                h_config = AUR_HELPERS.get(helper)
+                if not h_config or "install" not in h_config: continue
+
+                cmd = h_config["install"] + CATEGORIES + ["--disable-download-timeout", "--noprogressbar"]
+                try:
+                    with KernelManager.snap_wrap(f"install-categories-{helper}"):
+                        logging.info(f"Running installation with {helper}...")
+                        Utils.run_command(cmd)
+                    print("Installation Successful.")
+                    with KernelManager.snap_wrap("install-update-mirrorlist"):
+                        Repos.update_mirrorlist()
+                    return
+                except Exception as e:
+                    logging.error(f"Installation failed with {helper}: {e}")
+                    continue
+        print("Installation failed or no helpers found.")
 
 # --- CLI Entry Point ---
 def main():
@@ -968,15 +1007,17 @@ def main():
 
     try:
         if args.command == "install":
+            # run_installer() has its own internal snap_wrap per phase
             run_installer()
             report["status"] = "success"
-        
+
         elif args.command == "update":
             # Clear any old marker
             if os.path.exists(".update_done"): os.remove(".update_done")
             updater = FastUpdate()
             updater.force_release_lock()
             try:
+                # execute() has its own internal async_snap_wrap per step
                 asyncio.run(updater.execute())
                 report["status"] = "success"
             except Exception as e:
@@ -985,31 +1026,37 @@ def main():
                 logging.error(f"Update command failed: {e}")
             finally:
                 # Create completion marker ALWAYS at the end
-                with open(".update_done", "w") as f: 
+                with open(".update_done", "w") as f:
                     f.write(f"Completed at {datetime.now().isoformat()} - Status: {report['status']}")
                 logging.info(f"Process finished with status: {report['status']}")
 
         elif args.command == "tree":
-            Tree.print_tree(os.getcwd())
+            # tree is read-only, snapshot still taken per policy
+            with KernelManager.snap_wrap("tree"):
+                Tree.print_tree(os.getcwd())
             report["status"] = "success"
 
         elif args.command == "fix-helpers":
-            HelperManager.ensure_helpers()
+            with KernelManager.snap_wrap("fix-helpers"):
+                HelperManager.ensure_helpers()
             report["status"] = "success"
 
         elif args.command == "mirrors":
-            Repos.update_mirrorlist()
+            with KernelManager.snap_wrap("update-mirrorlist"):
+                Repos.update_mirrorlist()
             report["status"] = "success"
 
         elif args.command == "kernel-upgrade":
+            # full_kernel_upgrade() has its own internal snap_wrap pairs
             logging.info("Running full kernel upgrade orchestration...")
             success = KernelManager.full_kernel_upgrade()
             report["status"] = "success" if success else "failed"
             report["details"]["kernel"] = KernelManager.get_running_kernel()
 
         elif args.command == "system-fixes":
-            logging.info("Applying preventive system fixes...")
-            KernelManager.apply_system_fixes()
+            with KernelManager.snap_wrap("system-fixes"):
+                logging.info("Applying preventive system fixes...")
+                KernelManager.apply_system_fixes()
             report["status"] = "success"
 
         else:
