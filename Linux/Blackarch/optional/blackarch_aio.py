@@ -960,9 +960,9 @@ class FastUpdate:
     async def update_keyrings(self):
         """Updates Arch and BlackArch keyrings to prevent signature/find errors."""
         logging.info("Updating keyrings...")
-        keys = ["archlinux-keyring", "blackarch-keyring"]
-        for key in keys:
-            await self.run_command(f"sudo pacman -S --needed --noconfirm {key}", f"Updating {key}")
+        await self.run_command(
+            "sudo pacman -S --needed --noconfirm archlinux-keyring blackarch-keyring",
+            "Updating keyrings")
 
     async def _resolve_broken_dep(self, parent_pkg: str, broken_dep: str) -> bool:
         """Tries to install a package from an alternate repo when its current repo has a broken dep.
@@ -1129,6 +1129,7 @@ class FastUpdate:
             async with KernelManager.async_snap_wrap("ensure-blackarch-repo"):
                 await self.ensure_blackarch_repo()
 
+            self.force_release_lock()
             async with KernelManager.async_snap_wrap("update-keyrings"):
                 await self.update_keyrings()
 
