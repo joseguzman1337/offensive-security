@@ -1060,43 +1060,43 @@ class FastUpdate:
         # Outer snapper pair wraps the entire update operation
         async with KernelManager.async_snap_wrap("aio-update-full"):
 
-            # Step 0: Apply preventive system fixes (dracut, kernel-install, libjodycode)
+            # Step 0: Mirrors first — fast mirrors accelerate every subsequent step
+            async with KernelManager.async_snap_wrap("ensure-helpers"):
+                logging.info("Checking prerequisites...")
+                await asyncio.to_thread(HelperManager.ensure_helpers)
+                await self.ensure_dependency("reflector", "reflector")
+
+            async with KernelManager.async_snap_wrap("mirror-optimization"):
+                print("Step: Mirror Optimization")
+                await asyncio.to_thread(Repos.update_mirrorlist)
+
+            # Step 1: Apply preventive system fixes (dracut, kernel-install, libjodycode)
             async with KernelManager.async_snap_wrap("system-fixes"):
                 await asyncio.to_thread(KernelManager.apply_system_fixes)
 
-            # Step 0.1: Detect if kernel upgrade is pending
+            # Step 1.1: Detect if kernel upgrade is pending
             kernel_pending, kernel_pkgs = await asyncio.to_thread(KernelManager.detect_kernel_update_pending)
             if kernel_pending:
                 logging.info(f"Kernel upgrade detected in pending updates: {[kp.split()[0] for kp in kernel_pkgs]}")
 
-            # Step 0.2: Ensure Repo & Keyrings
+            # Step 1.2: Ensure Repo & Keyrings
             async with KernelManager.async_snap_wrap("ensure-blackarch-repo"):
                 await self.ensure_blackarch_repo()
 
             async with KernelManager.async_snap_wrap("update-keyrings"):
                 await self.update_keyrings()
 
-            # Step 0.3: Ensure Essential Metapackages
+            # Step 1.3: Ensure Essential Metapackages
             async with KernelManager.async_snap_wrap("install-metapackages"):
                 logging.info("Ensuring essential metapackages...")
                 await self.run_command("sudo pacman -S --needed --noconfirm blackarch-officials", "Installing blackarch-officials")
 
-            # Step 0.4: Sync Categories
+            # Step 1.4: Sync Categories
             async with KernelManager.async_snap_wrap("sync-categories"):
                 await self.sync_categories()
 
-            # Step 1: Helpers
-            async with KernelManager.async_snap_wrap("ensure-helpers"):
-                logging.info("Checking prerequisites...")
-                await asyncio.to_thread(HelperManager.ensure_helpers)
-                await self.ensure_dependency("reflector", "reflector")
-
-            # Step 2: Main update steps — each wrapped individually
+            # Step 2: Main update steps
             print("Starting Unified System Update...")
-
-            async with KernelManager.async_snap_wrap("mirror-optimization"):
-                print("Step: Mirror Optimization")
-                await asyncio.to_thread(Repos.update_mirrorlist)
 
             async with KernelManager.async_snap_wrap("download-updates"):
                 print("Step: Downloading Updates")
