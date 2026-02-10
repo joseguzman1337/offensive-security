@@ -251,7 +251,7 @@ class Repos:
         cmd = ["sudo", "reflector"] + args
         logging.info(f"Running: {' '.join(cmd)}")
         try:
-            subprocess.run(cmd, check=True, timeout=120)
+            subprocess.run(cmd, check=True, timeout=120, stderr=subprocess.DEVNULL)
             return True
         except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
             logging.warning(f"Reflector {label} failed: {e}")
