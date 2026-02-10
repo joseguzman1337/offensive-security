@@ -920,6 +920,59 @@ class FastUpdate:
         for key in keys:
             await self.run_command(f"sudo pacman -S --needed --noconfirm {key}", f"Updating {key}")
 
+    async def _resolve_broken_dep(self, parent_pkg: str, broken_dep: str) -> bool:
+        """Tries to install a package from an alternate repo when its current repo has a broken dep.
+
+        Strategy:
+          1. List all repos that provide parent_pkg
+          2. Try installing explicitly from each alternate repo (skipping the one that failed)
+          3. If the broken dep has a known substitute (e.g. linenoise → linenoise-ng), try providing it
+        """
+        import re as _re
+
+        # Known dependency substitutes — packages that satisfy the same need under a different name
+        DEP_SUBSTITUTES = {
+            "linenoise": ["linenoise-ng"],
+        }
+
+        # Step 1: Try installing a known substitute for the broken dep itself
+        substitutes = DEP_SUBSTITUTES.get(broken_dep, [])
+        for sub in substitutes:
+            logging.info(f"Trying substitute dep: '{sub}' for '{broken_dep}'")
+            success, _ = await self.run_command(
+                f"sudo pacman -S --needed --noconfirm {sub}",
+                f"Install substitute dep {sub}", ignore_errors=True)
+            if success:
+                # Now retry the parent package
+                success2, _ = await self.run_command(
+                    f"sudo pacman -S --needed --noconfirm {parent_pkg}",
+                    f"Retry {parent_pkg} after substitute", ignore_errors=True)
+                if success2:
+                    logging.info(f"Resolved '{parent_pkg}' via substitute dep '{sub}'")
+                    return True
+
+        # Step 2: Find alternate repos that carry this package
+        success, output = await self.run_command(
+            f"pacman -Si {parent_pkg}", f"Query repos for {parent_pkg}", ignore_errors=True)
+        if not success or not output:
+            return False
+
+        repos = _re.findall(r"^Repository\s*:\s*(\S+)", output, _re.MULTILINE)
+        if len(repos) < 2:
+            return False
+
+        # Step 3: Try each alternate repo explicitly
+        for repo in repos:
+            logging.info(f"Trying '{parent_pkg}' from repo '{repo}'")
+            success, _ = await self.run_command(
+                f"sudo pacman -S --needed --noconfirm {repo}/{parent_pkg}",
+                f"Install {parent_pkg} from {repo}", ignore_errors=True)
+            if success:
+                logging.info(f"Resolved '{parent_pkg}' from alternate repo '{repo}'")
+                return True
+
+        return False
+
     async def smart_dependency_fix(self, error_output):
         """Parses error output for missing packages or slow mirrors and tries to fix them."""
         import re
@@ -934,7 +987,7 @@ class FastUpdate:
             return True
 
         # 2. Handle unresolvable dependencies (e.g. wcc needs linenoise)
-        #    Track them so retry commands pass --ignore
+        #    Strategy: find the package in an alternate repo that doesn't have the broken dep
         unresolvable_patterns = [
             r'cannot resolve "([^"]+)", a dependency of "([^"]+)"',
         ]
@@ -943,12 +996,16 @@ class FastUpdate:
             matches = re.findall(pattern, error_output)
             for match in matches:
                 if isinstance(match, tuple):
-                    pkg = match[1]  # parent package with broken dep
-                    self.ignore_pkgs.add(pkg)
-                    logging.warning(f"Unresolvable dep: '{match[0]}' needed by '{pkg}' — will --ignore on retry")
+                    broken_dep, parent_pkg = match
                     found_unresolvable = True
+                    logging.warning(f"Unresolvable dep: '{broken_dep}' needed by '{parent_pkg}' — attempting repo switch")
+                    resolved = await self._resolve_broken_dep(parent_pkg, broken_dep)
+                    if not resolved:
+                        self.ignore_pkgs.add(parent_pkg)
+                        logging.warning(f"Could not resolve '{parent_pkg}' from any repo — ignoring as last resort")
         if found_unresolvable:
-            logging.info(f"Ignore list for retry: {self.ignore_pkgs}")
+            if self.ignore_pkgs:
+                logging.info(f"Ignore list for retry (last resort only): {self.ignore_pkgs}")
             return True
 
         # 3. Handle missing packages / targets not found
