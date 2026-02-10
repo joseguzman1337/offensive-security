@@ -840,6 +840,47 @@ class FastUpdate:
             return ""
         return " ".join(f"--ignore {pkg}" for pkg in self.ignore_pkgs)
 
+    async def preflight_downgrade_check(self):
+        """Detects packages that would downgrade to a version with broken deps.
+
+        Runs 'pacman -Syuu --print' in dry-run mode, parses warnings for
+        unresolvable deps caused by cross-repo downgrades, and resolves them
+        proactively (repo switch or ignore) before the real update runs.
+        """
+        import re as _re
+        logging.info("Pre-flight: checking for downgrade conflicts...")
+        self.force_release_lock()
+        success, err = await self.run_command(
+            "sudo pacman -Syuu --print --noconfirm",
+            "Pre-flight downgrade check", ignore_errors=True)
+
+        # Parse both stdout (on success) and stderr (on failure) for warnings
+        output = err if not success and err else ""
+        if not output:
+            logging.info("Pre-flight: no downgrade conflicts detected.")
+            return
+
+        pattern = r'cannot resolve "([^"]+)", a dependency of "([^"]+)"'
+        matches = _re.findall(pattern, output)
+        if not matches:
+            logging.info("Pre-flight: no dependency conflicts found.")
+            return
+
+        seen = set()
+        for broken_dep, parent_pkg in matches:
+            key = (broken_dep, parent_pkg)
+            if key in seen:
+                continue
+            seen.add(key)
+            logging.info(f"Pre-flight conflict: '{broken_dep}' needed by '{parent_pkg}' — resolving")
+            resolved = await self._resolve_broken_dep(parent_pkg, broken_dep)
+            if not resolved:
+                self.ignore_pkgs.add(parent_pkg)
+                logging.warning(f"Pre-flight: could not resolve '{parent_pkg}' — will ignore")
+
+        if self.ignore_pkgs:
+            logging.info(f"Pre-flight ignore list: {self.ignore_pkgs}")
+
     async def download_phase(self):
         """Downloads all updates in parallel."""
         logging.info("Starting Parallel Download Phase...")
@@ -1071,6 +1112,7 @@ class FastUpdate:
                 await asyncio.to_thread(Repos.update_mirrorlist)
 
             # Step 1: Apply preventive system fixes (dracut, kernel-install, libjodycode)
+            self.force_release_lock()
             async with KernelManager.async_snap_wrap("system-fixes"):
                 await asyncio.to_thread(KernelManager.apply_system_fixes)
 
@@ -1080,6 +1122,7 @@ class FastUpdate:
                 logging.info(f"Kernel upgrade detected in pending updates: {[kp.split()[0] for kp in kernel_pkgs]}")
 
             # Step 1.2: Ensure Repo & Keyrings
+            self.force_release_lock()
             async with KernelManager.async_snap_wrap("ensure-blackarch-repo"):
                 await self.ensure_blackarch_repo()
 
@@ -1087,6 +1130,7 @@ class FastUpdate:
                 await self.update_keyrings()
 
             # Step 1.3: Ensure Essential Metapackages
+            self.force_release_lock()
             async with KernelManager.async_snap_wrap("install-metapackages"):
                 logging.info("Ensuring essential metapackages...")
                 await self.run_command("sudo pacman -S --needed --noconfirm blackarch-officials", "Installing blackarch-officials")
@@ -1095,7 +1139,10 @@ class FastUpdate:
             async with KernelManager.async_snap_wrap("sync-categories"):
                 await self.sync_categories()
 
-            # Step 2: Main update steps
+            # Step 2: Pre-flight — detect and resolve downgrade conflicts before updating
+            await self.preflight_downgrade_check()
+
+            # Step 3: Main update steps
             print("Starting Unified System Update...")
 
             async with KernelManager.async_snap_wrap("download-updates"):
