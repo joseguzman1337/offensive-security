@@ -675,19 +675,24 @@ class KernelManager:
 
     @staticmethod
     def upgrade_broken_so_packages():
-        """Upgrades packages whose binaries link against missing shared libraries.
-        Reinstalls to pull the latest version built against current .so versions.
+        """Upgrades packages with missing shared library deps.
+        Uses pacman -Qk (fast, file-existence only) to find broken packages,
+        then cascades through all helpers to reinstall them.
         """
         logging.info("Scanning for packages with missing shared library deps...")
         try:
+            # pacman -Qk (single k) is fast — checks file existence, not checksums
+            # Filter for packages that report missing files ending in .so*
             result = subprocess.run(
-                ["bash", "-c", "LC_ALL=C pacman -Qkk 2>&1 | grep 'missing dependency' | awk -F'\"' '{print $2}' | sort -u"],
-                capture_output=True, text=True, timeout=120)
+                ["bash", "-c",
+                 "LC_ALL=C pacman -Qk 2>&1 | grep -E 'warning.*missing' | "
+                 "awk -F: '{print $1}' | sed 's/warning: //' | sort -u"],
+                capture_output=True, text=True, timeout=60)
             broken_pkgs = [p.strip() for p in result.stdout.strip().splitlines() if p.strip()]
             if not broken_pkgs:
-                logging.debug("No packages with missing .so deps.")
+                logging.debug("No packages with missing files.")
                 return
-            logging.info(f"Found {len(broken_pkgs)} packages with broken .so deps: {broken_pkgs}")
+            logging.info(f"Found {len(broken_pkgs)} packages with missing files — upgrading: {broken_pkgs}")
             for pkg in broken_pkgs:
                 logging.info(f"Upgrading broken package: {pkg}")
                 success, helper = PackageManager.smart_upgrade_package(pkg)
@@ -701,46 +706,67 @@ class KernelManager:
 
     @staticmethod
     def upgrade_stale_python_packages():
-        """Upgrades Python packages built for older interpreter versions.
-        Reinstalls them so they rebuild against the current Python.
+        """Upgrades all pip packages in parallel, then upgrades stale pacman python packages.
+        Uses pip list + xargs for fast parallel pip upgrades, then handles
+        pacman-managed python packages via smart_upgrade_package cascade.
         """
-        logging.info("Scanning for stale Python packages...")
+        logging.info("Upgrading Python packages...")
         try:
+            nproc = os.cpu_count() or 4
+
+            # Step 1: Ensure pip is current
+            logging.info("Ensuring pip is up to date...")
+            subprocess.run(
+                ["python3", "-m", "ensurepip", "--upgrade"],
+                capture_output=True, check=False)
+            subprocess.run(
+                ["pip", "install", "--upgrade", "pip", "--break-system-packages"],
+                capture_output=True, check=False)
+
+            # Step 2: Upgrade all pip packages in parallel
+            logging.info(f"Upgrading all pip packages in parallel ({nproc} workers)...")
+            subprocess.run(
+                ["bash", "-c",
+                 f"pip list --format=freeze 2>/dev/null | awk -F '==' '{{print $1}}' | "
+                 f"xargs -P{nproc} -n1 pip install -U --break-system-packages 2>/dev/null"],
+                capture_output=True, timeout=600, check=False)
+            logging.info("Pip parallel upgrade complete.")
+
+            # Step 3: Upgrade pacman-managed python packages built for old interpreters
             current_pyver = f"python{sys.version_info.major}.{sys.version_info.minor}"
-            # Find packages with files ONLY in old python3.X directories
             result = subprocess.run(
                 ["bash", "-c",
-                 "pacman -Ql $(pacman -Qq) 2>/dev/null | grep -oP '^\\S+ /usr/lib/python3\\.\\d+/' | "
+                 "pacman -Qq | xargs -I{} pacman -Ql {} 2>/dev/null | "
+                 "grep -oP '^\\S+ /usr/lib/python3\\.\\d+/' | "
                  "awk '{split($2,a,\"/\"); print $1, a[4]}' | sort -u"],
                 capture_output=True, text=True, timeout=300)
 
-            pkg_versions = {}  # pkg -> set of python versions it has files for
+            pkg_versions = {}
             for line in result.stdout.strip().splitlines():
                 parts = line.split()
                 if len(parts) == 2:
                     pkg, pydir = parts
                     pkg_versions.setdefault(pkg, set()).add(pydir)
 
-            # Only upgrade packages that have NO files in current python version
             stale_pkgs = sorted(
                 pkg for pkg, versions in pkg_versions.items()
                 if current_pyver not in versions)
 
-            if not stale_pkgs:
-                logging.debug("All Python packages are current.")
-                return
+            if stale_pkgs:
+                logging.info(f"Found {len(stale_pkgs)} stale pacman Python packages (no {current_pyver}): {stale_pkgs}")
+                for pkg in stale_pkgs:
+                    logging.info(f"Upgrading: {pkg}")
+                    success, helper = PackageManager.smart_upgrade_package(pkg)
+                    if success:
+                        logging.info(f"Upgraded '{pkg}' via {helper}")
+                    else:
+                        logging.warning(f"Could not upgrade '{pkg}' from any helper")
+            else:
+                logging.debug("All pacman Python packages are current.")
 
-            logging.info(f"Found {len(stale_pkgs)} stale Python packages (no {current_pyver} files): {stale_pkgs}")
-            for pkg in stale_pkgs:
-                logging.info(f"Upgrading stale package: {pkg}")
-                success, helper = PackageManager.smart_upgrade_package(pkg)
-                if success:
-                    logging.info(f"Upgraded '{pkg}' via {helper}")
-                else:
-                    logging.warning(f"Could not upgrade '{pkg}' from any helper")
-            logging.info("Stale Python upgrade pass complete.")
+            logging.info("Python upgrade pass complete.")
         except Exception as e:
-            logging.warning(f"Stale Python upgrade failed (non-critical): {e}")
+            logging.warning(f"Python upgrade failed (non-critical): {e}")
 
     @staticmethod
     def apply_system_fixes():
