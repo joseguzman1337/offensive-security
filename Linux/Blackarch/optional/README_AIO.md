@@ -4,17 +4,18 @@ This tool consolidates multiple BlackArch maintenance scripts into a single, rob
 
 ## Features
 
-*   **Unified CLI:** Single entry point (`blackarch_aio.py`) for all maintenance tasks.
-*   **Optimized Update:** Single-pass, asynchronous system upgrade (Core + AUR) with parallel downloads.
-*   **Auto-Healing:** Proactively installs missing dependencies, updates keyrings, and configures repositories if missing.
-*   **Geo-Proximity Mirrors:** Automatically optimizes mirrorlists using geolocation and speed testing via `reflector`.
-*   **Smart Lock Management:** Automatically handles `pacman` database locks and terminates conflicting processes.
-*   **JSON Reporting:** Standardized JSON output for every execution, enabling easy automation and monitoring.
-*   **Zero-Config:** 100% human-intervention-free by design.
+- **Unified CLI:** Single entry point (`blackarch_aio.py`) for all maintenance tasks.
+- **Optimized Update:** Single-pass, asynchronous system upgrade (Core + AUR) with parallel downloads.
+- **Auto-Healing:** Proactively installs missing dependencies, updates keyrings, and configures repositories if missing.
+- **Geo-Proximity Mirrors:** Automatically optimizes mirrorlists using geolocation and speed testing via `reflector`.
+- **Smart Lock Management:** Automatically handles `pacman` database locks and terminates conflicting processes.
+- **JSON Reporting:** Standardized JSON output for every execution, enabling easy automation and monitoring.
+- **Zero-Config:** 100% human-intervention-free by design.
 
 ## Usage
 
 Make the script executable:
+
 ```bash
 chmod +x blackarch_aio.py
 ```
@@ -23,24 +24,28 @@ chmod +x blackarch_aio.py
 
 1.  **Full Installation:**
     Installs all BlackArch categories, configures repositories, and sets up helpers.
+
     ```bash
     ./blackarch_aio.py install
     ```
 
 2.  **Unified System Update:**
     Performs mirror optimization, parallel package downloads, and a full system upgrade (Core + AUR).
+
     ```bash
     ./blackarch_aio.py update
     ```
 
 3.  **Directory Tree:**
     Visualizes the folder structure of the current workspace.
+
     ```bash
     ./blackarch_aio.py tree
     ```
 
 4.  **Fix Helpers:**
     Ensures all supported AUR helpers (`yay`, `paru`, `trizen`, `pikaur`, etc.) are installed and ready.
+
     ```bash
     ./blackarch_aio.py fix-helpers
     ```
@@ -62,12 +67,13 @@ while true; do clear; echo "=== BLACKARCH AIO MONITOR ==="; PID=$(pgrep -f "blac
 ## Logic Migration
 
 This script integrates and improves logic from:
-*   `blackarch_installer.py` (Core installation flow)
-*   `fast_update.py` (Async I/O and locking strategy)
-*   `reflector.py` & `blackarch_repos.py` (Advanced mirror management)
-*   `utils.py`, `helpers.py`, `missing_helpers.py` (Helper/Package utilities)
-*   `problematic_packages.py` (Retry/Ignore logic)
-*   `folder_tree_*.py` (Tree visualization)
+
+- `blackarch_installer.py` (Core installation flow)
+- `fast_update.py` (Async I/O and locking strategy)
+- `reflector.py` & `blackarch_repos.py` (Advanced mirror management)
+- `utils.py`, `helpers.py`, `missing_helpers.py` (Helper/Package utilities)
+- `problematic_packages.py` (Retry/Ignore logic)
+- `folder_tree_*.py` (Tree visualization)
 
 ## Output Format
 
@@ -75,9 +81,9 @@ Every command concludes with a standardized JSON report:
 
 ```json
 {
-    "timestamp": "2026-02-10T15:42:35.112268",
-    "command": "update",
-    "status": "success",
-    "details": {}
+  "timestamp": "2026-02-10T15:42:35.112268",
+  "command": "update",
+  "status": "success",
+  "details": {}
 }
 ```
