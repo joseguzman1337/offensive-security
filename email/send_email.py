@@ -1,4 +1,5 @@
 import getpass
+import os
 import re
 import smtplib
 import webbrowser
@@ -76,9 +77,13 @@ def send_email(sender_email, sender_password, receiver_email, subject, body):
 
 if __name__ == "__main__":
     # Email details
-    sender_email = "yourname@yourdomain.com"
+    sender_email = os.environ.get("SENDER_EMAIL", "")
+    if not sender_email:
+        sender_email = input("Enter your sender email address: ")
     sender_password = getpass.getpass("Enter your email password: ")
-    receiver_email = "yourrecipiennt@gmail.com"
+    receiver_email = os.environ.get("RECEIVER_EMAIL", "")
+    if not receiver_email:
+        receiver_email = input("Enter the recipient email address: ")
     subject = "Test DKIM 1213"
     body = "This is the email body."
 
@@ -87,8 +92,8 @@ if __name__ == "__main__":
 
     # Analyze DKIM failure (replace with actual email headers)
     headers = {
-        "From": "yourname@yourdomain.com",
-        "DKIM-Signature": "v=1; a=rsa-sha256; d=gmail.com; s=20210112; c=relaxed/relaxed; q=dns/txt; i=@gmail.com; t=1678687600; h=From:To:Subject:Date:Message-ID; bh=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx; b=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "From": sender_email,
+        "DKIM-Signature": "v=1; a=rsa-sha256; d=example.com; s=selector1; c=relaxed/relaxed; q=dns/txt; i=@example.com; t=1678687600; h=From:To:Subject:Date:Message-ID; bh=BASE64HASH; b=BASE64SIG",
     }
     failure_reason = analyze_dkim_failure(headers)
     print(f"Potential DKIM failure reason: {failure_reason}")
