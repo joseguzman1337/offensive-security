@@ -26,7 +26,8 @@ def analyze_dkim_failure(headers):
 
     try:
         # Split the DKIM-Signature header into its parts
-        dkim_parts = dict(item.split("=", 1) for item in dkim_signature.split("; "))
+        dkim_parts = dict(item.split("=", 1)
+                          for item in dkim_signature.split("; "))
 
         # Check if the 'd=' tag matches the 'From' domain
         from_domain = re.search(r"@(.*)", headers["From"]).group(1)
@@ -37,7 +38,8 @@ def analyze_dkim_failure(headers):
         # Check if the 's=' tag matches a valid selector in DNS
         dkim_selector = dkim_parts.get("s")
         try:
-            dns.resolver.resolve(f"{dkim_selector}._domainkey.{dkim_domain}", "TXT")
+            dns.resolver.resolve(
+                f"{dkim_selector}._domainkey.{dkim_domain}", "TXT")
         except dns.resolver.NXDOMAIN:
             return f"Invalid DKIM selector: '{dkim_selector}._domainkey.{dkim_domain}' not found in DNS"
 

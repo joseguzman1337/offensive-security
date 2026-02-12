@@ -49,7 +49,7 @@ def add_skip_comment(filename: str, checkov_id: str, start_line: int) -> None:
         with open(filename, "r+", encoding="utf-8") as file:
             lines = file.readlines()
             skip_comment = f"{SKIP_COMMENT_PREFIX}{checkov_id}\n"
-            if skip_comment not in lines[start_line : start_line + 1]:
+            if skip_comment not in lines[start_line: start_line + 1]:
                 lines.insert(start_line, skip_comment)
                 logging.info(
                     "Updated: %s - line %s",
@@ -75,7 +75,8 @@ def extract_finding_info(
         start_line = int(line_range.split("-")[0])
         return checkov_id.strip(), file_path.strip(), start_line
     except (IndexError, ValueError) as error:
-        log_line = lines[lineno] if 0 <= lineno < len(lines) else "Out of range"
+        log_line = lines[lineno] if 0 <= lineno < len(
+            lines) else "Out of range"
         logging.error(
             "Extract info error: %s - %s - %s",
             lineno,
