@@ -10,8 +10,9 @@ from tqdm import tqdm
 
 # Initialize logging
 LOG_FILE = ""
-with tempfile.NamedTemporaryFile(mode="w", delete=False) as tmp_file:
+with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".log") as tmp_file:
     LOG_FILE = tmp_file.name
+os.chmod(LOG_FILE, 0o600)
 logging.basicConfig(
     filename=LOG_FILE,
     filemode="w",

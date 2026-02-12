@@ -1,28 +1,52 @@
 # monitor_cluster.py
+import ipaddress
+import re
+import shlex
+import subprocess
+
 from flask import Flask, render_template, jsonify
 import psutil
 import socket
-import json
 from datetime import datetime
 
 app = Flask(__name__)
 
+
+def _validate_scan_target(target):
+    """Validate that target is a valid IP address, CIDR range, or hostname."""
+    # Try parsing as IP address or network
+    try:
+        ipaddress.ip_address(target)
+        return True
+    except ValueError:
+        pass
+    try:
+        ipaddress.ip_network(target, strict=False)
+        return True
+    except ValueError:
+        pass
+    # Validate as hostname (RFC 1123)
+    if re.fullmatch(r'[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*', target):
+        return True
+    return False
+
+
 class ClusterMonitor:
     def __init__(self):
         self.nodes = self.load_hostfile()
-        
+
     def load_hostfile(self):
         with open('hostfile', 'r') as f:
             return [line.split()[0] for line in f if not line.startswith('#')]
-    
+
     def get_node_status(self, node_ip):
         """Check if node is responsive"""
         try:
             socket.create_connection((node_ip, 22), timeout=2)
             return 'online'
-        except:
+        except (OSError, socket.error, socket.timeout):
             return 'offline'
-    
+
     def get_cluster_metrics(self):
         metrics = {
             'timestamp': datetime.now().isoformat(),
@@ -32,7 +56,7 @@ class ClusterMonitor:
             'memory_usage': psutil.virtual_memory().percent,
             'nodes': []
         }
-        
+
         for node in self.nodes:
             status = self.get_node_status(node)
             if status == 'online':
@@ -42,7 +66,7 @@ class ClusterMonitor:
                 'status': status,
                 'last_check': datetime.now().isoformat()
             })
-        
+
         return metrics
 
 monitor = ClusterMonitor()
@@ -57,11 +81,11 @@ def get_metrics():
 
 @app.route('/api/run_scan/<target>')
 def run_scan(target):
-    # Trigger distributed scan
-    import subprocess
+    if not _validate_scan_target(target):
+        return jsonify({'error': 'Invalid scan target'}), 400
     result = subprocess.run([
         'mpirun', '--hostfile', 'hostfile',
         '-np', str(len(monitor.nodes)),
-        'python', 'security_scanner.py', target
+        'python', 'security_scanner.py', shlex.quote(target)
     ], capture_output=True, text=True)
     return jsonify({'output': result.stdout})

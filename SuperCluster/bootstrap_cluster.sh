@@ -41,8 +41,8 @@ install_mpi() {
 # Setup SSH keys for passwordless access
 setup_ssh() {
     echo "Setting up SSH keys..."
-    ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
-    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+    ssh-keygen -t ed25519 -a 100 -f ~/.ssh/id_ed25519 -C "supercluster-$(hostname)"
+    cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
     chmod 600 ~/.ssh/authorized_keys
 }
 

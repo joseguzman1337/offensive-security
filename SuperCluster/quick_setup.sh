@@ -15,8 +15,8 @@ pip3 install mpi4py python-nmap flask psutil requests pandas
 
 # Step 3: Generate SSH keys
 echo "[3/5] Setting up SSH..."
-ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+ssh-keygen -t ed25519 -a 100 -f ~/.ssh/id_ed25519 -C "supercluster-$(hostname)"
+cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
 
 # Step 4: Configure hostfile
 echo "[4/5] Configuring cluster..."

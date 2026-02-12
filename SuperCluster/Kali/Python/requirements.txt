@@ -5,7 +5,7 @@ aio-pika
 aiodns
 aiofiles
 aiogram
-aiohttp=3.9.3
+aiohttp>=3.13.3
 aiohttp-retry
 aiormq
 aiosignal
@@ -33,7 +33,7 @@ colorhash
 confection
 contourpy
 crypto
-cryptography
+cryptography>=46.0.5
 cycler
 cyclonedx-python-lib
 cymem
@@ -42,7 +42,7 @@ dnspython
 docker
 exceptiongroup
 fbmessenger
-filelock
+filelock>=3.20.1
 fire
 fonttools==4.61.1
 frozenlist
@@ -70,7 +70,7 @@ joblib
 jsonpickle
 jsonschema
 jsonschema-specifications
-keras
+keras>=3.12.0
 kiwisolver
 lark
 libclang
@@ -108,7 +108,7 @@ pycep-parser
 pycryptodomex
 pydantic
 pydot
-pyjwt
+pyjwt>=2.4.0
 pymongo
 pyparsing
 pyrsistent
@@ -149,7 +149,9 @@ types-tqdm
 types-requests
 tzlocal
 update-checker
-urllib3
+urllib3>=2.3.0
 userpath
 webexteamssdk
 yarl
+orjson>=3.11.6
+ply>=3.12
