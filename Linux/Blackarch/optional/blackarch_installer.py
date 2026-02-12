@@ -40,7 +40,8 @@ for mirror in mirrors:
         file.write(f"Server = {mirror}\n")  # Use only the current mirror
 
     try:
-        utils.run_command(["sudo", "pacman", "-Sy"], retries=3)  # Corrected utils call
+        utils.run_command(["sudo", "pacman", "-Sy"],
+                          retries=3)  # Corrected utils call
     except subprocess.CalledProcessError:
         logging.warning("Mirror %s failed, trying next...", mirror)
         continue  # Go to the next mirror if this one fails

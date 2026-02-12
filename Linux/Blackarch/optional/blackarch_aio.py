@@ -878,7 +878,9 @@ class KernelManager:
         logging.info("Configuring dracut to use /boot directory...")
         content = '# Fix dracut to use /boot instead of EFI partition\nuefi="no"\nhostonly="yes"\ncompress="zstd"\n'
         try:
-            with tempfile.NamedTemporaryFile(mode="w", suffix=".conf", delete=False) as f:
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".conf", delete=False
+            ) as f:
                 tmp = f.name
                 f.write(content)
             subprocess.run(
@@ -902,7 +904,9 @@ class KernelManager:
             "Configuring kernel-install to use traditional initramfs...")
         content = "layout=bls\ninitrd_generator=dracut\n"
         try:
-            with tempfile.NamedTemporaryFile(mode="w", suffix=".conf", delete=False) as f:
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".conf", delete=False
+            ) as f:
                 tmp = f.name
                 f.write(content)
             subprocess.run(["sudo", "mkdir", "-p", "/etc/kernel"], check=True)

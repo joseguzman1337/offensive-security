@@ -62,7 +62,8 @@ def is_helper_installed(helper: str) -> bool:
     if helper == "pacman":
         return True
     try:
-        subprocess.run([helper, "--version"], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run([helper, "--version"], check=True,
+                       stdout=subprocess.DEVNULL)
         return True
     except FileNotFoundError:
         return False
