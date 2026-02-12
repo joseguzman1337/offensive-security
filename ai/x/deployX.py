@@ -20,8 +20,11 @@ def download_file(url, folder_name):
         response = requests.get(url, stream=True)
         response.raise_for_status()
 
-        file_name = url.split("/")[-1]
+        file_name = os.path.basename(url.split("/")[-1])
         file_path = os.path.join(folder_name, file_name)
+        if not os.path.realpath(file_path).startswith(os.path.realpath(folder_name)):
+            print(f"Skipping {url}: path traversal detected")
+            return
 
         with open(file_path, "wb") as file:
             for chunk in response.iter_content(chunk_size=8192):

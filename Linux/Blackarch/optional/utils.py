@@ -1,11 +1,13 @@
 import logging
+import os
 import subprocess
+import tempfile
 import time
 import typing
 
 # --- Global Variables ---
 PACMAN_CONF = "/etc/pacman.conf"
-LOG_FILE = "/tmp/blackarch_installer.log"
+LOG_FILE = os.path.join(tempfile.gettempdir(), "blackarch_installer.log")
 
 AUR_HELPERS = {
     "yay": ["yay", "-S"],
@@ -60,7 +62,8 @@ def is_helper_installed(helper: str) -> bool:
     if helper == "pacman":
         return True
     try:
-        subprocess.run([helper, "--version"], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run([helper, "--version"], check=True,
+                       stdout=subprocess.DEVNULL)
         return True
     except FileNotFoundError:
         return False

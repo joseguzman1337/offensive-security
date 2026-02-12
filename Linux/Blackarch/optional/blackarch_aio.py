@@ -11,9 +11,11 @@ import json
 import logging
 import os
 import platform
+import shlex
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 import typing
 from concurrent.futures import ThreadPoolExecutor
@@ -322,8 +324,8 @@ class Repos:
     def get_location_info() -> dict:
         """Get geolocation via ipinfo.io (no extra dependencies)."""
         try:
-            logging.info("Requested http://ipinfo.io/json")
-            resp = requests.get("http://ipinfo.io/json", timeout=5)
+            logging.info("Requested https://ipinfo.io/json")
+            resp = requests.get("https://ipinfo.io/json", timeout=5)
             resp.raise_for_status()
             return resp.json()
         except Exception as e:
@@ -876,8 +878,10 @@ class KernelManager:
         logging.info("Configuring dracut to use /boot directory...")
         content = '# Fix dracut to use /boot instead of EFI partition\nuefi="no"\nhostonly="yes"\ncompress="zstd"\n'
         try:
-            tmp = "/tmp/_aio_dracut_fix.conf"
-            with open(tmp, "w") as f:
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".conf", delete=False
+            ) as f:
+                tmp = f.name
                 f.write(content)
             subprocess.run(
                 ["sudo", "mkdir", "-p", "/etc/dracut.conf.d"], check=True)
@@ -900,8 +904,10 @@ class KernelManager:
             "Configuring kernel-install to use traditional initramfs...")
         content = "layout=bls\ninitrd_generator=dracut\n"
         try:
-            tmp = "/tmp/_aio_kernel_install.conf"
-            with open(tmp, "w") as f:
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".conf", delete=False
+            ) as f:
+                tmp = f.name
                 f.write(content)
             subprocess.run(["sudo", "mkdir", "-p", "/etc/kernel"], check=True)
             subprocess.run(
@@ -1229,12 +1235,7 @@ class FastUpdate:
         self.ignore_pkgs = set()  # Packages to skip due to unresolvable deps
 
     def check_cmd(self, cmd):
-        return (
-            subprocess.run(
-                f"command -v {cmd}", shell=True, capture_output=True
-            ).returncode
-            == 0
-        )
+        return shutil.which(cmd) is not None
 
     def force_release_lock(self):
         logging.info("Ensuring database lock is released...")
@@ -1267,7 +1268,7 @@ class FastUpdate:
                 f"Dependency '{cmd}' not found. Installing '{pkg}'...")
             self.force_release_lock()
             success, err = await self.run_command(
-                f"sudo pacman -S --needed --noconfirm {pkg}",
+                f"sudo pacman -S --needed --noconfirm {shlex.quote(pkg)}",
                 f"Installing {pkg}",
                 silent=False,
             )
@@ -1281,7 +1282,7 @@ class FastUpdate:
         """Returns --ignore flags for all packages in self.ignore_pkgs."""
         if not self.ignore_pkgs:
             return ""
-        return " ".join(f"--ignore {pkg}" for pkg in self.ignore_pkgs)
+        return " ".join(f"--ignore {shlex.quote(pkg)}" for pkg in self.ignore_pkgs)
 
     # Packages with cross-repo conflicts where -Syuu would downgrade to a broken version.
     # Each entry: broken dep → parent package. Both get pinned to --ignore.
@@ -1432,14 +1433,14 @@ class FastUpdate:
         for sub in substitutes:
             logging.info(f"Trying substitute dep: '{sub}' for '{broken_dep}'")
             success, _ = await self.run_command(
-                f"sudo pacman -S --needed --noconfirm {sub}",
+                f"sudo pacman -S --needed --noconfirm {shlex.quote(sub)}",
                 f"Install substitute dep {sub}",
                 ignore_errors=True,
             )
             if success:
                 # Now retry the parent package
                 success2, _ = await self.run_command(
-                    f"sudo pacman -S --needed --noconfirm {parent_pkg}",
+                    f"sudo pacman -S --needed --noconfirm {shlex.quote(parent_pkg)}",
                     f"Retry {parent_pkg} after substitute",
                     ignore_errors=True,
                 )
@@ -1450,7 +1451,7 @@ class FastUpdate:
 
         # Step 2: Find alternate repos that carry this package
         success, output = await self.run_command(
-            f"pacman -Si {parent_pkg}",
+            f"pacman -Si {shlex.quote(parent_pkg)}",
             f"Query repos for {parent_pkg}",
             ignore_errors=True,
         )
@@ -1465,7 +1466,7 @@ class FastUpdate:
         for repo in repos:
             logging.info(f"Trying '{parent_pkg}' from repo '{repo}'")
             success, _ = await self.run_command(
-                f"sudo pacman -S --needed --noconfirm {repo}/{parent_pkg}",
+                f"sudo pacman -S --needed --noconfirm {shlex.quote(repo)}/{shlex.quote(parent_pkg)}",
                 f"Install {parent_pkg} from {repo}",
                 ignore_errors=True,
             )
@@ -1558,7 +1559,7 @@ class FastUpdate:
                     logging.info(
                         f"Attempting generic fix for {pkg} using {helper}...")
                     await self.run_command(
-                        f"{helper} -S --needed --noconfirm {pkg}",
+                        f"{shlex.quote(helper)} -S --needed --noconfirm {shlex.quote(pkg)}",
                         f"Retry install {pkg}",
                         ignore_errors=True,
                     )
