@@ -1,11 +1,13 @@
 import logging
+import os
 import subprocess
+import tempfile
 import time
 import typing
 
 # --- Global Variables ---
 PACMAN_CONF = "/etc/pacman.conf"
-LOG_FILE = "/tmp/blackarch_installer.log"
+LOG_FILE = os.path.join(tempfile.gettempdir(), "blackarch_installer.log")
 
 AUR_HELPERS = {
     "yay": ["yay", "-S"],

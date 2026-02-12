@@ -2,7 +2,9 @@
 """Automates BlackArch installation on Arch Linux."""
 
 import logging
+import os
 import subprocess
+import tempfile
 
 import blackarch_packages
 import blackarch_repos
@@ -11,12 +13,12 @@ import problematic_packages
 import utils  # Import the utils module
 
 # --- Global Variables ---
-LOG_FILE = "/tmp/blackarch_installer.log"
+LOG_FILE = os.path.join(tempfile.gettempdir(), "blackarch_installer.log")
 
 AUR_HELPERS = missing_helpers.AUR_HELPERS
 
 # --- Main Execution ---
-with open(LOG_FILE, "w"):  # Clear log file
+with open(os.open(LOG_FILE, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600), "w"):
     pass
 
 logging.basicConfig(
