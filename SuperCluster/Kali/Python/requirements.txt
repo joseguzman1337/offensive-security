@@ -44,7 +44,7 @@ exceptiongroup
 fbmessenger
 filelock>=3.20.1
 fire
-fonttools==4.61.1
+fonttools==4.62.0
 frozenlist
 fsspec
 future
