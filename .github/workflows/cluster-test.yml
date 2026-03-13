@@ -33,7 +33,7 @@ jobs:
                   python benchmark_cluster.py --nodes ${{ matrix.mpi-nodes }}
 
             - name: Upload Results
-              uses: actions/upload-artifact@v6
+              uses: actions/upload-artifact@v7
               with:
                   name: cluster-results-${{ matrix.mpi-nodes }}
                   path: results/
