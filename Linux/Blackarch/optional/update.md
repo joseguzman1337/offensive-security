@@ -1,7 +1,0 @@
-**Update with Orphan Cleanup**
-Remove orphaned packages; update system; perform second pass to remove new orphans.
-
-```bash
-bash -c 'sudo -v; (while true; do sudo -v; sleep 60; done) & PID=$!; trap "kill $PID" EXIT; sudo rm -rf /var/cache/pacman/pkg/download-* /var/cache/pacman/pkg/*.part &> /dev/null && (if command -v pacman &> /dev/null; then echo ">>> Updating Pacman..." && (if pacman -Qdtq >/dev/null 2>&1; then sudo pacman -Rs --noconfirm $(pacman -Qdtq); fi && sudo pacman -Syu --needed --disable-download-timeout --noconfirm && if pacman -Qdtq >/dev/null 2>&1; then sudo pacman -Rs --noconfirm $(pacman -Qdtq); fi); fi) && (if command -v yay &> /dev/null; then echo ">>> Updating Yay..." && yay -Sc --noconfirm && yay -Syuuq --noconfirm --answerclean=All --answerdiff=None --mflags "--nocheck" 2> /dev/null | grep -vE "^/home|xg\+\+|gcc|g\+\+|clang" && yay -Sc --noconfirm; fi) && (if command -v paru &> /dev/null; then echo ">>> Updating Paru..." && paru -Syu --noconfirm --mflags "--nocheck" 2> /dev/null | grep -vE "^/home|xg\+\+|gcc|g\+\+|clang" && paru -Sc --noconfirm && paru -Syu --needed --noconfirm --mflags "--nocheck" 2> /dev/null | grep -vE "^/home|xg\+\+|gcc|g\+\+|clang" && paru -Sc --noconfirm; fi) && (if command -v pikaur &> /dev/null; then echo ">>> Updating Pikaur..." && pikaur -Syu --noconfirm --makepkg-args="--nocheck" 2> /dev/null | grep -vE "^/home|xg\+\+|gcc|g\+\+|clang"; fi) && echo "All updates complete!"'
-
-```

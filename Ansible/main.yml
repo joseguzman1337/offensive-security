@@ -1,6 +1,0 @@
----
-- hosts: all
-  become: true
-  tasks:
-    - name: Include OS-specific tasks
-      include_tasks: "{{ ansible_os_family }}.yml"
