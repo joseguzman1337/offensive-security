@@ -1,0 +1,10 @@
+---
+- name: Install IIS on Windows
+  win_feature:
+    name: Web-Server
+    state: present
+
+- name: Ensure a file is present on Windows
+  win_copy:
+    src: files/index.html
+    dest: C:\inetpub\wwwroot\index.html

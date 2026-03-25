@@ -1,0 +1,10 @@
+neofetch
+workspace sk
+workspace
+spool /home/d3c0d3r/SA/sk/new_r7nmapScan_spool
+setg ExitOnSession false
+setg VERBOSE true
+neofetch
+db_nmap --save --privileged -sY -sZ -script=auth,broadcast,brute,discovery,dos,external,fuzzer,intrusive,malware,version,vuln --script-args vulscandb=cve.csv,exploitdb.csv,openvas.csv,osvdb.csv,scipvuldb.csv,securityfocus.csv,securitytracker.csv,xforce.csv,randomseed,newtargets A -f -D RND -sV -sC --script-updatedb --script-trace -O --osscan-guess -vvv --max-retries 0 --min-hostgroup 7 --max-hostgroup 1337 --max-parallelism 137 --min-parallelism 2 --max-rtt-timeout 100ms --host-timeout 30m --randomize-hosts -sN -Pn -p- --mtu 8 --version-all --version-trace --reason -iR 10000 -PO -PM -sU -T4 -v -PE -PP -PS22,25,80 -PA21,23,80,3389 -PU40125 -PY -g 53 --traceroute --packet-trace -iL /home/d3c0d3r/SA/sk/sk_ips --excludefile /home/d3c0d3r/SA/sk/bl -vvv -ddd -oA /home/d3c0d3r/SA/sk/new_r7nmapScan -oS /home/d3c0d3r/SA/sk/new_r7nmapScan_sk
+version
+banner

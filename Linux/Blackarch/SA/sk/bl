@@ -1,0 +1,5 @@
+# Add IP addresses to exclude from scanning
+# One per line
+# Example:
+# 192.168.1.1
+# 10.0.0.1/24

@@ -1,0 +1,10 @@
+---
+- name: Install Apache on Linux
+  package:
+    name: httpd
+    state: present
+
+- name: Ensure a file is present on Linux
+  copy:
+    src: files/index.html
+    dest: /var/www/html/index.html

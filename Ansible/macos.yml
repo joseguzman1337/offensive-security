@@ -1,0 +1,14 @@
+---
+- name: Install Homebrew on macOS
+  homebrew:
+    state: present
+
+- name: Install Apache on macOS
+  homebrew:
+    name: httpd
+    state: present
+
+- name: Ensure a file is present on macOS
+  copy:
+    src: files/index.html
+    dest: /usr/local/var/www/index.html

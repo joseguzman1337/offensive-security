@@ -1,0 +1,23 @@
+# docker-compose-cluster.yml
+version: '3.8'
+services:
+  master-node:
+    image: mpi-base:latest
+    container_name: cluster-master
+    networks:
+      - cluster-net
+    volumes:
+      - ./shared:/shared
+      - ./hostfile:/etc/mpi/hostfile
+    command: /bin/bash -c "service ssh start && tail -f /dev/null"
+    
+  worker-node-1:
+    image: mpi-base:latest
+    container_name: cluster-worker-1
+    networks:
+      - cluster-net
+    depends_on:
+      - master-node
+    command: /bin/bash -c "service ssh start && tail -f /dev/null"
+    
+  # Add more worker nodes as needed

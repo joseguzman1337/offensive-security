@@ -1,0 +1,11 @@
+name: /Users/d3c0d3r/.ai-navigator/micromamba/envs/metal
+channels:
+  - ai-staging
+  - conda-forge
+  - defaults
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - libcxx=19.1.4=ha82da77_0
+  - llama.cpp=0.0.3880=mps_hc2a9b2d_100
+  - llvm-openmp=19.1.4=hdb05f8b_0

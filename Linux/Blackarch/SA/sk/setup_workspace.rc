@@ -1,0 +1,14 @@
+db_status
+db_rebuild_cache
+load nexpose
+load nessus
+save
+workspace -a sk
+setg Prompt x(%whi%H/%grn%U/%whi%L%grn%D/%whi%T/%grn%W/%whiS%S/%grnJ%J)
+setg ConsoleLogging y
+setg LogLevel 5
+setg SessionLogging y
+setg TimestampOutput true
+setg ExitOnSession false
+setg VERBOSE true
+save

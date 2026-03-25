@@ -1,0 +1,63 @@
+# conda_deployment.yml
+
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Configure Conda Solver
+      block:
+        - name: Set solver to classic
+          command: conda config --set solver classic
+
+        - name: Update Conda and packages in base environment
+          command: conda update -n base -c conda-forge conda; conda config --add channels conda-forge; conda update --all -n base; conda upgrade --all
+
+    - name: Create and Update New Environment
+      block:
+        - name: Create a new environment
+          command: conda create -n x python=3.13
+
+        - name: Activate the new environment
+          command: conda activate x
+
+        - name: Export the environment
+          command: conda env export > environment.yml
+
+        - name: Update the new environment
+          command: conda env update -n x -f environment.yml
+
+    - name: Fully Update All Environments
+      block:
+        - name: Update base environment
+          command: conda update -n base -c conda-forge conda; conda update --all -n base; conda upgrade --all
+
+        - name: Update "x" environment
+          command: conda update -n x -c conda-forge conda; conda update --all -n x; conda upgrade --all
+
+    - name: Install Specific Conda Version (Optional)
+      block:
+        - name: Install Conda in base environment
+          command: conda install -n base conda=24.11.0
+
+        - name: Install Conda in "x" environment
+          command: conda install -n x conda=24.11.0
+
+    - name: Upgrade Pip
+      block:
+        - name: Ensure pip is installed and upgrade it
+          command: python -m ensurepip --upgrade; pip install --upgrade pip
+
+        - name: Upgrade all pip packages (macOS/Linux)
+          command: pip list --format=freeze | awk -F '==' '{print $1}' | xargs -n1 pip install -U
+          when: ansible_os_family == 'Darwin' or ansible_os_family == 'Linux'
+
+        - name: Upgrade all pip packages (Windows)
+          command: pip list --format=freeze | ForEach-Object {$_.Split('==')[0]} | ForEach-Object {pip install -U $_}
+          when: ansible_os_family == 'Windows'
+
+    - name: Install Anaconda Client
+      command: conda install anaconda-client
+
+    - name: Log in to Anaconda Cloud (Optional)
+      command: anaconda login

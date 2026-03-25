@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package google.ollama.v1;
+
+// Assuming the 'google' directory is in the same directory as x.proto
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+
+service Ollama {
+  // Generates a text completion from the given prompt and model.
+  rpc GenerateTextCompletion (GenerateTextCompletionRequest) returns (stream GenerateTextCompletionResponse) {
+    option (google.api.http) = {
+      post: "/v1/projects/{project}/models/{model}:generateText"
+      body: "*"
+    };
+    option (google.api.method_signature) = "project, model, prompt";
+  }
+}
+
+message GenerateTextCompletionRequest {
+  // Required. The Google Cloud project to use for the request.
+  // This should be one of:
+  // - "astra"
+  // - "jules"
+  // - "mariner"
+  // - "notebooklm"
+  // - "vertex"
+  // - "gemini-advanced-1.5-pro"
+  // - "gemini-advanced-1.5-flash"
+  // - "gemini-advanced-1.5-pro-with-deep-research"
+  // - "gemini-2.0-flash-experimental"
+  // - "gemini-extensions"
+  // - "gemini-gems"
+  // - "colab.research.google.com"
+  // - "idx.google.com"
+  // - "aistudio.google.com"  
+  string project = 1 [(google.api.field_behavior) = REQUIRED];
+
+  // Required. The ID of the model to use for the request.
+  // This can be any valid Ollama model ID.
+  string model = 2 [(google.api.field_behavior) = REQUIRED];
+
+  // Required. The prompt to generate a completion for.
+  string prompt = 3 [(google.api.field_behavior) = REQUIRED];
+
+  // Optional. The maximum number of tokens to generate.
+  int32 max_tokens = 4;
+
+  // Optional. The sampling temperature to use.
+  float temperature = 5;
+
+  // Optional. The top-k value to use.
+  int32 top_k = 6;
+
+  // Optional. The top-p value to use.
+  float top_p = 7;
+
+  // Optional. The repetition penalty to use.
+  float repetition_penalty = 8;
+}
+
+message GenerateTextCompletionResponse {
+  // The generated text completion.
+  string completion = 1;
+}
