@@ -42,7 +42,7 @@ dnspython
 docker
 exceptiongroup
 fbmessenger
-filelock>=3.20.1
+filelock>=3.20.3
 fire
 fonttools==4.61.1
 frozenlist
@@ -70,7 +70,7 @@ joblib
 jsonpickle
 jsonschema
 jsonschema-specifications
-keras>=3.12.0
+keras>=3.13.2
 kiwisolver
 lark
 libclang
@@ -108,7 +108,7 @@ pycep-parser
 pycryptodomex
 pydantic
 pydot
-pyjwt>=2.4.0
+pyjwt>=2.12.0
 pymongo
 pyparsing
 pyrsistent
@@ -149,9 +149,10 @@ types-tqdm
 types-requests
 tzlocal
 update-checker
-urllib3>=2.3.0
+urllib3>=2.6.3
 userpath
 webexteamssdk
 yarl
-orjson>=3.11.6
+orjson>=3.11.7
 ply>=3.12
+ujson>=5.12.0
