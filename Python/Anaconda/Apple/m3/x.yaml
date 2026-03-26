@@ -104,7 +104,7 @@ dependencies:
   - ptyprocess=0.7.0=pyhd3deb0d_0
   - pure_eval=0.2.3=pyhd8ed1ab_0
   - pycparser=2.22=pyhd8ed1ab_0
-  - pygments=2.18.0=pyhd8ed1ab_0
+  - pygments=2.19.2=pyhd8ed1ab_0
   - pyobjc-core=10.3.1=py313h33780c8_1
   - pyobjc-framework-cocoa=10.3.1=py313h33780c8_1
   - pysocks=1.7.1=pyha2e5f31_6
@@ -142,7 +142,7 @@ dependencies:
   - typing_utils=0.1.0=pyhd8ed1ab_0
   - tzdata=2024b=hc8b5060_0
   - uri-template=1.3.0=pyhd8ed1ab_0
-  - urllib3=2.2.3=pyhd8ed1ab_0
+  - urllib3=2.3.0=pyhd8ed1ab_0
   - wcwidth=0.2.13=pyhd8ed1ab_0
   - webcolors=24.8.0=pyhd8ed1ab_0
   - webencodings=0.5.1=pyhd8ed1ab_2

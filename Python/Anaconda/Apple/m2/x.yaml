@@ -57,7 +57,7 @@ dependencies:
   - tqdm=4.67.1=pyhd8ed1ab_0
   - traitlets=5.14.3=pyhd8ed1ab_1
   - tzdata=2024b=hc8b5060_0
-  - urllib3=2.2.3=pyhd8ed1ab_1
+  - urllib3=2.3.0=pyhd8ed1ab_1
   - yaml=0.2.5=h3422bc3_2
   - zipp=3.21.0=pyhd8ed1ab_1
   - zstandard=0.23.0=py313hf2da073_1
