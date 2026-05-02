@@ -28,10 +28,10 @@ conda config --show solver; conda config --set solver libmamba; conda update -n 
 
 ```
 
-#### **2. Create new primary Python 3.13.12 environment**
+#### **2. Create new primary Python 3.14.4 environment**
 
 ```bash
-conda create -n x -c conda-forge python=3.13.12 --yes && conda activate x
+conda create -n x -c conda-forge python=3.14.4 --yes && conda activate x
 
 ```
 
