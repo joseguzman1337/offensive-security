@@ -85,6 +85,12 @@ conda install -n x -c defaults anaconda-navigator --yes && conda install -n x -c
 
 ```
 
+IaC equivalent with reinstall fallback:
+
+```bash
+ansible-playbook -i Python/Anaconda/Ansible/inventory.ini Python/Anaconda/Ansible/update_7_reinstall.yml
+```
+
 #### **8. Install uv and upgrade uv-managed packages**
 
 **macOS/Linux:**
