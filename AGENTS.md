@@ -12,6 +12,12 @@
 - `uv` is mandatory for Python workflows. Install deps only where needed, e.g. `uv pip install -r Linux/Python/requirements.txt` or the closest `requirements.txt` before running a script; do not invoke `python`, `python3`, `pip`, or `pip3` directly.
 - Quick sanity check a script with `uv run python -m py_compile path/to/script.py` and then execute with `uv run python path/to/script.py`.
 - `pnpm` is mandatory for Node.js workflows. Use `pnpm run <script>`, `pnpm exec ...`, or `pnpm dlx ...`; do not invoke `npm`, `npx`, `yarn`, or `bun`.
+- Prerequisite bootstrap must auto-install missing package managers before use:
+  ```bash
+  command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh
+  command -v pnpm >/dev/null 2>&1 || { command -v corepack >/dev/null 2>&1 && corepack enable && corepack prepare pnpm@latest --activate; }
+  command -v pnpm >/dev/null 2>&1 || curl -fsSL https://get.pnpm.io/install.sh | env SHELL="$(command -v bash)" sh -
+  ```
 - Conda environments must use the rattler solver and append the required channels before resolving packages:
   ```bash
   conda config --set solver rattler

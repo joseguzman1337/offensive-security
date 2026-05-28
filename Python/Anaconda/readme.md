@@ -24,7 +24,7 @@
 #### **1. Configure modern solver & update base**
 
 ```bash
-conda config --show solver; conda config --set solver rattler; conda config --append channels conda-pypi; conda config --append channels repos/joseguzman1337/offensive-security/Python/Anaconda; conda update -n base -c conda-forge conda --yes; conda config --add channels conda-forge bioconda; conda update --all -n base --yes
+command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh; command -v pnpm >/dev/null 2>&1 || { command -v corepack >/dev/null 2>&1 && corepack enable && corepack prepare pnpm@latest --activate; }; command -v pnpm >/dev/null 2>&1 || curl -fsSL https://get.pnpm.io/install.sh | env SHELL="$(command -v bash)" sh -; conda config --show solver; conda config --set solver rattler; conda config --append channels conda-pypi; conda config --append channels repos/joseguzman1337/offensive-security/Python/Anaconda; conda update -n base -c conda-forge conda --yes; conda config --add channels conda-forge bioconda; conda update --all -n base --yes
 
 ```
 
@@ -90,14 +90,14 @@ conda install -n x -c defaults anaconda-navigator --yes && conda install -n x -c
 **macOS/Linux:**
 
 ```bash
-conda install -n x -c conda-forge uv --yes; conda run -n x uv pip install --upgrade pip; conda run -n x uv pip list --format=freeze | awk -F '==' '{print $1}' | xargs -n1 conda run -n x uv pip install -U
+conda install -n x -c conda-forge uv --yes; conda run -n x uv pip install --upgrade pip; packages="$(conda run -n x uv pip list --format=freeze | awk -F '==' 'NF {print $1}')"; [ -z "$packages" ] || conda run -n x uv pip install -U $packages
 
 ```
 
 **Windows PowerShell:**
 
 ```powershell
-conda install -n x -c conda-forge uv --yes; conda run -n x uv pip list --format=freeze | ForEach-Object {$_.Split('==')[0]} | ForEach-Object {conda run -n x uv pip install -U $_}
+conda install -n x -c conda-forge uv --yes; $packages = conda run -n x uv pip list --format=freeze | ForEach-Object { $_.Split('==')[0] } | Where-Object { $_ }; if ($packages) { conda run -n x uv pip install -U $packages }
 
 ```
 

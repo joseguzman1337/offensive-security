@@ -27,6 +27,24 @@ generate_hostfile() {
 }
 
 # Install dependencies
+install_package_managers() {
+    echo "Installing mandatory package managers..."
+    if ! command -v uv >/dev/null 2>&1; then
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        export PATH="$HOME/.local/bin:$PATH"
+    fi
+    if ! command -v pnpm >/dev/null 2>&1; then
+        if command -v corepack >/dev/null 2>&1; then
+            corepack enable
+            corepack prepare pnpm@latest --activate
+        else
+            curl -fsSL https://get.pnpm.io/install.sh | env SHELL="$(command -v bash)" sh -
+            export PNPM_HOME="$HOME/.local/share/pnpm"
+            export PATH="$PNPM_HOME:$PATH"
+        fi
+    fi
+}
+
 install_mpi() {
     echo "Installing OpenMPI $MPI_VERSION..."
     wget https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-$MPI_VERSION.tar.gz
@@ -50,12 +68,13 @@ setup_ssh() {
 main() {
     echo "=== SuperCluster Bootstrap ==="
     generate_hostfile
+    install_package_managers
     install_mpi
     setup_ssh
     
     echo "Installing Python dependencies..."
-    pip3 install --upgrade pip
-    pip3 install mpi4py numpy pandas scipy
+    uv pip install --system --upgrade pip
+    uv pip install --system mpi4py numpy pandas scipy
     
     echo "Creating test directory structure..."
     mkdir -p /cluster/{scripts,data,results,logs}
