@@ -9,8 +9,15 @@
 
 ## Build, Test, and Development Commands
 
-- Python scripts are standalone; install deps only where needed, e.g. `python3 -m pip install -r Linux/Python/requirements.txt` or the closest `requirements.txt` before running a script.
-- Quick sanity check a script: `python3 -m py_compile path/to/script.py` and then execute with `python3 path/to/script.py`.
+- `uv` is mandatory for Python workflows. Install deps only where needed, e.g. `uv pip install -r Linux/Python/requirements.txt` or the closest `requirements.txt` before running a script; do not invoke `python`, `python3`, `pip`, or `pip3` directly.
+- Quick sanity check a script with `uv run python -m py_compile path/to/script.py` and then execute with `uv run python path/to/script.py`.
+- `pnpm` is mandatory for Node.js workflows. Use `pnpm run <script>`, `pnpm exec ...`, or `pnpm dlx ...`; do not invoke `npm`, `npx`, `yarn`, or `bun`.
+- Conda environments must use the rattler solver and append the required channels before resolving packages:
+  ```bash
+  conda config --set solver rattler
+  conda config --append channels conda-pypi
+  conda config --append channels repos/joseguzman1337/offensive-security/Python/Anaconda
+  ```
 - Shell helpers should be run with `bash path/to/script.sh`; prefer dry-run flags when available and validate paths before execution.
 
 ## Coding Style & Naming Conventions

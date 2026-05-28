@@ -16,7 +16,7 @@
 
 ## 🛠 Phase 2: Set 'x' Your Primary Conda/Python Environment
 
-**Core Setup:** This phase establishes your persistent development environment named `x`, optimized with the `libmamba` solver for speed and pre-configured for the 2026 AI/ML stack.
+**Core Setup:** This phase establishes your persistent development environment named `x`, optimized with the `rattler` solver for speed and pre-configured for the 2026 AI/ML stack.
 
 <details>
 <summary><b>📦 Click to expand: 10 One-Liner Setup Steps</b></summary>
@@ -24,7 +24,7 @@
 #### **1. Configure modern solver & update base**
 
 ```bash
-conda config --show solver; conda config --set solver libmamba; conda update -n base -c conda-forge conda --yes; conda config --add channels conda-forge bioconda; conda update --all -n base --yes
+conda config --show solver; conda config --set solver rattler; conda config --append channels conda-pypi; conda config --append channels repos/joseguzman1337/offensive-security/Python/Anaconda; conda update -n base -c conda-forge conda --yes; conda config --add channels conda-forge bioconda; conda update --all -n base --yes
 
 ```
 
@@ -85,19 +85,19 @@ conda install -n x -c defaults anaconda-navigator --yes && conda install -n x -c
 
 ```
 
-#### **8. Upgrade pip and all pip packages**
+#### **8. Install uv and upgrade uv-managed packages**
 
 **macOS/Linux:**
 
 ```bash
-python -m ensurepip --upgrade; pip install --upgrade pip; pip list --format=freeze | awk -F '==' '{print $1}' | xargs -n1 pip install -U
+conda install -n x -c conda-forge uv --yes; conda run -n x uv pip install --upgrade pip; conda run -n x uv pip list --format=freeze | awk -F '==' '{print $1}' | xargs -n1 conda run -n x uv pip install -U
 
 ```
 
 **Windows PowerShell:**
 
 ```powershell
-python -m ensurepip --upgrade; pip list --format=freeze | ForEach-Object {$_.Split('==')[0]} | ForEach-Object {pip install -U $_}
+conda install -n x -c conda-forge uv --yes; conda run -n x uv pip list --format=freeze | ForEach-Object {$_.Split('==')[0]} | ForEach-Object {conda run -n x uv pip install -U $_}
 
 ```
 
