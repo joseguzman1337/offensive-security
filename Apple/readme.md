@@ -14,6 +14,12 @@ This will take up to a few minutes, now is a great time to go for a coffee ☕..
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+IaC equivalent for all macOS nodes, including reinstall fallback for problematic packages:
+
+```ShellSession
+ansible-playbook -i ../Python/Anaconda/Ansible/inventory.ini ansible_macos.yml
+```
+
 #
 
 3. Install Rosetta, Xcode, and Brew, including Formulae and Casks, and Upgrade Pip packages

@@ -1,0 +1,107 @@
+---
+- name: Apply Apple macOS prerequisites with reinstall fallback
+  hosts: macos_servers
+  gather_facts: false
+  vars:
+    apple_homebrew_formulae:
+      - git
+      - curl
+      - wget
+      - jq
+      - node
+      - pnpm
+      - uv
+      - pyenv
+      - rust
+      - open-mpi
+      - mpi4py
+      - terraform
+      - tfenv
+      - tgenv
+      - shellcheck
+      - ansible
+      - checkov
+      - trivy
+      - grype
+      - bandit
+      - nmap
+      - sqlmap
+      - hashcat
+      - metasploit
+    apple_homebrew_casks: []
+    apple_optional_homebrew_casks:
+      - powershell
+      - visual-studio-code@insiders
+      - keepassxc
+      - docker
+
+  tasks:
+    - name: Ensure this playbook only runs on macOS
+      ansible.builtin.shell: test "$(uname -s)" = "Darwin"
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Install Homebrew when missing
+      ansible.builtin.shell: >
+        command -v brew >/dev/null 2>&1 ||
+        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Install Rosetta on Apple Silicon when needed
+      ansible.builtin.shell: >
+        test "$(uname -m)" != "arm64" ||
+        /usr/bin/pgrep oahd >/dev/null 2>&1 ||
+        /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Update Homebrew metadata
+      ansible.builtin.shell: eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)" && brew update
+      args:
+        executable: /bin/bash
+
+    - name: Install or reinstall required Homebrew formulae
+      ansible.builtin.shell: >
+        eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)" &&
+        { test "{{ item }}" != "tgenv" || brew unlink terragrunt >/dev/null 2>&1 || true; } &&
+        { brew list --formula {{ item }} >/dev/null 2>&1 && brew upgrade {{ item }}; } ||
+        brew install {{ item }} ||
+        brew reinstall {{ item }}
+      args:
+        executable: /bin/bash
+      loop: "{{ apple_homebrew_formulae }}"
+
+    - name: Install or reinstall required Homebrew casks when enabled
+      ansible.builtin.shell: >
+        eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)" &&
+        { brew list --cask {{ item }} >/dev/null 2>&1 && brew upgrade --cask {{ item }}; } ||
+        brew install --cask {{ item }} ||
+        brew reinstall --cask {{ item }}
+      args:
+        executable: /bin/bash
+      loop: "{{ apple_homebrew_casks }}"
+
+    - name: Ensure uv is available after Homebrew bootstrap
+      ansible.builtin.shell: command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Ensure pnpm is available after Node bootstrap
+      ansible.builtin.shell: >
+        command -v pnpm >/dev/null 2>&1 ||
+        { command -v corepack >/dev/null 2>&1 && corepack enable && corepack prepare pnpm@latest --activate; } ||
+        curl -fsSL https://get.pnpm.io/install.sh | env SHELL="$(command -v bash)" sh -
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Verify Apple package manager prerequisites
+      ansible.builtin.shell: uv --version && pnpm --version && brew --version
+      args:
+        executable: /bin/bash
+      changed_when: false
