@@ -1,0 +1,143 @@
+---
+- name: Apply Anaconda update 7 with reinstall fallback
+  hosts: all
+  gather_facts: true
+  vars:
+    conda_env_name: x
+    conda_python_version: "3.13"
+    conda_required_channels:
+      - conda-pypi
+      - repos/joseguzman1337/offensive-security/Python/Anaconda
+      - conda-forge
+      - bioconda
+    conda_path_prefix: export PATH="$HOME/miniforge3/bin:$HOME/miniconda3/bin:$HOME/anaconda3/bin:/opt/homebrew/Caskroom/miniforge/base/bin:/opt/homebrew/anaconda3/bin:$PATH"
+    conda_update_7_groups:
+      - channel: defaults
+        packages:
+          - anaconda-navigator
+      - channel: conda-forge
+        packages:
+          - anaconda-client
+          - jupyterlab
+          - pandas
+          - scipy
+          - scikit-learn
+          - seaborn
+          - pytorch
+          - torchvision
+          - transformers
+          - huggingface_hub
+          - ollama
+          - uv
+
+  tasks:
+    - name: Ensure uv is installed before Python tooling runs
+      ansible.builtin.shell: command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Ensure pnpm is installed before Node tooling runs
+      ansible.builtin.shell: >
+        command -v pnpm >/dev/null 2>&1 ||
+        { command -v corepack >/dev/null 2>&1 && corepack enable && corepack prepare pnpm@latest --activate; } ||
+        curl -fsSL https://get.pnpm.io/install.sh | env SHELL="$(command -v bash)" sh -
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Install Miniforge when conda is missing
+      ansible.builtin.shell: |
+        set -euo pipefail
+        {{ conda_path_prefix }}
+        if command -v conda >/dev/null 2>&1; then
+          exit 0
+        fi
+        case "$(uname -s)-$(uname -m)" in
+          Darwin-arm64) installer="Miniforge3-MacOSX-arm64.sh" ;;
+          Darwin-x86_64) installer="Miniforge3-MacOSX-x86_64.sh" ;;
+          Linux-x86_64) installer="Miniforge3-Linux-x86_64.sh" ;;
+          Linux-aarch64|Linux-arm64) installer="Miniforge3-Linux-aarch64.sh" ;;
+          *) echo "Unsupported Miniforge platform: $(uname -s)-$(uname -m)" >&2; exit 1 ;;
+        esac
+        curl -L "https://github.com/conda-forge/miniforge/releases/latest/download/${installer}" -o /tmp/miniforge.sh
+        bash /tmp/miniforge.sh -b -p "$HOME/miniforge3"
+      args:
+        executable: /bin/bash
+
+    - name: Verify conda is available
+      ansible.builtin.shell: bash -lc '{{ conda_path_prefix }}; command -v conda'
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Configure conda rattler solver
+      ansible.builtin.shell: bash -lc '{{ conda_path_prefix }}; conda config --set solver rattler'
+      args:
+        executable: /bin/bash
+
+    - name: Accept Anaconda Terms of Service when defaults channels require it
+      ansible.builtin.shell: >
+        bash -lc '{{ conda_path_prefix }};
+        conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main || true;
+        conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r || true'
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Fall back to libmamba when this conda build does not support rattler
+      ansible.builtin.shell: >
+        bash -lc '{{ conda_path_prefix }};
+        conda create --dry-run -n __solver_probe__ --override-channels -c conda-forge python={{ conda_python_version }} --yes >/dev/null 2>&1 ||
+        conda config --set solver libmamba'
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Append required conda channels
+      ansible.builtin.shell: >
+        bash -lc '{{ conda_path_prefix }}; conda config --show channels | grep -Fxq "  - {{ item }}" ||
+        conda config --append channels {{ item }}'
+      args:
+        executable: /bin/bash
+      loop: "{{ conda_required_channels }}"
+
+    - name: Ensure conda environment exists
+      ansible.builtin.shell: >
+        bash -lc '{{ conda_path_prefix }}; conda env list | awk "{print \$1}" | grep -qx {{ conda_env_name }} ||
+        conda create -n {{ conda_env_name }} --override-channels -c conda-forge python={{ conda_python_version }} --yes'
+      args:
+        executable: /bin/bash
+
+    - name: Install update 7 package groups
+      ansible.builtin.shell: >
+        bash -lc '{{ conda_path_prefix }}; conda install -n {{ conda_env_name }} --override-channels -c {{ item.channel }}
+        {{ item.packages | join(" ") }} --yes'
+      args:
+        executable: /bin/bash
+      loop: "{{ conda_update_7_groups }}"
+      register: update_7_install
+      ignore_errors: true
+
+    - name: Clean conda cache before reinstall fallback
+      ansible.builtin.shell: bash -lc '{{ conda_path_prefix }}; conda clean --all --yes'
+      args:
+        executable: /bin/bash
+      when: update_7_install is failed
+
+    - name: Reinstall update 7 package groups after failed install
+      ansible.builtin.shell: >
+        bash -lc '{{ conda_path_prefix }}; conda install --force-reinstall -n {{ conda_env_name }} --override-channels -c {{ item.channel }}
+        {{ item.packages | join(" ") }} --yes'
+      args:
+        executable: /bin/bash
+      loop: "{{ conda_update_7_groups }}"
+      when: update_7_install is failed
+
+    - name: Verify update 7 Python stack imports
+      ansible.builtin.shell: >
+        bash -lc '{{ conda_path_prefix }}; conda run -n {{ conda_env_name }} uv run python -c
+        "import pandas, sklearn, seaborn, transformers, huggingface_hub; print(\"update7-ok\")"'
+      args:
+        executable: /bin/bash
+      changed_when: false

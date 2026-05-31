@@ -16,7 +16,7 @@
 
 ## 🛠 Phase 2: Set 'x' Your Primary Conda/Python Environment
 
-**Core Setup:** This phase establishes your persistent development environment named `x`, optimized with the `libmamba` solver for speed and pre-configured for the 2026 AI/ML stack.
+**Core Setup:** This phase establishes your persistent development environment named `x`, optimized with the `rattler` solver for speed and pre-configured for the 2026 AI/ML stack.
 
 <details>
 <summary><b>📦 Click to expand: 10 One-Liner Setup Steps</b></summary>
@@ -24,14 +24,14 @@
 #### **1. Configure modern solver & update base**
 
 ```bash
-conda config --show solver; conda config --set solver libmamba; conda update -n base -c conda-forge conda --yes; conda config --add channels conda-forge bioconda; conda update --all -n base --yes
+command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh; command -v pnpm >/dev/null 2>&1 || { command -v corepack >/dev/null 2>&1 && corepack enable && corepack prepare pnpm@latest --activate; }; command -v pnpm >/dev/null 2>&1 || curl -fsSL https://get.pnpm.io/install.sh | env SHELL="$(command -v bash)" sh -; conda config --show solver; conda config --set solver rattler; conda config --append channels conda-pypi; conda config --append channels repos/joseguzman1337/offensive-security/Python/Anaconda; conda update -n base -c conda-forge conda --yes; conda config --add channels conda-forge bioconda; conda update --all -n base --yes
 
 ```
 
-#### **2. Create new primary Python 3.13.12 environment**
+#### **2. Create new primary Python 3.14.4 environment**
 
 ```bash
-conda create -n x -c conda-forge python=3.13.12 --yes && conda activate x
+conda create -n x -c conda-forge python=3.14.4 --yes && conda activate x
 
 ```
 
@@ -85,19 +85,25 @@ conda install -n x -c defaults anaconda-navigator --yes && conda install -n x -c
 
 ```
 
-#### **8. Upgrade pip and all pip packages**
+IaC equivalent with reinstall fallback:
+
+```bash
+ansible-playbook -i Python/Anaconda/Ansible/inventory.ini Python/Anaconda/Ansible/update_7_reinstall.yml
+```
+
+#### **8. Install uv and upgrade uv-managed packages**
 
 **macOS/Linux:**
 
 ```bash
-python -m ensurepip --upgrade; pip install --upgrade pip; pip list --format=freeze | awk -F '==' '{print $1}' | xargs -n1 pip install -U
+conda install -n x -c conda-forge uv --yes; conda run -n x uv pip install --upgrade pip; packages="$(conda run -n x uv pip list --format=freeze | awk -F '==' 'NF {print $1}')"; [ -z "$packages" ] || conda run -n x uv pip install -U $packages
 
 ```
 
 **Windows PowerShell:**
 
 ```powershell
-python -m ensurepip --upgrade; pip list --format=freeze | ForEach-Object {$_.Split('==')[0]} | ForEach-Object {pip install -U $_}
+conda install -n x -c conda-forge uv --yes; $packages = conda run -n x uv pip list --format=freeze | ForEach-Object { $_.Split('==')[0] } | Where-Object { $_ }; if ($packages) { conda run -n x uv pip install -U $packages }
 
 ```
 

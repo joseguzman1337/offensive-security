@@ -16,7 +16,9 @@ stages:
               versionSpec: "3.x"
               architecture: "x64"
           - script: |
-              pip install --quiet checkov && pip install --quiet --upgrade checkov
+              command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh
+              export PATH="$HOME/.local/bin:$PATH"
+              uv tool install --upgrade checkov
               export CKV_OPENAI_MAX_FINDINGS="0"
               mkdir -p "$(Build.ArtifactStagingDirectory)/vulns"
               checkov -d . --quiet \
@@ -51,7 +53,9 @@ stages:
               versionSpec: "3.x"
               architecture: "x64"
           - script: |
-              pip install --quiet checkov && pip install --quiet --upgrade checkov
+              command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh
+              export PATH="$HOME/.local/bin:$PATH"
+              uv tool install --upgrade checkov
               export CKV_OPENAI_MAX_FINDINGS="0"
               mkdir -p "$(Build.ArtifactStagingDirectory)/vulns"
               checkov -d . --quiet \

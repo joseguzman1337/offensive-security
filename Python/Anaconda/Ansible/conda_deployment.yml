@@ -7,8 +7,23 @@
 
     - name: Configure Conda Solver
       block:
-        - name: Set solver to classic
-          command: conda config --set solver classic
+        - name: Install uv when missing
+          shell: command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/install.sh | sh
+
+        - name: Install pnpm when missing
+          shell: >
+            command -v pnpm >/dev/null 2>&1 ||
+            { command -v corepack >/dev/null 2>&1 && corepack enable && corepack prepare pnpm@latest --activate; } ||
+            curl -fsSL https://get.pnpm.io/install.sh | env SHELL="$(command -v bash)" sh -
+
+        - name: Set solver to rattler
+          command: conda config --set solver rattler
+
+        - name: Add conda-pypi channel
+          command: conda config --append channels conda-pypi
+
+        - name: Add local offensive-security Anaconda channel
+          command: conda config --append channels repos/joseguzman1337/offensive-security/Python/Anaconda
 
         - name: Update Conda and packages in base environment
           command: conda update -n base -c conda-forge conda; conda config --add channels conda-forge; conda update --all -n base; conda upgrade --all
@@ -43,17 +58,26 @@
         - name: Install Conda in "x" environment
           command: conda install -n x conda=24.11.0
 
-    - name: Upgrade Pip
+    - name: Install uv and Upgrade uv-managed Packages
       block:
-        - name: Ensure pip is installed and upgrade it
-          command: python -m ensurepip --upgrade; pip install --upgrade pip
+        - name: Install uv in the x environment
+          command: conda install -n x -c conda-forge uv --yes
 
-        - name: Upgrade all pip packages (macOS/Linux)
-          command: pip list --format=freeze | awk -F '==' '{print $1}' | xargs -n1 pip install -U
+        - name: Upgrade pip through uv
+          command: conda run -n x uv pip install --upgrade pip
+
+        - name: Upgrade all uv-managed packages (macOS/Linux)
+          shell: >
+            packages="$(conda run -n x uv pip list --format=freeze | awk -F '==' 'NF {print $1}')";
+            [ -z "$packages" ] || conda run -n x uv pip install -U $packages
           when: ansible_os_family == 'Darwin' or ansible_os_family == 'Linux'
 
-        - name: Upgrade all pip packages (Windows)
-          command: pip list --format=freeze | ForEach-Object {$_.Split('==')[0]} | ForEach-Object {pip install -U $_}
+        - name: Upgrade all uv-managed packages (Windows)
+          win_shell: >
+            $packages = conda run -n x uv pip list --format=freeze |
+              ForEach-Object { $_.Split('==')[0] } |
+              Where-Object { $_ };
+            if ($packages) { conda run -n x uv pip install -U $packages }
           when: ansible_os_family == 'Windows'
 
     - name: Install Anaconda Client
