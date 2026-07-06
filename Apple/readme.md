@@ -1,4 +1,4 @@
-√ Tested on Apple M2 + M3, and Intel Chipsets using macOS sequoia
+√ Tested on Apple M5 aand previous M´s, also under Intel Chipsets using macOS sequoia
 
 🍎
 
