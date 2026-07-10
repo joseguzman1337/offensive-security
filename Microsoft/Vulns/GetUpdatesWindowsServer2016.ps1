@@ -10,10 +10,12 @@ try {
     $effective = Get-ExecutionPolicy -Scope Process
     if ($effective -eq 'Bypass' -or $effective -eq 'Unrestricted') {
         Write-Host "Execution policy is $effective; skipping change." -ForegroundColor DarkYellow
-    } else {
+    }
+    else {
         Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force -ErrorAction Stop
     }
-} catch {
+}
+catch {
     Write-Host "Skipping Set-ExecutionPolicy due to policy override." -ForegroundColor DarkYellow
 }
 
@@ -35,7 +37,8 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
     finally {
         Remove-Item 'install.ps1' -ErrorAction SilentlyContinue
     }
-} else {
+}
+else {
     Write-Host "Scoop is already installed." -ForegroundColor Green
 }
 
@@ -44,10 +47,12 @@ try {
     $effective = Get-ExecutionPolicy -Scope Process
     if ($effective -eq 'Bypass' -or $effective -eq 'Unrestricted') {
         Write-Host "Execution policy is $effective; skipping change." -ForegroundColor DarkYellow
-    } else {
+    }
+    else {
         Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force -ErrorAction Stop
     }
-} catch {
+}
+catch {
     Write-Host "Skipping Set-ExecutionPolicy due to policy override." -ForegroundColor DarkYellow
 }
 
@@ -57,8 +62,9 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     scoop install winget
     
     # Refresh PATH to ensure winget is available
-    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-} else {
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+}
+else {
     Write-Host "Winget is already installed." -ForegroundColor Green
 }
 
@@ -66,7 +72,8 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
 if (Get-Command winget -ErrorAction SilentlyContinue) {
     Write-Host "Running winget upgrades..." -ForegroundColor Yellow
     winget upgrade --all --include-unknown --include-pinned --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
-} else {
+}
+else {
     Write-Host "Winget not available. Skipping upgrades." -ForegroundColor Red
 }
 
@@ -77,7 +84,8 @@ if (Get-Command choco -ErrorAction SilentlyContinue) {
     if ($outdated -and $outdated.Count -gt 0) {
         Write-Host "Outdated packages found. Starting upgrade..." -ForegroundColor Green
         choco upgrade all -y
-    } else {
+    }
+    else {
         Write-Host "All Chocolatey packages are up to date. âœ…" -ForegroundColor Green
     }
     
@@ -85,10 +93,12 @@ if (Get-Command choco -ErrorAction SilentlyContinue) {
     $lib = Join-Path $env:ChocolateyInstall 'lib'
     if (Test-Path $lib) {
         Get-ChildItem -Path $lib -Directory | Select-Object -ExpandProperty Name
-    } else {
+    }
+    else {
         Write-Host "Chocolatey lib folder not found at $lib" -ForegroundColor DarkYellow
     }
-} else {
+}
+else {
     Write-Host "Skipping Chocolatey (not installed)" -ForegroundColor Yellow
 }
 
@@ -96,8 +106,10 @@ if (Get-Command choco -ErrorAction SilentlyContinue) {
 if (Get-Command scoop -ErrorAction SilentlyContinue) {
     Write-Host "`n--- Scoop Packages ---" -ForegroundColor Cyan
     scoop list
-} else {
+}
+else {
     Write-Host "Skipping Scoop package list (Scoop not available)" -ForegroundColor Red
 }
 
 Write-Host "`nScript completed!" -ForegroundColor Green
+

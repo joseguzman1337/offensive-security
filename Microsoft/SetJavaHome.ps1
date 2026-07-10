@@ -9,11 +9,13 @@ $newLine = "SET JAVA_HOME=$javaHome"
 
 # Check if the line already exists (case-insensitive)
 if (!($batContent -match "(?i)^SET JAVA_HOME=")) {
-  # Add the new line at the beginning of the file
-  $batContent = "$newLine`n" + $batContent
-  # Write the modified content back to the file
-  Set-Content -Path $batFile -Value $batContent -Force
-  Write-Host "JAVA_HOME set in $batFile"
-} else {
-  Write-Host "JAVA_HOME already set in $batFile"
+    # Add the new line at the beginning of the file
+    $batContent = "$newLine`n" + $batContent
+    # Write the modified content back to the file
+    Set-Content -Path $batFile -Value $batContent -Force
+    Write-Host "JAVA_HOME set in $batFile"
 }
+else {
+    Write-Host "JAVA_HOME already set in $batFile"
+}
+
