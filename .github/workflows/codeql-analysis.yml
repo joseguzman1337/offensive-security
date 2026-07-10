@@ -28,11 +28,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # Override automatic language detection by changing the below list
-        # Supported options are ['csharp', 'cpp', 'go', 'java', 'javascript', 'python']
-        language: []
+        # Override automatic language detection by changing the below list.
+        # Supported options are ['csharp', 'cpp', 'go', 'java', 'javascript', 'python', 'actions']
+        # 'actions' is required to scan .github/workflows/*.yml (the CodeQL
+        # 'actions' query pack is what produces alert rules like
+        # actions/code-injection, actions/untrusted-checkout, and
+        # actions/missing-workflow-permissions).
         # Learn more...
         # https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#overriding-automatic-language-detection
+        language: ['actions']
 
     steps:
     - name: Harden Runner
