@@ -237,7 +237,7 @@ jobs:
   autofix-codeql:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix CodeQL
-    runs-on: [self-hosted, hermes-local]
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       security-events: read
@@ -264,7 +264,7 @@ jobs:
   autofix-binskim:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix BinSkim
-    runs-on: [self-hosted, hermes-local]
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       security-events: read
@@ -292,7 +292,7 @@ jobs:
   autofix-bandit:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix Bandit
-    runs-on: [self-hosted, hermes-local]
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       security-events: read
@@ -326,7 +326,7 @@ jobs:
   autofix-eslint:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix ESLint
-    runs-on: [self-hosted, hermes-local]
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       security-events: read
@@ -358,7 +358,7 @@ jobs:
   autofix-psscriptanalyzer:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix PSScriptAnalyzer
-    runs-on: [self-hosted, hermes-local]
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       security-events: read
@@ -391,7 +391,7 @@ jobs:
   autofix-scorecard:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix Scorecard
-    runs-on: [self-hosted, hermes-local]
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       security-events: read
@@ -415,4 +415,3 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/autofix.py scorecard
-
