@@ -98,19 +98,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12"]
+        python-bin: ["python3.11", "python3.12"]
     steps:
       - name: Checkout repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install runtime deps (flask + psutil for monitor_cluster import)
-        run: python -m pip install --quiet flask==3.0.3 psutil==6.0.0
+        run: ${{ matrix.python-bin }} -m pip install --quiet flask==3.0.3 psutil==6.0.0
       - name: Run fuzz seed corpus
         working-directory: SuperCluster
-        run: python fuzz/fuzz_validate_scan_target.py
+        run: ${{ matrix.python-bin }} fuzz/fuzz_validate_scan_target.py
 
   fuzzing:
     if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'schedule' }}
@@ -307,12 +303,8 @@ jobs:
         with:
           persist-credentials: false
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.14"
       - name: Install Bandit
-        run: python -m pip install --quiet bandit
+        run: python3 -m pip install --quiet bandit
       - name: Run autofix runner
         env:
           REPO: ${{ github.repository }}
@@ -341,10 +333,6 @@ jobs:
         with:
           persist-credentials: false
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set up Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: "lts/*"
       - name: Run autofix runner
         env:
           REPO: ${{ github.repository }}
