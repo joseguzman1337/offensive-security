@@ -44,17 +44,22 @@ class ClusterMonitor:
         # nodes loaded lazily so the module is importable in test/fuzz
         # contexts where the hostfile isn't present.
         self._hostfile = hostfile
-        self.nodes: list[str] = []
+        self.nodes: list[str] | None = None
 
     def _ensure_nodes(self) -> list[str]:
-        if not self.nodes:
+        if self.nodes is None:
             self.nodes = self.load_hostfile()
         return self.nodes
 
     def load_hostfile(self):
         try:
             with open(self._hostfile, "r") as f:
-                return [line.split()[0] for line in f if not line.startswith("#")]
+                nodes = []
+                for line in f:
+                    stripped = line.strip()
+                    if stripped and not stripped.startswith("#"):
+                        nodes.append(stripped.split()[0])
+                return nodes
         except FileNotFoundError:
             return []  # no hostfile yet — running outside cluster context
 
