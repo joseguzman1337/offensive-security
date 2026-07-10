@@ -27,7 +27,8 @@ foreach ($share in $criticalShares) {
     try {
         Set-SmbShare -Name $share -EncryptData $true -Force
         Write-Host "✅ Encryption enabled for $share."
-    } catch {
+    }
+    catch {
         Write-Warning "⚠️ Could not enable encryption for $share. Error: $_"
     }
 }
@@ -38,17 +39,19 @@ foreach ($share in $shares) {
     try {
         Set-SmbShare -Name $share.Name -EncryptData $true -Force
         Write-Host "✅ Encryption enabled for $($share.Name)."
-    } catch {
+    }
+    catch {
         Write-Warning "⚠️ Could not enable encryption for $($share.Name). Error: $_"
     }
 }
 
 # Output compliance evidence
 Write-Host "`n📋 Compliance Evidence:"
-$smbConfig = Get-SmbServerConfiguration | Select EnableSecuritySignature, RequireSecuritySignature
-$smbShares = Get-SmbShare | Select Name, EncryptData
+$smbConfig = Get-SmbServerConfiguration | select EnableSecuritySignature, RequireSecuritySignature
+$smbShares = Get-SmbShare | select Name, EncryptData
 Write-Host "`nSMB Server Config:"
 $smbConfig | Format-Table -AutoSize
 Write-Host "`nSMB Shares Encryption Status:"
 $smbShares | Format-Table -AutoSize
 Get-Date -Format "dddd, dd MMMM yyyy HH:mm:ss"
+

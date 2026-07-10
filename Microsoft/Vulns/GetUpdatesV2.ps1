@@ -18,7 +18,8 @@ if ($LASTEXITCODE -eq 2) {
     # The --ignore-checksums flag is a security risk and should be avoided
     # unless you are in a controlled environment and trust your sources completely.
     choco upgrade all -y
-} else {
+}
+else {
     Write-Host "All packages are up to date. Nothing to do. ✅" -ForegroundColor Green
 }
 
@@ -29,3 +30,4 @@ choco list
 # Display installed Scoop packages
 Write-Host "`n--- Installed Scoop Packages ---`n" -ForegroundColor Cyan
 scoop list
+

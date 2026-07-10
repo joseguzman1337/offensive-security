@@ -21,10 +21,10 @@ foreach ($domain in $domains) {
         # Add results to the $allResults array
         $users | ForEach-Object {
             $allResults += [PSCustomObject]@{
-                Domain = $domain
+                Domain  = $domain
                 Account = $_.Name
                 Created = $_.whenCreated
-                Status = if ($_.Enabled) { "Active" } else { "Inactive" } 
+                Status  = if ($_.Enabled) { "Active" } else { "Inactive" } 
             }
         }
     }
@@ -35,3 +35,4 @@ foreach ($domain in $domains) {
 
 # Export all results to CSV
 $allResults | Export-Csv -Path "ibm_users.csv" -NoTypeInformation
+

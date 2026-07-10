@@ -229,7 +229,8 @@ def fix_psscriptanalyzer(_alerts: list[dict]) -> bool:
             continue
         r = subprocess.run(
             [ps, "-NoProfile", "-Command",
-             f"{{ $c = Get-Content -Raw '{f}'; "
+             f"{{ Import-Module PSScriptAnalyzer; "
+             f"$c = Get-Content -Raw '{f}'; "
              f"$f = Invoke-Formatter -ScriptDefinition $c; "
              f"if ($f -ne $c) {{ Set-Content -Path '{f}' -Value $f; exit 0 }} "
              f"else {{ exit 1 }} }}"],

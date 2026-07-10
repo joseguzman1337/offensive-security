@@ -40,6 +40,9 @@ def _validate_scan_target(target):
     except ValueError:
         pass
     # Validate as hostname (RFC 1123)
+    # Reject dotted quads that look like IPv4 addresses but failed parsing.
+    if re.fullmatch(r"\d+(?:\.\d+){3}", target):
+        return False
     if re.fullmatch(
         r"(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?",
         target,

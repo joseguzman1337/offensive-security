@@ -28,16 +28,17 @@ $ErrorActionPreference = 'Stop'
 try {
     $epBefore = Get-ExecutionPolicy -List
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force -ErrorAction Stop
-    $epAfter  = Get-ExecutionPolicy -List
-} catch {
+    $epAfter = Get-ExecutionPolicy -List
+}
+catch {
     Write-Warning "Could not set ExecutionPolicy (Process=Bypass). A policy may be enforced by GPO. Error: $($_.Exception.Message)"
 }
 
 # ---------- Prep & Evidence: Host Identity ----------
 $timestamp = Get-Date -Format 'yyyyMMdd_HHmmss'
-$domain    = ([System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties()).DomainName
-$fqdn      = if ($domain) { "$($env:COMPUTERNAME).$domain" } else { $env:COMPUTERNAME }
-$logPath   = Join-Path $env:TEMP "SMB_Hardening_$($env:COMPUTERNAME)_$timestamp.log"
+$domain = ([System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties()).DomainName
+$fqdn = if ($domain) { "$($env:COMPUTERNAME).$domain" } else { $env:COMPUTERNAME }
+$logPath = Join-Path $env:TEMP "SMB_Hardening_$($env:COMPUTERNAME)_$timestamp.log"
 
 Start-Transcript -Path $logPath -Force | Out-Null
 
@@ -61,7 +62,8 @@ try {
     if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
         throw "This script must be run in an elevated PowerShell session (Run as Administrator)."
     }
-} catch {
+}
+catch {
     Write-Error $_
     Stop-Transcript | Out-Null
     exit 1
@@ -69,18 +71,19 @@ try {
 
 # ---------- Minimal identity evidence (current user only) ----------
 try {
-    $currId   = [Security.Principal.WindowsIdentity]::GetCurrent()
+    $currId = [Security.Principal.WindowsIdentity]::GetCurrent()
     $currPrin = New-Object Security.Principal.WindowsPrincipal($currId)
-    $sam      = $currId.Name                       # DOMAIN\User or COMPUTER\User
-    $sid      = $currId.User.Value
-    $isAdmin  = $currPrin.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+    $sam = $currId.Name                       # DOMAIN\User or COMPUTER\User
+    $sid = $currId.User.Value
+    $isAdmin = $currPrin.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
     $logonSrv = $env:LOGONSERVER
     Write-Host "`n--- Current User Context ---"
     Write-Host ("User (SAM): {0}" -f $sam)
     Write-Host ("SID       : {0}" -f $sid)
     Write-Host ("Elevated  : {0}" -f $isAdmin)
     if ($logonSrv) { Write-Host ("LogonSrv  : {0}" -f $logonSrv) }
-} catch {
+}
+catch {
     Write-Warning "Unable to capture current user context: $($_.Exception.Message)"
 }
 
@@ -98,8 +101,8 @@ $domainRoleMap = @{
     5 = 'Primary Domain Controller'
 }
 $domainRoleVal = (Get-CimInstance Win32_ComputerSystem).DomainRole
-$domainRole    = $domainRoleMap[$domainRoleVal]
-$hostIsDc      = $domainRoleVal -in 4,5
+$domainRole = $domainRoleMap[$domainRoleVal]
+$hostIsDc = $domainRoleVal -in 4, 5
 
 Write-Host "`n--- Host Role ---"
 Write-Host ("DomainRole : {0} ({1})" -f $domainRoleVal, $domainRole)
@@ -119,11 +122,12 @@ $usedFallback = $false
 if (Get-Command Set-SmbServerConfiguration -ErrorAction SilentlyContinue) {
     Write-Host "Configuring SMB server settings via Set-SmbServerConfiguration..."
     Set-SmbServerConfiguration -EnableSMB1Protocol $false `
-                               -EnableSMB2Protocol $true `
-                               -EnableSecuritySignature $true `
-                               -RequireSecuritySignature $true `
-                               -Force
-} else {
+        -EnableSMB2Protocol $true `
+        -EnableSecuritySignature $true `
+        -RequireSecuritySignature $true `
+        -Force
+}
+else {
     $usedFallback = $true
     Write-Warning "Set-SmbServerConfiguration not available; using registry fallback."
 
@@ -132,11 +136,11 @@ if (Get-Command Set-SmbServerConfiguration -ErrorAction SilentlyContinue) {
 
     # Disable SMBv1 via registry
     New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" `
-                     -Name "SMB1" -Value 0 -PropertyType DWord -Force | Out-Null
+        -Name "SMB1" -Value 0 -PropertyType DWord -Force | Out-Null
 
     # Ensure SMBv2/3 enabled via registry
     New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" `
-                     -Name "SMB2" -Value 1 -PropertyType DWord -Force | Out-Null
+        -Name "SMB2" -Value 1 -PropertyType DWord -Force | Out-Null
 
     Write-Warning "Registry changes applied; a reboot may be required for full effect."
 }
@@ -149,11 +153,13 @@ try {
         if ($opt -and $opt.State -ne 'Disabled') {
             Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol -NoRestart -ErrorAction SilentlyContinue | Out-Null
             Write-Host "SMB1 optional feature disabled (client)."
-        } else {
+        }
+        else {
             Write-Host "SMB1 optional feature already disabled (client)."
         }
     }
-} catch { Write-Verbose "OptionalFeature handling: $_" }
+}
+catch { Write-Verbose "OptionalFeature handling: $_" }
 
 # Server OS (Windows Server Feature)
 try {
@@ -162,17 +168,19 @@ try {
         if ($fsSmb1 -and $fsSmb1.InstallState -ne 'Removed') {
             Uninstall-WindowsFeature -Name FS-SMB1 -Restart:$false | Out-Null
             Write-Host "SMB1 server feature uninstalled (server)."
-        } else {
+        }
+        else {
             Write-Host "SMB1 server feature already removed (server)."
         }
     }
-} catch { Write-Verbose "WindowsFeature handling: $_" }
+}
+catch { Write-Verbose "WindowsFeature handling: $_" }
 
 # ---------- Encryption on critical and user shares ----------
 Write-Host "`n=== Enabling SMB Encryption on shares ==="
 
 # Critical shares first (only if present)
-$criticalShares = @('SYSVOL','NETLOGON')
+$criticalShares = @('SYSVOL', 'NETLOGON')
 foreach ($share in $criticalShares) {
     try {
         $s = Get-SmbShare -Name $share -ErrorAction SilentlyContinue
@@ -180,13 +188,16 @@ foreach ($share in $criticalShares) {
             if (-not $s.EncryptData) {
                 Set-SmbShare -Name $share -EncryptData $true -Force
                 Write-Host "✅ Encryption enabled for $share."
-            } else {
+            }
+            else {
                 Write-Host "ℹ️  $share already has encryption enabled."
             }
-        } else {
+        }
+        else {
             Write-Host "↪  $share not present on this host (skipping)."
         }
-    } catch {
+    }
+    catch {
         Write-Warning "Could not enable encryption for $share. Error: $($_.Exception.Message)"
     }
 }
@@ -202,14 +213,17 @@ try {
             try {
                 Set-SmbShare -Name $share.Name -EncryptData $true -Force
                 Write-Host "✅ Encryption enabled for $($share.Name)."
-            } catch {
+            }
+            catch {
                 Write-Warning "Could not enable encryption for $($share.Name). Error: $($_.Exception.Message)"
             }
-        } else {
+        }
+        else {
             Write-Host "ℹ️  Encryption already enabled for $($share.Name)."
         }
     }
-} catch {
+}
+catch {
     Write-Warning "Share enumeration failed: $($_.Exception.Message)"
 }
 
@@ -222,10 +236,12 @@ if ($hostIsDc -and -not $SkipDcDiag) {
         # Use /c (comprehensive) but keep output manageable
         dcdiag /c | Tee-Object -FilePath $dcDiagPath
         Write-Host "dcdiag output saved to: $dcDiagPath"
-    } catch {
+    }
+    catch {
         Write-Warning "dcdiag execution failed or not available: $($_.Exception.Message)"
     }
-} else {
+}
+else {
     Write-Host "`nDC health check skipped (Is DC: $hostIsDc; SkipDcDiag: $SkipDcDiag)."
 }
 
@@ -238,7 +254,8 @@ if (Get-Command Get-SmbServerConfiguration -ErrorAction SilentlyContinue) {
     $serverCfg = Get-SmbServerConfiguration |
         Select-Object EnableSMB1Protocol, EnableSMB2Protocol, EnableSecuritySignature, RequireSecuritySignature
     $serverCfg | Format-Table -AutoSize
-} else {
+}
+else {
     Write-Host "`nSMB Server Configuration (registry fallback in use):"
 }
 
@@ -249,7 +266,8 @@ try {
     if ($reg) {
         Write-Host ("Registry -> SMB1={0} ; SMB2={1}" -f $reg.SMB1, $reg.SMB2)
     }
-} catch { Write-Verbose "Registry snapshot error: $_" }
+}
+catch { Write-Verbose "Registry snapshot error: $_" }
 
 # Feature states
 $optFeat = $null
@@ -259,7 +277,8 @@ try {
         $optFeat = Get-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
         $optFeat | Select-Object FeatureName, State | Format-Table -AutoSize
     }
-} catch { Write-Verbose "OptionalFeature snapshot error: $_" }
+}
+catch { Write-Verbose "OptionalFeature snapshot error: $_" }
 
 $srvFeat = $null
 try {
@@ -268,7 +287,8 @@ try {
         $srvFeat = Get-WindowsFeature -Name FS-SMB1
         $srvFeat | Select-Object Name, InstallState | Format-Table -AutoSize
     }
-} catch { Write-Verbose "WindowsFeature snapshot error: $_" }
+}
+catch { Write-Verbose "WindowsFeature snapshot error: $_" }
 
 # Shares encryption status
 $shareSnap = $null
@@ -276,7 +296,8 @@ try {
     Write-Host "`nSMB Shares Encryption Status:"
     $shareSnap = Get-SmbShare | Select-Object Name, Path, EncryptData
     $shareSnap | Sort-Object Name | Format-Table -AutoSize
-} catch { Write-Verbose "Shares snapshot error: $_" }
+}
+catch { Write-Verbose "Shares snapshot error: $_" }
 
 # ---------- Evidence export (optional) ----------
 try {
@@ -315,7 +336,8 @@ try {
         $shareSnap | Export-Csv -Path $ExportSharesCsvPath -NoTypeInformation -Encoding UTF8
         Write-Host ("Shares CSV saved to: {0}" -f $ExportSharesCsvPath)
     }
-} catch {
+}
+catch {
     Write-Warning "Evidence export failed: $($_.Exception.Message)"
 }
 
@@ -325,3 +347,4 @@ if ($usedFallback) {
 
 Write-Host "`nTranscript saved to: $logPath"
 Stop-Transcript | Out-Null
+

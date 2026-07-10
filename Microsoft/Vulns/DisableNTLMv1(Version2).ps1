@@ -29,7 +29,8 @@ $restrictSend = 2
 try {
     Set-ItemProperty -Path $lsaPath -Name "LmCompatibilityLevel" -Value $lmLevel
     Write-Host "✅ LmCompatibilityLevel set to $lmLevel (NTLMv2 only)."
-} catch {
+}
+catch {
     Write-Error "❌ Failed to set LmCompatibilityLevel. Error: $_"
 }
 
@@ -42,28 +43,32 @@ if (-not (Test-Path -Path $msvPath)) {
 try {
     Set-ItemProperty -Path $msvPath -Name "RestrictReceivingNTLMTraffic" -Value $restrictRecv
     Write-Host "✅ RestrictReceivingNTLMTraffic set to $restrictRecv (deny inbound NTLM)."
-} catch {
+}
+catch {
     Write-Error "❌ Failed to set RestrictReceivingNTLMTraffic. Error: $_"
 }
 
 try {
     Set-ItemProperty -Path $msvPath -Name "RestrictSendingNTLMTraffic" -Value $restrictSend
     Write-Host "✅ RestrictSendingNTLMTraffic set to $restrictSend (deny outbound NTLM)."
-} catch {
+}
+catch {
     Write-Error "❌ Failed to set RestrictSendingNTLMTraffic. Error: $_"
 }
 
 # Verify settings
 Write-Host "`n📋 Compliance Evidence:"
 try {
-    $lsaProps = Get-ItemProperty -Path $lsaPath | Select LmCompatibilityLevel
-    $msvProps = Get-ItemProperty -Path $msvPath | Select RestrictReceivingNTLMTraffic, RestrictSendingNTLMTraffic
+    $lsaProps = Get-ItemProperty -Path $lsaPath | select LmCompatibilityLevel
+    $msvProps = Get-ItemProperty -Path $msvPath | select RestrictReceivingNTLMTraffic, RestrictSendingNTLMTraffic
 
     Write-Host "`nNTLM Registry Settings:"
     $lsaProps | Format-Table -AutoSize
     $msvProps | Format-Table -AutoSize
-} catch {
+}
+catch {
     Write-Warning "⚠️ Could not read registry values. Error: $_"
 }
 
 Write-Host "`n✅ NTLM hardening applied. Reboot recommended for full effect."
+

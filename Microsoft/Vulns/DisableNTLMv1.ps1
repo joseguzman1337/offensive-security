@@ -8,7 +8,8 @@ $desiredValue = 2
 try {
     Set-ItemProperty -Path $regPath -Name $regName -Value $desiredValue
     Write-Host "✅ NTLMv1 inbound authentication disabled (RestrictReceivingNTLMTraffic = $desiredValue)."
-} catch {
+}
+catch {
     Write-Error "❌ Failed to set $regName. Error: $_"
 }
 
@@ -19,9 +20,12 @@ try {
 
     if ($currentValue -eq $desiredValue) {
         Write-Host "✅ Verification successful: $regName is set to $currentValue."
-    } else {
+    }
+    else {
         Write-Warning "⚠️ Verification failed: $regName is set to $currentValue (expected $desiredValue)."
     }
-} catch {
+}
+catch {
     Write-Warning "⚠️ Could not read $regName. It may not be set or accessible. Error: $_"
 }
+
