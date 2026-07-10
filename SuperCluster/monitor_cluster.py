@@ -54,12 +54,14 @@ class ClusterMonitor:
     def load_hostfile(self):
         try:
             with open(self._hostfile, "r") as f:
-                nodes = []
-                for line in f:
-                    stripped = line.strip()
-                    if stripped and not stripped.startswith("#"):
-                        nodes.append(stripped.split()[0])
-                return nodes
+    def load_hostfile(self):
+        try:
+            with open(self._hostfile, "r") as f:
+                return [
+                    parts[0]
+                    for line in f
+                    if (parts := line.strip().split()) and not parts[0].startswith("#")
+                ]
         except FileNotFoundError:
             return []  # no hostfile yet — running outside cluster context
 
