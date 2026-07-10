@@ -1,12 +1,76 @@
+# Dependabot version-update configuration.
 #
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
+# Pre-2026-07-10: this file used `package-ecosystem: *` (a YAML scalar
+# that GitHub's Dependabot parser silently rejects), so Dependabot
+# NEVER ran on this repo even though the Dependabot alerts page
+# said it was enabled. The dependency graph's "846 Total" stayed
+# silent because Dependabot had no manifest to monitor.
+#
+# This rewrite declares the real ecosystems present in the repo:
+# pip for every requirements.txt
+# github-actions for .github/workflows/*.yml
+# docker for any Dockerfile (none today, but pinned for the future)
+#
+# `ignore` lists keep Dependabot from opening a noisy PR for things
+# the operator already manages manually (e.g. shell scripts that pin
+# a specific `requests` version, and `step-security/harden-runner`
+# which is hand-pinned to a specific SHA for supply-chain safety).
 version: 2
+
 updates:
-  - package-ecosystem: *
-    directory: /
+  # Python — every requirements.txt in the tree.
+  # Five identical manifests under SuperCluster/Linux + one under
+  # Linux/Python + one top-level. Dependabot opens separate PRs per
+  # manifest when a dep drifts, so we list each directory.
+  - package-ecosystem: "pip"
+    directory: "/"
     schedule:
-      interval: daily
+      interval: "daily"
+    labels:
+      - "dependencies"
+      - "python"
+    groups:
+      # Group all manifests together so Dependabot opens ONE PR per
+      # package bump (instead of 6 identical-PRs, one per file).
+      python-all:
+        patterns:
+          - "*"
+    # Packages that are pinned intentionally (e.g. version floors
+    # for compatibility with the SuperCluster hardware) — do not
+    # open automated PRs.
+    ignore:
+      - dependency-name: "typeguard"
+        # Pinned == 4.5.2 because newer versions dropped Python 3.10
+        # support; we ship a Python 3.10 wheel for SuperCluster nodes.
+      - dependency-name: "fonttools"
+      - dependency-name: "numpy"
+      - dependency-name: "Pillow"
+
+  # GitHub Actions — every workflow that uses `uses: owner/repo@<ver>`.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    groups:
+      actions-all:
+        patterns:
+          - "*"
+    # step-security/harden-runner is hand-pinned to a specific SHA
+    # in every workflow (audit-trail requirement). Dependabot should
+    # never auto-bump it.
+    ignore:
+      - dependency-name: "step-security/harden-runner"
+
+  # Docker — forward-compatible. The repo has no Dockerfile today,
+  # but pinning the ecosystem now means future Docker additions
+  # will be picked up automatically without a config edit.
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "docker"
