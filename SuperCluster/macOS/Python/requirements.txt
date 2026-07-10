@@ -1,4 +1,4 @@
-typeguard==4.5.1
+typeguard==4.5.2
 APScheduler
 CacheControl
 aio-pika
