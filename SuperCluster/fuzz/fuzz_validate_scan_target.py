@@ -15,11 +15,11 @@ attacker-controlled string to a scan job.
 
 # Import the function under test. The harness lives at
 # SuperCluster/fuzz/; the target lives at SuperCluster/monitor_cluster.py.
-import os
 import sys
+from pathlib import Path
 
-_HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.dirname(_HERE))
+_HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(_HERE.parent))
 from monitor_cluster import _validate_scan_target  # type: ignore  # noqa: E402
 
 # Seed corpus — strings that should all be either valid or invalid without

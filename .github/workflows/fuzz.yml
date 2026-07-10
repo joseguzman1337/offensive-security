@@ -43,7 +43,7 @@ jobs:
 
       - name: Install runtime deps (flask + psutil for monitor_cluster import)
         run: |
-          python -m pip install --quiet flask psutil
+          python -m pip install --quiet flask==3.0.3 psutil==6.0.0
 
       - name: Run fuzz seed corpus
         working-directory: SuperCluster

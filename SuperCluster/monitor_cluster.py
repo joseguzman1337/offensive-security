@@ -16,6 +16,14 @@ from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
 
+@app.after_request
+def add_security_headers(response):
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Content-Security-Policy"] = "default-src 'self'"
+    return response
+
 
 def _validate_scan_target(target):
     """Validate that target is a valid IP address, CIDR range, or hostname."""
@@ -32,7 +40,7 @@ def _validate_scan_target(target):
         pass
     # Validate as hostname (RFC 1123)
     if re.fullmatch(
-        r"[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*",
+        r"(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?",
         target,
     ):
         return True
@@ -130,5 +138,7 @@ def run_scan(target):
         ],
         capture_output=True,
         text=True,
+        check=True,
+        timeout=30,
     )
     return jsonify({"output": result.stdout})

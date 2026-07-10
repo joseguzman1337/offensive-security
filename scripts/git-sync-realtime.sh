@@ -1,16 +1,17 @@
 #!/bin/bash
+set -euo pipefail
 # Real-time Git synchronization script for Junie
 # Usage: ./scripts/git-sync-realtime.sh [branch]
 
-BRANCH=${1:-$(git branch --show-current)}
+BRANCH="${1:-$(git branch --show-current)}"
 REMOTE="origin"
 
 echo "Starting real-time sync on branch: $BRANCH"
 
 # Fetch and pull incoming changes
 echo "Fetching and pulling changes from $REMOTE/$BRANCH..."
-git fetch $REMOTE
-if git pull $REMOTE $BRANCH --rebase; then
+git fetch "$REMOTE"
+if git pull "$REMOTE" "$BRANCH" --rebase; then
     echo "Successfully pulled and rebased."
 else
     echo "Conflict detected during pull."
@@ -25,7 +26,7 @@ if [[ -n $(git status -s) ]]; then
     
     # Push to remote
     echo "Pushing changes to $REMOTE/$BRANCH..."
-    if git push $REMOTE HEAD:$BRANCH; then
+    if git push "$REMOTE" "HEAD:$BRANCH"; then
         echo "Successfully pushed."
     else
         echo "Push failed. Remote might have moved."
