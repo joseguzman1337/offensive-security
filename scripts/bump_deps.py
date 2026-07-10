@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Bump all pinned/floored package versions in requirements.txt files to latest PyPI releases."""
 
+from __future__ import annotations
 import json
 import re
 import sys

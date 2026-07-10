@@ -34,10 +34,10 @@ jobs:
         python-version: ["3.11", "3.12"]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
           python-version: ${{ matrix.python-version }}
 

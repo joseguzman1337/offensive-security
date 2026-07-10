@@ -36,7 +36,7 @@ jobs:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Run PSScriptAnalyzer
-        uses: microsoft/psscriptanalyzer-action@7a0da25f33985767f15f93140306528900744195
+        uses: microsoft/psscriptanalyzer-action@6b2948b1944407914a58661c49941824d149734f # v1.1
         with:
           # Check https://github.com/microsoft/action-psscriptanalyzer for more info about the options.
           # The below set up runs PSScriptAnalyzer to your entire repository and runs some basic security rules.
@@ -48,6 +48,6 @@ jobs:
       
       # Upload the SARIF file generated in the previous step
       - name: Upload SARIF results file
-        uses: github/codeql-action/upload-sarif@99df26d4f13ea111d4ec1a7dddef6063f76b97e9 # v4.37.0
+        uses: github/codeql-action/upload-sarif@24ea975727876cf496b1eb0c5b36e96e01600b51 # v4.37.0
         with:
           sarif_file: results.sarif
