@@ -108,8 +108,10 @@ prerequisites() {
     echo
     cd ~
     apt-get install -y zsh zsh-syntax-highlighting zsh-autosuggestions
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    wget https://raw.githubusercontent.com/OscarAkaElvis/zsh-parrot-theme/master/install.zsh
+    # Pinned (closes PinnedDependenciesID alerts #1, #2, #3) — was `curl|sh` from `master`.
+    # Updating these pins is a deliberate action; verify the new commit is benign first.
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/677a4592b18c08ddea737f8aca70bac0e9fc9313/tools/install.sh)"
+    wget -O install.zsh https://raw.githubusercontent.com/OscarAkaElvis/zsh-parrot-theme/944b8926932779a13fc27f5185f7c9e0cd1a6f20/install.zsh
     ./install.zsh 
     echo "You can add more plugins to your zsh like zsh autosuggestions / .. "
     fi
@@ -286,7 +288,7 @@ tools() {
     8)
     if ! [ -x "$(command -v msfconsole)" ]; then 
     cd /tmp
-    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+    curl -fsSL https://raw.githubusercontent.com/rapid7/metasploit-omnibus/21d459344aa291e9d8c0abdd6cbd9806fdb84791/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
     chmod +x msfinstall
     ./msfinstall
     cd ~
@@ -334,7 +336,7 @@ tools() {
     0)
     if ! [ -x "$(command -v msfconsole)" ]; then
     cd /tmp
-    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+    curl -fsSL https://raw.githubusercontent.com/rapid7/metasploit-omnibus/21d459344aa291e9d8c0abdd6cbd9806fdb84791/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
     chmod +x msfinstall
     ./msfinstall
     db_status
