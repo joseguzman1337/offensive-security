@@ -16,6 +16,7 @@ from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
 
+
 @app.after_request
 def add_security_headers(response):
     response.headers["X-Content-Type-Options"] = "nosniff"
@@ -59,9 +60,6 @@ class ClusterMonitor:
             self.nodes = self.load_hostfile()
         return self.nodes
 
-    def load_hostfile(self):
-        try:
-            with open(self._hostfile, "r") as f:
     def load_hostfile(self):
         try:
             with open(self._hostfile, "r") as f:
