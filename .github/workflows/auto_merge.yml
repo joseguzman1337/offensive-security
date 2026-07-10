@@ -18,7 +18,7 @@ on:
       - master
 
 # Default to the smallest permission set; jobs that need write opt in.
-permissions: read-only
+permissions: read-all
 
 jobs:
   auto-merge:
