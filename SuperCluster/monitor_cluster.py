@@ -6,10 +6,24 @@ import socket
 import subprocess
 from datetime import datetime
 
-import psutil
 from flask import Flask, jsonify, render_template
 
+# psutil is imported lazily inside the function that uses it. This lets
+# the fuzz harness import the validation primitive `_validate_scan_target`
+# without pulling in the psutil runtime stack (which is a C extension and
+# can fail in minimal CI/fuzz environments).
+# Refactored 2026-07-10 to enable fuzzing (closes Scorecard FuzzingID).
+
 app = Flask(__name__)
+
+
+@app.after_request
+def add_security_headers(response):
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Content-Security-Policy"] = "default-src 'self'"
+    return response
 
 
 def _validate_scan_target(target):
@@ -27,7 +41,7 @@ def _validate_scan_target(target):
         pass
     # Validate as hostname (RFC 1123)
     if re.fullmatch(
-        r"[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*",
+        r"(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?",
         target,
     ):
         return True
@@ -35,12 +49,27 @@ def _validate_scan_target(target):
 
 
 class ClusterMonitor:
-    def __init__(self):
-        self.nodes = self.load_hostfile()
+    def __init__(self, hostfile: str = "hostfile"):
+        # nodes loaded lazily so the module is importable in test/fuzz
+        # contexts where the hostfile isn't present.
+        self._hostfile = hostfile
+        self.nodes: list[str] | None = None
+
+    def _ensure_nodes(self) -> list[str]:
+        if self.nodes is None:
+            self.nodes = self.load_hostfile()
+        return self.nodes
 
     def load_hostfile(self):
-        with open("hostfile", "r") as f:
-            return [line.split()[0] for line in f if not line.startswith("#")]
+        try:
+            with open(self._hostfile, "r") as f:
+                return [
+                    parts[0]
+                    for line in f
+                    if (parts := line.strip().split()) and not parts[0].startswith("#")
+                ]
+        except FileNotFoundError:
+            return []  # no hostfile yet — running outside cluster context
 
     def get_node_status(self, node_ip):
         """Check if node is responsive"""
@@ -51,22 +80,26 @@ class ClusterMonitor:
             return "offline"
 
     def get_cluster_metrics(self):
+        # Lazy import: psutil is only needed for runtime metrics, not for
+        # the validation primitive or fuzz harness.
+        import psutil  # type: ignore  # noqa: WPS433,PLC0415
+
+        nodes = self._ensure_nodes()
         metrics = {
             "timestamp": datetime.now().isoformat(),
-            "total_nodes": len(self.nodes),
+            "total_nodes": len(nodes),
             "online_nodes": 0,
             "cpu_usage": psutil.cpu_percent(),
             "memory_usage": psutil.virtual_memory().percent,
             "nodes": [],
         }
 
-        for node in self.nodes:
+        for node in nodes:
             status = self.get_node_status(node)
             if status == "online":
                 metrics["online_nodes"] += 1
             metrics["nodes"].append(
-                {"ip": node, "status": status,
-                    "last_check": datetime.now().isoformat()}
+                {"ip": node, "status": status, "last_check": datetime.now().isoformat()}
             )
 
         return metrics
@@ -89,18 +122,21 @@ def get_metrics():
 def run_scan(target):
     if not _validate_scan_target(target):
         return jsonify({"error": "Invalid scan target"}), 400
+    nodes = monitor._ensure_nodes()
     result = subprocess.run(
         [
             "mpirun",
             "--hostfile",
             "hostfile",
             "-np",
-            str(len(monitor.nodes)),
+            str(len(nodes)),
             "python",
             "security_scanner.py",
             shlex.quote(target),
         ],
         capture_output=True,
         text=True,
+        check=True,
+        timeout=30,
     )
     return jsonify({"output": result.stdout})
