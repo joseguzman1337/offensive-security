@@ -28,7 +28,7 @@ permissions: read-all
 jobs:
   auto-merge:
     if: ${{ github.event_name == 'pull_request_target' }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: write
       pull-requests: write
@@ -49,7 +49,7 @@ jobs:
   codeql-analysis:
     if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: CodeQL
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       actions: read
       contents: read
@@ -76,7 +76,7 @@ jobs:
 
   dependency-review:
     if: ${{ github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: read
       pull-requests: write
@@ -92,7 +92,7 @@ jobs:
 
   fuzz:
     if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: read
     strategy:
@@ -114,7 +114,7 @@ jobs:
 
   fuzzing:
     if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'schedule' }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions: read-all
     concurrency:
       group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
@@ -137,7 +137,7 @@ jobs:
 
   ossar-analysis:
     if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
-    runs-on: windows-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: read
       security-events: write
@@ -162,7 +162,7 @@ jobs:
 
   powershell-analysis:
     if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'schedule' }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: read
       security-events: write
@@ -187,7 +187,7 @@ jobs:
 
   snyk-analysis:
     if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: read
       security-events: write
@@ -212,7 +212,7 @@ jobs:
 
   trivy-analysis:
     if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: read
       security-events: write
@@ -237,7 +237,7 @@ jobs:
   autofix-codeql:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix CodeQL
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: write
       security-events: read
@@ -264,7 +264,7 @@ jobs:
   autofix-binskim:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix BinSkim
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: write
       security-events: read
@@ -292,7 +292,7 @@ jobs:
   autofix-bandit:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix Bandit
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: write
       security-events: read
@@ -326,7 +326,7 @@ jobs:
   autofix-eslint:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix ESLint
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: write
       security-events: read
@@ -358,7 +358,7 @@ jobs:
   autofix-psscriptanalyzer:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix PSScriptAnalyzer
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: write
       security-events: read
@@ -391,7 +391,7 @@ jobs:
   autofix-scorecard:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     name: Autofix Scorecard
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hermes-local]
     permissions:
       contents: write
       security-events: read
