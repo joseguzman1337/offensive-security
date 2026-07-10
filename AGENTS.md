@@ -28,7 +28,7 @@
 
 ## Coding Style & Naming Conventions
 
-- Python: PEP 8 alignment (4-space indent, lowercase_with_underscores for files/functions, CapWords for classes). Type hints and short docstrings mirror existing scripts (see `DevSecOps/auto_skip_checkov.py` for tone).
+- Python: PEP 8 alignment (4-space indent, lowercase_with_underscores for files/functions, CapWords for classes). Type hints and short docstrings mirror existing scripts.
 - Shell: keep strict mode (`set -euo pipefail` where practical) and lowercase, hyphenated filenames. Comment only when behavior is non-obvious.
 - Text/Markdown: concise sentences, platform-specific sections colocated with their directory; use fenced code blocks for commands.
 
