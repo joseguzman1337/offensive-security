@@ -70,6 +70,7 @@ class ClusterMonitor:
         # Lazy import: psutil is only needed for runtime metrics, not for
         # the validation primitive or fuzz harness.
         import psutil  # type: ignore  # noqa: WPS433,PLC0415
+
         nodes = self._ensure_nodes()
         metrics = {
             "timestamp": datetime.now().isoformat(),
@@ -85,8 +86,7 @@ class ClusterMonitor:
             if status == "online":
                 metrics["online_nodes"] += 1
             metrics["nodes"].append(
-                {"ip": node, "status": status,
-                    "last_check": datetime.now().isoformat()}
+                {"ip": node, "status": status, "last_check": datetime.now().isoformat()}
             )
 
         return metrics

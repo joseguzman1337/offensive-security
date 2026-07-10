@@ -12,15 +12,15 @@ Validates IP, CIDR, or hostname. Inputs that hang or raise unhandled
 exceptions = fuzz bugs we want to surface before a user passes an
 attacker-controlled string to a scan job.
 """
-import sys
 
 # Import the function under test. The harness lives at
 # SuperCluster/fuzz/; the target lives at SuperCluster/monitor_cluster.py.
 import os
+import sys
+
 _HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(_HERE))
 from monitor_cluster import _validate_scan_target  # type: ignore  # noqa: E402
-
 
 # Seed corpus — strings that should all be either valid or invalid without
 # raising. These double as regression tests.
