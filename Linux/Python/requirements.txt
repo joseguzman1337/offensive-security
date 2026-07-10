@@ -1,4 +1,4 @@
-typeguard==4.5.1
+typeguard==4.5.2
 APScheduler
 CacheControl
 aio-pika
@@ -44,7 +44,7 @@ exceptiongroup
 fbmessenger
 filelock>=3.20.3
 fire
-fonttools==4.61.1
+fonttools==4.63.0
 frozenlist
 fsspec
 future
