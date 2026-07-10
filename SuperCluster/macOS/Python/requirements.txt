@@ -154,5 +154,5 @@ userpath
 webexteamssdk
 yarl
 orjson>=3.11.9
-ply>=3.12
+ply>=3.11
 ujson>=5.13.0
