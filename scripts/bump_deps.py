@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Bump all pinned/floored package versions in requirements.txt files to latest PyPI releases."""
+
+import json
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
-import urllib.error
-import json
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
@@ -21,9 +22,9 @@ REQ_FILES = [
 ]
 
 # Regex patterns
-PIN_RE = re.compile(r'^([A-Za-z0-9_.\-]+)==([^\s#]+)(.*)', re.MULTILINE)
-FLOOR_RE = re.compile(r'^([A-Za-z0-9_.\-]+)>=([^\s#,]+)(.*)', re.MULTILINE)
-BARE_RE = re.compile(r'^([A-Za-z0-9_.\-]+)\s*$', re.MULTILINE)
+PIN_RE = re.compile(r"^([A-Za-z0-9_.\-]+)==([^\s#]+)(.*)", re.MULTILINE)
+FLOOR_RE = re.compile(r"^([A-Za-z0-9_.\-]+)>=([^\s#,]+)(.*)", re.MULTILINE)
+BARE_RE = re.compile(r"^([A-Za-z0-9_.\-]+)\s*$", re.MULTILINE)
 
 _version_cache: dict[str, str] = {}
 
@@ -50,7 +51,7 @@ def bump_line(line: str) -> str:
     """Return the bumped version of a single requirements line."""
     stripped = line.rstrip()
     # Skip comments and blank lines
-    if not stripped or stripped.startswith('#'):
+    if not stripped or stripped.startswith("#"):
         return line
 
     # ==exact pin
