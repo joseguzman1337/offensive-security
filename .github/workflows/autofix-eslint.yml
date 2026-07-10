@@ -1,0 +1,54 @@
+# Auto-fix loop for ESLint alerts.
+#
+# ESLint is the one tool in this list with a real --fix mode. The
+# autofix runner calls `eslint --fix .` on every push, commits
+# whatever it changed, and pushes. If a finding can't be auto-fixed
+# (e.g. `no-unused-vars` requires a real delete), it ends up in
+# the tracking issue with the rule + file + line.
+#
+# The repo currently has no JS/TS; this workflow is wired up so
+# that if JS lands it will be linted and fixed automatically.
+name: Autofix ESLint
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "30 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  security-events: read
+  issues: write
+
+jobs:
+  autofix:
+    name: autofix(eslint)
+    runs-on: [self-hosted, hermes-local]
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "lts/*"
+
+      - name: Run autofix runner
+        env:
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WORKFLOW_SHA: ${{ github.sha }}
+          ISSUE_LABELS: "security,javascript"
+        run: |
+          set -euo pipefail
+          python3 scripts/autofix.py eslint

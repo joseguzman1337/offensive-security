@@ -1,0 +1,52 @@
+# Auto-fix loop for BinSkim alerts.
+#
+# BinSkim scans compiled binaries (.dll, .exe, .so, etc.) for
+# security issues. It has NO autofix — the fix is "rebuild the
+# binary correctly" or "delete the binary if it's no longer
+# needed". This workflow:
+#   1. Lists open BinSkim alerts.
+#   2. For each, opens a tracking issue so it can't be silently
+#      dismissed. The issue body cites the rule, file, and
+#      build instructions.
+#
+# If the repo adds binaries later, BinSkim will start surfacing
+# alerts; this workflow codifies the response.
+name: Autofix BinSkim
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "20 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  security-events: read
+  issues: write
+
+jobs:
+  autofix:
+    name: autofix(binskim)
+    runs-on: [self-hosted, hermes-local]
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run autofix runner
+        env:
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WORKFLOW_SHA: ${{ github.sha }}
+          ISSUE_LABELS: "security,binary"
+        run: |
+          set -euo pipefail
+          python3 scripts/autofix.py binskim

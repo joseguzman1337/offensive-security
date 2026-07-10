@@ -1,0 +1,61 @@
+# Auto-fix loop for Bandit alerts.
+#
+# Bandit scans Python for common security issues (assert, hardcoded
+# passwords, weak crypto, etc.). It has NO direct autofix — most
+# findings need a human to pick a safer API. The autofix runner:
+#   1. Lists open Bandit alerts.
+#   2. Attempts Bandit's safe-fix patterns (B101 assert kept, B105
+#      hardcoded password -> env var skipped, B110 try-except-pass
+#      left for human).
+#   3. Files a tracking issue for everything that survives.
+#
+# If a future Bandit release adds a --fix mode, swap
+# `fix_bandit` in scripts/autofix.py to call it.
+name: Autofix Bandit
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "25 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  security-events: read
+  issues: write
+
+jobs:
+  autofix:
+    name: autofix(bandit)
+    runs-on: [self-hosted, hermes-local]
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install Bandit
+        run: |
+          python -m pip install --quiet bandit
+
+      - name: Run autofix runner
+        env:
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WORKFLOW_SHA: ${{ github.sha }}
+          ISSUE_LABELS: "security,python"
+        run: |
+          set -euo pipefail
+          python3 scripts/autofix.py bandit

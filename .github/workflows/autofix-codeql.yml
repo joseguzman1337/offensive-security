@@ -1,0 +1,60 @@
+# Auto-fix loop for CodeQL alerts.
+#
+# CodeQL itself has no autofix (queries describe classes of bugs; the
+# fix is in the source). This workflow runs the per-tool autofix
+# runner (scripts/autofix.py) which:
+#   1. Lists open CodeQL alerts via the GitHub API.
+#   2. Tries the per-tool fix (currently a no-op for CodeQL; future
+#      work could apply a CodeQL patch-pack, see CODEQL-IFC).
+#   3. For alerts that survive, opens (or appends to) a tracking
+#      issue labeled "tool:codeql" + "autofix-needed" so they are
+#      never silently dismissed — per the operator's
+#      `dismiss/ignore/skip are prohibited` rule.
+#
+# Runs on a LOCAL self-hosted runner only. The runner must have
+# `gh` and `python3` on PATH and a valid GH_TOKEN in env.
+#
+# Set up a self-hosted runner:
+#   gh api -X POST repos/joseguzman1337/offensive-security/actions/runners/registration-token
+#     | jq -r .token
+#   ./config.sh --url https://github.com/joseguzman1337/offensive-security
+#     --token <token> --labels hermes-local --unattended
+name: Autofix CodeQL
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    # Daily at 03:15 UTC — after the CodeQL scheduled run at 00:00.
+    - cron: "15 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  security-events: read
+  issues: write
+
+jobs:
+  autofix:
+    name: autofix(codeql)
+    runs-on: [self-hosted, hermes-local]
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run autofix runner
+        env:
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WORKFLOW_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python3 scripts/autofix.py codeql
