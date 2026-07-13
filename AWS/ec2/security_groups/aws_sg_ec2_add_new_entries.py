@@ -346,7 +346,7 @@ instance_ids = [
     'i-asdsadasdsasadasd',  # dc1
     'i-asdsadasdsadasdas',  # dc2
     # Add more instance IDs if needed
-}
+]
 allowed_cidrs = [
     '10.1.65.0/24',
     '10.100.20.0/24',
