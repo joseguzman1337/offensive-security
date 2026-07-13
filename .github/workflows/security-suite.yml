@@ -46,8 +46,18 @@ jobs:
             "/repos/${REPO}/pulls/${PR_NUMBER}/merge" \
             -f merge_method=squash
 
+  # CodeQL: default setup at the repo level is the supported upload path
+  # (state=configured, query_suite=default, threat_model=remote). The
+  # advanced matrix job below is intentionally disabled: with default
+  # setup enabled, GitHub rejects SARIF uploads from advanced workflows
+  # with "CodeQL analyses from advanced configurations cannot be
+  # processed when the default setup is enabled". If you need to
+  # re-enable the matrix, first disable default setup in repo settings
+  # (Settings -> Code security and analysis -> Code scanning -> Default
+  # setup -> Disable). See codeql-analysis.yml for a standalone matrix
+  # that runs only when default setup is off.
   codeql-analysis:
-    if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+    if: false
     name: CodeQL
     runs-on: [self-hosted, hermes-local]
     permissions:
@@ -57,12 +67,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # javascript excluded: this repo has no JS/TS source (only Python,
-        # YAML, shell, Go, Actions workflows). CodeQL fails with exit 32
-        # ("Only found JavaScript or TypeScript files that were empty or
-        # contained syntax errors") when the JS matrix entry runs against
-        # a tree with zero JS files. Re-add when JS/TS source is added.
-        language: ['go', 'python', 'actions']
+        # go excluded: this repo has no Go source. CodeQL fails with
+        # exit 32 ("Only found ... Go") when the Go matrix entry runs
+        # against a tree with zero Go files. Re-add when Go source is
+        # added. javascript was excluded previously.
+        language: ['python', 'actions']
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920
