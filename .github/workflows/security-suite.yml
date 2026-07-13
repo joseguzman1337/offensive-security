@@ -54,8 +54,13 @@ jobs:
   # processed when the default setup is enabled". If you need to
   # re-enable the matrix, first disable default setup in repo settings
   # (Settings -> Code security and analysis -> Code scanning -> Default
-  # setup -> Disable). See codeql-analysis.yml for a standalone matrix
-  # that runs only when default setup is off.
+  # setup -> Disable). The standalone .github/workflows/codeql-analysis.yml
+  # was deleted in the same commit because (a) it duplicated this job
+  # and (b) the empty `language: []` matrix + `if: false` job
+  # produced zero-job runs that GitHub marked as failures with
+  # "likely failed because of a workflow file issue". Default setup
+  # is the only CodeQL path that runs in this repo while it is in
+  # `state=configured`.
   codeql-analysis:
     if: false
     name: CodeQL
@@ -131,14 +136,36 @@ jobs:
           uv venv --python "${{ matrix.python-bin }}" .venv-fuzz
           . .venv-fuzz/bin/activate
           uv pip install --quiet flask==3.0.3 psutil==6.0.0
+      # fuzz_seeds.py is the deterministic regression seed runner. It
+      # runs without atheris/libFuzzer so this job works on any
+      # self-hosted macOS runner (no LLVM build step required). The
+      # companion atheris harness lives at
+      # fuzz/fuzz_validate_scan_target.py and is exercised by the
+      # `fuzzing` job below.
       - name: Run fuzz seed corpus
         working-directory: SuperCluster
         run: |
           . ../.venv-fuzz/bin/activate
-          "${{ matrix.python-bin }}" fuzz/fuzz_validate_scan_target.py
+          "${{ matrix.python-bin }}" fuzz/fuzz_seeds.py
 
   fuzzing:
-    if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'schedule' }}
+    if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+    # Self-hosted Mac runner. The previous revision of this job ran
+    # clusterfuzzlite on ubuntu-latest, but:
+    #   1. The operator's CI policy is "autofix only via self-hosted
+    #      runners on this device" — ubuntu-latest violates that.
+    #   2. clusterfuzzlite's build_fuzzers/run_fuzzers are container
+    #      actions and require Linux; the seed-only Python harness
+    #      in this repo is not a libFuzzer binary, so build_fuzzers
+    #      always failed to find a fuzzer to bundle.
+    # The autofix: run atheris (a CPython-instrumented libFuzzer
+    # driver) directly on the self-hosted Mac. atheris needs an
+    # LLVM build with libFuzzer; the runner ships Homebrew LLVM at
+    # /opt/homebrew/opt/llvm (clang 22+ has libLLVMFuzzerCLI.a).
+    # We pin CLANG_BIN so atheris's setup.py uses that clang at
+    # install time, and we cap the run with -max_total_time so a
+    # single-runner multiplex does not block the rest of the suite
+    # for 10 minutes.
     runs-on: [self-hosted, hermes-local]
     permissions: read-all
     concurrency:
@@ -149,16 +176,69 @@ jobs:
         uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920
         with:
           egress-policy: audit
-      - name: Build Fuzzers
-        uses: google/clusterfuzzlite/actions/build_fuzzers@v1
-        with:
-          language: python
-      - name: Run Fuzzers
-        uses: google/clusterfuzzlite/actions/run_fuzzers@v1
-        with:
-          fuzz-seconds: 600
-          mode: batch
-          language: python
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - name: Install uv
+        run: |
+          if ! command -v uv >/dev/null 2>&1; then
+            curl -LsSf https://astral.sh/uv/install.sh | sh
+            echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          fi
+      - name: Ensure LLVM (libFuzzer) is available
+        # atheris 3.x builds against an LLVM clang that ships
+        # libFuzzer. Apple Clang does NOT, so we need Homebrew's
+        # llvm formula. The runner is bootstrapped with llvm
+        # pre-installed at /opt/homebrew/opt/llvm; the `brew
+        # install` path is the safety net for a fresh runner.
+        run: |
+          set -euo pipefail
+          if [ -x /opt/homebrew/opt/llvm/bin/clang ]; then
+            echo "llvm already installed at /opt/homebrew/opt/llvm"
+            /opt/homebrew/opt/llvm/bin/clang --version
+          else
+            echo "llvm not found; installing via Homebrew"
+            brew update
+            brew install llvm
+          fi
+      - name: Install runtime + atheris (build with Homebrew LLVM)
+        env:
+          CLANG_BIN: /opt/homebrew/opt/llvm/bin/clang
+        run: |
+          set -euo pipefail
+          uv venv --python python3.12 .venv-fuzzing
+          . .venv-fuzzing/bin/activate
+          uv pip install --quiet flask==3.0.3 psutil==6.0.0
+          # atheris's setup.py calls $CLANG_BIN to compile its
+          # libFuzzer-binding C extension. Without this, the install
+          # fails with "Apple Clang does not come with libFuzzer".
+          uv pip install --quiet atheris==3.0.0
+      - name: Refresh the seed corpus
+        # fuzz_seeds.py writes 19 seed inputs to
+        # SuperCluster/fuzz/fuzz_corpus/ on every run. atheris will
+        # use them as a starting corpus (the "corpus_minimization"
+        # benefit is real even for a function with shallow
+        # branches).
+        working-directory: SuperCluster
+        run: |
+          . ../.venv-fuzzing/bin/activate
+          python fuzz/fuzz_seeds.py
+      - name: Run atheris/libFuzzer (coverage-guided, bounded)
+        # -max_total_time caps wall-clock so this job does not
+        # starve the rest of the suite on the single self-hosted
+        # runner. -atheris_runs caps iterations as a second
+        # safety net. The job exits non-zero on any crash or
+        # uncaught exception in _validate_scan_target, which
+        # is what the autofix contract requires.
+        env:
+          CLANG_BIN: /opt/homebrew/opt/llvm/bin/clang
+        working-directory: SuperCluster
+        run: |
+          . ../.venv-fuzzing/bin/activate
+          python fuzz/fuzz_validate_scan_target.py \
+            fuzz/fuzz_corpus \
+            -atheris_runs=50000 \
+            -max_total_time=120 \
+            -print_final_stats=1
 
   ossar-analysis:
     if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}

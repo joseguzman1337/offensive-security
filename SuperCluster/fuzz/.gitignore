@@ -1,0 +1,5 @@
+# Atheris/libFuzzer generates new corpus inputs as it discovers
+# interesting code paths. These are runtime artifacts, not source.
+# The companion seed runner (`fuzz_seeds.py`) creates the initial
+# 19 inputs in this directory on every CI run.
+fuzz_corpus/
