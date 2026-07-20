@@ -1,7 +1,7 @@
-boto3>=1.43.48
+boto3>=1.43.51
 requests>=2.34.2
 shodan>=1.31.0
 dnspython>=2.8.0
 python-nmap>=0.7.1
 mpi4py>=4.1.2
-tqdm>=4.68.4
+tqdm>=4.69.0
