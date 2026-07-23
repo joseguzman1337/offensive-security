@@ -85,13 +85,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@7188fc363630916deb702c7fdcf4e481b751f97a
+        uses: github/codeql-action/init@e4fba868fa4b1b91e1fdab776edc8cfbe6e9fb81
         with:
           languages: ${{ matrix.language }}
       - name: Autobuild
-        uses: github/codeql-action/autobuild@7188fc363630916deb702c7fdcf4e481b751f97a
+        uses: github/codeql-action/autobuild@e4fba868fa4b1b91e1fdab776edc8cfbe6e9fb81
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@7188fc363630916deb702c7fdcf4e481b751f97a
+        uses: github/codeql-action/analyze@e4fba868fa4b1b91e1fdab776edc8cfbe6e9fb81
 
   dependency-review:
     if: ${{ github.event_name == 'pull_request' }}
@@ -261,7 +261,7 @@ jobs:
         uses: github/ossar-action@4e96c4f6e591eb4b991abfd459e40b136a317aea
         id: ossar
       - name: Upload OSSAR results
-        uses: github/codeql-action/upload-sarif@7188fc363630916deb702c7fdcf4e481b751f97a
+        uses: github/codeql-action/upload-sarif@e4fba868fa4b1b91e1fdab776edc8cfbe6e9fb81
         with:
           sarif_file: ${{ steps.ossar.outputs.sarifFile }}
 
@@ -286,7 +286,7 @@ jobs:
           includeRule: '"PSAvoidGlobalAliases", "PSAvoidUsingConvertToSecureStringWithPlainText"'
           output: results.sarif
       - name: Upload SARIF results file
-        uses: github/codeql-action/upload-sarif@7188fc363630916deb702c7fdcf4e481b751f97a
+        uses: github/codeql-action/upload-sarif@e4fba868fa4b1b91e1fdab776edc8cfbe6e9fb81
         with:
           sarif_file: results.sarif
 
@@ -311,7 +311,7 @@ jobs:
           image: .
           args: --file=Dockerfile --sarif-file-output=snyk.sarif
       - name: Upload SARIF results
-        uses: github/codeql-action/upload-sarif@7188fc363630916deb702c7fdcf4e481b751f97a
+        uses: github/codeql-action/upload-sarif@e4fba868fa4b1b91e1fdab776edc8cfbe6e9fb81
         with:
           sarif_file: snyk.sarif
 
@@ -335,7 +335,7 @@ jobs:
           format: sarif
           output: trivy-results.sarif
       - name: Upload SARIF results
-        uses: github/codeql-action/upload-sarif@7188fc363630916deb702c7fdcf4e481b751f97a
+        uses: github/codeql-action/upload-sarif@e4fba868fa4b1b91e1fdab776edc8cfbe6e9fb81
         with:
           sarif_file: trivy-results.sarif
 
