@@ -1,4 +1,4 @@
-boto3>=1.43.51
+boto3>=1.43.54
 requests>=2.34.2
 shodan>=1.31.0
 dnspython>=2.8.0
