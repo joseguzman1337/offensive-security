@@ -1437,7 +1437,7 @@ class FastUpdate:
         if ignore:
             pacman_cmd += f" {ignore}"
         ok, err = await self.run_command(
-            pacman_cmd, "Downloading Pacman updates")
+            pacman_cmd, "Downloading Pacman updates", timeout=5400)
         if not ok:
             return False, err
 
@@ -1447,7 +1447,8 @@ class FastUpdate:
             if ignore:
                 cmd += f" {ignore}"
             return await self.run_command(
-                cmd, f"Downloading AUR updates ({helper})", ignore_errors=True
+                cmd, f"Downloading AUR updates ({helper})",
+                ignore_errors=True, timeout=5400,
             )
         return True, ""
 
@@ -1463,7 +1464,8 @@ class FastUpdate:
         if ignore:
             pacman_cmd += f" {ignore}"
         success, err = await self.run_command(
-            pacman_cmd, "Installing Pacman updates", silent=False
+            pacman_cmd, "Installing Pacman updates", silent=False,
+            timeout=5400,
         )
         if not success:
             return False, err
@@ -1482,6 +1484,7 @@ class FastUpdate:
                 f"Installing AUR updates ({helper})",
                 silent=False,
                 ignore_errors=True,
+                timeout=5400,
             )
             if not success:
                 return False, err
