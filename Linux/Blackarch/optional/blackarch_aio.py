@@ -883,32 +883,22 @@ class KernelManager:
 
     @staticmethod
     def rebuild_dkms_all() -> bool:
-        """Rebuilds all DKMS modules for all installed kernels."""
+        """Rebuilds all DKMS modules for the running kernel stack."""
         logging.info("Rebuilding all DKMS modules...")
         try:
-            kernels = sorted(
-                d
-                for d in os.listdir("/usr/lib/modules")
-                if os.path.isdir(os.path.join("/usr/lib/modules", d))
+            result = subprocess.run(
+                ["sudo", "dkms", "autoinstall"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                encoding="utf-8",
             )
-            ok = True
-            for kver in kernels:
-                result = subprocess.run(
-                    ["sudo", "dkms", "autoinstall", "--kernels", kver],
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    encoding="utf-8",
-                )
-                if result.returncode == 0:
-                    logging.info(f"DKMS autoinstall OK for {kver}.")
-                    logging.debug(f"DKMS output: {result.stdout.strip()}")
-                else:
-                    ok = False
-                    logging.error(
-                        f"DKMS autoinstall failed for {kver}: {result.stderr.strip()}")
-            if ok:
+            if result.returncode == 0:
                 logging.info("DKMS autoinstall completed successfully.")
-            return ok
+                logging.debug(f"DKMS output: {result.stdout.strip()}")
+                return True
+            logging.error(
+                f"DKMS autoinstall failed: {result.stderr.strip()}")
+            return False
         except FileNotFoundError:
             logging.info("DKMS not installed — skipping module rebuild.")
             return True
@@ -1370,8 +1360,12 @@ class FastUpdate:
         if process.returncode != 0:
             stderr_text = stderr.decode().strip() if stderr else ""
             stdout_text = stdout.decode().strip() if stdout else ""
-            # Combine both streams — pacman writes some errors to stdout
-            err = stderr_text or stdout_text or f"Exit code {process.returncode}"
+            # Combine BOTH streams — pacman prints conflict detail
+            # (e.g. "installing X breaks dependency") to stdout and the
+            # transaction error to stderr; auto-fix patterns need full text.
+            err = "\n".join(
+                t for t in (stderr_text, stdout_text) if t
+            ) or f"Exit code {process.returncode}"
             if not ignore_errors:
                 logging.error(f"Command failed: {description}. Error: {err}")
             return False, err
@@ -1797,14 +1791,22 @@ class FastUpdate:
                 result = await self.download_phase()
                 if isinstance(result, tuple) and not result[0]:
                     await self.smart_dependency_fix(result[1])
-                    await self.download_phase()
+                    result = await self.download_phase()
+                    if isinstance(result, tuple) and not result[0]:
+                        raise RuntimeError(
+                            f"Download phase failed after auto-fix: {result[1][:500]}"
+                        )
 
             async with KernelManager.async_snap_wrap("install-updates"):
                 print("Step: Installing Updates")
                 result = await self.install_phase()
                 if isinstance(result, tuple) and not result[0]:
                     await self.smart_dependency_fix(result[1])
-                    await self.install_phase()
+                    result = await self.install_phase()
+                    if isinstance(result, tuple) and not result[0]:
+                        raise RuntimeError(
+                            f"Install phase failed after auto-fix: {result[1][:500]}"
+                        )
 
             async with KernelManager.async_snap_wrap("cleanup-orphans"):
                 print("Step: Cleanup Orphans")
