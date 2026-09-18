@@ -1025,7 +1025,8 @@ class KernelManager:
                     "bash",
                     "-c",
                     "LC_ALL=C pacman -Qk 2>&1 | grep -E 'warning.*missing' | "
-                    "awk -F: '{print $1}' | sed 's/warning: //' | sort -u",
+                    "awk -F: '{print $1}' | sed 's/warning: //' | "
+                    "grep -E '^[a-zA-Z0-9@._+-]+$' | grep -v '^warning$' | sort -u",
                 ],
                 capture_output=True,
                 text=True,
