@@ -1964,27 +1964,41 @@ def main():
             report["status"] = "success"
 
         elif args.command == "update":
-            # Clear any old marker
-            if os.path.exists(".update_done"):
-                os.remove(".update_done")
-            updater = FastUpdate()
-            updater.force_release_lock()
-            try:
-                # execute() has its own internal async_snap_wrap per step
-                asyncio.run(updater.execute())
-                report["status"] = "success"
-            except Exception as e:
+            # AUR helpers (yay/paru/...) refuse to run as root — and the
+            # whole point of update is the AUR phase. Must run as a user;
+            # pacman/snapper/reflector steps escalate via sudo internally.
+            if os.geteuid() == 0 and PackageManager.get_best_helper() != "pacman":
+                msg = (
+                    "Refusing to run 'update' as root: AUR helpers cannot "
+                    "build as root ('can't install AUR package as root'). "
+                    "Re-run as a normal user with passwordless sudo."
+                )
+                print(msg)
+                logging.error(msg)
                 report["status"] = "failed"
-                report["details"]["error"] = str(e)
-                logging.error(f"Update command failed: {e}")
-            finally:
-                # Create completion marker ALWAYS at the end
-                with open(".update_done", "w") as f:
-                    f.write(
-                        f"Completed at {datetime.now().isoformat()} - Status: {report['status']}"
-                    )
-                logging.info(
-                    f"Process finished with status: {report['status']}")
+                report["details"]["error"] = msg
+            else:
+                # Clear any old marker
+                if os.path.exists(".update_done"):
+                    os.remove(".update_done")
+                updater = FastUpdate()
+                updater.force_release_lock()
+                try:
+                    # execute() has its own internal async_snap_wrap per step
+                    asyncio.run(updater.execute())
+                    report["status"] = "success"
+                except Exception as e:
+                    report["status"] = "failed"
+                    report["details"]["error"] = str(e)
+                    logging.error(f"Update command failed: {e}")
+                finally:
+                    # Create completion marker ALWAYS at the end
+                    with open(".update_done", "w") as f:
+                        f.write(
+                            f"Completed at {datetime.now().isoformat()} - Status: {report['status']}"
+                        )
+                    logging.info(
+                        f"Process finished with status: {report['status']}")
 
         elif args.command == "tree":
             # tree is read-only, snapshot still taken per policy
