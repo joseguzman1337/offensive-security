@@ -67,7 +67,7 @@ except ImportError as e:
 # --- Constants & Configuration ---
 PACMAN_CONF = "/etc/pacman.conf"
 LOG_FILE = "blackarch_aio.log"
-MIRRORS_URL = "https://github.com/BlackArch/blackarch/blob/master/mirror/mirror.lst"
+MIRRORS_URL = "https://raw.githubusercontent.com/BlackArch/blackarch/master/mirror/mirror.lst"
 MIRRORLIST_FILE = "/etc/pacman.d/blackarch-mirrorlist"
 
 AUR_HELPERS = {
@@ -80,9 +80,9 @@ AUR_HELPERS = {
             "--answerclean=All",
             "--answerdiff=None",
             "--mflags",
-            "'--nocheck'",
+            "--nocheck",
             "--overwrite",
-            "'*'",
+            "*",
         ],
         "download": ["yay", "-Syuuw", "--noconfirm"],
     },
@@ -93,9 +93,9 @@ AUR_HELPERS = {
             "-Syuu",
             "--noconfirm",
             "--mflags",
-            "'--nocheck'",
+            "--nocheck",
             "--overwrite",
-            "'*'",
+            "*",
         ],
         "download": ["paru", "-Syuuw", "--noconfirm"],
     },
@@ -144,7 +144,7 @@ AUR_HELPERS = {
             "--ask",
             "4",
             "--overwrite",
-            "'*'",
+            "*",
         ],
         "download": [
             "sudo",
@@ -220,37 +220,52 @@ logging.basicConfig(
     filename=LOG_FILE,
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
+    force=False,
 )
-console = logging.StreamHandler()
-console.setLevel(logging.INFO)
-logging.getLogger("").addHandler(console)
+_console = logging.StreamHandler()
+_console.setLevel(logging.INFO)
+_console.setFormatter(
+    logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+if not any(isinstance(h, logging.StreamHandler) for h in logging.getLogger("").handlers):
+    logging.getLogger("").addHandler(_console)
 
 
 # --- Utils Module ---
 class Utils:
     @staticmethod
     def run_command(
-        command: list[str], suppress_output: bool = False, retries: int = 3
+        command: list[str],
+        suppress_output: bool = False,
+        retries: int = 3,
+        timeout: int = 300,
     ) -> typing.Optional[str]:
+        import random as _r
+
         for attempt in range(retries):
             try:
                 result = subprocess.run(
                     command,
                     check=True,
+                    timeout=timeout,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT if suppress_output else subprocess.PIPE,
                     encoding="utf-8",
                 )
                 return result.stdout
+            except subprocess.TimeoutExpired:
+                logging.warning(
+                    f"Command '{' '.join(command)}' timed out "
+                    f"(attempt {attempt + 1}/{retries}):"
+                )
             except subprocess.CalledProcessError as e:
                 logging.warning(
                     f"Command '{' '.join(command)}' failed (attempt {attempt + 1}/{retries}):"
                 )
                 logging.warning(f"Error output:\n{e.stdout}")
-                if attempt < retries - 1:
-                    time.sleep(5)
-                else:
-                    raise
+            if attempt < retries - 1:
+                time.sleep(min(2**attempt * 2 + _r.uniform(0, 1), 30))
+            else:
+                raise
 
     @staticmethod
     def is_helper_installed(helper: str) -> bool:
@@ -262,11 +277,9 @@ class Utils:
 # --- Repos & Mirrorlist Module ---
 class Repos:
     @staticmethod
-    def fetch_mirrors():
-        # Using the raw content URL directly to avoid git clone/auth issues
-        MIRRORS_RAW_URL = "https://raw.githubusercontent.com/BlackArch/blackarch/master/mirror/mirror.lst"
+    def fetch_mirrors() -> list[str]:
         try:
-            response = requests.get(MIRRORS_RAW_URL)
+            response = requests.get(MIRRORS_URL, timeout=15)
             response.raise_for_status()
             mirrors = []
             for line in response.text.splitlines():
@@ -318,7 +331,21 @@ class Repos:
         "CN": ["CN", "HK", "TW", "JP", "KR", "SG"],
         "AU": ["AU", "NZ", "SG", "JP", "US"],
         "NZ": ["NZ", "AU", "SG", "JP"],
+        "PT": ["PT", "ES", "FR", "IT", "DE"],
+        "IE": ["IE", "GB", "FR", "NL", "DE"],
+        "SK": ["SK", "CZ", "AT", "HU", "PL"],
+        "BG": ["BG", "RO", "GR", "HU", "TR"],
+        "EE": ["EE", "FI", "SE", "PL", "DE"],
+        "VE": ["VE", "CO", "BR", "CL", "US"],
+        "PE": ["PE", "CL", "EC", "CO", "BR"],
+        "PA": ["PA", "CO", "MX", "US", "BR"],
+        "UY": ["UY", "AR", "BR", "CL", "US"],
+        "TW": ["TW", "HK", "JP", "KR", "SG"],
+        "HK": ["HK", "TW", "SG", "JP", "KR"],
+        "BD": ["BD", "IN", "SG", "HK", "JP"],
     }
+
+    GLOBAL_FALLBACK = ["US", "DE", "SG"]
 
     @staticmethod
     def get_location_info() -> dict:
@@ -346,8 +373,16 @@ class Repos:
         cmd = ["sudo", "reflector"] + args
         logging.info(f"Running: {' '.join(cmd)}")
         try:
-            subprocess.run(cmd, check=True, timeout=120,
-                           stderr=subprocess.DEVNULL)
+            result = subprocess.run(
+                cmd,
+                check=True,
+                timeout=300,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                encoding="utf-8",
+            )
+            if result.stdout:
+                logging.debug(f"Reflector {label} output: {result.stdout.strip()[:500]}")
             return True
         except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
             logging.warning(f"Reflector {label} failed: {e}")
@@ -391,7 +426,9 @@ class Repos:
 
         # --- Tier 1: Proximity with neighbors, strict freshness ---
         if country:
-            neighbors = Repos.NEARBY_COUNTRIES.get(country, [country])
+            neighbors = Repos.NEARBY_COUNTRIES.get(
+                country, [country] + Repos.GLOBAL_FALLBACK
+            )
             country_csv = ",".join(neighbors)
             tier1_args = [
                 "--country",
@@ -400,6 +437,8 @@ class Repos:
                 "1",
                 "--delay",
                 "0.5",
+                "--latest",
+                "50",
                 "--fastest",
                 "15",
                 "--sort",
@@ -413,6 +452,7 @@ class Repos:
 
         # --- Tier 2: Country-only, relaxed age ---
         if country:
+            tier2_base = [a for a in base_args if a != "100"] + ["95"]
             tier2_args = [
                 "--country",
                 country,
@@ -420,39 +460,32 @@ class Repos:
                 "12",
                 "--score",
                 "10",
+                "--latest",
+                "30",
                 "--fastest",
                 "10",
                 "--sort",
                 "rate",
-            ] + base_args
+            ] + tier2_base
             logging.info(f"Tier 2: country-only ({country}), age<12h")
             if Repos._run_reflector(tier2_args, "tier2-country"):
                 logging.info("Mirrorlist optimized via country fallback.")
                 return
 
         # --- Tier 3: Global fastest with health thresholds ---
+        tier3_base = [a for a in base_args if a != "100"] + ["95"]
         tier3_args = [
             "--age",
             "12",
             "--score",
             "15",
-            "--completion-percent",
-            "95",
+            "--latest",
+            "50",
             "--fastest",
             "20",
             "--sort",
             "rate",
-            "--protocol",
-            "https",
-            "--connection-timeout",
-            "3",
-            "--download-timeout",
-            "5",
-            "--threads",
-            "4",
-            "--save",
-            "/etc/pacman.d/mirrorlist",
-        ]
+        ] + tier3_base
         logging.info("Tier 3: global fastest with health thresholds")
         if Repos._run_reflector(tier3_args, "tier3-global"):
             logging.info("Mirrorlist optimized via global fastest.")
@@ -502,8 +535,8 @@ class PackageManager:
     @staticmethod
     def smart_upgrade_package(pkg):
         """Attempts to upgrade a package using available helpers sequentially."""
+        best = PackageManager.get_best_helper()
         helpers_to_try = [
-            "pacman",
             "paru",
             "yay",
             "trizen",
@@ -511,7 +544,11 @@ class PackageManager:
             "pacaur",
             "pamac",
             "aurman",
+            "pacman",
         ]
+        # Best (repo+AUR-capable) helper first
+        helpers_to_try = sorted(
+            helpers_to_try, key=lambda h: (h != best, helpers_to_try.index(h)))
         for h_name in helpers_to_try:
             if not Utils.is_helper_installed(h_name):
                 continue
@@ -532,8 +569,6 @@ class PackageManager:
 
     @staticmethod
     def fix_problematic_packages():
-        config = configparser.ConfigParser()
-        config.read(PACMAN_CONF)
         problematic = []
         for package in PACKAGES_TO_INSTALL:
             success, _ = PackageManager.smart_upgrade_package(package)
@@ -543,14 +578,31 @@ class PackageManager:
         if problematic:
             logging.info(
                 f"Adding problematic packages to IgnorePkg: {problematic}")
-            if "options" not in config:
-                config["options"] = {}
-            existing_ignore = config["options"].get("IgnorePkg", "")
-            new_ignore = " ".join(set(existing_ignore.split() + problematic))
-            config["options"]["IgnorePkg"] = new_ignore
+            # Textual edit: configparser lowercases IgnorePkg -> ignorepkg
+            # (pacman ignores it) and strips comments/Includes. Use sudo.
             try:
-                with open(PACMAN_CONF, "w") as f:
-                    config.write(f)
+                with open(PACMAN_CONF) as f:
+                    content = f.read()
+                import re as _re
+
+                m = _re.search(r"^IgnorePkg\s*=\s*(.*)", content, _re.MULTILINE)
+                existing = m.group(1).split() if m else []
+                merged = sorted(set(existing + problematic))
+                new_line = f"IgnorePkg = {' '.join(merged)}"
+                if _re.search(r"^IgnorePkg\s*=", content, _re.MULTILINE):
+                    content = _re.sub(
+                        r"^IgnorePkg\s*=.*", new_line, content, flags=_re.MULTILINE
+                    )
+                else:
+                    content = content.rstrip() + f"\n{new_line}\n"
+                subprocess.run(
+                    ["sudo", "tee", PACMAN_CONF],
+                    input=content,
+                    encoding="utf-8",
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.PIPE,
+                    check=True,
+                )
             except Exception as e:
                 logging.error(f"Failed to update {PACMAN_CONF}: {e}")
 
@@ -720,8 +772,12 @@ class KernelManager:
             status = "FAILED"
             raise
         finally:
-            KernelManager.snapper_create_post(
-                pre, f"{description} [post-{status}]")
+            if pre is not None:
+                KernelManager.snapper_create_post(
+                    pre, f"{description} [post-{status}]")
+            else:
+                logging.warning(
+                    f"snapper pre failed for {description} — skipping post, continuing degraded")
 
     @staticmethod
     @asynccontextmanager
@@ -737,14 +793,24 @@ class KernelManager:
             status = "FAILED"
             raise
         finally:
-            await asyncio.to_thread(
-                KernelManager.snapper_create_post, pre, f"{description} [post-{status}]"
-            )
+            if pre is not None:
+                await asyncio.to_thread(
+                    KernelManager.snapper_create_post, pre, f"{description} [post-{status}]"
+                )
+            else:
+                logging.warning(
+                    f"snapper pre failed for {description} — skipping post, continuing degraded")
 
     @staticmethod
     def detect_kernel_update_pending() -> typing.Tuple[bool, list[str]]:
         """Checks if a kernel package is among pending upgrades."""
-        kernel_patterns = ["linux", "linux-zen", "linux-lts", "linux-hardened"]
+        import re as _re
+
+        _KERNEL_RE = _re.compile(
+            r"^linux(-zen|-lts|-hardened)?(-headers)?$"
+            r"|^linux-firmware(-whence|-.*)?$"
+            r"|^linux-api-headers$"
+        )
         try:
             result = subprocess.run(
                 ["pacman", "-Qu"],
@@ -753,17 +819,15 @@ class KernelManager:
                 encoding="utf-8",
             )
             if result.returncode != 0:
+                if result.stderr:
+                    logging.warning(
+                        f"pacman -Qu exited {result.returncode}: {result.stderr.strip()[:300]}")
                 return False, []
             pending = result.stdout.strip().splitlines()
             kernel_pkgs = []
             for line in pending:
                 pkg_name = line.split()[0] if line.strip() else ""
-                if (
-                    pkg_name in kernel_patterns
-                    or pkg_name.startswith("linux-zen")
-                    or pkg_name.startswith("linux-lts")
-                    or pkg_name.startswith("linux-hardened")
-                ):
+                if pkg_name and _KERNEL_RE.match(pkg_name):
                     kernel_pkgs.append(line.strip())
             return len(kernel_pkgs) > 0, kernel_pkgs
         except Exception as e:
@@ -794,7 +858,21 @@ class KernelManager:
                 return []
             for line in result.stdout.strip().splitlines():
                 if line.strip():
-                    modules.append({"raw": line.strip()})
+                    import re as _re
+
+                    m = _re.match(
+                        r"^\s*(?P<mod>[^/, ]+)[/, ]+(?P<ver>[^,: ]+)"
+                        r"[^:]*:\s*(?P<status>\w+)",
+                        line.strip(),
+                    )
+                    modules.append(
+                        {
+                            "raw": line.strip(),
+                            "module": m.group("mod") if m else "",
+                            "version": m.group("ver") if m else "",
+                            "status": m.group("status") if m else "unknown",
+                        }
+                    )
             return modules
         except FileNotFoundError:
             logging.info("DKMS is not installed on this system.")
@@ -805,23 +883,32 @@ class KernelManager:
 
     @staticmethod
     def rebuild_dkms_all() -> bool:
-        """Rebuilds all DKMS modules for the currently installed kernels."""
+        """Rebuilds all DKMS modules for all installed kernels."""
         logging.info("Rebuilding all DKMS modules...")
         try:
-            result = subprocess.run(
-                ["sudo", "dkms", "autoinstall"],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                encoding="utf-8",
+            kernels = sorted(
+                d
+                for d in os.listdir("/usr/lib/modules")
+                if os.path.isdir(os.path.join("/usr/lib/modules", d))
             )
-            if result.returncode == 0:
+            ok = True
+            for kver in kernels:
+                result = subprocess.run(
+                    ["sudo", "dkms", "autoinstall", "--kernels", kver],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    encoding="utf-8",
+                )
+                if result.returncode == 0:
+                    logging.info(f"DKMS autoinstall OK for {kver}.")
+                    logging.debug(f"DKMS output: {result.stdout.strip()}")
+                else:
+                    ok = False
+                    logging.error(
+                        f"DKMS autoinstall failed for {kver}: {result.stderr.strip()}")
+            if ok:
                 logging.info("DKMS autoinstall completed successfully.")
-                logging.info(f"DKMS output: {result.stdout.strip()}")
-                return True
-            else:
-                logging.error(
-                    f"DKMS autoinstall failed: {result.stderr.strip()}")
-                return False
+            return ok
         except FileNotFoundError:
             logging.info("DKMS not installed — skipping module rebuild.")
             return True
@@ -872,12 +959,18 @@ class KernelManager:
     @staticmethod
     def fix_dracut_config():
         """Configures dracut to use /boot instead of EFI partition (prevents UKI issues)."""
-        if os.path.exists(KernelManager.DRACUT_CONF):
-            logging.info("Dracut configuration already exists — skipping.")
-            return
-        logging.info("Configuring dracut to use /boot directory...")
         content = '# Fix dracut to use /boot instead of EFI partition\nuefi="no"\nhostonly="yes"\ncompress="zstd"\n'
         try:
+            if os.path.exists(KernelManager.DRACUT_CONF):
+                try:
+                    with open(KernelManager.DRACUT_CONF) as f:
+                        if f.read() == content:
+                            logging.info("Dracut configuration already correct — skipping.")
+                            return
+                    logging.info("Dracut configuration differs — overwriting.")
+                except OSError:
+                    pass
+            logging.info("Configuring dracut to use /boot directory...")
             with tempfile.NamedTemporaryFile(
                 mode="w", suffix=".conf", delete=False
             ) as f:
@@ -896,14 +989,20 @@ class KernelManager:
     @staticmethod
     def fix_kernel_install_config():
         """Configures kernel-install to disable UKI and use traditional initramfs."""
-        if os.path.exists(KernelManager.KERNEL_INSTALL_CONF):
-            logging.info(
-                "Kernel install configuration already exists — skipping.")
-            return
-        logging.info(
-            "Configuring kernel-install to use traditional initramfs...")
         content = "layout=bls\ninitrd_generator=dracut\n"
         try:
+            if os.path.exists(KernelManager.KERNEL_INSTALL_CONF):
+                try:
+                    with open(KernelManager.KERNEL_INSTALL_CONF) as f:
+                        if f.read() == content:
+                            logging.info(
+                                "Kernel install configuration already correct — skipping.")
+                            return
+                    logging.info("Kernel install configuration differs — overwriting.")
+                except OSError:
+                    pass
+            logging.info(
+                "Configuring kernel-install to use traditional initramfs...")
             with tempfile.NamedTemporaryFile(
                 mode="w", suffix=".conf", delete=False
             ) as f:
@@ -1244,14 +1343,30 @@ class FastUpdate:
         if os.path.exists(self.lock_file):
             subprocess.run(["sudo", "rm", "-f", self.lock_file])
 
-    async def run_command(self, cmd, description, silent=True, ignore_errors=False):
+    async def run_command(self, cmd, description, silent=True, ignore_errors=False,
+                          timeout=600):
+        import shlex as _sh
+
+        argv = _sh.split(cmd) if isinstance(cmd, str) else list(cmd)
+        # Strip shell-only single quotes baked into legacy AUR_HELPERS entries
+        argv = [
+            a[1:-1] if len(a) >= 2 and a[0] == "'" and a[-1] == "'" else a
+            for a in argv
+        ]
         logging.info(f"Running: {description}")
-        process = await asyncio.create_subprocess_shell(
-            cmd,
+        process = await asyncio.create_subprocess_exec(
+            *argv,
             stdout=asyncio.subprocess.PIPE if silent else None,
-            stderr=asyncio.subprocess.PIPE,  # Always capture stderr for error analysis
+            stderr=asyncio.subprocess.PIPE,
         )
-        stdout, stderr = await process.communicate()
+        try:
+            stdout, stderr = await asyncio.wait_for(process.communicate(), timeout)
+        except asyncio.TimeoutError:
+            process.kill()
+            await process.wait()
+            if not ignore_errors:
+                logging.error(f"Timeout({timeout}s): {description}")
+            return False, f"timeout after {timeout}s"
         if process.returncode != 0:
             stderr_text = stderr.decode().strip() if stderr else ""
             stdout_text = stdout.decode().strip() if stdout else ""
@@ -1315,38 +1430,31 @@ class FastUpdate:
 
         logging.info(f"Immutable packages: {self.ignore_pkgs}")
 
+    async def force_release_lock_async(self):
+        await asyncio.to_thread(self.force_release_lock)
+
     async def download_phase(self):
-        """Downloads all updates in parallel."""
-        logging.info("Starting Parallel Download Phase...")
+        """Downloads all updates sequentially (pacman DB lock is exclusive)."""
+        logging.info("Starting Sequential Download Phase...")
         self.force_release_lock()
-        tasks = []
 
         ignore = self._build_ignore_flags()
-        pacman_cmd = " ".join(AUR_HELPERS["pacman"]["download"])
+        pacman_cmd = shlex.join(AUR_HELPERS["pacman"]["download"])
         if ignore:
             pacman_cmd += f" {ignore}"
-        tasks.append(self.run_command(
-            pacman_cmd, "Downloading Pacman updates"))
+        ok, err = await self.run_command(
+            pacman_cmd, "Downloading Pacman updates")
+        if not ok:
+            return False, err
 
-        helper = PackageManager.get_best_helper()
+        helper = await asyncio.to_thread(PackageManager.get_best_helper)
         if helper != "pacman" and helper in AUR_HELPERS:
-            cmd = " ".join(AUR_HELPERS[helper]["download"])
+            cmd = shlex.join(AUR_HELPERS[helper]["download"])
             if ignore:
                 cmd += f" {ignore}"
-            tasks.append(
-                self.run_command(
-                    cmd, f"Downloading AUR updates ({helper})", ignore_errors=True
-                )
+            return await self.run_command(
+                cmd, f"Downloading AUR updates ({helper})", ignore_errors=True
             )
-
-        results = await asyncio.gather(*tasks)
-        # Combine errors if any
-        all_errors = "\n".join(
-            [res[1]
-                for res in results if isinstance(res, tuple) and not res[0]]
-        )
-        if all_errors:
-            return False, all_errors
         return True, ""
 
     async def install_phase(self):
@@ -1357,7 +1465,7 @@ class FastUpdate:
         ignore = self._build_ignore_flags()
 
         # 1. System upgrade
-        pacman_cmd = " ".join(AUR_HELPERS["pacman"]["upgrade"])
+        pacman_cmd = shlex.join(AUR_HELPERS["pacman"]["upgrade"])
         if ignore:
             pacman_cmd += f" {ignore}"
         success, err = await self.run_command(
@@ -1369,10 +1477,10 @@ class FastUpdate:
         self.force_release_lock()
 
         # 2. AUR upgrade
-        helper = PackageManager.get_best_helper()
+        helper = await asyncio.to_thread(PackageManager.get_best_helper)
         if helper != "pacman" and helper in AUR_HELPERS:
             logging.info(f"Installing AUR updates ({helper})...")
-            cmd = " ".join(AUR_HELPERS[helper]["upgrade"])
+            cmd = shlex.join(AUR_HELPERS[helper]["upgrade"])
             if ignore:
                 cmd += f" {ignore}"
             success, err = await self.run_command(
@@ -1394,16 +1502,32 @@ class FastUpdate:
 
         if "[blackarch]" not in content:
             logging.info("BlackArch repository not found. Configuring...")
-            # Download strap.sh
+            # Download strap.sh securely to a temp file (no CWD hijack)
             try:
                 strap_url = "https://blackarch.org/strap.sh"
-                subprocess.run(["curl", "-O", strap_url], check=True)
-                subprocess.run(["chmod", "+x", "strap.sh"], check=True)
-                # Run strap.sh
-                subprocess.run(["sudo", "./strap.sh"], check=True)
+                with tempfile.NamedTemporaryFile(
+                    suffix=".sh", delete=False
+                ) as tf:
+                    tmp = tf.name
+                subprocess.run(
+                    [
+                        "curl", "--fail", "--location", "--proto=https",
+                        "--max-time", "60", "--retry", "3",
+                        "-o", tmp, strap_url,
+                    ],
+                    check=True,
+                    timeout=120,
+                )
+                subprocess.run(["sudo", "bash", tmp], check=True)
                 logging.info("BlackArch repository configured successfully.")
             except Exception as e:
                 logging.error(f"Failed to configure BlackArch repo: {e}")
+            finally:
+                try:
+                    if "tmp" in locals() and os.path.exists(tmp):
+                        os.unlink(tmp)
+                except OSError:
+                    pass
 
     async def update_keyrings(self):
         """Updates Arch and BlackArch keyrings to prevent signature/find errors."""
@@ -1761,6 +1885,12 @@ def run_installer():
 # --- CLI Entry Point ---
 def main():
     parser = argparse.ArgumentParser(description="BlackArch AIO Manager")
+    parser.add_argument("--country", default=None,
+                        help="Reflector country code (else geo-IP auto-detect).")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Print planned actions without executing destructive ops.")
+    parser.add_argument("-v", "--verbose", action="count", default=0,
+                        help="-v enables DEBUG logging.")
     subparsers = parser.add_subparsers(
         dest="command", help="Available commands")
 
@@ -1783,12 +1913,16 @@ def main():
     )
 
     args = parser.parse_args()
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
+
+    country = args.country
 
     report = {
         "timestamp": datetime.now().isoformat(),
         "command": args.command,
         "status": "pending",
-        "details": {},
+        "details": {"country": country, "dry_run": args.dry_run, "log_file": LOG_FILE},
     }
 
     try:
@@ -1832,8 +1966,13 @@ def main():
             report["status"] = "success"
 
         elif args.command == "mirrors":
-            with KernelManager.snap_wrap("update-mirrorlist"):
-                Repos.update_mirrorlist()
+            if args.dry_run:
+                print(f"[dry-run] Repos.update_mirrorlist(country={country})")
+                report["status"] = "success"
+                report["details"]["dry_run"] = True
+            else:
+                with KernelManager.snap_wrap("update-mirrorlist"):
+                    Repos.update_mirrorlist(country)
             report["status"] = "success"
 
         elif args.command == "kernel-upgrade":
