@@ -447,3 +447,81 @@ Refer to previous errors for more information.
 2026-07-22 10:10:34,461 - INFO - Snapper POST-snapshot #1163 (paired with pre #1138): aio-update-full [post-OK]
 2026-07-22 10:10:34,462 - INFO - Unified update complete!
 2026-07-22 10:10:34,464 - INFO - Process finished with status: success
+2026-09-16 22:01:29,297 - INFO - Ensuring database lock is released...
+2026-09-16 22:01:29,369 - INFO - --- [Auto-Detect & Fix Phase] ---
+2026-09-16 22:01:29,424 - INFO - Snapper PRE-snapshot #367 created: aio-update-full [pre]
+2026-09-16 22:01:29,492 - INFO - Snapper PRE-snapshot #368 created: ensure-helpers [pre]
+2026-09-16 22:01:29,492 - INFO - Checking prerequisites...
+2026-09-16 22:01:29,556 - INFO - Snapper POST-snapshot #369 (paired with pre #368): ensure-helpers [post-OK]
+2026-09-16 22:01:29,603 - INFO - Snapper PRE-snapshot #370 created: mirror-optimization [pre]
+2026-09-16 22:01:29,603 - INFO - Requested https://ipinfo.io/json
+2026-09-16 22:01:30,062 - INFO - Optimizing mirrors for location: CO (Bogotá, Bogota D.C.)
+2026-09-16 22:01:30,063 - INFO - Tier 1: proximity (CO,EC,VE,PA,BR,CL,US), age<1h, delay<30min
+2026-09-16 22:01:30,063 - INFO - Running: sudo reflector --country CO,EC,VE,PA,BR,CL,US --age 1 --delay 0.5 --fastest 15 --sort rate --protocol https --completion-percent 100 --connection-timeout 3 --download-timeout 5 --threads 4 --save /etc/pacman.d/mirrorlist
+2026-09-16 22:01:38,744 - INFO - Mirrorlist optimized via proximity + freshness.
+2026-09-16 22:01:38,815 - INFO - Snapper POST-snapshot #371 (paired with pre #370): mirror-optimization [post-OK]
+2026-09-16 22:01:38,815 - INFO - Ensuring database lock is released...
+2026-09-16 22:01:38,900 - INFO - Pinning known downgrade conflicts...
+2026-09-16 22:01:38,900 - INFO - Ensuring database lock is released...
+2026-09-16 22:01:38,979 - INFO - Trying substitute dep: 'linenoise-ng' for 'linenoise'
+2026-09-16 22:01:38,979 - INFO - Running: Install substitute dep linenoise-ng
+2026-09-16 22:01:39,195 - INFO - Running: Retry wcc after substitute
+2026-09-16 22:01:39,489 - INFO - Running: Query repos for wcc
+2026-09-16 22:01:39,703 - INFO - Trying 'wcc' from repo 'chaotic-aur'
+2026-09-16 22:01:39,703 - INFO - Running: Install wcc from chaotic-aur
+2026-09-16 22:01:39,993 - INFO - Trying 'wcc' from repo 'blackarch'
+2026-09-16 22:01:39,993 - INFO - Running: Install wcc from blackarch
+2026-09-16 22:01:46,440 - INFO - Resolved 'wcc' from alternate repo 'blackarch'
+2026-09-16 22:01:46,441 - INFO - Pinned 'wcc' + 'linenoise' — immutable for this update
+2026-09-16 22:01:46,441 - INFO - Immutable packages: {'wcc', 'linenoise'}
+2026-09-16 22:01:46,441 - INFO - Ensuring database lock is released...
+2026-09-16 22:01:46,568 - INFO - Snapper PRE-snapshot #374 created: system-fixes [pre]
+2026-09-16 22:01:46,569 - INFO - --- Applying preventive system fixes ---
+2026-09-16 22:01:46,574 - INFO - Configuring dracut to use /boot directory...
+2026-09-16 22:01:46,593 - INFO - Dracut configuration created successfully.
+2026-09-16 22:01:46,594 - INFO - Configuring kernel-install to use traditional initramfs...
+2026-09-16 22:01:46,612 - INFO - Kernel install configuration created successfully.
+2026-09-16 22:01:46,612 - INFO - Scanning for packages with missing shared library deps...
+2026-09-16 22:02:28,630 - INFO - Found 2 packages with missing files — upgrading: ['perl-test-nowarnings', 'warning']
+2026-09-16 22:02:28,630 - INFO - Upgrading broken package: perl-test-nowarnings
+2026-09-16 22:02:28,819 - INFO - Upgraded 'perl-test-nowarnings' via pacman
+2026-09-16 22:02:28,819 - INFO - Upgrading broken package: warning
+2026-09-17 20:31:30,153 - INFO - Ensuring database lock is released...
+2026-09-17 20:31:30,223 - INFO - --- [Auto-Detect & Fix Phase] ---
+2026-09-17 20:31:30,292 - INFO - Snapper PRE-snapshot #379 created: aio-update-full [pre]
+2026-09-17 20:31:30,347 - INFO - Snapper PRE-snapshot #380 created: ensure-helpers [pre]
+2026-09-17 20:31:30,348 - INFO - Checking prerequisites...
+2026-09-17 20:31:30,406 - INFO - Snapper POST-snapshot #381 (paired with pre #380): ensure-helpers [post-OK]
+2026-09-17 20:31:30,454 - INFO - Snapper PRE-snapshot #382 created: mirror-optimization [pre]
+2026-09-17 20:31:30,454 - INFO - Requested https://ipinfo.io/json
+2026-09-17 20:31:30,784 - INFO - Optimizing mirrors for location: CO (Bogotá, Bogota D.C.)
+2026-09-17 20:31:30,784 - INFO - Tier 1: proximity (CO,EC,VE,PA,BR,CL,US), age<1h, delay<30min
+2026-09-17 20:31:30,784 - INFO - Running: sudo reflector --country CO,EC,VE,PA,BR,CL,US --age 1 --delay 0.5 --latest 50 --fastest 15 --sort rate --protocol https --completion-percent 100 --connection-timeout 3 --download-timeout 5 --threads 4 --save /etc/pacman.d/mirrorlist
+2026-09-17 20:31:34,296 - INFO - Mirrorlist optimized via proximity + freshness.
+2026-09-17 20:31:34,358 - INFO - Snapper POST-snapshot #383 (paired with pre #382): mirror-optimization [post-OK]
+2026-09-17 20:31:34,358 - INFO - Ensuring database lock is released...
+2026-09-17 20:31:34,434 - INFO - Pinning known downgrade conflicts...
+2026-09-17 20:31:34,434 - INFO - Ensuring database lock is released...
+2026-09-17 20:31:34,506 - INFO - Trying substitute dep: 'linenoise-ng' for 'linenoise'
+2026-09-17 20:31:34,506 - INFO - Running: Install substitute dep linenoise-ng
+2026-09-17 20:31:34,694 - INFO - Running: Retry wcc after substitute
+2026-09-17 20:31:34,985 - INFO - Running: Query repos for wcc
+2026-09-17 20:31:35,197 - INFO - Trying 'wcc' from repo 'chaotic-aur'
+2026-09-17 20:31:35,198 - INFO - Running: Install wcc from chaotic-aur
+2026-09-17 20:31:35,475 - INFO - Trying 'wcc' from repo 'blackarch'
+2026-09-17 20:31:35,475 - INFO - Running: Install wcc from blackarch
+2026-09-17 20:31:35,552 - INFO - Resolved 'wcc' from alternate repo 'blackarch'
+2026-09-17 20:31:35,552 - INFO - Pinned 'wcc' + 'linenoise' — immutable for this update
+2026-09-17 20:31:35,552 - INFO - Immutable packages: {'linenoise', 'wcc'}
+2026-09-17 20:31:35,552 - INFO - Ensuring database lock is released...
+2026-09-17 20:31:35,662 - INFO - Snapper PRE-snapshot #384 created: system-fixes [pre]
+2026-09-17 20:31:35,663 - INFO - --- Applying preventive system fixes ---
+2026-09-17 20:31:35,668 - INFO - Configuring dracut to use /boot directory...
+2026-09-17 20:31:35,688 - INFO - Dracut configuration created successfully.
+2026-09-17 20:31:35,688 - INFO - Configuring kernel-install to use traditional initramfs...
+2026-09-17 20:31:35,706 - INFO - Kernel install configuration created successfully.
+2026-09-17 20:31:35,706 - INFO - Scanning for packages with missing shared library deps...
+2026-09-17 20:31:39,123 - INFO - Found 2 packages with missing files — upgrading: ['perl-test-nowarnings', 'warning']
+2026-09-17 20:31:39,123 - INFO - Upgrading broken package: perl-test-nowarnings
+2026-09-17 20:31:39,514 - INFO - Upgraded 'perl-test-nowarnings' via paru
+2026-09-17 20:31:39,514 - INFO - Upgrading broken package: warning
