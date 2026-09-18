@@ -1452,8 +1452,13 @@ class FastUpdate:
         await asyncio.to_thread(self.force_release_lock)
 
     async def download_phase(self):
-        """Downloads all updates sequentially (pacman DB lock is exclusive)."""
-        logging.info("Starting Sequential Download Phase...")
+        """Downloads repo updates (pacman DB lock is exclusive).
+
+        AUR packages are NOT pre-downloaded: yay/paru reject
+        --downloadonly for AUR targets. They fetch at install time
+        in install_phase instead.
+        """
+        logging.info("Starting Repo Download Phase...")
         self.force_release_lock()
 
         ok, err = await self.run_command(
@@ -1461,18 +1466,8 @@ class FastUpdate:
             "Downloading Pacman updates", timeout=5400)
         if not ok:
             return False, err
-
-        helper = await asyncio.to_thread(PackageManager.get_best_helper)
-        if helper != "pacman" and helper in AUR_HELPERS:
-            argv = (
-                FastUpdate._aur_prefix(helper)
-                + AUR_HELPERS[helper]["download"]
-                + self._ignore_list()
-            )
-            return await self.run_command(
-                argv, f"Downloading AUR updates ({helper})",
-                ignore_errors=True, timeout=5400,
-            )
+        logging.info(
+            "Repo downloads complete; AUR packages fetch during install.")
         return True, ""
 
     async def install_phase(self):
