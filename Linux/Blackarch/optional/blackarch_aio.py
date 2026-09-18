@@ -1647,6 +1647,28 @@ class FastUpdate:
             logging.info(f"Ignore list for retry: {self.ignore_pkgs}")
             return True
 
+        # 2b. Handle version-locked held packages (e.g. AUR ext pack pins exact version)
+        #     ":: installing virtualbox (7.2.18-1) breaks dependency
+        #       'virtualbox=7.2.16' required by virtualbox-ext-oracle"
+        #     Strategy: hold BOTH at current versions via --ignore so the
+        #     rest of the system upgrades around them.
+        held_matches = set(
+            re.findall(
+                r"installing (\S+) \([^)]*\) breaks dependency '[^']+' required by (\S+)",
+                error_output,
+            )
+        )
+        if held_matches:
+            for new_pkg, dependent in held_matches:
+                logging.warning(
+                    f"Held package: '{new_pkg}' upgrade blocked by '{dependent}' "
+                    f"— pinning both to --ignore"
+                )
+                self.ignore_pkgs.add(new_pkg)
+                self.ignore_pkgs.add(dependent)
+            logging.info(f"Ignore list for retry: {self.ignore_pkgs}")
+            return True
+
         # 3. Handle missing packages / targets not found
         patterns = [
             r"could not find all required packages: ([\w\-\.\+ ]+)",
@@ -1694,7 +1716,7 @@ class FastUpdate:
         """Fetches latest categories from pacman groups and syncs with internal list."""
         logging.info("Synchronizing BlackArch categories...")
         success, output = await self.run_command(
-            "pacman -Sg | grep blackarch- | awk '{print $1}' | sort -u",
+            ["bash", "-c", "pacman -Sg | grep blackarch- | awk '{print $1}' | sort -u"],
             "Fetching categories",
         )
         if success and output:
@@ -1787,7 +1809,12 @@ class FastUpdate:
             async with KernelManager.async_snap_wrap("cleanup-orphans"):
                 print("Step: Cleanup Orphans")
                 await self.run_command(
-                    "if pacman -Qdtq >/dev/null; then sudo pacman -Rs --noconfirm $(pacman -Qdtq); fi",
+                    [
+                        "bash",
+                        "-c",
+                        "if pacman -Qdtq >/dev/null; then "
+                        "sudo pacman -Rs --noconfirm $(pacman -Qdtq); fi",
+                    ],
                     "Orphan Cleanup",
                     silent=False,
                     ignore_errors=True,
