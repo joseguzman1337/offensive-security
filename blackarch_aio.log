@@ -1,0 +1,4 @@
+2026-09-17 21:48:34,835 - INFO - Running: test echo
+2026-09-17 22:02:27,400 - INFO - Analyzing error output for auto-fix...
+2026-09-17 22:02:27,400 - WARNING - Held package: 'virtualbox' upgrade blocked by 'virtualbox-ext-oracle' — pinning both to --ignore
+2026-09-17 22:02:27,400 - INFO - Ignore list for retry: {'virtualbox-ext-oracle', 'virtualbox'}
