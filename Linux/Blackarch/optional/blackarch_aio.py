@@ -1393,6 +1393,29 @@ class FastUpdate:
             return ""
         return " ".join(f"--ignore {shlex.quote(pkg)}" for pkg in self.ignore_pkgs)
 
+    def _ignore_list(self) -> list[str]:
+        """List form of --ignore flags (for exec argv without shell)."""
+        out: list[str] = []
+        for pkg in sorted(self.ignore_pkgs):
+            out += ["--ignore", pkg]
+        return out
+
+    @staticmethod
+    def _aur_prefix(helper: str) -> list[str]:
+        """Prefix so AUR helpers never run as root.
+
+        yay/paru/pikaur/... refuse to build as root. When the script
+        itself runs under sudo, re-drop to the invoking user via
+        SUDO_USER (sudoers untouched — only `sudo -H -u` at runtime).
+        Returns [] when already unprivileged or when helper is pacman.
+        """
+        if helper == "pacman" or os.geteuid() != 0:
+            return []
+        user = os.environ.get("SUDO_USER")
+        if user and user != "root":
+            return ["sudo", "-H", "-u", user]
+        return []
+
     # Packages with cross-repo conflicts where -Syuu would downgrade to a broken version.
     # Each entry: broken dep → parent package. Both get pinned to --ignore.
     DOWNGRADE_CONFLICTS = {
@@ -1432,22 +1455,21 @@ class FastUpdate:
         logging.info("Starting Sequential Download Phase...")
         self.force_release_lock()
 
-        ignore = self._build_ignore_flags()
-        pacman_cmd = shlex.join(AUR_HELPERS["pacman"]["download"])
-        if ignore:
-            pacman_cmd += f" {ignore}"
         ok, err = await self.run_command(
-            pacman_cmd, "Downloading Pacman updates", timeout=5400)
+            AUR_HELPERS["pacman"]["download"] + self._ignore_list(),
+            "Downloading Pacman updates", timeout=5400)
         if not ok:
             return False, err
 
         helper = await asyncio.to_thread(PackageManager.get_best_helper)
         if helper != "pacman" and helper in AUR_HELPERS:
-            cmd = shlex.join(AUR_HELPERS[helper]["download"])
-            if ignore:
-                cmd += f" {ignore}"
+            argv = (
+                FastUpdate._aur_prefix(helper)
+                + AUR_HELPERS[helper]["download"]
+                + self._ignore_list()
+            )
             return await self.run_command(
-                cmd, f"Downloading AUR updates ({helper})",
+                argv, f"Downloading AUR updates ({helper})",
                 ignore_errors=True, timeout=5400,
             )
         return True, ""
@@ -1457,14 +1479,10 @@ class FastUpdate:
         logging.info("Starting Sequential Installation Phase...")
         self.force_release_lock()
 
-        ignore = self._build_ignore_flags()
-
         # 1. System upgrade
-        pacman_cmd = shlex.join(AUR_HELPERS["pacman"]["upgrade"])
-        if ignore:
-            pacman_cmd += f" {ignore}"
         success, err = await self.run_command(
-            pacman_cmd, "Installing Pacman updates", silent=False,
+            AUR_HELPERS["pacman"]["upgrade"] + self._ignore_list(),
+            "Installing Pacman updates", silent=False,
             timeout=5400,
         )
         if not success:
@@ -1472,15 +1490,17 @@ class FastUpdate:
 
         self.force_release_lock()
 
-        # 2. AUR upgrade
+        # 2. AUR upgrade (never as root — prefix drops to $SUDO_USER)
         helper = await asyncio.to_thread(PackageManager.get_best_helper)
         if helper != "pacman" and helper in AUR_HELPERS:
             logging.info(f"Installing AUR updates ({helper})...")
-            cmd = shlex.join(AUR_HELPERS[helper]["upgrade"])
-            if ignore:
-                cmd += f" {ignore}"
+            argv = (
+                FastUpdate._aur_prefix(helper)
+                + AUR_HELPERS[helper]["upgrade"]
+                + self._ignore_list()
+            )
             success, err = await self.run_command(
-                cmd,
+                argv,
                 f"Installing AUR updates ({helper})",
                 silent=False,
                 ignore_errors=True,
@@ -1964,13 +1984,20 @@ def main():
             report["status"] = "success"
 
         elif args.command == "update":
-            # AUR helpers (yay/paru/...) refuse to run as root — and the
-            # whole point of update is the AUR phase. Must run as a user;
-            # pacman/snapper/reflector steps escalate via sudo internally.
-            if os.geteuid() == 0 and PackageManager.get_best_helper() != "pacman":
+            # AUR helpers (yay/paru/...) refuse to run as root. If the
+            # script itself runs under sudo, AUR phases transparently
+            # re-drop to $SUDO_USER (sudoers untouched). Only a true
+            # root login without SUDO_USER is refused.
+            _helper = PackageManager.get_best_helper()
+            _sudouser = os.environ.get("SUDO_USER")
+            if (
+                os.geteuid() == 0
+                and _helper != "pacman"
+                and (not _sudouser or _sudouser == "root")
+            ):
                 msg = (
                     "Refusing to run 'update' as root: AUR helpers cannot "
-                    "build as root ('can't install AUR package as root'). "
+                    "build as root and no SUDO_USER to drop to. "
                     "Re-run as a normal user with passwordless sudo."
                 )
                 print(msg)
