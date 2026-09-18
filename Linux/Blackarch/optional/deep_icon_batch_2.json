@@ -1,0 +1,607 @@
+{
+  "bad-pdf": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "birp": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "bkcrack": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "blackeye": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "bleah": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "blindelephant": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "blisqy": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "bluebox-ng": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "bluefog": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "blueranger": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "bluffy": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "bmap-tools": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "bonesi": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "bowcaster": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "malboxes": {
+    "reason": "Official project logo in upstream docs/logos; validated as SVG.",
+    "status": "official_upstream",
+    "url": "https://raw.githubusercontent.com/GoSecure/malboxes/master/docs/logos/main.svg"
+  },
+  "pacu": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "padoracle": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "paketto": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "parameth": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "paranoic": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pasco": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "passe-partout": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "passivedns": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pasv-agrsv": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pathzuzu": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "payloadsallthethings": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pcapfex": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pcapteller": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pcredz": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pdfbook-analyzer": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pdfresurrect": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pe-bear": {
+    "reason": "Official application artwork in upstream logo directory; validated as PNG.",
+    "status": "official_upstream",
+    "url": "https://raw.githubusercontent.com/hasherezade/pe-bear/master/logo/main_ico.png"
+  },
+  "peepdf": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pemcrack": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pencode": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pentestly": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "periscope": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pev": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "phantom-evasion": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "phishery": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "phonia": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "php-findsock-shell": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "php-rfi-payload-decoder": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "phpstress": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pin": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pintool": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pipeline": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pixd": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pkinittools": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "plcscan": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "plumber.py": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pmap": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pmdump": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "pocsuite": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "polyswarm": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tcptrace": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tcpxtract": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tekdefense-automater": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "termineter": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tftp-proxy": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "thc-pptp-bruter": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "thcrut": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "themole": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tiger": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "timeverter": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tinja": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tls-map": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tlsfuzzer": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tlssled": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "token-reverser": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tor-autocircuit": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "torctl": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tpcat": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "treasure": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "trid": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "trixd00r": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "truehunter": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tsh-sctp": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tunna": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "tweetshell": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "u3-pwn": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "uberfile": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "ubitack": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "udp-hunter": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "udsim": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "uhoh365": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "uncaptcha2": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "unfurl": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "unifuzzer": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "unstrip": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "upnpscan": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "urlcrazy": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "whitewidow": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wifi-honey": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wifichannelmonitor": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wifiscanmap": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wikigen": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "windivert": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "windows-prefetch-parser": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "winexe": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "winpwn": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wirouter-keyrec": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wmat": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wmi-forensics": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wolpertinger": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wordlister": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wordpresscan": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wpbf": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wpforce": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wpsweep": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wsfuzzer": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "wups": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "x-rsa": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "x8": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "xcname": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "xmlrpc-bruteforcer": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "xpire-crossdomain-scanner": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "xrop": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "xsrfprobe": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "xssless": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  },
+  "xssscan": {
+    "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+    "status": "none_published",
+    "url": null
+  }
+}

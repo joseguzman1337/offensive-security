@@ -1,0 +1,612 @@
+{
+  "autopwn": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "binwally": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "bitdump": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "bkhive": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "blackhash": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "bletchley": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "blindsql": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "bloodhound-ce-python": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "bluebugger": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "bluepot": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "bluescan": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "bluphish": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "bmc-tools": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "boopsuite": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "box-js": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "packet-o-matic": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pacumen": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "padre": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "panhunt": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "parampampam": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "parse-evtx": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pass-station": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "passgan": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pastejacker": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "patator": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pax-oracle": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pblind": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pcapfix": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pcapxray": {
+    "url": "https://raw.githubusercontent.com/Srinivas11789/PcapXray/HEAD/logo.png",
+    "status": "official_upstream",
+    "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png"
+  },
+  "pdblaster": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pdfgrab": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pdfwalker": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "peach-fuzz": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "peepingtom": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pemcracker": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pentbox": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pentmenu": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "persistencesniper": {
+    "url": "https://raw.githubusercontent.com/last-byte/PersistenceSniper/HEAD/persistencesnipernew4.png",
+    "status": "official_upstream",
+    "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png"
+  },
+  "pextractor": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "phantomcollect": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "phishingkithunter": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "phoss": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "php-malware-finder": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "php-vulnerability-hunter": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "phrasendrescher": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pingcastle": {
+    "url": "https://www.pingcastle.com/wp/wp-content/uploads/2018/09/favico.png",
+    "status": "official_upstream",
+    "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png"
+  },
+  "pintool2": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pirana": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pixload": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pkt2flow": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "plecost": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "plutil": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pmapper": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "pngcheck": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "poison": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tcpdstat": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tcptraceroute": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "teamsuserenum": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tell-me-your-secrets": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tftp-bruteforce": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tgcd": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "thc-smartbrute": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "thedorkbox": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "thezoo": {
+    "url": "https://github.com/ytisf/theZoo/raw/gh-pages/MalDB-Logo-Thumb.png",
+    "status": "official_upstream",
+    "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png"
+  },
+  "tilt": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tinfoleak": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tls-attacker": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tls-prober": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tlshelpers": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tlsx": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tomcatwardeployer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tor-router": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "torpy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "tplmap": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "trevorproxy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "trinity": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "truecrack": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "trufflehog": {
+    "url": "https://storage.googleapis.com/trufflehog-static-sources/pixel_pig.png",
+    "status": "official_upstream",
+    "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png"
+  },
+  "tsh": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "turner": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "twofi": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "uacme": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "ubertooth": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "udis86": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "udpastcp": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "uefi-firmware-parser": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "ultimate-facebook-scraper": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "uncover": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "unibrute": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "uniofuzz": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "untwister": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "uppwn": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wcc": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "whoxyrm": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wifi-monitor": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wificurse": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wifitap": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wildpwn": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "windows-binaries": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "windows-privesc-check": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "winfo": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "winrelay": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "witchxtool": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wmbusmeters": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wnmap": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wordbrutepress": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wordpot": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wpa-bruteforcer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wpbrute-rpc": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wpseku": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wreckuests": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "wssip": {
+    "url": "https://raw.githubusercontent.com/nccgroup/wssip/HEAD/build/icons/512x512.png",
+    "status": "official_upstream",
+    "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png"
+  },
+  "wuzz": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "x-scan": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "xcat": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "xerosploit": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "xorbruteforcer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "xpl-search": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "xspear": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "xss-freak": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "xsspy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  },
+  "xsssniper": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit"
+  }
+}

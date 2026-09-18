@@ -1,0 +1,612 @@
+{
+  "autorecon": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "bios_memimage": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "bittwist": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "blackbox-scanner": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "blacknurse": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "blind-sql-bitshifting": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "blindy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "bloodhound-cli": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "bluediving": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "blueprint": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "bluesnarfer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "bluto": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "bob-the-butcher": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "botb": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "der-ascii": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "packit": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "padbuster": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pagodo": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pappy-proxy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "paramspider": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "parsero": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "passdetective": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "passhunt": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pastemonitor": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "patchkit": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "payloadmask": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pbscan": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pcapsipdump": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pcode2code": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pdf-parser": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pdfid": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pdgmail": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "peach": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "peframe": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "penbox": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pentestgpt": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pepper": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "petools": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pftriage": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "phemail": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "phonesploit": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "photon": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "php-mt-seed": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "phpggc": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pidense": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pinkerton": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pipal": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pivotsuite": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pkcrack": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "plasma-disasm": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "plown": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pmacct": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pmcma": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "pnscan": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "poly": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "tcpextract": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "tcpwatch": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "teardown": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "tempomail": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "tftp-fuzz": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "thc-keyfinder": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "thc-ssl-dos": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "thefuzz": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "threatspec": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "timegen": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "tinfoleak2": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "tls-fingerprinting": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "tlsenum": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "tlspretense": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "token-hunter": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "topera": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "torcrawl": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "torshammer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "traxss": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "trevorspray": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "triton": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "truegaze": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "trusttrees": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "ttpassgen": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "tweets-analyzer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "tyton": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "uatester": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "ubiquiti-probing": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "udork": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "udptunnel": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "ufonet": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "umap": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "undbx": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "unicorn-powershell": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "unsecure": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "upnp-pentest-toolkit": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "uptux": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "whichcdn": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wifi-autopwner": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wifibroot": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wifiphisher": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wig": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "windapsearch": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "windows-exploit-suggester": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "windowsspyblocker": {
+    "url": "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/.res/logo.png",
+    "status": "official_upstream",
+    "reason": "App-specific logo in the official upstream repository; URL validated HTTP 200 image/png."
+  },
+  "winhex": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wireless-ids": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wlan2eth": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wmd": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wol-e": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wordlistctl": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wordpress-exploit-framework": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wpa2-halfhandshake-crack": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wpbullet": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wpsik": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "ws-attacker": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wsuspect-proxy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "wyd": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "x64dbg": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "xcavator": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "xfltreat": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "xorsearch": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "xray": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "xspy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "xsscrapy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "xsss": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  },
+  "xsstrike": {
+    "url": null,
+    "status": "none_published",
+    "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset."
+  }
+}

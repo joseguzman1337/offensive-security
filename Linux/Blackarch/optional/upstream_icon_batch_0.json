@@ -1,0 +1,657 @@
+{
+  "autopwn": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "binwally": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "bitdump": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "bkhive": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "blackhash": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "bletchley": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "blindsql": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "bloodhound-ce-python": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "bluebox-ng": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "bluefog": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "blueprint": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "bluesnarfer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "bluto": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "bob-the-butcher": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "boopsuite": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "bowcaster": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "der-ascii": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "packetq": {
+    "url": "https://raw.githubusercontent.com/DNS-OARC/PacketQ/HEAD/html_NG/_img/logo.png",
+    "status": "official_upstream",
+    "reason": "official upstream repository asset; URL validated with HTTP 200 image response"
+  },
+  "pacu": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "padoracle": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "paketto": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pappy-proxy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "paramspider": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "parse-evtx": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pass-station": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "passgan": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pastejacker": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "patator": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pax-oracle": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pblind": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pcapfix": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pcapxray": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pcredz": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pdfbook-analyzer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pdfresurrect": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pe-bear": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "peach": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "peframe": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "penbox": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pentestgpt": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pepper": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "petools": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pftriage": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "phantomcollect": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "phishingkithunter": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "phonia": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "php-findsock-shell": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "php-rfi-payload-decoder": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "phpsploit": {
+    "url": "https://raw.githubusercontent.com/nil0x42/phpsploit/HEAD/data/img/logo.png",
+    "status": "official_upstream",
+    "reason": "official upstream repository asset; URL validated with HTTP 200 image response"
+  },
+  "pidense": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pinkerton": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pipal": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pivotsuite": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pkcrack": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "plasma-disasm": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "plecost": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "plutil": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pmapper": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "pngcheck": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "poison": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tcpdstat": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tcptraceroute": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "teamsuserenum": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tell-me-your-secrets": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tfsec": {
+    "url": "https://raw.githubusercontent.com/aquasecurity/tfsec/HEAD/docs/imgs/logo.png",
+    "status": "official_upstream",
+    "reason": "official upstream repository asset; URL validated with HTTP 200 image response"
+  },
+  "tftp-proxy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "thc-pptp-bruter": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "thcrut": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "themole": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "thumbcacheviewer": {
+    "url": "https://raw.githubusercontent.com/thumbcacheviewer/thumbcacheviewer/HEAD/thumbcache_viewer/icon.ico",
+    "status": "official_upstream",
+    "reason": "official upstream repository asset; URL validated with HTTP 200 image response"
+  },
+  "tilt": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tinfoleak": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tls-attacker": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tls-prober": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tlshelpers": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tlsx": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tomcatwardeployer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tor-router": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "torpy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tplmap": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "treasure": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "trid": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "trixd00r": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "truehunter": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tsh-sctp": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tunna": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "tweetshell": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "u3-pwn": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "uberfile": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "ubitack": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "udp-hunter": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "udsim": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "ufo-wardriving": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "ultimate-facebook-scraper": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "uncaptcha2": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "unfurl": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "unifuzzer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "unsecure": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "upnp-pentest-toolkit": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "uptux": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "whichcdn": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wifi-autopwner": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wifi-pumpkin": {
+    "url": "https://raw.githubusercontent.com/P0cL4bs/wifipumpkin3/HEAD/docs/logo.png",
+    "status": "official_upstream",
+    "reason": "official upstream repository asset; URL validated with HTTP 200 image response"
+  },
+  "wificurse": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wifitap": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wildpwn": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "windows-binaries": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "windows-privesc-check": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "winfo": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "winrelay": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "witchxtool": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wmbusmeters": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wnmap": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wordbrutepress": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wordpot": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wpa-bruteforcer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wpbrute-rpc": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wpintel": {
+    "url": "https://raw.githubusercontent.com/Tuhinshubhra/WPintel/HEAD/images/logo_128.png",
+    "status": "official_upstream",
+    "reason": "official upstream repository asset; URL validated with HTTP 200 image response"
+  },
+  "wpsweep": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wsfuzzer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "wups": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "x-rsa": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "x8": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "xcname": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "xmlrpc-bruteforcer": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "xpire-crossdomain-scanner": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "xray": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "xspy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "xsscon": {
+    "url": "https://raw.githubusercontent.com/menkrep1337/XSSCon/HEAD/images/logo.png",
+    "status": "official_upstream",
+    "reason": "official upstream repository asset; URL validated with HTTP 200 image response"
+  },
+  "xsspy": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  },
+  "xsssniper": {
+    "url": null,
+    "status": "none_published",
+    "reason": "no official upstream icon or logo asset proven"
+  }
+}

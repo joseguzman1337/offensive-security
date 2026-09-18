@@ -1,0 +1,22 @@
+{
+  "fuzzbunch": {
+    "url": "https://i.imgur.com/cexPDXR.png",
+    "status": "official_upstream",
+    "reason": "Application-specific FuzzBunch and Kali artwork published as the header of the official upstream repository README; validated HTTP 200 image/png."
+  },
+  "mono-tools": {
+    "url": null,
+    "status": "none_published",
+    "reason": "The official Mono gsharp source and full Git history contain no app logo; its desktop entry only comments out the generic gnome-terminal icon."
+  },
+  "qradiolink": {
+    "url": "https://codeberg.org/qradiolink/qradiolink/raw/branch/next/src/res/qradiolink.png",
+    "status": "official_upstream",
+    "reason": "The official application window and AppImage icon embedded by the current upstream Codeberg source; validated HTTP 200 image/png."
+  },
+  "sdrtrunk": {
+    "url": null,
+    "status": "none_published",
+    "reason": "The official repository, v0.6.0 build, README, and wiki publish no app-specific logo; available images are UI, protocol, dependency, or screenshot assets."
+  }
+}

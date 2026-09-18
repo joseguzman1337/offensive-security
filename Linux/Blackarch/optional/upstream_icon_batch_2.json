@@ -1,0 +1,652 @@
+{
+  "bad-pdf": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "birp": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "bkcrack": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "blackeye": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "bleah": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "blindelephant": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "blisqy": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "bloodyad": {
+    "reason": "Official upstream logo/icon; URL fetched successfully.",
+    "status": "official_upstream",
+    "url": "https://repository-images.githubusercontent.com/415977068/9b2fed72-35fb-4faa-a8d3-b120cd3c396f"
+  },
+  "bluediving": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "bluepot": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "bluescan": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "bluphish": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "bmc-tools": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "boofuzz": {
+    "reason": "Official upstream logo/icon; URL fetched successfully.",
+    "status": "official_upstream",
+    "url": "https://raw.githubusercontent.com/jtpereyda/boofuzz/master/artwork/boo-logo-dark.svg"
+  },
+  "botb": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "bqm": {
+    "reason": "Official upstream logo/icon; URL fetched successfully.",
+    "status": "official_upstream",
+    "url": "https://raw.githubusercontent.com/Acceis/bqm/master/assets/logo-bqm.png"
+  },
+  "packet-o-matic": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "packit": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "padbuster": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pagodo": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "panoptic": {
+    "reason": "Official upstream logo/icon; URL fetched successfully.",
+    "status": "official_upstream",
+    "url": "https://i.imgur.com/nQrtLkO.png"
+  },
+  "parampampam": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "paros": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pasco": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "passe-partout": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "passivedns": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pasv-agrsv": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pathzuzu": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "payloadsallthethings": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pcapfex": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pcapteller": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pcode2code": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pdf-parser": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pdfid": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pdgmail": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "peach-fuzz": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "peepingtom": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pemcracker": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pentbox": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pentmenu": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "persistencesniper": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pextractor": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "phantom-evasion": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "phishery": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "phonesploit": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "photon": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "php-mt-seed": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "phpggc": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "phrasendrescher": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pingcastle": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pintool2": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pirana": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pixload": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pkt2flow": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "plcscan": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "plumber.py": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pmap": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pmdump": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "pocsuite": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "polyswarm": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tcptrace": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tcpxtract": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tekdefense-automater": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "termineter": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tftp-fuzz": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "thc-keyfinder": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "thc-ssl-dos": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "thefuzz": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "threatspec": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tiger": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "timeverter": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tinja": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tls-map": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tlsfuzzer": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tlssled": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "token-reverser": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tor-autocircuit": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "torctl": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tpcat": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "traxss": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "trevorspray": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "triton": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "truegaze": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "trusttrees": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "ttpassgen": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tweets-analyzer": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "tyton": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "uatester": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "ubiquiti-probing": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "udork": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "udptunnel": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "uff": {
+    "reason": "Official upstream logo/icon; URL fetched successfully.",
+    "status": "official_upstream",
+    "url": "https://raw.githubusercontent.com/sw33tLie/uff/main/resources/uff-logo.png"
+  },
+  "uhoh365": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "unblob": {
+    "reason": "Official upstream logo/icon; URL fetched successfully.",
+    "status": "official_upstream",
+    "url": "https://raw.githubusercontent.com/onekey-sec/unblob/main/docs/logo.svg"
+  },
+  "undbx": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "unicorn-powershell": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "unisec": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "untwister": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "uppwn": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wcc": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "whoxyrm": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wifi-monitor": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wifichannelmonitor": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wifiscanmap": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wikigen": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "windivert": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "windows-prefetch-parser": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "winexe": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "winpwn": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wirouter-keyrec": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wmat": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wmi-forensics": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wolpertinger": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wordlister": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wordpresscan": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wpbf": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wpforce": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wpsik": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "ws-attacker": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wsuspect-proxy": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "wyd": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "x64dbg": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "xcavator": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "xfltreat": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "xorsearch": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "xplico": {
+    "reason": "Official upstream logo/icon; URL fetched successfully.",
+    "status": "official_upstream",
+    "url": "https://raw.githubusercontent.com/xplico/xplico/master/system/xi3/app/webroot/favicon.ico"
+  },
+  "xspear": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "xss-freak": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "xssless": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  },
+  "xssscan": {
+    "reason": "No official app-specific logo proven in upstream repository/site.",
+    "status": "none_published",
+    "url": null
+  }
+}

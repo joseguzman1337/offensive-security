@@ -1,0 +1,4553 @@
+{
+  "schema_version": 1,
+  "summary": {
+    "existing_launcher": 46,
+    "official_local": 18,
+    "official_upstream": 31,
+    "theme_exact_match": 1,
+    "none_published": 358,
+    "unresolved": 0
+  },
+  "entries": [
+    {
+      "package": "cubicsdr",
+      "launcher": "/usr/share/applications/CubicSDR.desktop",
+      "icon": "/usr/share/cubicsdr/CubicSDR.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/CubicSDR.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "savvycan",
+      "launcher": "/usr/share/applications/SavvyCAN.desktop",
+      "icon": "/usr/share/icons/hicolor/256x256/apps/SavvyCAN.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/SavvyCAN.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "sdrsharp",
+      "launcher": "/usr/share/applications/adsbspy.desktop",
+      "icon": "/usr/share/icons/hicolor/48x48/apps/ADSBSpy.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/adsbspy.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "sdrsharp",
+      "launcher": "/usr/share/applications/airspycalibrate.desktop",
+      "icon": "/usr/share/icons/hicolor/64x64/apps/AirspyCalibrate.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/airspycalibrate.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "angr-management",
+      "launcher": "/usr/share/applications/angr-management.desktop",
+      "icon": "/usr/share/angr-management/angrmanagement/resources/images/angr.png",
+      "status": "official_local",
+      "provenance": "pacman:angr-management",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "qt4",
+      "launcher": "/usr/share/applications/assistant-qt4.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/assistant-qt4.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/assistant-qt4.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "sdrsharp",
+      "launcher": "/usr/share/applications/astrospy.desktop",
+      "icon": "/usr/share/icons/hicolor/64x64/apps/AstroSpy.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/astrospy.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "autopsy",
+      "launcher": "/usr/share/applications/autopsy.desktop",
+      "icon": "/usr/share/pixmaps/autopsy.ico",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/autopsy.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "autopwn",
+      "launcher": "/usr/share/applications/ba-autopwn.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "autorecon",
+      "launcher": "/usr/share/applications/ba-autorecon.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bad-pdf",
+      "launcher": "/usr/share/applications/ba-bad-pdf.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "binwally",
+      "launcher": "/usr/share/applications/ba-binwally.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bios_memimage",
+      "launcher": "/usr/share/applications/ba-bios_memimage.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "birp",
+      "launcher": "/usr/share/applications/ba-birp.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bitdump",
+      "launcher": "/usr/share/applications/ba-bitdump.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bittwist",
+      "launcher": "/usr/share/applications/ba-bittwist.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bkcrack",
+      "launcher": "/usr/share/applications/ba-bkcrack.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bkhive",
+      "launcher": "/usr/share/applications/ba-bkhive.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blackbox-scanner",
+      "launcher": "/usr/share/applications/ba-blackbox-scanner.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blackeye",
+      "launcher": "/usr/share/applications/ba-blackeye.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blackhash",
+      "launcher": "/usr/share/applications/ba-blackhash.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blacknurse",
+      "launcher": "/usr/share/applications/ba-blacknurse.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bleah",
+      "launcher": "/usr/share/applications/ba-bleah.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bletchley",
+      "launcher": "/usr/share/applications/ba-bletchley.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blind-sql-bitshifting",
+      "launcher": "/usr/share/applications/ba-blind-sql-bitshifting.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blindelephant",
+      "launcher": "/usr/share/applications/ba-blindelephant.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blindsql",
+      "launcher": "/usr/share/applications/ba-blindsql.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blindy",
+      "launcher": "/usr/share/applications/ba-blindy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blisqy",
+      "launcher": "/usr/share/applications/ba-blisqy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bloodhound-ce-python",
+      "launcher": "/usr/share/applications/ba-bloodhound-ce-python.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bloodhound-cli",
+      "launcher": "/usr/share/applications/ba-bloodhound-cli.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bloodyad",
+      "launcher": "/usr/share/applications/ba-bloodyad.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-bloodyad.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Official upstream logo/icon; URL fetched successfully.",
+      "source_url": "https://repository-images.githubusercontent.com/415977068/9b2fed72-35fb-4faa-a8d3-b120cd3c396f",
+      "sha256": "9e83127dbde0c0e5e6d94697700ba3c7a07fb121259abf594374eac74ef5bf4d"
+    },
+    {
+      "package": "blue-hydra",
+      "launcher": "/usr/share/applications/ba-blue-hydra.desktop",
+      "icon": "/usr/share/blue-hydra/ico/bluehydra.png",
+      "status": "official_local",
+      "provenance": "pacman:blue-hydra",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluebox-ng",
+      "launcher": "/usr/share/applications/ba-bluebox-ng.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluebugger",
+      "launcher": "/usr/share/applications/ba-bluebugger.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluediving",
+      "launcher": "/usr/share/applications/ba-bluediving.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluefog",
+      "launcher": "/usr/share/applications/ba-bluefog.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluelog",
+      "launcher": "/usr/share/applications/ba-bluelog.desktop",
+      "icon": "/usr/share/bluelog/images/bluelog_logo.png",
+      "status": "official_local",
+      "provenance": "pacman:bluelog",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluepot",
+      "launcher": "/usr/share/applications/ba-bluepot.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blueprint",
+      "launcher": "/usr/share/applications/ba-blueprint.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "blueranger",
+      "launcher": "/usr/share/applications/ba-blueranger.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluescan",
+      "launcher": "/usr/share/applications/ba-bluescan.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluesnarfer",
+      "launcher": "/usr/share/applications/ba-bluesnarfer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluffy",
+      "launcher": "/usr/share/applications/ba-bluffy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluphish",
+      "launcher": "/usr/share/applications/ba-bluphish.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bluto",
+      "launcher": "/usr/share/applications/ba-bluto.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bmap-tools",
+      "launcher": "/usr/share/applications/ba-bmap-tools.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bmc-tools",
+      "launcher": "/usr/share/applications/ba-bmc-tools.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bob-the-butcher",
+      "launcher": "/usr/share/applications/ba-bob-the-butcher.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bonesi",
+      "launcher": "/usr/share/applications/ba-bonesi.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "boofuzz",
+      "launcher": "/usr/share/applications/ba-boofuzz.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-boofuzz.svg",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Official upstream logo/icon; URL fetched successfully.",
+      "source_url": "https://raw.githubusercontent.com/jtpereyda/boofuzz/master/artwork/boo-logo-dark.svg",
+      "sha256": "9605f0625c79f8c521c9720fce73d05edd42f5f4e6f7754a2445de1badd29366"
+    },
+    {
+      "package": "boopsuite",
+      "launcher": "/usr/share/applications/ba-boopsuite.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bopscrk",
+      "launcher": "/usr/share/applications/ba-bopscrk.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-bopscrk.svg",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Project logo in the official upstream repository; validated HTTP 200 image/svg+xml.",
+      "source_url": "https://raw.githubusercontent.com/R3nt0n/bopscrk/master/img/logo.svg",
+      "sha256": "1d6716bc5f8359dc7c24d9f57b5fafcc2f95050f7172fab3e42ca034402deb12"
+    },
+    {
+      "package": "botb",
+      "launcher": "/usr/share/applications/ba-botb.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bowcaster",
+      "launcher": "/usr/share/applications/ba-bowcaster.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "box-js",
+      "launcher": "/usr/share/applications/ba-box-js.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bqm",
+      "launcher": "/usr/share/applications/ba-bqm.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-bqm.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Official upstream logo/icon; URL fetched successfully.",
+      "source_url": "https://raw.githubusercontent.com/Acceis/bqm/master/assets/logo-bqm.png",
+      "sha256": "7e484f502073f6129f2e40360881b59b74426505fbbda0cfce9c2d04bf611cd6"
+    },
+    {
+      "package": "der-ascii",
+      "launcher": "/usr/share/applications/ba-der-ascii.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "malboxes",
+      "launcher": "/usr/share/applications/ba-malboxes.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-malboxes.svg",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Official project logo in upstream docs/logos; validated as SVG.",
+      "source_url": "https://raw.githubusercontent.com/GoSecure/malboxes/master/docs/logos/main.svg",
+      "sha256": "8e7659388a371250b7f3eac3106aaebc4bbd1aeea8bf1ae844f1d1e5033c35ac"
+    },
+    {
+      "package": "packet-o-matic",
+      "launcher": "/usr/share/applications/ba-packet-o-matic.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "packetq",
+      "launcher": "/usr/share/applications/ba-packetq.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-packetq.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "official upstream repository asset; URL validated with HTTP 200 image response",
+      "source_url": "https://raw.githubusercontent.com/DNS-OARC/PacketQ/HEAD/html_NG/_img/logo.png",
+      "sha256": "018b7cf7673ce533671c939bbf539c4ce222320bc8e007c28e0545f40c74d6fd"
+    },
+    {
+      "package": "packetsender",
+      "launcher": "/usr/share/applications/ba-packetsender.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-packetsender.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "PacketSender logo in the official upstream repository; validated HTTP 200 image/png.",
+      "source_url": "https://raw.githubusercontent.com/dannagle/PacketSender/master/screenshots/pslogo128.png",
+      "sha256": "f53ca4a2ea86e8f063570956799666ba8ae8f38d7f103f84ccfd13c4fcd9dde3"
+    },
+    {
+      "package": "packit",
+      "launcher": "/usr/share/applications/ba-packit.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pacu",
+      "launcher": "/usr/share/applications/ba-pacu.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pacumen",
+      "launcher": "/usr/share/applications/ba-pacumen.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "padbuster",
+      "launcher": "/usr/share/applications/ba-padbuster.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "padoracle",
+      "launcher": "/usr/share/applications/ba-padoracle.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "padre",
+      "launcher": "/usr/share/applications/ba-padre.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pafish",
+      "launcher": "/usr/share/applications/ba-pafish.desktop",
+      "icon": "/usr/share/windows/pafish/pafish/pafish.ico",
+      "status": "official_local",
+      "provenance": "pacman:pafish",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pagodo",
+      "launcher": "/usr/share/applications/ba-pagodo.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "paketto",
+      "launcher": "/usr/share/applications/ba-paketto.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "panhunt",
+      "launcher": "/usr/share/applications/ba-panhunt.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "panoptic",
+      "launcher": "/usr/share/applications/ba-panoptic.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-panoptic.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Official upstream logo/icon; URL fetched successfully.",
+      "source_url": "https://i.imgur.com/nQrtLkO.png",
+      "sha256": "eae203dffff01b4ba3bb77357211eaa79539fb56a964b0f11827746b969f63f9"
+    },
+    {
+      "package": "pappy-proxy",
+      "launcher": "/usr/share/applications/ba-pappy-proxy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "parameth",
+      "launcher": "/usr/share/applications/ba-parameth.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "parampampam",
+      "launcher": "/usr/share/applications/ba-parampampam.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "paramspider",
+      "launcher": "/usr/share/applications/ba-paramspider.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "paranoic",
+      "launcher": "/usr/share/applications/ba-paranoic.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "paros",
+      "launcher": "/usr/share/applications/ba-paros.desktop",
+      "icon": "/usr/share/paros/paros_logo.ico",
+      "status": "official_local",
+      "provenance": "pacman:paros",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "parse-evtx",
+      "launcher": "/usr/share/applications/ba-parse-evtx.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "parsero",
+      "launcher": "/usr/share/applications/ba-parsero.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pasco",
+      "launcher": "/usr/share/applications/ba-pasco.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pass-station",
+      "launcher": "/usr/share/applications/ba-pass-station.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "passdetective",
+      "launcher": "/usr/share/applications/ba-passdetective.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "passe-partout",
+      "launcher": "/usr/share/applications/ba-passe-partout.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "passgan",
+      "launcher": "/usr/share/applications/ba-passgan.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "passhunt",
+      "launcher": "/usr/share/applications/ba-passhunt.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "passivedns",
+      "launcher": "/usr/share/applications/ba-passivedns.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pastejacker",
+      "launcher": "/usr/share/applications/ba-pastejacker.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pastemonitor",
+      "launcher": "/usr/share/applications/ba-pastemonitor.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pasv-agrsv",
+      "launcher": "/usr/share/applications/ba-pasv-agrsv.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "patator",
+      "launcher": "/usr/share/applications/ba-patator.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "patchkit",
+      "launcher": "/usr/share/applications/ba-patchkit.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pathzuzu",
+      "launcher": "/usr/share/applications/ba-pathzuzu.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pax-oracle",
+      "launcher": "/usr/share/applications/ba-pax-oracle.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "payloadmask",
+      "launcher": "/usr/share/applications/ba-payloadmask.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "payloadsallthethings",
+      "launcher": "/usr/share/applications/ba-payloadsallthethings.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pblind",
+      "launcher": "/usr/share/applications/ba-pblind.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pbscan",
+      "launcher": "/usr/share/applications/ba-pbscan.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pcapfex",
+      "launcher": "/usr/share/applications/ba-pcapfex.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pcapfix",
+      "launcher": "/usr/share/applications/ba-pcapfix.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pcapsipdump",
+      "launcher": "/usr/share/applications/ba-pcapsipdump.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pcapteller",
+      "launcher": "/usr/share/applications/ba-pcapteller.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pcapxray",
+      "launcher": "/usr/share/applications/ba-pcapxray.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-pcapxray.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png",
+      "source_url": "https://raw.githubusercontent.com/Srinivas11789/PcapXray/HEAD/logo.png",
+      "sha256": "265f9c1366dec1b3132fe3a61da8d50360f65fd541c686bc55a67c9470722285"
+    },
+    {
+      "package": "pcileech",
+      "launcher": "/usr/share/applications/ba-pcileech.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-pcileech.ico",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Application icon in the official upstream repository; validated HTTP 200 image/vnd.microsoft.icon.",
+      "source_url": "https://raw.githubusercontent.com/ufrisk/pcileech/master/pcileech/wolf_icon.ico",
+      "sha256": "c6ea04fc6042c453484f09b3d0b4368754c885fc5bb5d2f512d8bbe705a58165"
+    },
+    {
+      "package": "pcode2code",
+      "launcher": "/usr/share/applications/ba-pcode2code.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pcredz",
+      "launcher": "/usr/share/applications/ba-pcredz.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pdblaster",
+      "launcher": "/usr/share/applications/ba-pdblaster.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pdf-parser",
+      "launcher": "/usr/share/applications/ba-pdf-parser.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pdfbook-analyzer",
+      "launcher": "/usr/share/applications/ba-pdfbook-analyzer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pdfgrab",
+      "launcher": "/usr/share/applications/ba-pdfgrab.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pdfid",
+      "launcher": "/usr/share/applications/ba-pdfid.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pdfresurrect",
+      "launcher": "/usr/share/applications/ba-pdfresurrect.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pdfwalker",
+      "launcher": "/usr/share/applications/ba-pdfwalker.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pdgmail",
+      "launcher": "/usr/share/applications/ba-pdgmail.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pe-bear",
+      "launcher": "/usr/share/applications/ba-pe-bear.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-pe-bear.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Official application artwork in upstream logo directory; validated as PNG.",
+      "source_url": "https://raw.githubusercontent.com/hasherezade/pe-bear/master/logo/main_ico.png",
+      "sha256": "ec4c8a76a485f8d28b59b3e593df6c3e15a1fe624ccf46b442af913e246a7207"
+    },
+    {
+      "package": "pe-sieve",
+      "launcher": "/usr/share/applications/ba-pe-sieve.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-pe-sieve.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Application icon in the official upstream repository; validated HTTP 200 image/png.",
+      "source_url": "https://raw.githubusercontent.com/hasherezade/pe-sieve/master/logo/PE%20SIEVE-icon.png",
+      "sha256": "09b24137d964b462cc6a92c4f50defe340e8bae4e365f4f2648e8b37abf83d2d"
+    },
+    {
+      "package": "peach-fuzz",
+      "launcher": "/usr/share/applications/ba-peach-fuzz.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "peach",
+      "launcher": "/usr/share/applications/ba-peach.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "peass",
+      "launcher": "/usr/share/applications/ba-peass.desktop",
+      "icon": "/usr/share/doc/peass/linPEAS/images/peass.png",
+      "status": "official_local",
+      "provenance": "pacman:peass",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "peepdf",
+      "launcher": "/usr/share/applications/ba-peepdf.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "peepingtom",
+      "launcher": "/usr/share/applications/ba-peepingtom.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "peframe",
+      "launcher": "/usr/share/applications/ba-peframe.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pemcrack",
+      "launcher": "/usr/share/applications/ba-pemcrack.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pemcracker",
+      "launcher": "/usr/share/applications/ba-pemcracker.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "penbox",
+      "launcher": "/usr/share/applications/ba-penbox.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pencode",
+      "launcher": "/usr/share/applications/ba-pencode.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pentbox",
+      "launcher": "/usr/share/applications/ba-pentbox.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pentestgpt",
+      "launcher": "/usr/share/applications/ba-pentestgpt.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pentestly",
+      "launcher": "/usr/share/applications/ba-pentestly.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pentmenu",
+      "launcher": "/usr/share/applications/ba-pentmenu.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pepe",
+      "launcher": "/usr/share/applications/ba-pepe.desktop",
+      "icon": "/usr/share/pepe/imgs/pepe.png",
+      "status": "official_local",
+      "provenance": "pacman:pepe",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pepper",
+      "launcher": "/usr/share/applications/ba-pepper.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "periscope",
+      "launcher": "/usr/share/applications/ba-periscope.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "persistencesniper",
+      "launcher": "/usr/share/applications/ba-persistencesniper.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-persistencesniper.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png",
+      "source_url": "https://raw.githubusercontent.com/last-byte/PersistenceSniper/HEAD/persistencesnipernew4.png",
+      "sha256": "0522c43c17e2d96f022f33ade857df40bbebeb9c9a1cd28a66756c2d69ec18f1"
+    },
+    {
+      "package": "petools",
+      "launcher": "/usr/share/applications/ba-petools.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pev",
+      "launcher": "/usr/share/applications/ba-pev.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pextractor",
+      "launcher": "/usr/share/applications/ba-pextractor.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pftriage",
+      "launcher": "/usr/share/applications/ba-pftriage.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pgdbf",
+      "launcher": "/usr/share/applications/ba-pgdbf.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-pgdbf.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Project logo in the official upstream repository; validated HTTP 200 image/png.",
+      "source_url": "https://raw.githubusercontent.com/kstrauser/pgdbf/master/web/pgdbflogo.png",
+      "sha256": "d47dede6a9800d3eef32071bbecfe6dd99cf9abbc4fb8f558e73fff287d40c09"
+    },
+    {
+      "package": "phantap",
+      "launcher": "/usr/share/applications/ba-phantap.desktop",
+      "icon": "/usr/share/phantap/img/phantap.png",
+      "status": "official_local",
+      "provenance": "pacman:phantap",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phantom-evasion",
+      "launcher": "/usr/share/applications/ba-phantom-evasion.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phantomcollect",
+      "launcher": "/usr/share/applications/ba-phantomcollect.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phemail",
+      "launcher": "/usr/share/applications/ba-phemail.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phishery",
+      "launcher": "/usr/share/applications/ba-phishery.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phishingkithunter",
+      "launcher": "/usr/share/applications/ba-phishingkithunter.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phoneinfoga",
+      "launcher": "/usr/share/applications/ba-phoneinfoga.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-phoneinfoga.svg",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Project logo in the official upstream repository; validated HTTP 200 image/svg+xml.",
+      "source_url": "https://raw.githubusercontent.com/sundowndev/PhoneInfoga/master/docs/images/logo.svg",
+      "sha256": "16654bdad45c8cd83d4e31186713b06aad9107485b02739cff09f3427ce8fa06"
+    },
+    {
+      "package": "phonesploit",
+      "launcher": "/usr/share/applications/ba-phonesploit.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phonia",
+      "launcher": "/usr/share/applications/ba-phonia.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phoss",
+      "launcher": "/usr/share/applications/ba-phoss.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "photon",
+      "launcher": "/usr/share/applications/ba-photon.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "php-findsock-shell",
+      "launcher": "/usr/share/applications/ba-php-findsock-shell.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "php-malware-finder",
+      "launcher": "/usr/share/applications/ba-php-malware-finder.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "php-mt-seed",
+      "launcher": "/usr/share/applications/ba-php-mt-seed.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "php-rfi-payload-decoder",
+      "launcher": "/usr/share/applications/ba-php-rfi-payload-decoder.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "php-vulnerability-hunter",
+      "launcher": "/usr/share/applications/ba-php-vulnerability-hunter.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phpggc",
+      "launcher": "/usr/share/applications/ba-phpggc.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phpsploit",
+      "launcher": "/usr/share/applications/ba-phpsploit.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-phpsploit.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "official upstream repository asset; URL validated with HTTP 200 image response",
+      "source_url": "https://raw.githubusercontent.com/nil0x42/phpsploit/HEAD/data/img/logo.png",
+      "sha256": "7b4a93ddba3010329d62bd70bc4a853f0a41045c2f9137b733b679dbc0dd1563"
+    },
+    {
+      "package": "phpstress",
+      "launcher": "/usr/share/applications/ba-phpstress.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "phrasendrescher",
+      "launcher": "/usr/share/applications/ba-phrasendrescher.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pidense",
+      "launcher": "/usr/share/applications/ba-pidense.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pin",
+      "launcher": "/usr/share/applications/ba-pin.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pingcastle",
+      "launcher": "/usr/share/applications/ba-pingcastle.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-pingcastle.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png",
+      "source_url": "https://www.pingcastle.com/wp/wp-content/uploads/2018/09/favico.png",
+      "sha256": "884025d38cefeb9a8bd628b1e2942eb1fb5ac120e6378cfc609ab4c247724b88"
+    },
+    {
+      "package": "pinkerton",
+      "launcher": "/usr/share/applications/ba-pinkerton.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pintool",
+      "launcher": "/usr/share/applications/ba-pintool.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pintool2",
+      "launcher": "/usr/share/applications/ba-pintool2.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pipal",
+      "launcher": "/usr/share/applications/ba-pipal.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pipeline",
+      "launcher": "/usr/share/applications/ba-pipeline.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pirana",
+      "launcher": "/usr/share/applications/ba-pirana.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pivotsuite",
+      "launcher": "/usr/share/applications/ba-pivotsuite.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pixd",
+      "launcher": "/usr/share/applications/ba-pixd.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pixload",
+      "launcher": "/usr/share/applications/ba-pixload.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pkcrack",
+      "launcher": "/usr/share/applications/ba-pkcrack.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pkinittools",
+      "launcher": "/usr/share/applications/ba-pkinittools.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pkt2flow",
+      "launcher": "/usr/share/applications/ba-pkt2flow.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "plasma-disasm",
+      "launcher": "/usr/share/applications/ba-plasma-disasm.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "platypus",
+      "launcher": "/usr/share/applications/ba-platypus.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-platypus.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Desktop application icon in the official upstream repository; validated HTTP 200 image/png.",
+      "source_url": "https://raw.githubusercontent.com/WangYihang/Platypus/main/desktop/build/appicon.png",
+      "sha256": "28332a3b130d1970d208e40b7ab2c84f9ead10199f8c058e08e07fe21fe7ea49"
+    },
+    {
+      "package": "plcscan",
+      "launcher": "/usr/share/applications/ba-plcscan.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "plecost",
+      "launcher": "/usr/share/applications/ba-plecost.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "plown",
+      "launcher": "/usr/share/applications/ba-plown.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "plumber.py",
+      "launcher": "/usr/share/applications/ba-plumber.py.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "plutil",
+      "launcher": "/usr/share/applications/ba-plutil.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pmacct",
+      "launcher": "/usr/share/applications/ba-pmacct.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pmap",
+      "launcher": "/usr/share/applications/ba-pmap.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pmapper",
+      "launcher": "/usr/share/applications/ba-pmapper.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pmcma",
+      "launcher": "/usr/share/applications/ba-pmcma.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pmdump",
+      "launcher": "/usr/share/applications/ba-pmdump.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pngcheck",
+      "launcher": "/usr/share/applications/ba-pngcheck.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pnscan",
+      "launcher": "/usr/share/applications/ba-pnscan.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pocsuite",
+      "launcher": "/usr/share/applications/ba-pocsuite.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "poison",
+      "launcher": "/usr/share/applications/ba-poison.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "poly",
+      "launcher": "/usr/share/applications/ba-poly.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "polyswarm",
+      "launcher": "/usr/share/applications/ba-polyswarm.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tcpdstat",
+      "launcher": "/usr/share/applications/ba-tcpdstat.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tcpextract",
+      "launcher": "/usr/share/applications/ba-tcpextract.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tcptrace",
+      "launcher": "/usr/share/applications/ba-tcptrace.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tcptraceroute",
+      "launcher": "/usr/share/applications/ba-tcptraceroute.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tcpwatch",
+      "launcher": "/usr/share/applications/ba-tcpwatch.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tcpxtract",
+      "launcher": "/usr/share/applications/ba-tcpxtract.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "teamsuserenum",
+      "launcher": "/usr/share/applications/ba-teamsuserenum.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "teardown",
+      "launcher": "/usr/share/applications/ba-teardown.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tekdefense-automater",
+      "launcher": "/usr/share/applications/ba-tekdefense-automater.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tell-me-your-secrets",
+      "launcher": "/usr/share/applications/ba-tell-me-your-secrets.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tempomail",
+      "launcher": "/usr/share/applications/ba-tempomail.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "termineter",
+      "launcher": "/usr/share/applications/ba-termineter.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tfsec",
+      "launcher": "/usr/share/applications/ba-tfsec.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-tfsec.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "official upstream repository asset; URL validated with HTTP 200 image response",
+      "source_url": "https://raw.githubusercontent.com/aquasecurity/tfsec/HEAD/docs/imgs/logo.png",
+      "sha256": "330299603f4ad81c830738915ba13a64324640c1e21ebe43a2938840c998e526"
+    },
+    {
+      "package": "tftp-bruteforce",
+      "launcher": "/usr/share/applications/ba-tftp-bruteforce.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tftp-fuzz",
+      "launcher": "/usr/share/applications/ba-tftp-fuzz.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tftp-proxy",
+      "launcher": "/usr/share/applications/ba-tftp-proxy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tgcd",
+      "launcher": "/usr/share/applications/ba-tgcd.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "thc-keyfinder",
+      "launcher": "/usr/share/applications/ba-thc-keyfinder.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "thc-pptp-bruter",
+      "launcher": "/usr/share/applications/ba-thc-pptp-bruter.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "thc-smartbrute",
+      "launcher": "/usr/share/applications/ba-thc-smartbrute.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "thc-ssl-dos",
+      "launcher": "/usr/share/applications/ba-thc-ssl-dos.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "thcrut",
+      "launcher": "/usr/share/applications/ba-thcrut.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "thedorkbox",
+      "launcher": "/usr/share/applications/ba-thedorkbox.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "thefatrat",
+      "launcher": "/usr/share/applications/ba-thefatrat.desktop",
+      "icon": "/usr/share/thefatrat/icons/TheFatRat.ico",
+      "status": "official_local",
+      "provenance": "pacman:thefatrat",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "thefuzz",
+      "launcher": "/usr/share/applications/ba-thefuzz.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "themole",
+      "launcher": "/usr/share/applications/ba-themole.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "thezoo",
+      "launcher": "/usr/share/applications/ba-thezoo.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-thezoo.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png",
+      "source_url": "https://github.com/ytisf/theZoo/raw/gh-pages/MalDB-Logo-Thumb.png",
+      "sha256": "2e3ee1f146e331ca42b469e26586628e9713a40c6a546371c80d6b89bdbb64fb"
+    },
+    {
+      "package": "threatspec",
+      "launcher": "/usr/share/applications/ba-threatspec.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "thumbcacheviewer",
+      "launcher": "/usr/share/applications/ba-thumbcacheviewer.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-thumbcacheviewer.ico",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "official upstream repository asset; URL validated with HTTP 200 image response",
+      "source_url": "https://raw.githubusercontent.com/thumbcacheviewer/thumbcacheviewer/HEAD/thumbcache_viewer/icon.ico",
+      "sha256": "8523a543d4745655913bc39b75011e9e629e56d8d4b077d2437cc186dcd0cbd3"
+    },
+    {
+      "package": "tidos-framework",
+      "launcher": "/usr/share/applications/ba-tidos-framework.desktop",
+      "icon": "/usr/share/tidos-framework/core/qt5/icons/tidos.png",
+      "status": "official_local",
+      "provenance": "pacman:tidos-framework",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tiger",
+      "launcher": "/usr/share/applications/ba-tiger.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tilt",
+      "launcher": "/usr/share/applications/ba-tilt.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "timegen",
+      "launcher": "/usr/share/applications/ba-timegen.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "timeverter",
+      "launcher": "/usr/share/applications/ba-timeverter.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tinfoleak",
+      "launcher": "/usr/share/applications/ba-tinfoleak.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tinfoleak2",
+      "launcher": "/usr/share/applications/ba-tinfoleak2.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tinja",
+      "launcher": "/usr/share/applications/ba-tinja.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tls-attacker",
+      "launcher": "/usr/share/applications/ba-tls-attacker.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tls-fingerprinting",
+      "launcher": "/usr/share/applications/ba-tls-fingerprinting.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tls-map",
+      "launcher": "/usr/share/applications/ba-tls-map.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tls-prober",
+      "launcher": "/usr/share/applications/ba-tls-prober.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tlsenum",
+      "launcher": "/usr/share/applications/ba-tlsenum.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tlsfuzzer",
+      "launcher": "/usr/share/applications/ba-tlsfuzzer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tlshelpers",
+      "launcher": "/usr/share/applications/ba-tlshelpers.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tlspretense",
+      "launcher": "/usr/share/applications/ba-tlspretense.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tlssled",
+      "launcher": "/usr/share/applications/ba-tlssled.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tlsx",
+      "launcher": "/usr/share/applications/ba-tlsx.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "token-hunter",
+      "launcher": "/usr/share/applications/ba-token-hunter.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "token-reverser",
+      "launcher": "/usr/share/applications/ba-token-reverser.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tomcatwardeployer",
+      "launcher": "/usr/share/applications/ba-tomcatwardeployer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "topera",
+      "launcher": "/usr/share/applications/ba-topera.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tor-autocircuit",
+      "launcher": "/usr/share/applications/ba-tor-autocircuit.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tor-router",
+      "launcher": "/usr/share/applications/ba-tor-router.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "torcrawl",
+      "launcher": "/usr/share/applications/ba-torcrawl.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "torctl",
+      "launcher": "/usr/share/applications/ba-torctl.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "torpy",
+      "launcher": "/usr/share/applications/ba-torpy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "torshammer",
+      "launcher": "/usr/share/applications/ba-torshammer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tpcat",
+      "launcher": "/usr/share/applications/ba-tpcat.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tplmap",
+      "launcher": "/usr/share/applications/ba-tplmap.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "trape",
+      "launcher": "/usr/share/applications/ba-trape.desktop",
+      "icon": "/usr/share/trape/static/img/trape-logo.png",
+      "status": "official_local",
+      "provenance": "pacman:trape",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "traxss",
+      "launcher": "/usr/share/applications/ba-traxss.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "treasure",
+      "launcher": "/usr/share/applications/ba-treasure.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "trevorproxy",
+      "launcher": "/usr/share/applications/ba-trevorproxy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "trevorspray",
+      "launcher": "/usr/share/applications/ba-trevorspray.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "trid",
+      "launcher": "/usr/share/applications/ba-trid.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "trinity",
+      "launcher": "/usr/share/applications/ba-trinity.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "triton",
+      "launcher": "/usr/share/applications/ba-triton.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "trixd00r",
+      "launcher": "/usr/share/applications/ba-trixd00r.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "truecrack",
+      "launcher": "/usr/share/applications/ba-truecrack.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "truegaze",
+      "launcher": "/usr/share/applications/ba-truegaze.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "truehunter",
+      "launcher": "/usr/share/applications/ba-truehunter.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "trufflehog",
+      "launcher": "/usr/share/applications/ba-trufflehog.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-trufflehog.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png",
+      "source_url": "https://storage.googleapis.com/trufflehog-static-sources/pixel_pig.png",
+      "sha256": "31dbdb577b88b3a967e2c18f9b0f3d4a7031dafe7e392c51320178aba6352603"
+    },
+    {
+      "package": "trusttrees",
+      "launcher": "/usr/share/applications/ba-trusttrees.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tsh-sctp",
+      "launcher": "/usr/share/applications/ba-tsh-sctp.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tsh",
+      "launcher": "/usr/share/applications/ba-tsh.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "ttpassgen",
+      "launcher": "/usr/share/applications/ba-ttpassgen.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tunna",
+      "launcher": "/usr/share/applications/ba-tunna.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "turner",
+      "launcher": "/usr/share/applications/ba-turner.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tweets-analyzer",
+      "launcher": "/usr/share/applications/ba-tweets-analyzer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tweetshell",
+      "launcher": "/usr/share/applications/ba-tweetshell.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "twofi",
+      "launcher": "/usr/share/applications/ba-twofi.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "typo3scan",
+      "launcher": "/usr/share/applications/ba-typo3scan.desktop",
+      "icon": "/usr/share/doc/typo3scan/Typo3Scan.png",
+      "status": "official_local",
+      "provenance": "pacman:typo3scan",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tyton",
+      "launcher": "/usr/share/applications/ba-tyton.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "u3-pwn",
+      "launcher": "/usr/share/applications/ba-u3-pwn.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "uacme",
+      "launcher": "/usr/share/applications/ba-uacme.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "uatester",
+      "launcher": "/usr/share/applications/ba-uatester.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "uberfile",
+      "launcher": "/usr/share/applications/ba-uberfile.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "ubertooth",
+      "launcher": "/usr/share/applications/ba-ubertooth.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "ubiquiti-probing",
+      "launcher": "/usr/share/applications/ba-ubiquiti-probing.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "ubitack",
+      "launcher": "/usr/share/applications/ba-ubitack.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "udis86",
+      "launcher": "/usr/share/applications/ba-udis86.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "udork",
+      "launcher": "/usr/share/applications/ba-udork.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "udp-hunter",
+      "launcher": "/usr/share/applications/ba-udp-hunter.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "udpastcp",
+      "launcher": "/usr/share/applications/ba-udpastcp.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "udptunnel",
+      "launcher": "/usr/share/applications/ba-udptunnel.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "udsim",
+      "launcher": "/usr/share/applications/ba-udsim.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "uefi-firmware-parser",
+      "launcher": "/usr/share/applications/ba-uefi-firmware-parser.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "uff",
+      "launcher": "/usr/share/applications/ba-uff.desktop",
+      "icon": "/usr/share/doc/uff/resources/uff-logo.png",
+      "status": "official_local",
+      "provenance": "pacman:uff",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "ufo-wardriving",
+      "launcher": "/usr/share/applications/ba-ufo-wardriving.desktop",
+      "icon": "/usr/share/ufo-wardriving/pics/ufo.png",
+      "status": "official_local",
+      "provenance": "pacman:ufo-wardriving",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "ufonet",
+      "launcher": "/usr/share/applications/ba-ufonet.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "uhoh365",
+      "launcher": "/usr/share/applications/ba-uhoh365.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "ultimate-facebook-scraper",
+      "launcher": "/usr/share/applications/ba-ultimate-facebook-scraper.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "umap",
+      "launcher": "/usr/share/applications/ba-umap.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "unblob",
+      "launcher": "/usr/share/applications/ba-unblob.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-unblob.svg",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Official upstream logo/icon; URL fetched successfully.",
+      "source_url": "https://raw.githubusercontent.com/onekey-sec/unblob/main/docs/logo.svg",
+      "sha256": "e2190e0d440a5a0ec36ba3bbc1e91b16ffd2022e9aef4572eb5de50c9ba9a602"
+    },
+    {
+      "package": "uncaptcha2",
+      "launcher": "/usr/share/applications/ba-uncaptcha2.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "uncover",
+      "launcher": "/usr/share/applications/ba-uncover.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "undbx",
+      "launcher": "/usr/share/applications/ba-undbx.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "unfurl",
+      "launcher": "/usr/share/applications/ba-unfurl.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "unibrute",
+      "launcher": "/usr/share/applications/ba-unibrute.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "unicorn-powershell",
+      "launcher": "/usr/share/applications/ba-unicorn-powershell.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "unifuzzer",
+      "launcher": "/usr/share/applications/ba-unifuzzer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "uniofuzz",
+      "launcher": "/usr/share/applications/ba-uniofuzz.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "unisec",
+      "launcher": "/usr/share/applications/ba-unisec.desktop",
+      "icon": "/usr/share/doc/unisec/_media/unisec-logo.png",
+      "status": "official_local",
+      "provenance": "pacman:unisec",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "unix-privesc-check",
+      "launcher": "/usr/share/applications/ba-unix-privesc-check.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/unix-privesc-check.svg",
+      "status": "theme_exact_match",
+      "provenance": "pacman:blackarch-config-icons",
+      "reason": "exact normalized app name in the installed icon theme",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "unsecure",
+      "launcher": "/usr/share/applications/ba-unsecure.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "unstrip",
+      "launcher": "/usr/share/applications/ba-unstrip.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "untwister",
+      "launcher": "/usr/share/applications/ba-untwister.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "upnp-pentest-toolkit",
+      "launcher": "/usr/share/applications/ba-upnp-pentest-toolkit.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "upnpscan",
+      "launcher": "/usr/share/applications/ba-upnpscan.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "uppwn",
+      "launcher": "/usr/share/applications/ba-uppwn.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "uptux",
+      "launcher": "/usr/share/applications/ba-uptux.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "urlcrazy",
+      "launcher": "/usr/share/applications/ba-urlcrazy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wcc",
+      "launcher": "/usr/share/applications/ba-wcc.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "whichcdn",
+      "launcher": "/usr/share/applications/ba-whichcdn.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "whitewidow",
+      "launcher": "/usr/share/applications/ba-whitewidow.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "whoxyrm",
+      "launcher": "/usr/share/applications/ba-whoxyrm.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wifi-autopwner",
+      "launcher": "/usr/share/applications/ba-wifi-autopwner.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wifi-honey",
+      "launcher": "/usr/share/applications/ba-wifi-honey.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wifi-monitor",
+      "launcher": "/usr/share/applications/ba-wifi-monitor.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wifi-pumpkin",
+      "launcher": "/usr/share/applications/ba-wifi-pumpkin.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-wifi-pumpkin.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "official upstream repository asset; URL validated with HTTP 200 image response",
+      "source_url": "https://raw.githubusercontent.com/P0cL4bs/wifipumpkin3/HEAD/docs/logo.png",
+      "sha256": "516b1b6e2d1c39f76ff1fe280dcb32a35a3f90af3b74e04fb893611b53ac3c4a"
+    },
+    {
+      "package": "wifibroot",
+      "launcher": "/usr/share/applications/ba-wifibroot.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wifichannelmonitor",
+      "launcher": "/usr/share/applications/ba-wifichannelmonitor.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wificurse",
+      "launcher": "/usr/share/applications/ba-wificurse.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wifiphisher",
+      "launcher": "/usr/share/applications/ba-wifiphisher.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wifiscanmap",
+      "launcher": "/usr/share/applications/ba-wifiscanmap.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wifitap",
+      "launcher": "/usr/share/applications/ba-wifitap.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wig",
+      "launcher": "/usr/share/applications/ba-wig.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wikigen",
+      "launcher": "/usr/share/applications/ba-wikigen.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wildpwn",
+      "launcher": "/usr/share/applications/ba-wildpwn.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "windapsearch",
+      "launcher": "/usr/share/applications/ba-windapsearch.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "windivert",
+      "launcher": "/usr/share/applications/ba-windivert.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "windows-binaries",
+      "launcher": "/usr/share/applications/ba-windows-binaries.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "windows-exploit-suggester",
+      "launcher": "/usr/share/applications/ba-windows-exploit-suggester.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "windows-prefetch-parser",
+      "launcher": "/usr/share/applications/ba-windows-prefetch-parser.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "windows-privesc-check",
+      "launcher": "/usr/share/applications/ba-windows-privesc-check.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "windowsspyblocker",
+      "launcher": "/usr/share/applications/ba-windowsspyblocker.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-windowsspyblocker.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "App-specific logo in the official upstream repository; URL validated HTTP 200 image/png.",
+      "source_url": "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/.res/logo.png",
+      "sha256": "f89e1c66259f9f2423b6eb194026f02969cca847388e2e4836c943563a4bfa7b"
+    },
+    {
+      "package": "winexe",
+      "launcher": "/usr/share/applications/ba-winexe.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "winfo",
+      "launcher": "/usr/share/applications/ba-winfo.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "winhex",
+      "launcher": "/usr/share/applications/ba-winhex.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "winpwn",
+      "launcher": "/usr/share/applications/ba-winpwn.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "winrelay",
+      "launcher": "/usr/share/applications/ba-winrelay.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wireless-ids",
+      "launcher": "/usr/share/applications/ba-wireless-ids.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wirouter-keyrec",
+      "launcher": "/usr/share/applications/ba-wirouter-keyrec.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "witchxtool",
+      "launcher": "/usr/share/applications/ba-witchxtool.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wlan2eth",
+      "launcher": "/usr/share/applications/ba-wlan2eth.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wmat",
+      "launcher": "/usr/share/applications/ba-wmat.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wmbusmeters",
+      "launcher": "/usr/share/applications/ba-wmbusmeters.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wmd",
+      "launcher": "/usr/share/applications/ba-wmd.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wmi-forensics",
+      "launcher": "/usr/share/applications/ba-wmi-forensics.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wnmap",
+      "launcher": "/usr/share/applications/ba-wnmap.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wol-e",
+      "launcher": "/usr/share/applications/ba-wol-e.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wolpertinger",
+      "launcher": "/usr/share/applications/ba-wolpertinger.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wordbrutepress",
+      "launcher": "/usr/share/applications/ba-wordbrutepress.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wordlistctl",
+      "launcher": "/usr/share/applications/ba-wordlistctl.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wordlister",
+      "launcher": "/usr/share/applications/ba-wordlister.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wordpot",
+      "launcher": "/usr/share/applications/ba-wordpot.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wordpress-exploit-framework",
+      "launcher": "/usr/share/applications/ba-wordpress-exploit-framework.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wordpresscan",
+      "launcher": "/usr/share/applications/ba-wordpresscan.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wpa-bruteforcer",
+      "launcher": "/usr/share/applications/ba-wpa-bruteforcer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wpa2-halfhandshake-crack",
+      "launcher": "/usr/share/applications/ba-wpa2-halfhandshake-crack.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wpbf",
+      "launcher": "/usr/share/applications/ba-wpbf.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wpbrute-rpc",
+      "launcher": "/usr/share/applications/ba-wpbrute-rpc.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wpbullet",
+      "launcher": "/usr/share/applications/ba-wpbullet.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wpforce",
+      "launcher": "/usr/share/applications/ba-wpforce.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wpintel",
+      "launcher": "/usr/share/applications/ba-wpintel.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-wpintel.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "official upstream repository asset; URL validated with HTTP 200 image response",
+      "source_url": "https://raw.githubusercontent.com/Tuhinshubhra/WPintel/HEAD/images/logo_128.png",
+      "sha256": "5183186780fc6d0923668abd493d7103634c5f4fea6e9b529ab067ed4f9b4e5b"
+    },
+    {
+      "package": "wpseku",
+      "launcher": "/usr/share/applications/ba-wpseku.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wpsik",
+      "launcher": "/usr/share/applications/ba-wpsik.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wpsweep",
+      "launcher": "/usr/share/applications/ba-wpsweep.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wreckuests",
+      "launcher": "/usr/share/applications/ba-wreckuests.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "ws-attacker",
+      "launcher": "/usr/share/applications/ba-ws-attacker.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wsfuzzer",
+      "launcher": "/usr/share/applications/ba-wsfuzzer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wssip",
+      "launcher": "/usr/share/applications/ba-wssip.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-wssip.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "app-specific asset published by the official upstream project; URL validated as HTTP 200 image/png",
+      "source_url": "https://raw.githubusercontent.com/nccgroup/wssip/HEAD/build/icons/512x512.png",
+      "sha256": "50afad6c82dfc0d5be3e736b9a0091160354f0c321edc1ef19ca317fd4c8dae5"
+    },
+    {
+      "package": "wsuspect-proxy",
+      "launcher": "/usr/share/applications/ba-wsuspect-proxy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wups",
+      "launcher": "/usr/share/applications/ba-wups.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wuzz",
+      "launcher": "/usr/share/applications/ba-wuzz.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wxhexeditor",
+      "launcher": "/usr/share/applications/ba-wxhexeditor.desktop",
+      "icon": "/usr/share/pixmaps/wxHexEditor.png",
+      "status": "official_local",
+      "provenance": "pacman:wxhexeditor",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wyd",
+      "launcher": "/usr/share/applications/ba-wyd.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "x-rsa",
+      "launcher": "/usr/share/applications/ba-x-rsa.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "x-scan",
+      "launcher": "/usr/share/applications/ba-x-scan.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "x64dbg",
+      "launcher": "/usr/share/applications/ba-x64dbg.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "x8",
+      "launcher": "/usr/share/applications/ba-x8.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xcat",
+      "launcher": "/usr/share/applications/ba-xcat.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xcavator",
+      "launcher": "/usr/share/applications/ba-xcavator.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xcname",
+      "launcher": "/usr/share/applications/ba-xcname.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xerosploit",
+      "launcher": "/usr/share/applications/ba-xerosploit.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xfltreat",
+      "launcher": "/usr/share/applications/ba-xfltreat.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xmlrpc-bruteforcer",
+      "launcher": "/usr/share/applications/ba-xmlrpc-bruteforcer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xorbruteforcer",
+      "launcher": "/usr/share/applications/ba-xorbruteforcer.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xorsearch",
+      "launcher": "/usr/share/applications/ba-xorsearch.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xpire-crossdomain-scanner",
+      "launcher": "/usr/share/applications/ba-xpire-crossdomain-scanner.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xpl-search",
+      "launcher": "/usr/share/applications/ba-xpl-search.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no app-specific official upstream icon, logo, or favicon proven after package metadata and upstream tree/release audit",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xplico",
+      "launcher": "/usr/share/applications/ba-xplico.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-xplico.ico",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Official upstream logo/icon; URL fetched successfully.",
+      "source_url": "https://raw.githubusercontent.com/xplico/xplico/master/system/xi3/app/webroot/favicon.ico",
+      "sha256": "64d64d76ba49f73dfb87dd3a52e7faf2bb0830a4ca631d6c1e8f321d58fd6d78"
+    },
+    {
+      "package": "xray",
+      "launcher": "/usr/share/applications/ba-xray.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xrop",
+      "launcher": "/usr/share/applications/ba-xrop.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xspear",
+      "launcher": "/usr/share/applications/ba-xspear.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xspy",
+      "launcher": "/usr/share/applications/ba-xspy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xsrfprobe",
+      "launcher": "/usr/share/applications/ba-xsrfprobe.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No app-specific official logo/icon/favicon proven after package metadata and upstream repository/site audit; badges, screenshots, author marks, dependency and generic brand icons excluded.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xss-freak",
+      "launcher": "/usr/share/applications/ba-xss-freak.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xsscon",
+      "launcher": "/usr/share/applications/ba-xsscon.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-xsscon.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "official upstream repository asset; URL validated with HTTP 200 image response",
+      "source_url": "https://raw.githubusercontent.com/menkrep1337/XSSCon/HEAD/images/logo.png",
+      "sha256": "b60efaa552616b066352287864e579e0ddc04a10907ec277c742b92b386d531c"
+    },
+    {
+      "package": "xsscrapy",
+      "launcher": "/usr/share/applications/ba-xsscrapy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xssless",
+      "launcher": "/usr/share/applications/ba-xssless.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xsspy",
+      "launcher": "/usr/share/applications/ba-xsspy.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xsss",
+      "launcher": "/usr/share/applications/ba-xsss.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xssscan",
+      "launcher": "/usr/share/applications/ba-xssscan.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "No official app-specific logo proven in upstream repository/site.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xsssniper",
+      "launcher": "/usr/share/applications/ba-xsssniper.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "no official upstream icon or logo asset proven",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "xsstrike",
+      "launcher": "/usr/share/applications/ba-xsstrike.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "Pacman metadata and the official upstream repository tree/releases exposed no proven app-specific logo, icon, or favicon asset.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bless",
+      "launcher": "/usr/share/applications/bless.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/bless.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/bless.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "burpsuite",
+      "launcher": "/usr/share/applications/burpsuite.desktop",
+      "icon": "/usr/share/icons/Tela-circle-dracula/scalable/apps/burpsuite.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/burpsuite.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "caido-desktop",
+      "launcher": "/usr/share/applications/caido.desktop",
+      "icon": "/usr/share/icons/hicolor/256x256/apps/caido.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/caido.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "bindiff",
+      "launcher": "/usr/share/applications/com-google-security-zynamics-bindiff-Launcher.desktop",
+      "icon": "/opt/bindiff/bin/bindiff-256x256-rgba.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/com-google-security-zynamics-bindiff-Launcher.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "cubicsdr",
+      "launcher": "/usr/share/applications/cubicsdr.desktop",
+      "icon": "/usr/share/icons/hicolor/256x256/apps/CubicSDR.png",
+      "status": "official_local",
+      "provenance": "pacman:cubicsdr",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "qt4",
+      "launcher": "/usr/share/applications/designer-qt4.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/designer-qt4.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/designer-qt4.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "detect-it-easy",
+      "launcher": "/usr/share/applications/die.desktop",
+      "icon": "/usr/share/pixmaps/detect-it-easy.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/die.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "dripcap",
+      "launcher": "/usr/share/applications/dripcap.desktop",
+      "icon": "/usr/share/icons/hicolor/256x256/apps/dripcap.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/dripcap.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "edb",
+      "launcher": "/usr/share/applications/edb.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/edb.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/edb.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "fuzzbunch",
+      "launcher": "/usr/share/applications/fuzzbunch.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-fuzzbunch.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "Application-specific FuzzBunch and Kali artwork published as the header of the official upstream repository README; validated HTTP 200 image/png.",
+      "source_url": "https://i.imgur.com/cexPDXR.png",
+      "sha256": "0d9b23893ffcb641405d9a897df480ac4557676d54f5f32743ee07e9faa002ab"
+    },
+    {
+      "package": "libgksu",
+      "launcher": "/usr/share/applications/gksu-properties.desktop",
+      "icon": "/usr/share/pixmaps/gksu.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/gksu-properties.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "mono-tools",
+      "launcher": "/usr/share/applications/gsharp.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "The official Mono gsharp source and full Git history contain no app logo; its desktop entry only comments out the generic gnome-terminal icon.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "guymager",
+      "launcher": "/usr/share/applications/guymager.desktop",
+      "icon": "/usr/share/pixmaps/guymager_128.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/guymager.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "hopper",
+      "launcher": "/usr/share/applications/hopper-v4.desktop",
+      "icon": "/usr/share/icons/hicolor/16x16/apps/hopper-disassembler-v4.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/hopper-v4.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "ida-free",
+      "launcher": "/usr/share/applications/ida-free.desktop",
+      "icon": "/usr/share/icons/ida-free.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/ida-free.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "johnny",
+      "launcher": "/usr/share/applications/johnny.desktop",
+      "icon": "/usr/share/pixmaps/johnny.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/johnny.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "jondo",
+      "launcher": "/usr/share/applications/jondo.desktop",
+      "icon": "/usr/share/pixmaps/jondo.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/jondo.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "kismon",
+      "launcher": "/usr/share/applications/kismon.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/network-wireless.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/kismon.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "qt4",
+      "launcher": "/usr/share/applications/linguist-qt4.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/linguist-qt4.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/linguist-qt4.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "loic",
+      "launcher": "/usr/share/applications/loic.desktop",
+      "icon": "/usr/share/pixmaps/loic.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/loic.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "mat",
+      "launcher": "/usr/share/applications/mat.desktop",
+      "icon": "/usr/share/pixmaps/mat.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/mat.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "netactview",
+      "launcher": "/usr/share/applications/netactview.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/netactview.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/netactview.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "networkminer",
+      "launcher": "/usr/share/applications/networkminer.desktop",
+      "icon": "/usr/share/networkminer/Images/NetworkMiner_logo_313x313.png",
+      "status": "official_local",
+      "provenance": "pacman:networkminer",
+      "reason": "icon shipped by the application package",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "openstego",
+      "launcher": "/usr/share/applications/openstego.desktop",
+      "icon": "/usr/share/pixmaps/openstego.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/openstego.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "ophcrack",
+      "launcher": "/usr/share/applications/ophcrack.desktop",
+      "icon": "/usr/share/ophcrack/pixmaps/os.xpm",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/ophcrack.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "pip3line",
+      "launcher": "/usr/share/applications/pip3line.desktop",
+      "icon": "/usr/share/icons/hicolor/128x128/apps/pip3line.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/pip3line.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "qt4",
+      "launcher": "/usr/share/applications/qdbusviewer-qt4.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/qdbusviewer-qt4.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/qdbusviewer-qt4.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "qradiolink",
+      "launcher": "/usr/share/applications/qradiolink.desktop",
+      "icon": "/home/d3c0d3r/.local/share/icons/blackarch-official/blackarch-qradiolink.png",
+      "status": "official_upstream",
+      "provenance": "reviewed upstream project asset",
+      "reason": "The official application window and AppImage icon embedded by the current upstream Codeberg source; validated HTTP 200 image/png.",
+      "source_url": "https://codeberg.org/qradiolink/qradiolink/raw/branch/next/src/res/qradiolink.png",
+      "sha256": "7eea086a686c2249e3ce55625a90e52151d1f76dec01d2fd1105fa84b1f7716f"
+    },
+    {
+      "package": "qt4",
+      "launcher": "/usr/share/applications/qtconfig-qt4.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/qt4logo.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/qtconfig-qt4.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "scap-workbench",
+      "launcher": "/usr/share/applications/scap-workbench.desktop",
+      "icon": "/usr/share/pixmaps/scap-workbench.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/scap-workbench.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "sdrangel",
+      "launcher": "/usr/share/applications/sdrangel.desktop",
+      "icon": "/usr/share/icons/hicolor/scalable/apps/sdrangel_icon.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/sdrangel.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "sdrpp",
+      "launcher": "/usr/share/applications/sdrpp.desktop",
+      "icon": "/usr/share/sdrpp/icons/sdrpp.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/sdrpp.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "sdrsharp",
+      "launcher": "/usr/share/applications/sdrsharp.desktop",
+      "icon": "/usr/share/icons/hicolor/64x64/apps/SDRSharp.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/sdrsharp.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "sdrtrunk",
+      "launcher": "/usr/share/applications/sdrtrunk.desktop",
+      "icon": null,
+      "status": "none_published",
+      "provenance": null,
+      "reason": "The official repository, v0.6.0 build, README, and wiki publish no app-specific logo; available images are UI, protocol, dependency, or screenshot assets.",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "sdrsharp",
+      "launcher": "/usr/share/applications/spectrumspy.desktop",
+      "icon": "/usr/share/icons/hicolor/64x64/apps/SpectrumSpy.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/spectrumspy.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tcpjunk",
+      "launcher": "/usr/share/applications/tcpjunk.desktop",
+      "icon": "/usr/share/pixmaps/tcpjunk.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/tcpjunk.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "threat-dragon",
+      "launcher": "/usr/share/applications/threat-dragon.desktop",
+      "icon": "/usr/share/icons/hicolor/256x256/apps/threat-dragon.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/threat-dragon.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "tor-browser",
+      "launcher": "/usr/share/applications/tor-browser.desktop",
+      "icon": "/usr/share/icons/hicolor/scalable/apps/tor-browser.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/tor-browser.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "umit",
+      "launcher": "/usr/share/applications/umit.desktop",
+      "icon": "/usr/share/pixmaps/umit/umit-menu.xpm",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/umit.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "v3n0m",
+      "launcher": "/usr/share/applications/v3n0m.desktop",
+      "icon": "/usr/share/icons/v3n0m.ico",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/v3n0m.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "veles",
+      "launcher": "/usr/share/applications/veles.desktop",
+      "icon": "/usr/share/veles/veles.ico",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/veles.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "w3af",
+      "launcher": "/usr/share/applications/w3af.desktop",
+      "icon": "/usr/share/w3af/w3af/core/ui/gui/data/w3af_icon.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/w3af.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "wxhexeditor",
+      "launcher": "/usr/share/applications/wxHexEditor.desktop",
+      "icon": "/usr/share/icons/blackarch-icons/apps/scalable/wxHexEditor.svg",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/wxHexEditor.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "zulucrypt",
+      "launcher": "/usr/share/applications/zuluCrypt.desktop",
+      "icon": "/usr/share/icons/hicolor/48x48/apps/zuluCrypt.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/zuluCrypt.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    },
+    {
+      "package": "zulucrypt",
+      "launcher": "/usr/share/applications/zuluMount.desktop",
+      "icon": "/usr/share/icons/hicolor/48x48/apps/zuluMount.png",
+      "status": "existing_launcher",
+      "provenance": "desktop-entry:/usr/share/applications/zuluMount.desktop",
+      "reason": "application-specific icon selected by the packaged launcher",
+      "source_url": null,
+      "sha256": null
+    }
+  ]
+}

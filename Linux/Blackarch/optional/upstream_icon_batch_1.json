@@ -1,0 +1,42 @@
+{
+  "bopscrk": {
+    "url": "https://raw.githubusercontent.com/R3nt0n/bopscrk/master/img/logo.svg",
+    "status": "official_upstream",
+    "reason": "Project logo in the official upstream repository; validated HTTP 200 image/svg+xml."
+  },
+  "packetsender": {
+    "url": "https://raw.githubusercontent.com/dannagle/PacketSender/master/screenshots/pslogo128.png",
+    "status": "official_upstream",
+    "reason": "PacketSender logo in the official upstream repository; validated HTTP 200 image/png."
+  },
+  "pcileech": {
+    "url": "https://raw.githubusercontent.com/ufrisk/pcileech/master/pcileech/wolf_icon.ico",
+    "status": "official_upstream",
+    "reason": "Application icon in the official upstream repository; validated HTTP 200 image/vnd.microsoft.icon."
+  },
+  "pe-sieve": {
+    "url": "https://raw.githubusercontent.com/hasherezade/pe-sieve/master/logo/PE%20SIEVE-icon.png",
+    "status": "official_upstream",
+    "reason": "Application icon in the official upstream repository; validated HTTP 200 image/png."
+  },
+  "pgdbf": {
+    "url": "https://raw.githubusercontent.com/kstrauser/pgdbf/master/web/pgdbflogo.png",
+    "status": "official_upstream",
+    "reason": "Project logo in the official upstream repository; validated HTTP 200 image/png."
+  },
+  "phoneinfoga": {
+    "url": "https://raw.githubusercontent.com/sundowndev/PhoneInfoga/master/docs/images/logo.svg",
+    "status": "official_upstream",
+    "reason": "Project logo in the official upstream repository; validated HTTP 200 image/svg+xml."
+  },
+  "platypus": {
+    "url": "https://raw.githubusercontent.com/WangYihang/Platypus/main/desktop/build/appicon.png",
+    "status": "official_upstream",
+    "reason": "Desktop application icon in the official upstream repository; validated HTTP 200 image/png."
+  },
+  "tidos-framework": {
+    "url": "https://raw.githubusercontent.com/0xInfection/TIDoS-Framework/master/files/logo.png",
+    "status": "official_upstream",
+    "reason": "Project logo in the official upstream repository; validated HTTP 200 image/png."
+  }
+}
