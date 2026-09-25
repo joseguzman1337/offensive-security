@@ -33,6 +33,15 @@
     };
   };
 
+  # Use a standard Spanish keyboard everywhere, including the virtual console
+  # and the Plasma login screen.  Keep Caps Lock and both Shift keys unmodified.
+  console.keyMap = "es";
+  services.xserver.xkb = {
+    layout = "es";
+    model = "pc105";
+    options = "terminate:ctrl_alt_bksp";
+  };
+
   # Preserve administrative access for the account used to manage sx1.
   users.users.d3c0d3r.extraGroups = [ "wheel" ];
 
@@ -63,6 +72,39 @@
   };
 
   programs.virt-manager.enable = true;
+
+  # Run NVIDIA PAIR's official Debian/Electron build through nix-ld.
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      alsa-lib
+      at-spi2-atk
+      cairo
+      cups
+      dbus
+      expat
+      glib
+      gtk3
+      libgbm
+      libdrm
+      libnotify
+      libsecret
+      libuuid
+      libxkbcommon
+      mesa
+      nspr
+      nss
+      pango
+      systemd
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
+      xorg.libXrandr
+      xorg.libxcb
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     distrobox
