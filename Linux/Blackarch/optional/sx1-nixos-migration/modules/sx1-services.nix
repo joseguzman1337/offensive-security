@@ -35,6 +35,7 @@ in
       after = [ "network.target" ];
       serviceConfig = {
         DynamicUser = true;
+        ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /var/lib/llama/models";
         ExecStart = "${lib.getExe' pkgs.llama-cpp "llama-server"} --models-dir /var/lib/llama/models";
         Restart = "on-failure";
         StateDirectory = "llama";

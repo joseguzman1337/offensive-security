@@ -22,6 +22,9 @@
     };
   };
 
+  # Preserve administrative access for the account used to manage sx1.
+  users.users.d3c0d3r.extraGroups = [ "wheel" ];
+
   # sx1 has an AMD Picasso/Vega GPU.  Do not enable NVIDIA merely because the
   # old Arch installation contains NVIDIA compatibility packages.
   boot.initrd.kernelModules = [ "amdgpu" ];
