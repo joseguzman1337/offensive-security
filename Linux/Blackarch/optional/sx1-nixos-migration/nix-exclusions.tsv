@@ -1,0 +1,17 @@
+arch_name	nix_attr	reason
+stacs	stacs	pydantic-1.10.24 is unsupported on Python 3.14
+objection	objection	requires explicit acceptance of android-sdk-license
+pulsar	pulsar	Electron 30 dependency is end-of-life and marked insecure
+checkov	checkov	python3.14-ecdsa-0.19.2 is marked insecure for CVE-2024-23342
+clairvoyance	clairvoyance	aiounittest-1.5.0 is unsupported on Python 3.14
+exo	exo	marked insecure for CVE-2026-14738
+ida-free	ida-free	requires manual Hex-Rays installer download in the Nix store
+genymotion	genymotion	upstream Genymotion installer URL returns HTTP 403
+trinity	trinity	fails to compile against Linux 6.18 headers because legacy ATM ioctl constants are unavailable
+retdec	retdec	bundled Keystone subproject fails to configure with CMake 4.4.2
+angr-management	angr-management	libbs dependency test suite fails because current pycparser no longer exposes the ply attribute
+regrippy	regrippy	python-registry dependency declares version 1.4 but wheel metadata contains 1.3.1
+python-cinemagoer	python3Packages.cinemagoer	derivation declares version 2025.12.31 but wheel metadata contains 2025.5.19
+chipsec	chipsec	upstream test suite fails in CMOS dump and ACPI command tests
+soundconverter	soundconverter	install check crashes because its test runner receives None instead of arguments
+mongodb	mongodb	official nixpkgs derivation has no binary substitute and triggers a heavyweight source build

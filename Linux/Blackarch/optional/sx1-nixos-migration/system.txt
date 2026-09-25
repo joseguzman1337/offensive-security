@@ -1,0 +1,9 @@
+hostname	sx1
+architecture	x86_64
+kernel	7.2.3-zen1-3-zen
+boot_mode	UEFI
+repositories	garuda core extra multilib chaotic-aur blackarch warpdotdev-preview
+03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Picasso/Raven 2 [Radeon Vega Series / Radeon Vega Mobile Series] [1002:15d8] (rev c1)
+	Subsystem: Hewlett-Packard Company Device [103c:85de]
+	Kernel driver in use: amdgpu
+	Kernel modules: amdgpu

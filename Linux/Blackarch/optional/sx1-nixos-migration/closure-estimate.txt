@@ -1,0 +1,16 @@
+nixpkgs_revision	6774f7bc253789b113a4f39285dc0fa100abeacc
+mapped_packages	1130
+local_derivations	1352
+fetched_paths	3512
+download_mib	20270.11
+unpacked_mib	61222.80
+free_space_gib_before_build	166
+flake_check	pass
+dry_run	pass
+activated	no
+registered_for_boot	yes
+registered_generation	2
+system_closure_gib	79.0
+free_space_bytes_after_build	135256702976
+final_incremental_local_derivations	48
+final_incremental_fetched_paths	27

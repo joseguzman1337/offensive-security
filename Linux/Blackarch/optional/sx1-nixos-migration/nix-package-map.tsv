@@ -1,0 +1,3985 @@
+arch_name	status	nix_attr	mapping_kind
+0d1n	unmatched		
+0trace	unmatched		
+3proxy	unmatched		
+3proxy-win32	unmatched		
+42zip	unmatched		
+7zip	unmatched		
+a2jmidid	direct	a2jmidid	exact-validated
+a2ps	direct	a2ps	exact-validated
+a2sv	unmatched		
+aardvark-dns	direct	aardvark-dns	exact-validated
+abcd	unmatched		
+above	direct	above	exact-validated
+abuse-ssl-bypass-waf	unmatched		
+acccheck	unmatched		
+ace	direct	ace	exact-validated
+aclpwn	unmatched		
+activedirectoryenum	unmatched		
+ad-ldap-enum	direct	ad-ldap-enum	exact-validated
+ad-miner	direct	ad-miner	exact-validated
+ada	direct	ada	exact-validated
+adape-script	unmatched		
+adaptix-c2	unmatched		
+adassault	unmatched		
+adenum	direct	adenum	exact-validated
+adexplorersnapshot	unmatched		
+adfind	unmatched		
+adfspray	unmatched		
+adidnsdump	direct	adidnsdump	exact-validated
+admid-pack	unmatched		
+adminpagefinder	unmatched		
+admsnmp	unmatched		
+adpeas	unmatched		
+adversarial-robustness-toolbox	unmatched		
+aesfix	direct	aesfix	exact-validated
+aeskeyfind	direct	aeskeyfind	exact-validated
+aespipe	direct	aespipe	exact-validated
+aesshell	unmatched		
+afflib	direct	afflib	exact-validated
+agafi	unmatched		
+against	unmatched		
+aggroargs	unmatched		
+aiengine	unmatched		
+aimage	unmatched		
+aiodnsbrute	direct	aiodnsbrute	exact-validated
+air	direct	air	exact-validated
+airflood	unmatched		
+airgeddon	direct	airgeddon	exact-validated
+airopy	unmatched		
+airoscript	unmatched		
+airpwn	unmatched		
+airspyhf	direct	airspyhf	exact-validated
+ajpfuzzer	unmatched		
+akonadi	unmatched		
+akonadi-calendar	unmatched		
+akonadi-contacts	unmatched		
+akonadi-import-wizard	unmatched		
+akonadi-mime	unmatched		
+akonadi-search	unmatched		
+albatar	unmatched		
+alembic	direct	alembic	exact-validated
+allthevhosts	unmatched		
+alsa-firmware	direct	alsa-firmware	exact-validated
+alsa-plugins	direct	alsa-plugins	exact-validated
+altdns	direct	altdns	exact-validated
+amass	direct	amass	exact-validated
+amber	direct	amber	exact-validated
+amd-ucode	unmatched		
+amoco	direct	amoco	exact-validated
+analyzemft	unmatched		
+analyzepesig	unmatched		
+androbugs	unmatched		
+androguard	direct	androguard	exact-validated
+androick	unmatched		
+android-apktool	unmatched		
+android-ndk	unmatched		
+android-udev-rules	unmatched		
+androidmeda	unmatched		
+androidpincrack	unmatched		
+androidsniffer	unmatched		
+androwarn	unmatched		
+angr	unmatched		
+angr-management	unmatched		libbs-tests-fail-pycparser-ply-api
+angr-py2	unmatched		
+angrop	unmatched		
+anontwi	unmatched		
+ansible	direct	ansible	exact-validated
+ansible-core	unmatched		
+anti-xss	unmatched		
+antiransom	unmatched		
+anubis-netsec	unmatched		
+apache-users	direct	apache-users	exact-validated
+apachetomcatscanner	direct	apachetomcatscanner	exact-validated
+apacket	unmatched		
+aphopper	unmatched		
+apkid	direct	apkid	exact-validated
+apkleaks	direct	apkleaks	exact-validated
+apkstat	unmatched		
+apkstudio	unmatched		
+apkurlgrep	unmatched		
+apnbf	unmatched		
+appimagepool-appimage	unmatched		
+appmenu-gtk-module	unmatched		
+appmon	unmatched		
+apt2	unmatched		
+aptdec	direct	aptdec	exact-validated
+aquatone	unmatched		
+aranea	unmatched		
+arcane	unmatched		
+archivebox	unmatched		
+archlinux-appstream-data	unmatched		
+ardour	direct	ardour	exact-validated
+ares	direct	ares	exact-validated
+argon2	unmatched		
+argus	direct	argus	exact-validated
+argus-clients	direct	argus-clients	exact-validated
+arj	direct	arj	exact-validated
+ark	direct	ark	exact-validated
+armitage	direct	armitage	exact-validated
+armor	unmatched		
+armscgen	unmatched		
+arpalert	unmatched		
+arping-th	unmatched		
+arpoison	direct	arpoison	exact-validated
+arpon	unmatched		
+arpspoof-smikims	unmatched		
+arpstraw	unmatched		
+arptools	unmatched		
+arpwner	unmatched		
+artillery	unmatched		
+artlas	unmatched		
+asn	direct	asn	exact-validated
+asnmap	direct	asnmap	exact-validated
+asp-audit	unmatched		
+aspisec	unmatched		
+assassingo	unmatched		
+assetfinder	direct	assetfinder	exact-validated
+assetnote-wordlists	unmatched		
+astra	unmatched		
+atear	unmatched		
+athena-ssl-scanner	unmatched		
+atkmm	direct	atkmm	exact-validated
+atlas	direct	atlas	exact-validated
+atscan	unmatched		
+atstaketools	unmatched		
+attacksurfacemapper	unmatched		
+attk	unmatched		
+aubio	direct	aubio	exact-validated
+audacious	direct	audacious	exact-validated
+audacious-plugins	direct	audacious-plugins	exact-validated
+audacity	direct	audacity	exact-validated
+audiofile	direct	audiofile	exact-validated
+augeas	direct	augeas	exact-validated
+aurebeshjs	unmatched		
+aurman	unmatched		
+auto-eap	unmatched		
+auto-xor-decryptor	unmatched		
+autoconf-archive	direct	autoconf-archive	exact-validated
+automato	unmatched		
+autonessus	unmatched		
+autonse	unmatched		
+autopsy	direct	autopsy	exact-validated
+autopwn	unmatched		
+autorandr	direct	autorandr	exact-validated
+autorecon	unmatched		
+autosint	unmatched		
+autosploit	unmatched		
+autovpn	unmatched		
+avaloniailspy	unmatched		
+avet	unmatched		
+avml	direct	avml	exact-validated
+aws-extender-cli	unmatched		
+aws-iam-privesc	unmatched		
+aws-inventory	unmatched		
+awsbucketdump	unmatched		
+ayatana-ido	direct	ayatana-ido	exact-validated
+azazel	unmatched		
+aztarna	unmatched		
+b43-fwcutter	direct	b43-fwcutter	exact-validated
+babl	direct	babl	exact-validated
+backcookie	unmatched		
+backdoor-apk	unmatched		
+backdoorme	unmatched		
+backdoorppt	unmatched		
+backfuzz	unmatched		
+backhack	unmatched		
+backoori	unmatched		
+backorifice	unmatched		
+bactl	unmatched		
+bad-pdf	unmatched		
+badkarma	unmatched		
+badministration	unmatched		
+badsecrets	direct	badsecrets	exact-validated
+bagbak	unmatched		
+baka-mplayer	unmatched		
+balbuzard	unmatched		
+bamf-framework	unmatched		
+bandicoot	unmatched		
+barf	unmatched		
+barmie	unmatched		
+barq	unmatched		
+base	unmatched		
+base-devel	unmatched		
+base64dump	unmatched		
+basedomainname	unmatched		
+bash-completion	direct	bash-completion	exact-validated
+bashfuscator	unmatched		
+bashscan	unmatched		
+batman-adv	unmatched		
+batman-alfred	unmatched		
+bauh	unmatched		
+bazaar-git	alias	bazaar	strip-variant-suffix
+bbot	direct	bbot	exact-validated
+bbqsql	unmatched		
+bbscan	unmatched		
+bdfproxy	unmatched		
+bdlogparser	unmatched		
+bed	direct	bed	exact-validated
+beebug	unmatched		
+beeswarm	unmatched		
+beholder	unmatched		
+belati	unmatched		
+beleth	unmatched		
+berate_ap	unmatched		
+beroot	unmatched		
+bettercap-ui	unmatched		
+bfac	unmatched		
+bfbtester	unmatched		
+bfuzz	unmatched		
+bgp-md5crack	unmatched		
+bgrep	unmatched		
+billcipher	unmatched		
+binaryninja	unmatched		
+bind	direct	bind	exact-validated
+bindead	unmatched		
+bindiff	unmatched		
+binex	unmatched		
+binflow	unmatched		
+bing-ip2hosts	unmatched		
+bing-lfi-rfi	unmatched		
+bingoo	unmatched		
+binnavi	unmatched		
+binproxy	unmatched		
+binwally	unmatched		
+bios_memimage	unmatched		
+birdfont	direct	birdfont	exact-validated
+birp	unmatched		
+bitdump	unmatched		
+bittwist	unmatched		
+bitwig-studio	direct	bitwig-studio	exact-validated
+bkcrack	direct	bkcrack	exact-validated
+bkhive	unmatched		
+blackarch-config-awesome	unmatched		
+blackarch-config-bash	unmatched		
+blackarch-config-calamares	unmatched		
+blackarch-config-cursor	unmatched		
+blackarch-config-fluxbox	unmatched		
+blackarch-config-gtk	unmatched		
+blackarch-config-i3	unmatched		
+blackarch-config-icons	unmatched		
+blackarch-config-lxdm	unmatched		
+blackarch-config-openbox	unmatched		
+blackarch-config-spectrwm	unmatched		
+blackarch-config-vim	unmatched		
+blackarch-config-x11	unmatched		
+blackarch-config-xfce	unmatched		
+blackarch-config-zsh	unmatched		
+blackarch-keyring	unmatched		
+blackarch-menus	unmatched		
+blackarch-mirrorlist	unmatched		
+blackarch-officials	unmatched		
+blackbox-scanner	unmatched		
+blackeye	unmatched		
+blackhash	unmatched		
+blacknurse	unmatched		
+bleah	unmatched		
+blender	direct	blender	exact-validated
+bless	unmatched		
+bletchley	unmatched		
+blind-sql-bitshifting	unmatched		
+blindelephant	unmatched		
+blindsql	unmatched		
+blindy	unmatched		
+blisqy	unmatched		
+bloodhound	unmatched		
+bloodhound-ce-python	unmatched		
+bloodhound-cli	unmatched		
+bloodhound-python	unmatched		
+bloodyad	unmatched		
+blosc	unmatched		
+blue-hydra	unmatched		
+bluebox-ng	unmatched		
+bluebugger	unmatched		
+bluedevil	unmatched		
+bluediving	unmatched		
+bluefog	unmatched		
+bluelog	unmatched		
+bluepot	unmatched		
+blueprint	unmatched		
+blueranger	unmatched		
+bluescan	unmatched		
+bluesnarfer	direct	bluesnarfer	exact-validated
+bluetooth-autoconnect	unmatched		
+bluetooth-support	unmatched		
+bluez-cups	unmatched		
+bluffy	unmatched		
+bluphish	unmatched		
+bluto	unmatched		
+bmap-tools	unmatched		
+bmc-tools	direct	bmc-tools	exact-validated
+bob-the-butcher	unmatched		
+bof-detector	unmatched		
+bonesi	unmatched		
+boofuzz	direct	boofuzz	exact-validated
+boopsuite	unmatched		
+bopscrk	unmatched		
+botan	unmatched		
+botb	unmatched		
+bowcaster	unmatched		
+box-js	unmatched		
+bqm	unmatched		
+braa	direct	braa	exact-validated
+braces	unmatched		
+brainstorm	unmatched		
+brakeman	direct	brakeman	exact-validated
+brave-bin	alias	brave	strip-variant-suffix
+bridge-utils	direct	bridge-utils	exact-validated
+bridgekeeper	unmatched		
+brosec	unmatched		
+browselist	unmatched		
+browser-fuzzer	unmatched		
+brute-force	unmatched		
+brute12	unmatched		
+bruteforce-luks	direct	bruteforce-luks	exact-validated
+bruteforce-salted-openssl	direct	bruteforce-salted-openssl	exact-validated
+bruteforce-wallet	direct	bruteforce-wallet	exact-validated
+brutemap	unmatched		
+brutespray	direct	brutespray	exact-validated
+brutessh	unmatched		
+brutex	unmatched		
+brutexss	unmatched		
+brutus	direct	brutus	exact-validated
+bsdiff	direct	bsdiff	exact-validated
+bsqlbf	unmatched		
+bsqlinjector	unmatched		
+bss	unmatched		
+bt_audit	unmatched		
+btcrack	unmatched		
+btlejack	direct	btlejack	exact-validated
+btproxy-mitm	unmatched		
+btrfs-assistant	direct	btrfs-assistant	exact-validated
+btrfs-progs	direct	btrfs-progs	exact-validated
+btscanner	unmatched		
+bulk-extractor	alias	bulk_extractor	hyphen-to-underscore
+bunny	unmatched		
+burpsuite	direct	burpsuite	exact-validated
+buster	unmatched		
+buttinsky	unmatched		
+bvi	direct	bvi	exact-validated
+byepass	unmatched		
+bypass-firewall-dns-history	unmatched		
+bytecode-viewer	direct	bytecode-viewer	exact-validated
+bzip2	direct	bzip2	exact-validated
+c5scan	unmatched		
+c7decrypt	unmatched		
+cachedump	unmatched		
+cafebabe	unmatched		
+cai	direct	cai	exact-validated
+caido-cli	direct	caido-cli	exact-validated
+caido-desktop	direct	caido-desktop	exact-validated
+cairomm	unmatched		
+calf	direct	calf	exact-validated
+cameractrls	direct	cameractrls	exact-validated
+cameradar	direct	cameradar	exact-validated
+camover	unmatched		
+camscan	unmatched		
+can-utils	direct	can-utils	exact-validated
+canalyzat0r	unmatched		
+canari	unmatched		
+cangibrina	unmatched		
+cansina	direct	cansina	exact-validated
+cantoolz	direct	cantoolz	exact-validated
+capa	direct	capa	exact-validated
+capfuzz	unmatched		
+capstone	direct	capstone	exact-validated
+captipper	unmatched		
+cardpwn	unmatched		
+cariddi	direct	cariddi	exact-validated
+carwhisperer	unmatched		
+casefile	unmatched		
+catana	unmatched		
+catatonit	direct	catatonit	exact-validated
+catnthecanary	unmatched		
+catphish	unmatched		
+ccfits	unmatched		
+ccrawldns	unmatched		
+cdpsnarf	unmatched		
+cdrtools	direct	cdrtools	exact-validated
+cecster	unmatched		
+celt	direct	celt	exact-validated
+cent	direct	cent	exact-validated
+centry	unmatched		
+cero	direct	cero	exact-validated
+certgraph	direct	certgraph	exact-validated
+certi	direct	certi	exact-validated
+certipy	direct	certipy	exact-validated
+certsync	direct	certsync	exact-validated
+cewl	direct	cewl	exact-validated
+cflow	direct	cflow	exact-validated
+chainsaw	direct	chainsaw	exact-validated
+chameleon	unmatched		
+chameleonmini	unmatched		
+changeme	unmatched		
+chankro	unmatched		
+chaos-client	unmatched		
+chaosmap	unmatched		
+chaosreader	unmatched		
+chaotic-keyring	unmatched		
+chaotic-mirrorlist	unmatched		
+chapcrack	unmatched		
+cheat-sh	unmatched		
+check-weak-dh-ssh	unmatched		
+checkiban	unmatched		
+checkov	unmatched		insecure-dependency
+chiasm-shell	unmatched		
+chipsec	unmatched		upstream-test-suite-failures
+chiron	unmatched		
+chisel	direct	chisel	exact-validated
+chkrootkit	unmatched		
+chopshop	unmatched		
+choronzon	unmatched		
+chownat	unmatched		
+chrome-decode	unmatched		
+chrome-remote-desktop	unmatched		
+chromefreak	unmatched		
+chromensics	unmatched		
+chromium	direct	chromium	exact-validated
+chronoleak	unmatched		
+chw00t	unmatched		
+cidr2range	unmatched		
+cintruder	unmatched		
+cipherscan	unmatched		
+ciphertest	unmatched		
+ciphr	unmatched		
+circle-flags	direct	circle-flags	exact-validated
+cirt-fuzzer	unmatched		
+cisco-auditing-tool	unmatched		
+cisco-global-exploiter	unmatched		
+cisco-ocs	unmatched		
+cisco-router-config	unmatched		
+cisco-scanner	unmatched		
+cisco-snmp-enumeration	unmatched		
+cisco-snmp-slap	unmatched		
+cisco-torch	unmatched		
+cisco5crack	unmatched		
+cisco7crack	unmatched		
+ciscos	unmatched		
+citadel	unmatched		
+cjexploiter	unmatched		
+clair	direct	clair	exact-validated
+clairvoyance	unmatched		closure-broken
+clamscanlogparser	unmatched		
+clang	direct	clang	exact-validated
+claws-mail	direct	claws-mail	exact-validated
+clazy	direct	clazy	exact-validated
+cleverhans	unmatched		
+climber	unmatched		
+cloakify	unmatched		
+cloud-buster	unmatched		
+cloud_enum	unmatched		
+cloudfail	unmatched		
+cloudflare-enum	unmatched		
+cloudflare-warp-bin	alias	cloudflare-warp	strip-variant-suffix
+cloudget	unmatched		
+cloudlist	direct	cloudlist	exact-validated
+cloudmare	unmatched		
+cloudsploit	unmatched		
+cloudunflare	unmatched		
+clucene	unmatched		
+clusterd	unmatched		
+cmark	direct	cmark	exact-validated
+cmatrix	direct	cmatrix	exact-validated
+cminer	unmatched		
+cmospwd	direct	cmospwd	exact-validated
+cms-explorer	unmatched		
+cms-few	unmatched		
+cmseek	unmatched		
+cmsfuzz	unmatched		
+cmsscan	unmatched		
+cmsscanner	unmatched		
+cnamulator	unmatched		
+cntlm	direct	cntlm	exact-validated
+cockpit	direct	cockpit	exact-validated
+cockpit-machines	direct	cockpit-machines	exact-validated
+codeql	direct	codeql	exact-validated
+codetective	unmatched		
+coercer	direct	coercer	exact-validated
+coin	unmatched		
+colord-gtk	direct	colord-gtk	exact-validated
+colord-gtk-common	unmatched		
+colord-sane	unmatched		
+comission	unmatched		
+commentor	unmatched		
+commix	direct	commix	exact-validated
+commonspeak	unmatched		
+compface	unmatched		
+compiler-rt	unmatched		
+composefs	direct	composefs	exact-validated
+compp	unmatched		
+configpush	unmatched		
+conky	direct	conky	exact-validated
+conky-manager2	unmatched		
+conmon	direct	conmon	exact-validated
+conpass	direct	conpass	exact-validated
+conpot	unmatched		
+conscan	unmatched		
+containerd	direct	containerd	exact-validated
+containers-common	unmatched		
+converseen	direct	converseen	exact-validated
+cook	unmatched		
+cookie-cadger	unmatched		
+coreutils	direct	coreutils	exact-validated
+corscanner	unmatched		
+corstest	unmatched		
+corsy	unmatched		
+cottontail	unmatched		
+country-ip-blocks	unmatched		
+cpfinder	unmatched		
+cpp2il	unmatched		
+cpptest	direct	cpptest	exact-validated
+cr3dov3r	unmatched		
+crabstick	unmatched		
+cracken	unmatched		
+crackhor	unmatched		
+crackle	direct	crackle	exact-validated
+cracklib	direct	cracklib	exact-validated
+crackmapexec	unmatched		
+crackmapexec-pingcastle	unmatched		
+crackpkcs12	unmatched		
+crackq	unmatched		
+crackql	direct	crackql	exact-validated
+crackserver	unmatched		
+crawlic	unmatched		
+creak	unmatched		
+creddump	unmatched		
+credmap	unmatched		
+credmaster	unmatched		
+creds	direct	creds	exact-validated
+credsniper	unmatched		
+cribdrag	unmatched		
+criu	direct	criu	exact-validated
+crlf-injector	unmatched		
+crlfuzz	direct	crlfuzz	exact-validated
+cronie	direct	cronie	exact-validated
+crosslinked	unmatched		
+crowbar	direct	crowbar	exact-validated
+crozono	unmatched		
+crun	direct	crun	exact-validated
+crypthook	unmatched		
+cryptohazemultiforcer	unmatched		
+cryptonark	unmatched		
+cryptsetup	direct	cryptsetup	exact-validated
+csdr	direct	csdr	exact-validated
+csrftester	unmatched		
+ct-exposer	unmatched		
+ctags	direct	ctags	exact-validated
+ctunnel	unmatched		
+ctypes-sh	alias	ctypes_sh	hyphen-to-underscore
+cubicsdr	direct	cubicsdr	exact-validated
+cudahashcat	unmatched		
+cupp	unmatched		
+cups-pdf	unmatched		
+cups-pk-helper	direct	cups-pk-helper	exact-validated
+curl-impersonate	direct	curl-impersonate	exact-validated
+curlftpfs	unmatched		
+cve-api	unmatched		
+cve-search	unmatched		
+cvechecker	unmatched		
+cvemap	direct	cvemap	exact-validated
+cybercrowl	unmatched		
+cyberscan	unmatched		
+cymothoa	unmatched		
+d-tect	unmatched		
+dagon	unmatched		
+dalfox	direct	dalfox	exact-validated
+damm	unmatched		
+daredevil	unmatched		
+dark-dork-searcher	unmatched		
+darkarmour	unmatched		
+darkbing	unmatched		
+darkd0rk3r	unmatched		
+darkdump	unmatched		
+darkjumper	unmatched		
+darkmysqli	unmatched		
+darkscrape	unmatched		
+darkspiritz	unmatched		
+darktable	direct	darktable	exact-validated
+datajackproxy	unmatched		
+datasploit	unmatched		
+davoset	unmatched		
+davscan	unmatched		
+dawnscanner	unmatched		
+dbd	direct	dbd	exact-validated
+dbpwaudit	unmatched		
+dbus-c++	unmatched		
+dbusmap	unmatched		
+dc3dd	direct	dc3dd	exact-validated
+dcdetector	unmatched		
+dcfldd	direct	dcfldd	exact-validated
+dcrawl	unmatched		
+ddosify	direct	ddosify	exact-validated
+de4dot	unmatched		
+de4dotex	unmatched		
+deathstar	unmatched		
+debinject	unmatched		
+deblaze	unmatched		
+decodify	unmatched		
+deen	unmatched		
+deepce	unmatched		
+delldrac	unmatched		
+delorean	unmatched		
+deluge	direct	deluge	exact-validated
+deluge-gtk	direct	deluge-gtk	exact-validated
+demiguise	unmatched		
+deno	direct	deno	exact-validated
+densityscout	unmatched		
+depant	unmatched		
+depdep	unmatched		
+dependency-check	unmatched		
+depix	unmatched		
+deskhpsdr	unmatched		
+det	unmatched		
+detect-it-easy	direct	detect-it-easy	exact-validated
+detect-secrets	direct	detect-secrets	exact-validated
+detect-sniffer	unmatched		
+detectem	unmatched		
+devaudit	unmatched		
+device-pharmer	unmatched		
+dex2jar	direct	dex2jar	exact-validated
+dexpatcher	unmatched		
+dff-scanner	unmatched		
+dfir-ntfs	unmatched		
+dftimewolf	unmatched		
+dga-detection	unmatched		
+dharma	unmatched		
+dhcdrop	unmatched		
+dhcpf	unmatched		
+dhcpig	direct	dhcpig	exact-validated
+dhcpoptinj	unmatched		
+dialog	direct	dialog	exact-validated
+didier-stevens-suite	unmatched		
+digikam	direct	digikam	exact-validated
+dinouml	unmatched		
+dirble	unmatched		
+dirbuster	direct	dirbuster	exact-validated
+dirbuster-ng	unmatched		
+directorytraversalscan	unmatched		
+dirscanner	unmatched		
+dirscraper	unmatched		
+dirstalk	direct	dirstalk	exact-validated
+discord	direct	discord	exact-validated
+discover	unmatched		
+disitool	unmatched		
+dislocker	direct	dislocker	exact-validated
+dissector	unmatched		
+distrobox	direct	distrobox	exact-validated
+dizzy	unmatched		
+dkmc	unmatched		
+dkms	unmatched		
+dmde	unmatched		
+dmg2img	direct	dmg2img	exact-validated
+dmidecode	direct	dmidecode	exact-validated
+dmraid	direct	dmraid	exact-validated
+dnmap	unmatched		
+dns-parallel-prober	unmatched		
+dns-reverse-proxy	unmatched		
+dns-spoof	unmatched		
+dns2geoip	unmatched		
+dns2tcp	direct	dns2tcp	exact-validated
+dnsa	unmatched		
+dnsbf	unmatched		
+dnsbrute	unmatched		
+dnscan	unmatched		
+dnschef	direct	dnschef	exact-validated
+dnscobra	unmatched		
+dnsdiag	direct	dnsdiag	exact-validated
+dnsdrdos	unmatched		
+dnsfilexfer	unmatched		
+dnsgen	unmatched		
+dnsgoblin	unmatched		
+dnsgrep	unmatched		
+dnsmap	direct	dnsmap	exact-validated
+dnsobserver	unmatched		
+dnspredict	unmatched		
+dnsprobe	unmatched		
+dnspy	unmatched		
+dnssearch	unmatched		
+dnsspider	unmatched		
+dnsteal	unmatched		
+dnstracer	direct	dnstracer	exact-validated
+dnstwist	direct	dnstwist	exact-validated
+dnsvalidator	direct	dnsvalidator	exact-validated
+dnswatch	unmatched		
+dnsx	direct	dnsx	exact-validated
+docbook-xml	unmatched		
+docbook-xsl	alias	docbook_xsl	hyphen-to-underscore
+docem	unmatched		
+docker-compose	direct	docker-compose	exact-validated
+dockerscan	unmatched		
+dolphin	unmatched		
+dolphin-plugins	unmatched		
+domain-analyzer	unmatched		
+domain-stats	unmatched		
+domained	unmatched		
+domainhunter	unmatched		
+domato	unmatched		
+domi-owned	unmatched		
+domlink	unmatched		
+donpapi	direct	donpapi	exact-validated
+dontgo403	unmatched		
+doona	direct	doona	exact-validated
+doork	unmatched		
+doozer	unmatched		
+dorkbot	unmatched		
+dorkme	unmatched		
+dorknet	unmatched		
+dorkscout	direct	dorkscout	exact-validated
+dos2unix	direct	dos2unix	exact-validated
+dosfstools	direct	dosfstools	exact-validated
+dotdotpwn	unmatched		
+dotpeek	unmatched		
+downgrade	unmatched		
+dpeparser	unmatched		
+dpscan	unmatched		
+dr-checker	unmatched		
+dr0p1t-framework	unmatched		
+dracnmap	unmatched		
+draco	direct	draco	exact-validated
+dracut	direct	dracut	exact-validated
+dradis-ce	unmatched		
+dragon	unmatched		
+dragon-backdoor	unmatched		
+drinkme	unmatched		
+dripcap	unmatched		
+dripper	unmatched		
+droidcam	direct	droidcam	exact-validated
+drozer	unmatched		
+drupal-module-enum	unmatched		
+drupalscan	unmatched		
+drupwn	unmatched		
+dsd	unmatched		
+dsd-fme	unmatched		
+dsfs	unmatched		
+dshell	unmatched		
+dsjs	unmatched		
+dsss	unmatched		
+dsstore-crawler	unmatched		
+dsxs	unmatched		
+dtc	direct	dtc	exact-validated
+dtp-spoof	unmatched		
+dublin-traceroute	direct	dublin-traceroute	exact-validated
+ducktoolkit	unmatched		
+dumb0	unmatched		
+dump1090	unmatched		
+dumpacl	unmatched		
+dumpsmbshare	unmatched		
+dumpusers	unmatched		
+dumpzilla	unmatched		
+duplicut	unmatched		
+dutas	unmatched		
+dvcs-ripper	unmatched		
+dvgrab	direct	dvgrab	exact-validated
+dwarf	unmatched		
+dynamorio	unmatched		
+e2fsprogs	direct	e2fsprogs	exact-validated
+eapeak	unmatched		
+eaphammer	unmatched		
+eapmd5pass	unmatched		
+easy-creds	unmatched		
+easyda	unmatched		
+easyfuzzer	unmatched		
+easytag	direct	easytag	exact-validated
+eazy	unmatched		
+ecfs	unmatched		
+ecryptfs-utils	unmatched		
+edb	direct	edb	exact-validated
+edk2-ovmf	unmatched		
+efibootmgr	direct	efibootmgr	exact-validated
+eggshell	unmatched		
+egl-gbm	direct	egl-gbm	exact-validated
+egl-wayland	direct	egl-wayland	exact-validated
+egl-wayland2	direct	egl-wayland2	exact-validated
+egl-x11	direct	egl-x11	exact-validated
+eglexternalplatform	direct	eglexternalplatform	exact-validated
+eigrp-tools	unmatched		
+eindeutig	unmatched		
+electric-fence	unmatched		
+electron38-bin	unmatched		
+electron44	unmatched		
+element-desktop	direct	element-desktop	exact-validated
+element-web	direct	element-web	exact-validated
+elettra	unmatched		
+elettra-gui	unmatched		
+elevate	unmatched		
+elfparser	unmatched		
+elidecode	unmatched		
+elisa	unmatched		
+elite-proxy-finder	unmatched		
+ell	direct	ell	exact-validated
+emacs	direct	emacs	exact-validated
+email2phonenumber	unmatched		
+embree	direct	embree	exact-validated
+emldump	unmatched		
+emp3r0r	unmatched		
+empire	unmatched		
+enabler	unmatched		
+encodeshellcode	unmatched		
+ent	direct	ent	exact-validated
+enteletaor	unmatched		
+entropy	direct	entropy	exact-validated
+enum-shares	unmatched		
+enum4linux-ng	direct	enum4linux-ng	exact-validated
+enumerate-iam	unmatched		
+enumerid	unmatched		
+enumiax	unmatched		
+enyelkm	unmatched		
+eos	unmatched		
+epicwebhoneypot	unmatched		
+erase-registrations	unmatched		
+eraser	unmatched		
+eresi	direct	eresi	exact-validated
+erl-matter	unmatched		
+erlang-cl	unmatched		
+espionage	unmatched		
+eternal-scanner	unmatched		
+etherchange	unmatched		
+etherflood	unmatched		
+ethtool	direct	ethtool	exact-validated
+evil-ssdp	unmatched		
+evil-winrm	direct	evil-winrm	exact-validated
+evil-winrm-py	direct	evil-winrm-py	exact-validated
+evilclippy	unmatched		
+evilize	unmatched		
+evillimiter	direct	evillimiter	exact-validated
+evilmaid	unmatched		
+evilpdf	unmatched		
+evine	unmatched		
+evolution	direct	evolution	exact-validated
+evolution-data-server	direct	evolution-data-server	exact-validated
+evtkit	unmatched		
+ex-vi-compat	unmatched		
+exabgp	direct	exabgp	exact-validated
+exe2hex	direct	exe2hex	exact-validated
+exe2image	unmatched		
+exescan	unmatched		
+exfatprogs	direct	exfatprogs	exact-validated
+exiflooter	direct	exiflooter	exact-validated
+exitmap	unmatched		
+exo	unmatched		insecure
+expimp-lookup	unmatched		
+exploit-db	unmatched		
+exploitpack	unmatched		
+expose	unmatched		
+ext4magic	direct	ext4magic	exact-validated
+extended-ssrf-search	unmatched		
+extra-cmake-modules	unmatched		
+extractbitlockerkeys	unmatched		
+extracthosts	unmatched		
+extractusnjrnl	unmatched		
+eyeballer	unmatched		
+eyepwn	unmatched		
+eyewitness	direct	eyewitness	exact-validated
+f-scrack	unmatched		
+f2fs-tools	direct	f2fs-tools	exact-validated
+facebash	unmatched		
+facebookosint	unmatched		
+facebot	unmatched		
+facebrok	unmatched		
+facebrute	unmatched		
+facter	direct	facter	exact-validated
+factordb-pycli	unmatched		
+fakeap	unmatched		
+fakedns	unmatched		
+fakemail	unmatched		
+fakenet-ng	unmatched		
+fakenetbios	unmatched		
+falkon	unmatched		
+fang	unmatched		
+faradaysec	unmatched		
+fastfetch	direct	fastfetch	exact-validated
+fastnetmon	unmatched		
+fatresize	direct	fatresize	exact-validated
+fav-up	unmatched		
+favfreak	unmatched		
+fbht	unmatched		
+fbi	unmatched		
+fbid	unmatched		
+fd	direct	fd	exact-validated
+fdsploit	unmatched		
+featherduster	unmatched		
+fern-wifi-cracker	unmatched		
+fernflower	unmatched		
+fernmelder	unmatched		
+ffm	unmatched		
+ffmpegthumbs	unmatched		
+ffuf-scripts	unmatched		
+fgscanner	unmatched		
+fhttp	unmatched		
+fi6s	unmatched		
+fiked	unmatched		
+file	direct	file	exact-validated
+filebuster	unmatched		
+filefuzz	unmatched		
+filegps	unmatched		
+fileintel	unmatched		
+filesystem	unmatched		
+filezilla	direct	filezilla	exact-validated
+filibuster	unmatched		
+fimap	unmatched		
+finalrecon	unmatched		
+find-dns	unmatched		
+find3	unmatched		
+findmyhash	unmatched		
+findmyiphone	unmatched		
+findsploit	unmatched		
+finduncommonshares	unmatched		
+findutils	direct	findutils	exact-validated
+fingerprinter	unmatched		
+firebaseenum	unmatched		
+firecat	unmatched		
+firedragon	unmatched		
+firedragon-extension-plasma-integration	unmatched		
+firefox	direct	firefox	exact-validated
+firefox-decrypt	alias	firefox_decrypt	hyphen-to-underscore
+firefox-esr	direct	firefox-esr	exact-validated
+firefox-security-toolkit	unmatched		
+fireprox	unmatched		
+firewalk	direct	firewalk	exact-validated
+firewalld	direct	firewalld	exact-validated
+firmwalker	unmatched		
+firmware-mod-kit	unmatched		
+firstexecution	unmatched		
+firstorder	unmatched		
+fl0p	unmatched		
+flare	direct	flare	exact-validated
+flare-floss	direct	flare-floss	exact-validated
+flashlight	unmatched		
+flashscanner	unmatched		
+flashsploit	unmatched		
+flask-session-cookie-manager2	unmatched		
+flask-session-cookie-manager3	unmatched		
+flask-unsign	direct	flask-unsign	exact-validated
+flasm	direct	flasm	exact-validated
+flatpak	direct	flatpak	exact-validated
+flickcurl	unmatched		
+flowinspect	unmatched		
+flunym0us	unmatched		
+fluxion	unmatched		
+flyr	unmatched		
+fmt	direct	fmt	exact-validated
+fockcache	unmatched		
+folks	direct	folks	exact-validated
+fontforge	direct	fontforge	exact-validated
+foomatic-db	direct	foomatic-db	exact-validated
+foomatic-db-engine	direct	foomatic-db-engine	exact-validated
+foomatic-db-gutenprint-ppds	unmatched		
+foomatic-db-nonfree	direct	foomatic-db-nonfree	exact-validated
+foomatic-db-nonfree-ppds	unmatched		
+foomatic-db-ppds	direct	foomatic-db-ppds	exact-validated
+forager	unmatched		
+foresight	unmatched		
+forkingportscanner	unmatched		
+formatstringexploiter	unmatched		
+fortiscan	unmatched		
+fpdns	unmatched		
+fport	unmatched		
+fprintd	direct	fprintd	exact-validated
+fprotlogparser	unmatched		
+fractal	direct	fractal	exact-validated
+fraud-bridge	unmatched		
+fred	unmatched		
+freecad	direct	freecad	exact-validated
+freedownloadmanager	unmatched		
+freetype2	unmatched		
+freewifi	unmatched		
+frei0r-plugins	unmatched		
+frida-extract	unmatched		
+frida-ios-dump	unmatched		
+fridump	unmatched		
+frisbeelite	unmatched		
+fs-exploit	unmatched		
+fs-nyarl	unmatched		
+fscan	direct	fscan	exact-validated
+fscrypt	direct	fscrypt	exact-validated
+fsnoop	unmatched		
+fssb	unmatched		
+fstealer	unmatched		
+ftester	unmatched		
+ftp-fuzz	unmatched		
+ftp-scanner	unmatched		
+ftp-spider	unmatched		
+ftpmap	unmatched		
+ftpscout	unmatched		
+fuddly	unmatched		
+fusil	unmatched		
+fuxploider	unmatched		
+fuzzap	unmatched		
+fuzzball2	unmatched		
+fuzzbunch	unmatched		
+fuzzdb	direct	fuzzdb	exact-validated
+fuzzdiff	unmatched		
+fuzzowski	unmatched		
+fuzztalk	unmatched		
+fwupd	direct	fwupd	exact-validated
+g72x++	unmatched		
+gadgetinspector	unmatched		
+gadgettojscript	unmatched		
+galleta	direct	galleta	exact-validated
+garak	unmatched		
+garcon	direct	garcon	exact-validated
+garuda-blackarch	unmatched		
+garuda-browser-settings	unmatched		
+garuda-common-settings	unmatched		
+garuda-config-agent	unmatched		
+garuda-dracut-support	unmatched		
+garuda-fish-config	unmatched		
+garuda-hardware-profile-nvidia	unmatched		
+garuda-hardware-profile-standard	unmatched		
+garuda-hardware-tool	unmatched		
+garuda-hooks	unmatched		
+garuda-icons	unmatched		
+garuda-mokka	unmatched		
+garuda-network-assistant	unmatched		
+garuda-nix-subsystem	unmatched		
+garuda-setup-assistant	unmatched		
+garuda-system-maintenance	unmatched		
+garuda-toolbox	unmatched		
+garuda-wallpapers	unmatched		
+gasmask	unmatched		
+gatecrasher	unmatched		
+gau	direct	gau	exact-validated
+gawk	direct	gawk	exact-validated
+gcat	unmatched		
+gcc-libs	unmatched		
+gcc14-libs	unmatched		
+gcpbucketbrute	unmatched		
+gcrypt	unmatched		
+gd	direct	gd	exact-validated
+gdbgui	direct	gdbgui	exact-validated
+gdir.pl	unmatched		
+geary	direct	geary	exact-validated
+gegl	direct	gegl	exact-validated
+gene	unmatched		
+genisys	unmatched		
+genlist	unmatched		
+genymotion	unmatched		source-unavailable
+geocode-glib	unmatched		
+geoedge	unmatched		
+geoip	direct	geoip	exact-validated
+geoip-database	unmatched		
+geoipgen	unmatched		
+gerix-wifi-cracker	unmatched		
+gethsploit	unmatched		
+getsids	unmatched		
+getsploit	direct	getsploit	exact-validated
+gettext	direct	gettext	exact-validated
+gf	direct	gf	exact-validated
+gfxstream	direct	gfxstream	exact-validated
+gg-images	unmatched		
+gggooglescan	unmatched		
+gh-dork	unmatched		
+ghauri	direct	ghauri	exact-validated
+ghettotooth	unmatched		
+ghidriff	unmatched		
+ghost	direct	ghost	exact-validated
+ghost-phisher	unmatched		
+ghost-py	unmatched		
+ghostdelivery	unmatched		
+ghostpack	unmatched		
+ghunt	direct	ghunt	exact-validated
+gimp	direct	gimp	exact-validated
+girsh	direct	girsh	exact-validated
+giskismet	unmatched		
+git-dump	unmatched		
+git-dumper	direct	git-dumper	exact-validated
+git-hound	direct	git-hound	exact-validated
+git-wild-hunt	unmatched		
+gitdorker	unmatched		
+gitdump	unmatched		
+gitem	unmatched		
+gitgraber	unmatched		
+githack	unmatched		
+githound	unmatched		
+github-cli	direct	github-cli	exact-validated
+github-desktop	direct	github-desktop	exact-validated
+github-dorks	unmatched		
+github-subdomains	unmatched		
+githubcloner	unmatched		
+gitkraken	direct	gitkraken	exact-validated
+gitmails	unmatched		
+gitminer	unmatched		
+gitrecon	unmatched		
+gitrob	unmatched		
+gittools	unmatched		
+gjs	direct	gjs	exact-validated
+glew	direct	glew	exact-validated
+glfw	direct	glfw	exact-validated
+glib2-docs	unmatched		
+glibc	direct	glibc	exact-validated
+glibmm	direct	glibmm	exact-validated
+glm	direct	glm	exact-validated
+gloom	unmatched		
+glpwnme	unmatched		
+glue	unmatched		
+glycin-gtk4	unmatched		
+gmic	direct	gmic	exact-validated
+gmime3	direct	gmime3	exact-validated
+gmsadumper	unmatched		
+gnome-app-list	unmatched		
+gnome-autoar	direct	gnome-autoar	exact-validated
+gnome-boxes	direct	gnome-boxes	exact-validated
+gnome-builder	direct	gnome-builder	exact-validated
+gnome-desktop	direct	gnome-desktop	exact-validated
+gnome-desktop-common	unmatched		
+gnome-firmware	direct	gnome-firmware	exact-validated
+gnome-online-accounts	direct	gnome-online-accounts	exact-validated
+gnome-software	direct	gnome-software	exact-validated
+go-exploitdb	direct	go-exploitdb	exact-validated
+go-windapsearch	unmatched		
+gobd	unmatched		
+gocabrito	unmatched		
+goddi	unmatched		
+goldeneye	unmatched		
+gom	direct	gom	exact-validated
+gomapenum	direct	gomapenum	exact-validated
+goodork	unmatched		
+goofuzz	unmatched		
+goog-mail	unmatched		
+google-chrome-canary	unmatched		
+google-explorer	unmatched		
+googlesub	unmatched		
+goop	unmatched		
+goop-dump	unmatched		
+gooscan	unmatched		
+gopherus	unmatched		
+gophish	direct	gophish	exact-validated
+goshs	direct	goshs	exact-validated
+gosint	unmatched		
+gospider	direct	gospider	exact-validated
+gostringsr2	unmatched		
+gowitness	direct	gowitness	exact-validated
+gplist	unmatched		
+gpocrack	unmatched		
+gpowned	unmatched		
+gpp-decrypt	unmatched		
+gpredict	direct	gpredict	exact-validated
+gps-sdr-sim	unmatched		
+gqrx-scanner	unmatched		
+gr-air-modes	unmatched		
+gr-dect2	direct	gr-dect2	exact-validated
+gr-paint	unmatched		
+grabbb	unmatched		
+grabber	unmatched		
+grabing	unmatched		
+grabitall	unmatched		
+graffiti	unmatched		
+grammarinator	unmatched		
+grantleetheme	unmatched		
+graphicsmagick	direct	graphicsmagick	exact-validated
+graphinder	direct	graphinder	exact-validated
+graphql-cop	unmatched		
+graphql-path-enum	unmatched		
+graphqlmap	direct	graphqlmap	exact-validated
+graphviz	direct	graphviz	exact-validated
+graphw00f	direct	graphw00f	exact-validated
+graudit	unmatched		
+grep	unmatched		
+grepforrfi	unmatched		
+grokevt	unmatched		
+grpc-pentest-suite	unmatched		
+grr	unmatched		
+grub	unmatched		
+grub-btrfs	unmatched		
+grub-garuda	unmatched		
+grype	direct	grype	exact-validated
+gsd	direct	gsd	exact-validated
+gsfonts	unmatched		
+gsl	direct	gsl	exact-validated
+gsmevil2	unmatched		
+gsound	direct	gsound	exact-validated
+gspoof	unmatched		
+gst-plugin-gtk4	unmatched		
+gst-python	unmatched		
+gstreamer-meta	unmatched		
+gtalk-decode	unmatched		
+gtfo	unmatched		
+gtfoblookup	unmatched		
+gtk-doc	direct	gtk-doc	exact-validated
+gtk-vnc	direct	gtk-vnc	exact-validated
+gtk2-perl	unmatched		
+gtkmm3	direct	gtkmm3	exact-validated
+gtksourceview4	direct	gtksourceview4	exact-validated
+gtksourceview5	direct	gtksourceview5	exact-validated
+gtp-scan	unmatched		
+gts	direct	gts	exact-validated
+gumbo-parser	unmatched		
+gutenprint	direct	gutenprint	exact-validated
+guvcview	direct	guvcview	exact-validated
+guvcview-common	unmatched		
+guymager	direct	guymager	exact-validated
+gwcheck	unmatched		
+gwenview	unmatched		
+gwtenum	unmatched		
+gzip	direct	gzip	exact-validated
+h2buster	unmatched		
+h2csmuggler	unmatched		
+h2spec	direct	h2spec	exact-validated
+h2t	unmatched		
+h8mail	direct	h8mail	exact-validated
+habu	unmatched		
+hackersh	unmatched		
+hackredis	unmatched		
+hacktv	unmatched		
+haiti	direct	haiti	exact-validated
+haka	unmatched		
+hakku	unmatched		
+hakrawler	direct	hakrawler	exact-validated
+hakrevdns	unmatched		
+halcyon	unmatched		
+halcyon-ide	unmatched		
+handbrake	direct	handbrake	exact-validated
+handle	unmatched		
+harness	unmatched		
+harpoon	unmatched		
+hasere	unmatched		
+hash-buster	unmatched		
+hash-extender	alias	hash_extender	hyphen-to-underscore
+hash-identifier	direct	hash-identifier	exact-validated
+hashcatch	unmatched		
+hashcheck	unmatched		
+hashdb	unmatched		
+hashdeep	direct	hashdeep	exact-validated
+hasher	unmatched		
+hashfind	unmatched		
+hashid	direct	hashid	exact-validated
+hashpeek	unmatched		
+hashpump	direct	hashpump	exact-validated
+hashrat	direct	hashrat	exact-validated
+hashtag	unmatched		
+hatcloud	unmatched		
+hate-crack	unmatched		
+havoc-c2	unmatched		
+haystack	unmatched		
+hbad	unmatched		
+hblock	direct	hblock	exact-validated
+hcraft	unmatched		
+hdf5	direct	hdf5	exact-validated
+hdmi-sniff	unmatched		
+heaptrace	unmatched		
+heartbleed-honeypot	unmatched		
+heartleech	unmatched		
+hekatomb	direct	hekatomb	exact-validated
+hellraiser	unmatched		
+hemingway	unmatched		
+hercules-payload	unmatched		
+hetty	unmatched		
+hex2bin	unmatched		
+hexhttp	unmatched		
+hexinject	unmatched		
+hexodus	unmatched		
+hexorbase	unmatched		
+hharp	unmatched		
+hidattack	unmatched		
+hiddeneye	unmatched		
+hiddeneye-legacy	unmatched		
+hikpwn	unmatched		
+hlextend	unmatched		
+hoaxshell	unmatched		
+hodor	unmatched		
+holehe	direct	holehe	exact-validated
+hollows-hunter	unmatched		
+homepwn	unmatched		
+honeycreds	unmatched		
+honeyd	unmatched		
+honeypy	unmatched		
+honggfuzz	direct	honggfuzz	exact-validated
+honssh	unmatched		
+hookanalyser	unmatched		
+hookshot	unmatched		
+hoover	unmatched		
+hoper	unmatched		
+hopper	direct	hopper	exact-validated
+hoppy	unmatched		
+horusec	unmatched		
+host-extract	unmatched		
+hostapd-mana	direct	hostapd-mana	exact-validated
+hostapd-wpe	unmatched		
+hostbox-ssh	unmatched		
+hosthunter	unmatched		
+hotpatch	direct	hotpatch	exact-validated
+hotspotter	unmatched		
+howmanypeoplearearound	unmatched		
+hpfeeds	unmatched		
+hqlmap	unmatched		
+hsecscan	unmatched		
+htcap	unmatched		
+htexploit	unmatched		
+htop	direct	htop	exact-validated
+htpwdscan	unmatched		
+htrosbif	unmatched		
+htshells	unmatched		
+http-enum	unmatched		
+http-fuzz	unmatched		
+http-put	unmatched		
+http-traceroute	unmatched		
+http2smugl	unmatched		
+httpbog	unmatched		
+httpforge	unmatched		
+httpgrep	unmatched		
+httppwnly	unmatched		
+httprecon	unmatched		
+httprint	unmatched		
+httprint-win32	unmatched		
+httprobe	direct	httprobe	exact-validated
+httpry	unmatched		
+httpscreenshot	unmatched		
+httpsniff	unmatched		
+httpsscanner	unmatched		
+hubbit-sniffer	unmatched		
+hulk	unmatched		
+hungry-interceptor	unmatched		
+hurl-encoder	unmatched		
+hwk	unmatched		
+hxd	unmatched		
+hyde	unmatched		
+hyenae	unmatched		
+hyperfox	unmatched		
+hyperion-crypter	unmatched		
+hypnotix	direct	hypnotix	exact-validated
+iaxflood	unmatched		
+iaxscan	unmatched		
+ibrute	unmatched		
+icloudbrutter	unmatched		
+icmpquery	unmatched		
+icmpsh	unmatched		
+icmptx	unmatched		
+id-entify	unmatched		
+id3lib	direct	id3lib	exact-validated
+ida-free	unmatched		manual-source-required
+idb	unmatched		
+identywaf	unmatched		
+idswakeup	unmatched		
+ifchk	unmatched		
+ifuzz	unmatched		
+iheartxor	unmatched		
+iis-shortname-scanner	unmatched		
+iisbruteforcer	unmatched		
+ikecrack	unmatched		
+ikeforce	unmatched		
+ikeprobe	unmatched		
+ikeprober	unmatched		
+ilo4-toolbox	unmatched		
+ilty	unmatched		
+imagegrep	unmatched		
+imagejs	unmatched		
+imagemounter	unmatched		
+imhex	direct	imhex	exact-validated
+impulse	unmatched		
+inception	unmatched		
+indx2csv	unmatched		
+indxcarver	unmatched		
+indxparse	unmatched		
+inetsim	unmatched		
+inetutils	direct	inetutils	exact-validated
+infection-monkey	unmatched		
+infip	unmatched		
+infoga	unmatched		
+inguma	unmatched		
+iniparser	direct	iniparser	exact-validated
+injectus	unmatched		
+inkscape	direct	inkscape	exact-validated
+innounp	unmatched		
+input-devices-support	unmatched		
+inquisitor	unmatched		
+insanity	unmatched		
+instagramosint	unmatched		
+instashell	unmatched		
+intel-compute-runtime	direct	intel-compute-runtime	exact-validated
+intel-graphics-compiler	direct	intel-graphics-compiler	exact-validated
+intel-oneapi-common	unmatched		
+intel-oneapi-compiler-dpcpp-cpp-runtime-libs	unmatched		
+intel-oneapi-compiler-shared-runtime-libs	unmatched		
+intel-oneapi-openmp	unmatched		
+intel-oneapi-tbb	unmatched		
+intel-oneapi-tcm	unmatched		
+intel-ucode	unmatched		
+intel-undervolt	direct	intel-undervolt	exact-validated
+intellij-idea-community-edition	unmatched		
+intelmq	unmatched		
+intelplot	unmatched		
+intensio-obfuscator	unmatched		
+interactsh-client	unmatched		
+intercepter-ng	unmatched		
+interlace	unmatched		
+interrogate	unmatched		
+intersect	unmatched		
+intrace	unmatched		
+inundator	unmatched		
+inurlbr	unmatched		
+inviteflood	unmatched		
+invoke-cradlecrafter	unmatched		
+invoke-dosfuscation	unmatched		
+invoke-obfuscation	unmatched		
+inxi	direct	inxi	exact-validated
+inzider	unmatched		
+iosforensic	unmatched		
+ip-https-tools	unmatched		
+ip-tracer	unmatched		
+ip2clue	unmatched		
+ipaudit	unmatched		
+ipba2	unmatched		
+ipcountry	unmatched		
+ipdecap	unmatched		
+iphoneanalyzer	unmatched		
+ipmipwn	unmatched		
+ipobfuscator	unmatched		
+ipp-usb	direct	ipp-usb	exact-validated
+iproute2	direct	iproute2	exact-validated
+ipscan	direct	ipscan	exact-validated
+ipsourcebypass	unmatched		
+iptables	direct	iptables	exact-validated
+iptodomain	unmatched		
+iptv	unmatched		
+iputils	direct	iputils	exact-validated
+ipv4bypass	unmatched		
+ipv666	unmatched		
+ipv6toolkit	unmatched		
+ircsnapshot	unmatched		
+irpas	unmatched		
+isf	unmatched		
+isip	unmatched		
+isme	unmatched		
+isr-form	unmatched		
+issniff	unmatched		
+ivre	unmatched		
+ivre-docs	unmatched		
+ivre-web	unmatched		
+iwd	direct	iwd	exact-validated
+ja3	unmatched		
+jaadas	unmatched		
+jack-support	unmatched		
+jack_capture	direct	jack_capture	exact-validated
+jack_capture-debug	unmatched		
+jack_utils	unmatched		
+jackdaw	unmatched		
+jaeles	direct	jaeles	exact-validated
+jaidam	unmatched		
+jamesdsp	direct	jamesdsp	exact-validated
+jast	unmatched		
+java-environment-common	unmatched		
+java-openjfx	unmatched		
+java-runtime-common	unmatched		
+javasnoop	unmatched		
+jbe	unmatched		
+jboss-autopwn	unmatched		
+jbrofuzz	unmatched		
+jbrute	unmatched		
+jcrack	unmatched		
+jd-cli	unmatched		
+jd-gui	unmatched		
+jdeserialize	unmatched		
+jdk21-openjdk	unmatched		
+jeangrey	unmatched		
+jeb-android	unmatched		
+jeb-arm	unmatched		
+jeb-intel	unmatched		
+jeb-mips	unmatched		
+jeb-webasm	unmatched		
+jefferson	direct	jefferson	exact-validated
+jenkins	direct	jenkins	exact-validated
+jeopardize	unmatched		
+jexboss	unmatched		
+jfsutils	direct	jfsutils	exact-validated
+jinjector	unmatched		
+jira-scan	unmatched		
+jitsi-meet-desktop	unmatched		
+jndi-injection-exploit	unmatched		
+jnetmap	direct	jnetmap	exact-validated
+johnny	direct	johnny	exact-validated
+jok3r	unmatched		
+jomplug	unmatched		
+jondo	unmatched		
+jooforce	unmatched		
+joomlascan	unmatched		
+joomlavs	unmatched		
+jpegdump	unmatched		
+jpexs-decompiler	unmatched		
+js140	unmatched		
+jsearch	unmatched		
+jsfuck	unmatched		
+jshell	unmatched		
+jsonbee	unmatched		
+jsonrpc-glib	direct	jsonrpc-glib	exact-validated
+jsparser	unmatched		
+jsql-injection	unmatched		
+jstillery	unmatched		
+juicy-potato	unmatched		
+junkie	direct	junkie	exact-validated
+justdecompile	unmatched		
+juumla	unmatched		
+jwscan	unmatched		
+jwt-cracker	unmatched		
+jwt-hack	direct	jwt-hack	exact-validated
+jwt-key-recovery	unmatched		
+jwt-tool	unmatched		
+jwtcat	direct	jwtcat	exact-validated
+jynx2	unmatched		
+k55	unmatched		
+kacak	unmatched		
+kadimus	unmatched		
+kamerka	unmatched		
+katana-framework	unmatched		
+katana-pd	unmatched		
+kate	unmatched		
+katsnoop	unmatched		
+kautilya	unmatched		
+kcalendarcore	unmatched		
+kcalutils	unmatched		
+kcompletion5	unmatched		
+kconfig5	unmatched		
+kcoreaddons5	unmatched		
+kcrash5	unmatched		
+kdav	unmatched		
+kddockwidgets	direct	kddockwidgets	exact-validated
+kde-gtk-config	unmatched		
+kdeconnect	unmatched		
+kdegraphics-thumbnailers	unmatched		
+kdenlive	unmatched		
+kdepim-runtime	unmatched		
+kdeplasma-addons	unmatched		
+kdevelop	unmatched		
+kdoctools	unmatched		
+kdsingleapplication	direct	kdsingleapplication	exact-validated
+keepassxc	direct	keepassxc	exact-validated
+keimpx	unmatched		
+kekeo	unmatched		
+kerbcrack	unmatched		
+kerberoast	unmatched		
+kerbrute	direct	kerbrute	exact-validated
+kernelpop	unmatched		
+kexec-tools	direct	kexec-tools	exact-validated
+keye	unmatched		
+kf6-servicemenus-rootactions	unmatched		
+kguiaddons5	unmatched		
+kh2hc	unmatched		
+khc	unmatched		
+ki18n5	unmatched		
+kicad	direct	kicad	exact-validated
+kickthemout	unmatched		
+kid3	direct	kid3	exact-validated
+kid3-common	unmatched		
+kidentitymanagement	unmatched		
+killcast	unmatched		
+killerbee	direct	killerbee	exact-validated
+kimageformats	unmatched		
+kimap	unmatched		
+kimi	unmatched		
+kinfocenter	unmatched		
+kippo	unmatched		
+kismet-earth	unmatched		
+kismet2earth	unmatched		
+kismon	unmatched		
+kitemviews5	unmatched		
+kiterunner	direct	kiterunner	exact-validated
+kitty-framework	unmatched		
+klar	unmatched		
+kldap	unmatched		
+klee	unmatched		
+klogger	unmatched		
+kmail	unmatched		
+kmail-account-wizard	unmatched		
+kmailtransport	unmatched		
+kmbox	unmatched		
+kmime	unmatched		
+knock	direct	knock	exact-validated
+knxmap	unmatched		
+koadic	unmatched		
+kodi	direct	kodi	exact-validated
+kodi-eventclients	unmatched		
+kodi-platform	unmatched		
+kolkata	unmatched		
+kolourpaint	unmatched		
+konan	unmatched		
+konsole	unmatched		
+kontactinterface	unmatched		
+kontainer-git	alias	kontainer	strip-variant-suffix
+kpimtextedit	unmatched		
+kquickimageeditor	unmatched		
+kraken	unmatched		
+krbjack	direct	krbjack	exact-validated
+krbrelayx	unmatched		
+krdp	unmatched		
+krfb	unmatched		
+krita	direct	krita	exact-validated
+krita-plugin-gmic	direct	krita-plugin-gmic	exact-validated
+ksanecore	unmatched		
+kscan	unmatched		
+kscreen	unmatched		
+ksmtp	unmatched		
+ksshaskpass	unmatched		
+ktextaddons	unmatched		
+ktexttemplate	unmatched		
+ktnef	unmatched		
+kube-hunter	direct	kube-hunter	exact-validated
+kubesploit	unmatched		
+kubestriker	unmatched		
+kubolt	unmatched		
+kunifiedpush	unmatched		
+kvantum	unmatched		
+kwallet-pam	unmatched		
+kwave	unmatched		
+kwayland-integration	unmatched		
+kwetza	unmatched		
+kwidgetsaddons5	unmatched		
+kwin	unmatched		
+kwin-effect-rounded-corners-git	unmatched		
+l0l	unmatched		
+ladspa	unmatched		
+laf	unmatched		
+lanmap2	unmatched		
+lans	unmatched		
+latd	unmatched		
+laudanum	direct	laudanum	exact-validated
+lazagne	unmatched		
+lazydroid	unmatched		
+lbmap	unmatched		
+ld-shatner	unmatched		
+ldap-brute	unmatched		
+ldapconsole	unmatched		
+ldapenum	unmatched		
+ldapmonitor	direct	ldapmonitor	exact-validated
+ldapscripts	unmatched		
+ldapwordlistharvester	unmatched		
+ldeep	direct	ldeep	exact-validated
+ldsview	unmatched		
+leaklooker	unmatched		
+leena	unmatched		
+legion	unmatched		
+lensfun	direct	lensfun	exact-validated
+leo	unmatched		
+leroy-jenkins	unmatched		
+lethalhta	unmatched		
+letmefuckit-scanner	unmatched		
+level-zero-loader	unmatched		
+leviathan	unmatched		
+levye	unmatched		
+lfi-autopwn	unmatched		
+lfi-exploiter	unmatched		
+lfi-fuzzploit	unmatched		
+lfi-image-helper	unmatched		
+lfi-scanner	unmatched		
+lfi-sploiter	unmatched		
+lfifreak	unmatched		
+lfimap	unmatched		
+lfisuite	unmatched		
+lfle	unmatched		
+lft	unmatched		
+lhasa	direct	lhasa	exact-validated
+lhf	unmatched		
+lib2geom	direct	lib2geom	exact-validated
+lib32-gtk2	unmatched		
+lib32-nvidia-utils	unmatched		
+lib32-opencl-nvidia	unmatched		
+lib32-pipewire-jack	unmatched		
+libabw	direct	libabw	exact-validated
+libadwaita	direct	libadwaita	exact-validated
+libaec	direct	libaec	exact-validated
+libaemu	unmatched		
+libao	direct	libao	exact-validated
+libappindicator	direct	libappindicator	exact-validated
+libatomic_ops	direct	libatomic_ops	exact-validated
+libayatana-appindicator	direct	libayatana-appindicator	exact-validated
+libayatana-indicator	direct	libayatana-indicator	exact-validated
+libbde	direct	libbde	exact-validated
+libburn	direct	libburn	exact-validated
+libc-database	unmatched		
+libcacard	direct	libcacard	exact-validated
+libcddb	direct	libcddb	exact-validated
+libcdio-paranoia	direct	libcdio-paranoia	exact-validated
+libcdr	direct	libcdr	exact-validated
+libcec	direct	libcec	exact-validated
+libcmis	direct	libcmis	exact-validated
+libcue	direct	libcue	exact-validated
+libdatachannel	direct	libdatachannel	exact-validated
+libdex	direct	libdex	exact-validated
+libdisasm	unmatched		
+libdispatch	unmatched		
+libdvdcss	direct	libdvdcss	exact-validated
+libe-book	direct	libe-book	exact-validated
+libepubgen	direct	libepubgen	exact-validated
+libetonyek	direct	libetonyek	exact-validated
+libetpan	direct	libetpan	exact-validated
+libev	direct	libev	exact-validated
+libexif	direct	libexif	exact-validated
+libexttextcat	direct	libexttextcat	exact-validated
+libfabric	direct	libfabric	exact-validated
+libffado	direct	libffado	exact-validated
+libfilezilla	direct	libfilezilla	exact-validated
+libfprint	direct	libfprint	exact-validated
+libfreehand	direct	libfreehand	exact-validated
+libfvde	unmatched		
+libgccjit	direct	libgccjit	exact-validated
+libgee	direct	libgee	exact-validated
+libgexiv2	unmatched		
+libgig	direct	libgig	exact-validated
+libgit2-glib	direct	libgit2-glib	exact-validated
+libgnomekbd	direct	libgnomekbd	exact-validated
+libgoa	unmatched		
+libgovirt	direct	libgovirt	exact-validated
+libgphoto2	direct	libgphoto2	exact-validated
+libgpod	direct	libgpod	exact-validated
+libgravatar	unmatched		
+libgsf	direct	libgsf	exact-validated
+libgweather-4	unmatched		
+libhandy	direct	libhandy	exact-validated
+libharu	direct	libharu	exact-validated
+libheif	direct	libheif	exact-validated
+libical	direct	libical	exact-validated
+libid3tag	direct	libid3tag	exact-validated
+libieee1284	direct	libieee1284	exact-validated
+libimagequant	direct	libimagequant	exact-validated
+libinput-gestures-qt	unmatched		
+libisoburn	direct	libisoburn	exact-validated
+libisofs	direct	libisofs	exact-validated
+libixion	direct	libixion	exact-validated
+libjuice	unmatched		
+libkdcraw5	unmatched		
+libkdepim	unmatched		
+libkeyfinder	direct	libkeyfinder	exact-validated
+libkgapi	unmatched		
+libkleo	unmatched		
+libkolabxml	unmatched		
+libkomparediff2	unmatched		
+libksane	unmatched		
+libksieve	unmatched		
+liblangtag	direct	liblangtag	exact-validated
+liblo	direct	liblo	exact-validated
+liblzf	direct	liblzf	exact-validated
+libmad	direct	libmad	exact-validated
+libmalcontent	unmatched		
+libmediainfo	direct	libmediainfo	exact-validated
+libmicrohttpd	direct	libmicrohttpd	exact-validated
+libmms	direct	libmms	exact-validated
+libmp4v2	unmatched		
+libmspack	direct	libmspack	exact-validated
+libmspub	direct	libmspub	exact-validated
+libmwaw	direct	libmwaw	exact-validated
+libmypaint	direct	libmypaint	exact-validated
+libmythes	unmatched		
+libnbd	direct	libnbd	exact-validated
+libnet	direct	libnet	exact-validated
+libnfs	direct	libnfs	exact-validated
+libnumbertext	unmatched		
+libodfgen	direct	libodfgen	exact-validated
+libolm	unmatched		
+libopusenc	direct	libopusenc	exact-validated
+liborcus	direct	liborcus	exact-validated
+libosinfo	direct	libosinfo	exact-validated
+libotf	direct	libotf	exact-validated
+libp11	direct	libp11	exact-validated
+libpackagekit-glib	unmatched		
+libpagemaker	direct	libpagemaker	exact-validated
+libpanel	direct	libpanel	exact-validated
+libparistraceroute	unmatched		
+libpeas	direct	libpeas	exact-validated
+libpeas-2	unmatched		
+libphonenumber	direct	libphonenumber	exact-validated
+libportal	direct	libportal	exact-validated
+libportal-gtk3	direct	libportal-gtk3	exact-validated
+libportal-gtk4	direct	libportal-gtk4	exact-validated
+libpst	direct	libpst	exact-validated
+libpwquality	direct	libpwquality	exact-validated
+libquotient	unmatched		
+libqxp	direct	libqxp	exact-validated
+librecad	direct	librecad	exact-validated
+libreoffice-fresh	direct	libreoffice-fresh	exact-validated
+librest	direct	librest	exact-validated
+librevenge	direct	librevenge	exact-validated
+librewolf	direct	librewolf	exact-validated
+libsbsms	direct	libsbsms	exact-validated
+libshumate	direct	libshumate	exact-validated
+libsidplayfp	direct	libsidplayfp	exact-validated
+libsigc++	unmatched		
+libsixel	direct	libsixel	exact-validated
+libslirp	direct	libslirp	exact-validated
+libsoup	unmatched		
+libspeechd	unmatched		
+libspelling	direct	libspelling	exact-validated
+libspiro	direct	libspiro	exact-validated
+libspnav	direct	libspnav	exact-validated
+libstaroffice	unmatched		
+libtins	direct	libtins	exact-validated
+libtorrent	unmatched		
+libtorrent-rasterbar	direct	libtorrent-rasterbar	exact-validated
+libtpms	direct	libtpms	exact-validated
+libtraceevent	direct	libtraceevent	exact-validated
+libtracefs	direct	libtracefs	exact-validated
+libuninameslist	direct	libuninameslist	exact-validated
+libvirt	direct	libvirt	exact-validated
+libvirt-dbus	direct	libvirt-dbus	exact-validated
+libvirt-glib	direct	libvirt-glib	exact-validated
+libvirt-python	unmatched		
+libvisio	direct	libvisio	exact-validated
+libvncserver	direct	libvncserver	exact-validated
+libwebsockets	direct	libwebsockets	exact-validated
+libwmf	direct	libwmf	exact-validated
+libwpd	direct	libwpd	exact-validated
+libwpg	direct	libwpg	exact-validated
+libwps	direct	libwps	exact-validated
+libxcrypt-compat	unmatched		
+libxdp	unmatched		
+libxklavier	direct	libxklavier	exact-validated
+libxml++2.6	unmatched		
+libxmlbird	unmatched		
+libxnvctrl	unmatched		
+libxpresent	direct	libxpresent	exact-validated
+libytnef	direct	libytnef	exact-validated
+libzen	direct	libzen	exact-validated
+libzmf	direct	libzmf	exact-validated
+licenses	unmatched		
+lief	direct	lief	exact-validated
+liffy	unmatched		
+lightbulb	unmatched		
+ligolo-mp	unmatched		
+ligolo-ng	direct	ligolo-ng	exact-validated
+limeaide	unmatched		
+limelighter	unmatched		
+linenoise-ng	unmatched		
+linenum	unmatched		
+linikatz	unmatched		
+linkedin2username	unmatched		
+linkedint	unmatched		
+linkfinder	unmatched		
+linset	unmatched		
+linux-exploit-suggester	direct	linux-exploit-suggester	exact-validated
+linux-exploit-suggester.sh	unmatched		
+linux-firmware	direct	linux-firmware	exact-validated
+linux-firmware-amd	unmatched		
+linux-firmware-ti	unmatched		
+linux-hardened	unmatched		
+linux-hardened-headers	unmatched		
+linux-inject	unmatched		
+linux-mainline	unmatched		
+linux-mainline-headers	unmatched		
+linux-smart-enumeration	unmatched		
+linux-wifi-hotspot	direct	linux-wifi-hotspot	exact-validated
+linux-zen	alias	linux_zen	hyphen-to-underscore
+linux-zen-headers	unmatched		
+lisa.py	unmatched		
+list-urls	unmatched		
+litehtml	direct	litehtml	exact-validated
+littleblackbox	unmatched		
+littlebrother	unmatched		
+llama-cpp	direct	llama-cpp	exact-validated
+llvm	direct	llvm	exact-validated
+lmms	direct	lmms	exact-validated
+loadlibrary	direct	loadlibrary	exact-validated
+local-php-security-checker	unmatched		
+locasploit	unmatched		
+lodowep	unmatched		
+log-file-parser	unmatched		
+log4cplus	direct	log4cplus	exact-validated
+log4j-bypass	unmatched		
+log4j-scan	unmatched		
+logkeys	direct	logkeys	exact-validated
+logmepwn	unmatched		
+logrotate	direct	logrotate	exact-validated
+loic	unmatched		
+loki-scanner	unmatched		
+lolbas	unmatched		
+lollypop	direct	lollypop	exact-validated
+loot	unmatched		
+lorg	unmatched		
+lorsrf	unmatched		
+lotophagi	unmatched		
+lpsolve	unmatched		
+lrzip	direct	lrzip	exact-validated
+lsb-release	direct	lsb-release	exact-validated
+lsof	direct	lsof	exact-validated
+lsp-plugins-lv2	unmatched		
+lsrtunnel	unmatched		
+lte-cell-scanner	unmatched		
+luajit	direct	luajit	exact-validated
+luksipc	unmatched		
+lulzbuster	unmatched		
+luminancehdr	unmatched		
+lunar	unmatched		
+luyten	unmatched		
+lvm2	direct	lvm2	exact-validated
+lxpanel	direct	lxpanel	exact-validated
+lyricpass	unmatched		
+lzip	direct	lzip	exact-validated
+lzop	direct	lzop	exact-validated
+m17n-db	alias	m17n_db	hyphen-to-underscore
+m17n-lib	alias	m17n_lib	hyphen-to-underscore
+m3-gen	unmatched		
+mac-robber	direct	mac-robber	exact-validated
+machinae	unmatched		
+maclookup	unmatched		
+magescan	unmatched		
+magicrescue	direct	magicrescue	exact-validated
+magictree	unmatched		
+maigret	direct	maigret	exact-validated
+mail-crawl	unmatched		
+mailcommon	unmatched		
+mailimporter	unmatched		
+mailsend-go	unmatched		
+mailspring	direct	mailspring	exact-validated
+make-pdf	unmatched		
+maketh	unmatched		
+malboxes	unmatched		
+malcom	unmatched		
+malheur	unmatched		
+malice	unmatched		
+malicious-pdf	unmatched		
+maligno	unmatched		
+mallory	unmatched		
+malmon	unmatched		
+malscan	unmatched		
+maltego	direct	maltego	exact-validated
+maltrail	unmatched		
+maltrieve	unmatched		
+malware-check-tool	unmatched		
+malwareanalyser	unmatched		
+malwaredetect	unmatched		
+malwasm	unmatched		
+malybuzz	unmatched		
+man-db	direct	man-db	exact-validated
+man-pages	direct	man-pages	exact-validated
+mana	unmatched		
+mando.me	unmatched		
+manifold	direct	manifold	exact-validated
+manspider	unmatched		
+manticore	unmatched		
+mantra	direct	mantra	exact-validated
+manul	unmatched		
+mapcidr	direct	mapcidr	exact-validated
+mara-framework	unmatched		
+marc4dasm	unmatched		
+mariadb	direct	mariadb	exact-validated
+mariadb-clients	unmatched		
+mariadb-libs	unmatched		
+marshalsec	unmatched		
+maryam	unmatched		
+maskprocessor	direct	maskprocessor	exact-validated
+massbleed	unmatched		
+masscan-automation	unmatched		
+massdns	direct	massdns	exact-validated
+massexpconsole	unmatched		
+mat	unmatched		
+matahari	unmatched		
+materialx	direct	materialx	exact-validated
+matroschka	unmatched		
+mausezahn	unmatched		
+mbedtls	direct	mbedtls	exact-validated
+mbenum	unmatched		
+mbox-importer	unmatched		
+mboxgrep	unmatched		
+mdadm	direct	mdadm	exact-validated
+mdbtools	direct	mdbtools	exact-validated
+mdcrack	unmatched		
+mdns-recon	unmatched		
+meanalyzer	unmatched		
+med	direct	med	exact-validated
+mediaelch	direct	mediaelch	exact-validated
+meg	direct	meg	exact-validated
+meld	direct	meld	exact-validated
+melkor	unmatched		
+memdump	unmatched		
+memfetch	unmatched		
+memimager	unmatched		
+memtest86+	unmatched		
+mentalist	unmatched		
+mercury	direct	mercury	exact-validated
+merlin-server	unmatched		
+meson	direct	meson	exact-validated
+messagelib	unmatched		
+metabigor	direct	metabigor	exact-validated
+metacoretex	unmatched		
+metafinder	unmatched		
+metaforge	unmatched		
+metagoofil	unmatched		
+metame	unmatched		
+metasploit-autopwn	unmatched		
+meterssh	unmatched		
+metoscan	unmatched		
+mfcuk	direct	mfcuk	exact-validated
+mfsniffer	unmatched		
+mft2csv	unmatched		
+mftcarver	unmatched		
+mftrcrd	unmatched		
+mftref2name	unmatched		
+mibble	unmatched		
+micro	direct	micro	exact-validated
+microsploit	unmatched		
+middler	unmatched		
+mikrotik-npk	unmatched		
+mildew	unmatched		
+mimikatz	direct	mimikatz	exact-validated
+mimipenguin	unmatched		
+mingsweeper	unmatched		
+minimodem	direct	minimodem	exact-validated
+minimysqlator	unmatched		
+minizip-ng	direct	minizip-ng	exact-validated
+miranda-upnp	unmatched		
+missidentify	direct	missidentify	exact-validated
+missionplanner	unmatched		
+mitm	unmatched		
+mitm-relay	unmatched		
+mitm6	direct	mitm6	exact-validated
+mitmap	unmatched		
+mitmap-old	unmatched		
+mitmer	unmatched		
+mitmf	unmatched		
+mixxx	direct	mixxx	exact-validated
+mkbrutus	unmatched		
+mkyara	unmatched		
+mlt	direct	mlt	exact-validated
+mobiusft	unmatched		
+mobsf	direct	mobsf	exact-validated
+modifycerttemplate	unmatched		
+modlishka	unmatched		
+modscan	unmatched		
+moloch	unmatched		
+mongoaudit	direct	mongoaudit	exact-validated
+mongodb	unmatched	-	excluded: official nixpkgs derivation has no binary substitute and triggers a heavyweight source build
+monocle	direct	monocle	exact-validated
+monsoon	direct	monsoon	exact-validated
+moonwalk	unmatched		
+mooscan	unmatched		
+morpheus	unmatched		
+morxbook	unmatched		
+morxbrute	unmatched		
+morxbtcrack	unmatched		
+morxcoinpwn	unmatched		
+morxcrack	unmatched		
+morxtraversal	unmatched		
+morxtunel	unmatched		
+mosca	unmatched		
+mosquito	unmatched		
+mots	unmatched		
+motsa-dns-spoofing	unmatched		
+mousejack	unmatched		
+mousepad	direct	mousepad	exact-validated
+movit	direct	movit	exact-validated
+mp3nema	unmatched		
+mptcp	unmatched		
+mptcp-abuse	unmatched		
+mpv	direct	mpv	exact-validated
+mqtt-pwn	unmatched		
+mrkaplan	unmatched		
+mrsip	unmatched		
+mrtparse	unmatched		
+ms-sys	direct	ms-sys	exact-validated
+msf-mpc	unmatched		
+msfdb	unmatched		
+msfenum	unmatched		
+msmailprobe	unmatched		
+mssqlrelay	unmatched		
+mssqlscan	unmatched		
+msvpwn	unmatched		
+mtools	direct	mtools	exact-validated
+mtscan	unmatched		
+mubeng	direct	mubeng	exact-validated
+mujs	direct	mujs	exact-validated
+multiinjector	unmatched		
+multimac	unmatched		
+multiscanner	unmatched		
+multitun	unmatched		
+mumble	direct	mumble	exact-validated
+munin-hashchecker	unmatched		
+muparser	direct	muparser	exact-validated
+muraena	unmatched		
+musescore	direct	musescore	exact-validated
+mutator	unmatched		
+mwebfp	unmatched		
+mxtract	unmatched		
+mybff	unmatched		
+myjwt	direct	myjwt	exact-validated
+mylg	unmatched		
+mypaint	direct	mypaint	exact-validated
+mypaint-brushes	direct	mypaint-brushes	exact-validated
+mypaint-brushes1	direct	mypaint-brushes1	exact-validated
+myrescue	direct	myrescue	exact-validated
+mysql2sqlite	unmatched		
+mystiq	unmatched		
+n1qlmap	unmatched		
+naabu	direct	naabu	exact-validated
+nacker	unmatched		
+naft	unmatched		
+nano	direct	nano	exact-validated
+nanobind	unmatched		
+narthex	unmatched		
+nasnum	unmatched		
+navgix	unmatched		
+nbname	unmatched		
+nbnspoof	unmatched		
+nbtenum	unmatched		
+nbtool	unmatched		
+ncpfs	unmatched		
+ndctl	unmatched		
+necromant	unmatched		
+needle	unmatched		
+neglected	unmatched		
+neighbor-cache-fingerprinter	unmatched		
+nemesis	unmatched		
+neo-regeorg	unmatched		
+neochat	unmatched		
+net-creds	unmatched		
+net-snmp	direct	net-snmp	exact-validated
+net-tools	direct	net-tools	exact-validated
+netactview	unmatched		
+netattack	unmatched		
+netavark	direct	netavark	exact-validated
+netbeans	direct	netbeans	exact-validated
+netbios-share-scanner	unmatched		
+netbus	unmatched		
+netcommander	unmatched		
+netcon	unmatched		
+netdiscover	direct	netdiscover	exact-validated
+netexec	direct	netexec	exact-validated
+netexec-pingcastle	unmatched		
+netkit-rusers	unmatched		
+netkit-rwho	unmatched		
+netmap	unmatched		
+netmask	direct	netmask	exact-validated
+netpbm	direct	netpbm	exact-validated
+netreconn	unmatched		
+netripper	unmatched		
+netscan	direct	netscan	exact-validated
+netscan2	unmatched		
+netscout	unmatched		
+netsed	unmatched		
+netspionage	unmatched		
+netstumbler	unmatched		
+nettacker	unmatched		
+network-app-stress-tester	unmatched		
+networkmanager-support	unmatched		
+networkmap	unmatched		
+networkminer	direct	networkminer	exact-validated
+netz	unmatched		
+netzob	unmatched		
+nexfil	unmatched		
+nextcloud-client	direct	nextcloud-client	exact-validated
+nextnet	unmatched		
+nfcutils	unmatched		
+nfdump	direct	nfdump	exact-validated
+nfex	unmatched		
+nfs-utils	direct	nfs-utils	exact-validated
+nfspy	unmatched		
+nfsshell	unmatched		
+ngrok	direct	ngrok	exact-validated
+ngspice	direct	ngspice	exact-validated
+nield	unmatched		
+nilfs-utils	direct	nilfs-utils	exact-validated
+nili	unmatched		
+nimbostratus	unmatched		
+ninja	direct	ninja	exact-validated
+nipe	unmatched		
+nipper	unmatched		
+nirsoft	unmatched		
+nishang	unmatched		
+nitroshare	unmatched		
+njsscan	unmatched		
+nkiller2	unmatched		
+nmap	direct	nmap	exact-validated
+nmap-parse-output	unmatched		
+nmbscan	unmatched		
+nng	direct	nng	exact-validated
+node-gyp	direct	node-gyp	exact-validated
+nodejs	direct	nodejs	exact-validated
+nodejs-nopt	unmatched		
+nohidy	unmatched		
+nomorexor	unmatched		
+noriben	unmatched		
+nosqlattack	unmatched		
+nosqli	direct	nosqli	exact-validated
+nosqli-user-pass-enum	unmatched		
+nosqlmap	unmatched		
+noto-fonts	direct	noto-fonts	exact-validated
+noto-fonts-cjk	unmatched		
+noto-fonts-emoji	unmatched		
+notspikefile	unmatched		
+novahot	unmatched		
+npm	unmatched		
+nray	direct	nray	exact-validated
+nsdtool	unmatched		
+nsearch	unmatched		
+nsec3map	unmatched		
+nsec3walker	unmatched		
+nsntrace	unmatched		
+nsoq	unmatched		
+nss-mdns	unmatched		
+ntds-decode	unmatched		
+ntdsxtract	unmatched		
+ntfs-3g	unmatched		
+ntfs-file-extractor	unmatched		
+ntfs-log-tracker	unmatched		
+ntlm-challenger	direct	ntlm-challenger	exact-validated
+ntlm-scanner	unmatched		
+ntlm-theft	unmatched		
+ntlmrecon	direct	ntlmrecon	exact-validated
+ntlmv1-multi	unmatched		
+ntp-fingerprint	unmatched		
+ntp-ip-enum	unmatched		
+ntpdos	unmatched		
+nuclei	direct	nuclei	exact-validated
+nullinux	unmatched		
+nullscan	unmatched		
+numactl	direct	numactl	exact-validated
+nvidia-open-dkms	unmatched		
+nvidia-prime	unmatched		
+nvidia-settings	unmatched		
+nvidia-utils	unmatched		
+nxcrypt	unmatched		
+nzyme	unmatched		
+o-saft	unmatched		
+o365enum	unmatched		
+o365spray	unmatched		
+oat	unmatched		
+obevilion	unmatched		
+obexstress	unmatched		
+obfs4proxy	unmatched		
+objdump2shellcode	unmatched		
+objection	unmatched		license-not-accepted
+obs-studio	direct	obs-studio	exact-validated
+obsidian	direct	obsidian	exact-validated
+oclhashcat	unmatched		
+ocs	unmatched		
+octopi	unmatched		
+octopwnweb	unmatched		
+office-dde-payloads	unmatched		
+ofp-sniffer	unmatched		
+ohrwurm	unmatched		
+okadminfinder	unmatched		
+okular	unmatched		
+oledump	unmatched		
+ollydbg	unmatched		
+omen	unmatched		
+omnibus	unmatched		
+omnihash	unmatched		
+one-lin3r	unmatched		
+onesixtyone	direct	onesixtyone	exact-validated
+onetwopunch	unmatched		
+onioff	unmatched		
+oniongrok	unmatched		
+onionscan	unmatched		
+onionsearch	unmatched		
+openai-codex	unmatched		
+openbsd-netcat	unmatched		
+opencascade	unmatched		
+opencode	direct	opencode	exact-validated
+opencolorio	direct	opencolorio	exact-validated
+opendoor	unmatched		
+openh264	direct	openh264	exact-validated
+openimagedenoise	direct	openimagedenoise	exact-validated
+openimageio	direct	openimageio	exact-validated
+openmp	unmatched		
+openmpi	direct	openmpi	exact-validated
+openpgl	direct	openpgl	exact-validated
+openpmix	unmatched		
+openpuff	unmatched		
+openrisk	direct	openrisk	exact-validated
+openshadinglanguage	direct	openshadinglanguage	exact-validated
+opensnitch	direct	opensnitch	exact-validated
+openstego	unmatched		
+opensubdiv	direct	opensubdiv	exact-validated
+opensvp	unmatched		
+opentimelineio	direct	opentimelineio	exact-validated
+opentoonz	unmatched		
+openucx	unmatched		
+openvas	unmatched		
+openvdb	direct	openvdb	exact-validated
+openwebrx	unmatched		
+operative	unmatched		
+ophcrack	direct	ophcrack	exact-validated
+opus-tools	direct	opus-tools	exact-validated
+opusfile	direct	opusfile	exact-validated
+orakelcrackert	unmatched		
+origami	unmatched		
+orjail	unmatched		
+os-prober-btrfs	unmatched		
+osert	unmatched		
+osfooler-ng	unmatched		
+osi.ig	unmatched		
+osinfo-db	direct	osinfo-db	exact-validated
+osint-spy	unmatched		
+osinterator	unmatched		
+osintgram	unmatched		
+osm-gps-map	direct	osm-gps-map	exact-validated
+osslsigncode	direct	osslsigncode	exact-validated
+ostinato	direct	ostinato	exact-validated
+ostree	direct	ostree	exact-validated
+osueta	unmatched		
+otori	unmatched		
+outguess	direct	outguess	exact-validated
+outlook-webapp-brute	unmatched		
+owabf	unmatched		
+owasp-bywaf	unmatched		
+owasp-zsc	unmatched		
+owtf	unmatched		
+p8-platform	unmatched		
+pacaur	unmatched		
+pack	direct	pack	exact-validated
+packagekit	direct	packagekit	exact-validated
+packagekit-qt6	unmatched		
+packerid	unmatched		
+packet-o-matic	unmatched		
+packetq	unmatched		
+packetsender	unmatched		
+packit	unmatched		
+pacman	direct	pacman	exact-validated
+pacman-contrib	unmatched		
+pacu	direct	pacu	exact-validated
+pacumen	unmatched		
+padbuster	direct	padbuster	exact-validated
+padoracle	unmatched		
+padre	direct	padre	exact-validated
+pafish	unmatched		
+pagodo	unmatched		
+paketto	unmatched		
+pamac	unmatched		
+pangomm	unmatched		
+panhunt	unmatched		
+panoptic	unmatched		
+pappy-proxy	unmatched		
+parameth	unmatched		
+parampampam	unmatched		
+paramspider	unmatched		
+paranoic	unmatched		
+parole	direct	parole	exact-validated
+paros	unmatched		
+parse-evtx	unmatched		
+parsero	direct	parsero	exact-validated
+partitionmanager	unmatched		
+paru	direct	paru	exact-validated
+pasco	direct	pasco	exact-validated
+pass-station	unmatched		
+passdetective	direct	passdetective	exact-validated
+passe-partout	unmatched		
+passgan	unmatched		
+passhunt	unmatched		
+passivedns	unmatched		
+passt	direct	passt	exact-validated
+pastejacker	unmatched		
+pastemonitor	unmatched		
+pasv-agrsv	unmatched		
+patator	unmatched		
+patchkit	unmatched		
+pathzuzu	unmatched		
+pax-oracle	unmatched		
+payloadmask	unmatched		
+payloadsallthethings	direct	payloadsallthethings	exact-validated
+pblind	unmatched		
+pbscan	unmatched		
+pcapfex	unmatched		
+pcapfix	direct	pcapfix	exact-validated
+pcapsipdump	unmatched		
+pcapteller	unmatched		
+pcapxray	unmatched		
+pcileech	unmatched		
+pciutils	direct	pciutils	exact-validated
+pcode2code	unmatched		
+pcredz	unmatched		
+pdblaster	unmatched		
+pdf-parser	direct	pdf-parser	exact-validated
+pdfbook-analyzer	unmatched		
+pdfgrab	unmatched		
+pdfid	direct	pdfid	exact-validated
+pdfresurrect	unmatched		
+pdfwalker	unmatched		
+pdgmail	unmatched		
+pe-bear	direct	pe-bear	exact-validated
+pe-sieve	unmatched		
+peach	unmatched		
+peach-fuzz	unmatched		
+peass	unmatched		
+peepdf	unmatched		
+peepingtom	unmatched		
+peframe	unmatched		
+pemcrack	unmatched		
+pemcracker	unmatched		
+penbox	unmatched		
+pencil2d	direct	pencil2d	exact-validated
+pencode	unmatched		
+pentbox	unmatched		
+pentestgpt	direct	pentestgpt	exact-validated
+pentestly	unmatched		
+pentmenu	unmatched		
+pepe	unmatched		
+pepper	unmatched		
+periscope	unmatched		
+perl-file-mimeinfo	unmatched		
+perl-image-exiftool	unmatched		
+persistencesniper	unmatched		
+petools	unmatched		
+pev	direct	pev	exact-validated
+pextractor	unmatched		
+pftriage	unmatched		
+pgdbf	unmatched		
+phantap	unmatched		
+phantom-evasion	unmatched		
+phantomcollect	unmatched		
+phemail	unmatched		
+phishery	unmatched		
+phishingkithunter	unmatched		
+phodav	direct	phodav	exact-validated
+phoneinfoga	unmatched		
+phonesploit	unmatched		
+phonia	unmatched		
+phoss	unmatched		
+php-findsock-shell	unmatched		
+php-malware-finder	unmatched		
+php-mt-seed	unmatched		
+php-rfi-payload-decoder	unmatched		
+php-vulnerability-hunter	unmatched		
+phpggc	unmatched		
+phpsploit	unmatched		
+phpstan	direct	phpstan	exact-validated
+phpstress	unmatched		
+phrasendrescher	direct	phrasendrescher	exact-validated
+pidense	unmatched		
+pikaur-git	unmatched		
+pim-data-exporter	unmatched		
+pim-sieve-editor	unmatched		
+pimcommon	unmatched		
+pin	unmatched		
+pingcastle	unmatched		
+pinkerton	unmatched		
+pintool	unmatched		
+pintool2	unmatched		
+pip3line	unmatched		
+pipal	unmatched		
+pipeline	direct	pipeline	exact-validated
+pipewire-jack	unmatched		
+pipewire-support	unmatched		
+pirana	unmatched		
+pivotsuite	unmatched		
+pixd	direct	pixd	exact-validated
+pixload	unmatched		
+pkcrack	direct	pkcrack	exact-validated
+pkinittools	unmatched		
+pkt2flow	unmatched		
+plasma-applet-window-buttons	unmatched		
+plasma-browser-integration	unmatched		
+plasma-desktop	unmatched		
+plasma-disasm	unmatched		
+plasma-firewall	unmatched		
+plasma-nm	unmatched		
+plasma-pa	unmatched		
+plasma-systemmonitor	unmatched		
+plasma-thunderbolt	unmatched		
+plasma-wayland-protocols	unmatched		
+plasma6-applets-window-title	unmatched		
+plasma6-wallpapers-blurredwallpaper	unmatched		
+platypus	unmatched		
+plcscan	unmatched		
+plecost	direct	plecost	exact-validated
+plocate	direct	plocate	exact-validated
+plown	unmatched		
+plumber.py	unmatched		
+plutil	unmatched		
+pmacct	direct	pmacct	exact-validated
+pmap	unmatched		
+pmapper	unmatched		
+pmcma	unmatched		
+pmdump	unmatched		
+pngcheck	direct	pngcheck	exact-validated
+pnscan	unmatched		
+poco	direct	poco	exact-validated
+pocsuite	unmatched		
+podman	direct	podman	exact-validated
+podman-compose	direct	podman-compose	exact-validated
+podman-desktop	direct	podman-desktop	exact-validated
+podman-docker	unmatched		
+poison	unmatched		
+poly	direct	poly	exact-validated
+polyswarm	unmatched		
+pompem	unmatched		
+poppler-glib	unmatched		
+poracle	unmatched		
+portia	unmatched		
+portmanteau	unmatched		
+portmidi	direct	portmidi	exact-validated
+portsmf	unmatched		
+portspoof	unmatched		
+postenum	unmatched		
+postman-bin	alias	postman	strip-variant-suffix
+posttester	unmatched		
+potrace	direct	potrace	exact-validated
+power-profiles-daemon	direct	power-profiles-daemon	exact-validated
+powercloud	unmatched		
+powerdevil	unmatched		
+powerfuzzer	unmatched		
+powerlessshell	unmatched		
+powermft	unmatched		
+powerops	unmatched		
+powershdll	unmatched		
+powersploit	direct	powersploit	exact-validated
+powerstager	unmatched		
+powertop	direct	powertop	exact-validated
+pown	unmatched		
+ppee	unmatched		
+ppfuzz	unmatched		
+ppmap	unmatched		
+ppscan	unmatched		
+pr0cks	unmatched		
+prads	unmatched		
+praeda	unmatched		
+pre2k	direct	pre2k	exact-validated
+preeny	unmatched		
+pret	unmatched		
+princeprocessor	unmatched		
+printer-support	unmatched		
+procdump	direct	procdump	exact-validated
+procps-ng	unmatched		
+proctal	unmatched		
+procyon	direct	procyon	exact-validated
+profuzz	unmatched		
+prometheus	direct	prometheus	exact-validated
+prometheus-firewall	unmatched		
+promiscdetect	unmatched		
+protos-sip	unmatched		
+protosint	unmatched		
+prowler	direct	prowler	exact-validated
+proxenet	unmatched		
+proxify	direct	proxify	exact-validated
+proxybroker2	unmatched		
+proxycheck	unmatched		
+proxyp	unmatched		
+proxyscan	unmatched		
+prrte	direct	prrte	exact-validated
+ps1encode	unmatched		
+pscan	unmatched		
+pshitt	unmatched		
+psmisc	direct	psmisc	exact-validated
+pspy	direct	pspy	exact-validated
+pstoreview	unmatched		
+psutils	direct	psutils	exact-validated
+ptex	direct	ptex	exact-validated
+ptf	unmatched		
+pth-toolkit	unmatched		
+pugixml	direct	pugixml	exact-validated
+pulledpork	unmatched		
+pulsar	unmatched		insecure
+pulseaudio-alsa	unmatched		
+punk	unmatched		
+punter	unmatched		
+puppet	direct	puppet	exact-validated
+pupy	unmatched		
+pureblood	unmatched		
+puredns	direct	puredns	exact-validated
+putty	direct	putty	exact-validated
+pwcrack	unmatched		
+pwd-hash	unmatched		
+pwdlogy	unmatched		
+pwdlyser	unmatched		
+pwdump	unmatched		
+pwfuzz-rs	unmatched		
+pwnat	direct	pwnat	exact-validated
+pwncat	direct	pwncat	exact-validated
+pwncat-caleb	unmatched		
+pwndora	unmatched		
+pwndrop	unmatched		
+pwned	unmatched		
+pwned-search	unmatched		
+pwnedornot	unmatched		
+pwnedpasswords	unmatched		
+pwnloris	unmatched		
+pyadrecon	unmatched		
+pyaxmlparser	unmatched		
+pybind11	unmatched		
+pybozocrack	unmatched		
+pycharm-community-edition	unmatched		
+pydictor	unmatched		
+pyersinia	unmatched		
+pyew	unmatched		
+pyexfil	unmatched		
+pyfiscan	unmatched		
+pyfuscation	unmatched		
+pygpoabuse	direct	pygpoabuse	exact-validated
+pyinstxtractor	unmatched		
+pyjfuzz	unmatched		
+pykek	unmatched		
+pymeta	unmatched		
+pyminifakedns	unmatched		
+pyrasite	unmatched		
+pyrdp	unmatched		
+pyrit	unmatched		
+pyside6	unmatched		
+pyssltest	unmatched		
+pystring	direct	pystring	exact-validated
+pytacle	unmatched		
+pytbull	unmatched		
+pythem	unmatched		
+python-aaf2	unmatched		
+python-adblock	alias	python3Packages.adblock	python3-package
+python-api-dnsdumpster	unmatched		
+python-appdirs	alias	python3Packages.appdirs	python3-package
+python-attrs	alias	python3Packages.attrs	python3-package
+python-autocommand	alias	python3Packages.autocommand	python3-package
+python-automat	alias	python3Packages.automat	python3-package
+python-babel	alias	python3Packages.babel	python3-package
+python-bcrypt	alias	python3Packages.bcrypt	python3-package
+python-beautifulsoup4	alias	python3Packages.beautifulsoup4	python3-package
+python-cachecontrol	alias	python3Packages.cachecontrol	python3-package
+python-cairo	unmatched		
+python-certifi	alias	python3Packages.certifi	python3-package
+python-cffi	alias	python3Packages.cffi	python3-package
+python-chardet	alias	python3Packages.chardet	python3-package
+python-charset-normalizer	alias	python3Packages.charset-normalizer	python3-package
+python-cinemagoer	unmatched		wheel-metadata-version-mismatch
+python-click	alias	python3Packages.click	python3-package
+python-colorama	alias	python3Packages.colorama	python3-package
+python-configobj	alias	python3Packages.configobj	python3-package
+python-constantly	alias	python3Packages.constantly	python3-package
+python-contourpy	alias	python3Packages.contourpy	python3-package
+python-cryptography	alias	python3Packages.cryptography	python3-package
+python-cssselect	alias	python3Packages.cssselect	python3-package
+python-curl_cffi	unmatched		
+python-cycler	alias	python3Packages.cycler	python3-package
+python-cymruwhois	alias	python3Packages.cymruwhois	python3-package
+python-dateutil	unmatched		
+python-distro	alias	python3Packages.distro	python3-package
+python-docutils	alias	python3Packages.docutils	python3-package
+python-dotenv	unmatched		
+python-filelock	alias	python3Packages.filelock	python3-package
+python-flow.record	unmatched		
+python-fluidity	unmatched		
+python-fonttools	alias	python3Packages.fonttools	python3-package
+python-frida-tools	unmatched		
+python-geoip	alias	python3Packages.geoip	python3-package
+python-google-streetview	unmatched		
+python-gpgme	alias	python3Packages.gpgme	python3-package
+python-greenlet	alias	python3Packages.greenlet	python3-package
+python-grpcio	alias	python3Packages.grpcio	python3-package
+python-grpcio-tools	alias	python3Packages.grpcio-tools	python3-package
+python-h11	alias	python3Packages.h11	python3-package
+python-httplib2	alias	python3Packages.httplib2	python3-package
+python-hyperlink	alias	python3Packages.hyperlink	python3-package
+python-idna	alias	python3Packages.idna	python3-package
+python-ifaddr	alias	python3Packages.ifaddr	python3-package
+python-imagesize	alias	python3Packages.imagesize	python3-package
+python-importlib-metadata	alias	python3Packages.importlib-metadata	python3-package
+python-incremental	alias	python3Packages.incremental	python3-package
+python-invoke	alias	python3Packages.invoke	python3-package
+python-isodate	alias	python3Packages.isodate	python3-package
+python-ivre	unmatched		
+python-jaraco.collections	unmatched		
+python-jaraco.context	unmatched		
+python-jaraco.functools	unmatched		
+python-jaraco.text	unmatched		
+python-jinja	unmatched		
+python-keylogger	unmatched		
+python-kiwisolver	alias	python3Packages.kiwisolver	python3-package
+python-lexicon	unmatched		
+python-lief	alias	python3Packages.lief	python3-package
+python-lockfile	alias	python3Packages.lockfile	python3-package
+python-lxml	alias	python3Packages.lxml	python3-package
+python-mako	alias	python3Packages.mako	python3-package
+python-markdown	alias	python3Packages.markdown	python3-package
+python-markupsafe	alias	python3Packages.markupsafe	python3-package
+python-matplotlib	alias	python3Packages.matplotlib	python3-package
+python-mmbot	unmatched		
+python-more-itertools	alias	python3Packages.more-itertools	python3-package
+python-msgpack	alias	python3Packages.msgpack	python3-package
+python-netifaces	alias	python3Packages.netifaces	python3-package
+python-numpy	alias	python3Packages.numpy	python3-package
+python-opengl	unmatched		
+python-outcome	alias	python3Packages.outcome	python3-package
+python-paramiko	alias	python3Packages.paramiko	python3-package
+python-pcodedmp	alias	python3Packages.pcodedmp	python3-package
+python-peid	unmatched		
+python-pillow	alias	python3Packages.pillow	python3-package
+python-pip	alias	python3Packages.pip	python3-package
+python-pivy	alias	python3Packages.pivy	python3-package
+python-platformdirs	alias	python3Packages.platformdirs	python3-package
+python-ply	alias	python3Packages.ply	python3-package
+python-protobuf	alias	python3Packages.protobuf	python3-package
+python-puremagic	alias	python3Packages.puremagic	python3-package
+python-pyaml	alias	python3Packages.pyaml	python3-package
+python-pyasn1	alias	python3Packages.pyasn1	python3-package
+python-pyasn1-modules	alias	python3Packages.pyasn1-modules	python3-package
+python-pycountry	alias	python3Packages.pycountry	python3-package
+python-pycparser	alias	python3Packages.pycparser	python3-package
+python-pycryptodome	alias	python3Packages.pycryptodome	python3-package
+python-pycryptodomex	alias	python3Packages.pycryptodomex	python3-package
+python-pycurl	alias	python3Packages.pycurl	python3-package
+python-pygments	alias	python3Packages.pygments	python3-package
+python-pyinotify	alias	python3Packages.pyinotify	python3-package
+python-pynacl	alias	python3Packages.pynacl	python3-package
+python-pyopenssl	alias	python3Packages.pyopenssl	python3-package
+python-pyparsing	alias	python3Packages.pyparsing	python3-package
+python-pypdf	alias	python3Packages.pypdf	python3-package
+python-pyqt5	alias	python3Packages.pyqt5	python3-package
+python-pyqt5-sip	alias	python3Packages.pyqt5-sip	python3-package
+python-pyqt6-webengine	alias	python3Packages.pyqt6-webengine	python3-package
+python-pyserial	alias	python3Packages.pyserial	python3-package
+python-pysocks	alias	python3Packages.pysocks	python3-package
+python-pytz	alias	python3Packages.pytz	python3-package
+python-qrcode	alias	python3Packages.qrcode	python3-package
+python-rencode	alias	python3Packages.rencode	python3-package
+python-requests	alias	python3Packages.requests	python3-package
+python-resolvelib	alias	python3Packages.resolvelib	python3-package
+python-roman-numerals-py	alias	python3Packages.roman-numerals-py	python3-package
+python-search-engine-parser	unmatched		
+python-service-identity	alias	python3Packages.service-identity	python3-package
+python-setproctitle	alias	python3Packages.setproctitle	python3-package
+python-setuptools	alias	python3Packages.setuptools	python3-package
+python-simplejson	alias	python3Packages.simplejson	python3-package
+python-six	alias	python3Packages.six	python3-package
+python-sniffio	alias	python3Packages.sniffio	python3-package
+python-snowballstemmer	alias	python3Packages.snowballstemmer	python3-package
+python-sortedcontainers	alias	python3Packages.sortedcontainers	python3-package
+python-soupsieve	alias	python3Packages.soupsieve	python3-package
+python-sphinx	alias	python3Packages.sphinx	python3-package
+python-sphinx-alabaster-theme	unmatched		
+python-sphinxcontrib-applehelp	alias	python3Packages.sphinxcontrib-applehelp	python3-package
+python-sphinxcontrib-devhelp	alias	python3Packages.sphinxcontrib-devhelp	python3-package
+python-sphinxcontrib-htmlhelp	alias	python3Packages.sphinxcontrib-htmlhelp	python3-package
+python-sphinxcontrib-jsmath	alias	python3Packages.sphinxcontrib-jsmath	python3-package
+python-sphinxcontrib-qthelp	alias	python3Packages.sphinxcontrib-qthelp	python3-package
+python-sphinxcontrib-serializinghtml	alias	python3Packages.sphinxcontrib-serializinghtml	python3-package
+python-sqlalchemy	alias	python3Packages.sqlalchemy	python3-package
+python-ssh-mitm	unmatched		
+python-tinycss2	alias	python3Packages.tinycss2	python3-package
+python-tqdm	alias	python3Packages.tqdm	python3-package
+python-trackerjacker	unmatched		
+python-trio	alias	python3Packages.trio	python3-package
+python-trio-websocket	alias	python3Packages.trio-websocket	python3-package
+python-twisted	alias	python3Packages.twisted	python3-package
+python-typing_extensions	unmatched		
+python-uncompyle6	alias	python3Packages.uncompyle6	python3-package
+python-unidecode	alias	python3Packages.unidecode	python3-package
+python-urllib3	alias	python3Packages.urllib3	python3-package
+python-wapiti-arsenic	alias	python3Packages.wapiti-arsenic	python3-package
+python-webencodings	alias	python3Packages.webencodings	python3-package
+python-websocket-client	alias	python3Packages.websocket-client	python3-package
+python-wheel	alias	python3Packages.wheel	python3-package
+python-witnessme	unmatched		
+python-wsproto	alias	python3Packages.wsproto	python3-package
+python-wxpython	alias	python3Packages.wxpython	python3-package
+python-xapp	unmatched		
+python-yara-python-dex	unmatched		
+python-zeroconf	alias	python3Packages.zeroconf	python3-package
+python-zipp	alias	python3Packages.zipp	python3-package
+python-zope-interface	alias	python3Packages.zope-interface	python3-package
+python-zstandard	alias	python3Packages.zstandard	python3-package
+python2-cymruwhois	unmatched		
+python2-frida-tools	unmatched		
+python2-google-streetview	unmatched		
+python2-hpfeeds	unmatched		
+python2-ivre	unmatched		
+python2-ldapdomaindump	unmatched		
+python2-minidump	unmatched		
+python2-minikerberos	unmatched		
+python2-pcodedmp	unmatched		
+python2-peepdf	unmatched		
+python2-ropgadget	unmatched		
+python2-utidylib	unmatched		
+qark	unmatched		
+qbdi	unmatched		
+qbittorrent	direct	qbittorrent	exact-validated
+qemu-audio-alsa	unmatched		
+qemu-audio-dbus	unmatched		
+qemu-audio-jack	unmatched		
+qemu-audio-oss	unmatched		
+qemu-audio-pa	unmatched		
+qemu-audio-pipewire	unmatched		
+qemu-audio-sdl	unmatched		
+qemu-audio-spice	unmatched		
+qemu-base	unmatched		
+qemu-block-curl	unmatched		
+qemu-block-dmg	unmatched		
+qemu-block-nfs	unmatched		
+qemu-block-ssh	unmatched		
+qemu-chardev-spice	unmatched		
+qemu-common	unmatched		
+qemu-desktop	unmatched		
+qemu-hw-display-qxl	unmatched		
+qemu-hw-display-virtio-gpu	unmatched		
+qemu-hw-display-virtio-gpu-gl	unmatched		
+qemu-hw-display-virtio-gpu-pci	unmatched		
+qemu-hw-display-virtio-gpu-pci-gl	unmatched		
+qemu-hw-display-virtio-gpu-pci-rutabaga	unmatched		
+qemu-hw-display-virtio-gpu-rutabaga	unmatched		
+qemu-hw-display-virtio-vga	unmatched		
+qemu-hw-display-virtio-vga-gl	unmatched		
+qemu-hw-display-virtio-vga-rutabaga	unmatched		
+qemu-hw-uefi-vars	unmatched		
+qemu-hw-usb-host	unmatched		
+qemu-hw-usb-redirect	unmatched		
+qemu-hw-usb-smartcard	unmatched		
+qemu-img	unmatched		
+qemu-system-x86	unmatched		
+qemu-system-x86-firmware	unmatched		
+qemu-ui-curses	unmatched		
+qemu-ui-dbus	unmatched		
+qemu-ui-egl-headless	unmatched		
+qemu-ui-gtk	unmatched		
+qemu-ui-opengl	unmatched		
+qemu-ui-sdl	unmatched		
+qemu-ui-spice-app	unmatched		
+qemu-ui-spice-core	unmatched		
+qemu-user-static	unmatched		
+qemu-user-static-binfmt	unmatched		
+qemu-vhost-user-gpu	unmatched		
+qgpgme	unmatched		
+qhttpengine	unmatched		
+qhull	direct	qhull	exact-validated
+qmdnsengine	unmatched		
+qmdnsengine-debug	unmatched		
+qradiolink	direct	qradiolink	exact-validated
+qrcodegencpp-cmake	unmatched		
+qrgen	unmatched		
+qrljacker	unmatched		
+qsreplace	direct	qsreplace	exact-validated
+qt5-multimedia	unmatched		
+qt5-script	unmatched		
+qt5-serialport	unmatched		
+qt5-tools	unmatched		
+qt6-charts	unmatched		
+qt6-imageformats	unmatched		
+qt6-networkauth	unmatched		
+qt6-quick3d	unmatched		
+qt6-scxml	unmatched		
+qt6-serialport	unmatched		
+qt6-wayland	unmatched		
+qt6-webview	unmatched		
+qtcreator	direct	qtcreator	exact-validated
+qtkeychain-qt6	unmatched		
+quark-engine	direct	quark-engine	exact-validated
+quazip-qt5	unmatched		
+quazip-qt6	unmatched		
+quickrecon	unmatched		
+quicksand-lite	unmatched		
+quickscope	unmatched		
+quota-tools	unmatched		
+qutebrowser	direct	qutebrowser	exact-validated
+rabid	unmatched		
+raccoon	unmatched		
+radare2-keystone	unmatched		
+radare2-unicorn	unmatched		
+radiography	unmatched		
+radvd	direct	radvd	exact-validated
+ragel	direct	ragel	exact-validated
+rainbowcrack	unmatched		
+ranger-scanner	unmatched		
+rapidscan	unmatched		
+rasenum	unmatched		
+rasqal	unmatched		
+rate-mirrors	unmatched		
+ratproxy	unmatched		
+rats	unmatched		
+raven	unmatched		
+rawr	unmatched		
+rawsec-cli	unmatched		
+rbac-lookup	unmatched		
+rbasefind	unmatched		
+rbkb	unmatched		
+rbndr	unmatched		
+rcracki-mt	unmatched		
+rcrdcarver	unmatched		
+rdesktop-brute	unmatched		
+rdma-core	direct	rdma-core	exact-validated
+rdp-cipher-checker	unmatched		
+rdp-sec-check	unmatched		
+rdpassspray	unmatched		
+rdwatool	direct	rdwatool	exact-validated
+rebind	unmatched		
+recaf	unmatched		
+recentfilecache-parser	unmatched		
+recomposer	unmatched		
+reconnoitre	unmatched		
+reconscan	unmatched		
+recoverdm	direct	recoverdm	exact-validated
+recoverjpeg	direct	recoverjpeg	exact-validated
+recsech	unmatched		
+recstudio	unmatched		
+recuperabit	unmatched		
+red-hawk	unmatched		
+redasm	unmatched		
+redeye	unmatched		
+redfang	direct	redfang	exact-validated
+redirectpoison	unmatched		
+redland	direct	redland	exact-validated
+redpoint	unmatched		
+redress	unmatched		
+redsocks	direct	redsocks	exact-validated
+reelphish	unmatched		
+reflector	unmatched		
+regeorg	unmatched		
+regipy	unmatched		
+reglookup	unmatched		
+regreport	unmatched		
+regripper	direct	regripper	exact-validated
+regrippy	unmatched		python-registry-package-metadata-version-mismatch
+regview	unmatched		
+rej	unmatched		
+rekall	unmatched		
+relay-scanner	unmatched		
+remmina	direct	remmina	exact-validated
+remot3d	unmatched		
+remote-method-guesser	unmatched		
+replayproxy	unmatched		
+reptor	direct	reptor	exact-validated
+resourcehacker	unmatched		
+restler-fuzzer	unmatched		
+resvg	direct	resvg	exact-validated
+retdec	unmatched		build-fails-cmake-4.4-keystone-subproject
+retire	unmatched		
+reverseip	unmatched		
+revipd	unmatched		
+revsh	unmatched		
+rex	direct	rex	exact-validated
+rext	unmatched		
+rfcrack	unmatched		
+rfidiot	unmatched		
+rfidtool	unmatched		
+rhodiola	unmatched		
+richsploit	unmatched		
+ridenum	unmatched		
+ridrelay	unmatched		
+rifiuti2	unmatched		
+rinetd	direct	rinetd	exact-validated
+ripdc	unmatched		
+ristretto	direct	ristretto	exact-validated
+rita	direct	rita	exact-validated
+riwifshell	unmatched		
+rlogin-scanner	unmatched		
+rmiscout	unmatched		
+rnnoise	direct	rnnoise	exact-validated
+roadlib	unmatched		
+roadoidc	unmatched		
+roadrecon	unmatched		
+roadtx	unmatched		
+rogue-mysql-server	unmatched		
+roguehostapd	unmatched		
+rombuster	unmatched		
+rookie	unmatched		
+rootbrute	unmatched		
+ropeadope	unmatched		
+ropeme	unmatched		
+roputils	unmatched		
+rosegarden	direct	rosegarden	exact-validated
+routerhunter	unmatched		
+rp	direct	rp	exact-validated
+rpak	unmatched		
+rpcsniffer	unmatched		
+rpctools	unmatched		
+rpdscan	unmatched		
+rpivot	unmatched		
+rr	direct	rr	exact-validated
+rrs	unmatched		
+rsactftool	unmatched		
+rsakeyfind	unmatched		
+rsatool	unmatched		
+rshack	unmatched		
+rsmangler	direct	rsmangler	exact-validated
+rspet	unmatched		
+rsync	direct	rsync	exact-validated
+rtfm	direct	rtfm	exact-validated
+rtl-433	alias	rtl_433	hyphen-to-underscore
+rtl-wmbus	alias	rtl_wmbus	hyphen-to-underscore
+rtl8814au-dkms-git	unmatched		
+rtlamr	direct	rtlamr	exact-validated
+rtlizer	unmatched		
+rtlsdr-scanner	unmatched		
+rtp-flood	unmatched		
+rtpbreak	unmatched		
+rubilyn	unmatched		
+ruby	direct	ruby	exact-validated
+ruby-augeas	unmatched		
+ruby-base64	alias	rubyPackages.base64	ruby-package
+ruby-concurrent	unmatched		
+ruby-deep_merge	unmatched		
+ruby-erb	alias	rubyPackages.erb	ruby-package
+ruby-fast_gettext	unmatched		
+ruby-ffi	alias	rubyPackages.ffi	ruby-package
+ruby-getoptlong	unmatched		
+ruby-hocon	unmatched		
+ruby-locale	alias	rubyPackages.locale	ruby-package
+ruby-multi_json	alias	rubyPackages.multi_json	ruby-package
+ruby-puppet-resource_api	unmatched		
+ruby-racc	alias	rubyPackages.racc	ruby-package
+ruby-scanf	unmatched		
+ruby-semantic_puppet	unmatched		
+ruby-shadow	unmatched		
+ruby-sys-filesystem	unmatched		
+ruby-syslog	unmatched		
+ruby-thor	alias	rubyPackages.thor	ruby-package
+rubygems	unmatched		
+ruler	direct	ruler	exact-validated
+rulesfinder	unmatched		
+runc	direct	runc	exact-validated
+rupture	unmatched		
+rust	unmatched		
+rustbuster	unmatched		
+rustcat	direct	rustcat	exact-validated
+rusthound-ce	direct	rusthound-ce	exact-validated
+rustpad	unmatched		
+rutabaga-ffi	unmatched		
+rvi-capture	unmatched		
+rww-attack	unmatched		
+s3-fuzzer	unmatched		
+s3enum	unmatched		
+s3scanner	direct	s3scanner	exact-validated
+safecopy	direct	safecopy	exact-validated
+sagan	unmatched		
+sakis3g	unmatched		
+saleae-logic	direct	saleae-logic	exact-validated
+sambascan	unmatched		
+samdump2	direct	samdump2	exact-validated
+samesame	unmatched		
+samplicator	direct	samplicator	exact-validated
+samydeluxe	unmatched		
+sandcastle	unmatched		
+sandmap	unmatched		
+sandsifter	unmatched		
+sandy	unmatched		
+sane	unmatched		
+sane-airscan	direct	sane-airscan	exact-validated
+saruman	unmatched		
+sasm	unmatched		
+savvycan	direct	savvycan	exact-validated
+sawef	unmatched		
+sb0x	unmatched		
+sbd	unmatched		
+sc-make	unmatched		
+scalpel	direct	scalpel	exact-validated
+scamper	unmatched		
+scanless	unmatched		
+scanner-support	unmatched		
+scannerl	unmatched		
+scanqli	unmatched		
+scansploit	unmatched		
+scanssh	unmatched		
+scap-security-guide	direct	scap-security-guide	exact-validated
+scap-workbench	unmatched		
+scavenger	unmatched		
+sccmhunter	direct	sccmhunter	exact-validated
+schnappi-dhcp	unmatched		
+scour	direct	scour	exact-validated
+scout2	unmatched		
+scoutsuite	direct	scoutsuite	exact-validated
+scrape-dns	unmatched		
+scratchabit	unmatched		
+scrounge-ntfs	direct	scrounge-ntfs	exact-validated
+scrying	unmatched		
+sctpscan	unmatched		
+scylla	unmatched		
+sddm	unmatched		
+sddm-kcm	unmatched		
+sdl12-compat	direct	sdl12-compat	exact-validated
+sdl2_image	unmatched		
+sdn-toolkit	unmatched		
+sdnpwn	unmatched		
+sdrangel	direct	sdrangel	exact-validated
+sdrpp	direct	sdrpp	exact-validated
+sdrsharp	unmatched		
+sdrtrunk	unmatched		
+sea	unmatched		
+seabios	direct	seabios	exact-validated
+search1337	unmatched		
+seat	unmatched		
+seccomp-tools	unmatched		
+seclists	direct	seclists	exact-validated
+second-order	unmatched		
+secretfinder	unmatched		
+secscan	unmatched		
+secure-delete	unmatched		
+secure2csv	unmatched		
+sed	unmatched		
+see-surf	unmatched		
+seeker	unmatched		
+seekr	unmatched		
+sees	unmatched		
+semgrep	direct	semgrep	exact-validated
+semver	direct	semver	exact-validated
+sensepost-xrdp	unmatched		
+sentrypeer	unmatched		
+sergio-proxy	unmatched		
+serialbrute	unmatched		
+serializationdumper	unmatched		
+server-status-pwn	unmatched		
+sessionlist	unmatched		
+set	unmatched		
+seth	unmatched		
+setowner	unmatched		
+sfuzz	unmatched		
+sg3_utils	direct	sg3_utils	exact-validated
+sgn	unmatched		
+sh00t	unmatched		
+sha1collisiondetection	direct	sha1collisiondetection	exact-validated
+shad0w	unmatched		
+shadow	direct	shadow	exact-validated
+shadowexplorer	unmatched		
+shadowfinder	unmatched		
+shard	unmatched		
+shareenum	unmatched		
+sharesniffer	unmatched		
+sharpfuzz	unmatched		
+shed	unmatched		
+shellcode-compiler	unmatched		
+shellcode-factory	unmatched		
+shellcodecs	unmatched		
+shellen	unmatched		
+shellerator	unmatched		
+shellinabox	unmatched		
+shelling	unmatched		
+shellme	unmatched		
+shellnoob	direct	shellnoob	exact-validated
+shellpop	unmatched		
+shellsploit-framework	unmatched		
+shellter	unmatched		
+shellz	direct	shellz	exact-validated
+sherlock	direct	sherlock	exact-validated
+sherlocked	unmatched		
+shhgit	unmatched		
+shiboken6	unmatched		
+shitflood	unmatched		
+shocker	unmatched		
+shodanhat	unmatched		
+shootback	unmatched		
+shortfuzzy	unmatched		
+shortwave	direct	shortwave	exact-validated
+shosubgo	unmatched		
+shotcut	direct	shotcut	exact-validated
+shreder	unmatched		
+shuffledns	direct	shuffledns	exact-validated
+shuji	unmatched		
+sickle	unmatched		
+sidguesser	unmatched		
+sigma	unmatched		
+sign	unmatched		
+signal-desktop	direct	signal-desktop	exact-validated
+sigploit	unmatched		
+sigspotter	unmatched		
+sigthief	unmatched		
+silenteye	unmatched		
+silenttrinity	unmatched		
+silk	unmatched		
+simde	direct	simde	exact-validated
+simdjson	direct	simdjson	exact-validated
+simple-ducky	unmatched		
+simple-lan-scan	unmatched		
+simple-lan-scan3	unmatched		
+simpleemailspoofer	unmatched		
+simplify	unmatched		
+simplyemail	unmatched		
+simtrace2	unmatched		
+sinfp	unmatched		
+siparmyknife	unmatched		
+sipbrute	unmatched		
+sipcrack	unmatched		
+sipffer	unmatched		
+sipi	unmatched		
+sipp	direct	sipp	exact-validated
+sippts	unmatched		
+sipsak	direct	sipsak	exact-validated
+sipscan	unmatched		
+sipshock	unmatched		
+sipvicious	direct	sipvicious	exact-validated
+sireprat	unmatched		
+sitadel	unmatched		
+sitediff	unmatched		
+sj	unmatched		
+sjet	unmatched		
+skipfish	unmatched		
+skiptracer	unmatched		
+skul	unmatched		
+skydive	unmatched		
+skyjack	unmatched		
+skype-dump	unmatched		
+skypefreak	unmatched		
+slack-desktop	unmatched		
+slackpirate	unmatched		
+sleuthql	unmatched		
+slither	unmatched		
+sliver	unmatched		
+sloth-fuzzer	unmatched		
+slowloris	unmatched		
+slowloris-py	unmatched		
+slurp-scanner	unmatched		
+smali-cfgs	unmatched		
+smalisca	unmatched		
+smap	direct	smap	exact-validated
+smap-scanner	unmatched		
+smartphone-pentest-framework	unmatched		
+smbbf	unmatched		
+smbclient-ng	direct	smbclient-ng	exact-validated
+smbcrunch	unmatched		
+smbexec	unmatched		
+smbmap	direct	smbmap	exact-validated
+smbrelay	unmatched		
+smbspider	unmatched		
+smbsr	unmatched		
+smod	unmatched		
+smplayer	direct	smplayer	exact-validated
+smplayer-skins	unmatched		
+smplayer-themes	unmatched		
+smplshllctrlr	unmatched		
+smtp-fuzz	unmatched		
+smtp-test	unmatched		
+smtp-vrfy	unmatched		
+smtpmap	unmatched		
+smtpscan	unmatched		
+smtptester	unmatched		
+smtptx	unmatched		
+smuggler	unmatched		
+smuggler-py	unmatched		
+sn00p	unmatched		
+sn1per	unmatched		
+snallygaster	direct	snallygaster	exact-validated
+snapception	unmatched		
+snapper-support	unmatched		
+snapper-tools	unmatched		
+snare	unmatched		
+snarf-mitm	unmatched		
+sndio	direct	sndio	exact-validated
+sniff-probe-req	unmatched		
+sniffer	unmatched		
+sniffjoke	unmatched		
+sniffles	unmatched		
+snitch	direct	snitch	exact-validated
+snmp-brute	unmatched		
+snmp-fuzzer	unmatched		
+snmpattack	unmatched		
+snmpcheck	direct	snmpcheck	exact-validated
+snmpenum	unmatched		
+snmpscan	unmatched		
+snoopbrute	unmatched		
+snoopy-ng	unmatched		
+snort	direct	snort	exact-validated
+snow	direct	snow	exact-validated
+snowman	unmatched		
+snscan	unmatched		
+snscrape	direct	snscrape	exact-validated
+snuck	unmatched		
+snyk	direct	snyk	exact-validated
+soapui	direct	soapui	exact-validated
+social-analyzer	unmatched		
+social-mapper	unmatched		
+social-vuln-scanner	unmatched		
+socialfish	unmatched		
+socialpwned	unmatched		
+socialscan	direct	socialscan	exact-validated
+socketfuzz	unmatched		
+sockstat	unmatched		
+sof-firmware	direct	sof-firmware	exact-validated
+sonar-scanner	unmatched		
+soot	unmatched		
+sooty	unmatched		
+soqt	direct	soqt	exact-validated
+soundconverter	unmatched		install-check-none-args-typeerror
+soundwire	unmatched		
+sourcemapper	direct	sourcemapper	exact-validated
+sox	direct	sox	exact-validated
+spade	direct	spade	exact-validated
+spaf	unmatched		
+sparrow-wifi	unmatched		
+sparta	unmatched		
+spartan	unmatched		
+sparty	unmatched		
+spdlog	direct	spdlog	exact-validated
+spectacle	unmatched		
+spectools	unmatched		
+speedpwn	unmatched		
+speedtest-cli	direct	speedtest-cli	exact-validated
+spektrum	unmatched		
+spf	unmatched		
+spfmap	unmatched		
+spice	direct	spice	exact-validated
+spice-gtk	direct	spice-gtk	exact-validated
+spice-protocol	direct	spice-protocol	exact-validated
+spiderfoot	unmatched		
+spiderpig-pdffuzzer	unmatched		
+spiga	unmatched		
+spike-fuzzer	unmatched		
+spike-proxy	unmatched		
+spipscan	unmatched		
+splix	direct	splix	exact-validated
+sploitctl	unmatched		
+sploitego	unmatched		
+spoofcheck	unmatched		
+spooftooph	direct	spooftooph	exact-validated
+spoofy	unmatched		
+spookflare	unmatched		
+spotbugs	unmatched		
+spray365	unmatched		
+spraycharles	direct	spraycharles	exact-validated
+sprayhound	unmatched		
+sprayingtoolkit	unmatched		
+spraykatz	unmatched		
+sps	unmatched		
+spyse	unmatched		
+sqid	unmatched		
+sqlbrute	unmatched		
+sqldict	unmatched		
+sqlivulscan	unmatched		
+sqlninja	unmatched		
+sqlpat	unmatched		
+sqlping	unmatched		
+sqlpowerinjector	unmatched		
+sqlsus	unmatched		
+sr-71	unmatched		
+ssdp-scanner	unmatched		
+ssh-honeypot	unmatched		
+ssh-mitm	direct	ssh-mitm	exact-validated
+ssh-privkey-crack	unmatched		
+ssh-user-enum	unmatched		
+sshatter	unmatched		
+sshfs	direct	sshfs	exact-validated
+sshfuzz	unmatched		
+sshprank	unmatched		
+sshscan	unmatched		
+sshtrix	unmatched		
+ssl-hostname-resolver	unmatched		
+ssl-phuck3r	unmatched		
+sslcaudit	unmatched		
+ssldump	direct	ssldump	exact-validated
+ssllabs-scan	unmatched		
+sslmap	unmatched		
+sslnuke	unmatched		
+sslscan2	unmatched		
+sslsniff	unmatched		
+sslstrip	direct	sslstrip	exact-validated
+ssma	unmatched		
+ssrf-proxy	unmatched		
+ssrf-sheriff	unmatched		
+ssrfmap	unmatched		
+sstimap	unmatched		
+stackflow	unmatched		
+stacoan	unmatched		
+stacs	unmatched		closure-broken
+staekka	unmatched		
+stardox	unmatched		
+starttls-mitm	unmatched		
+startup-notification	unmatched		
+statsprocessor	unmatched		
+stegcracker	unmatched		
+stegdetect	unmatched		
+steghide	direct	steghide	exact-validated
+stegolego	unmatched		
+stegosip	unmatched		
+stegoveritas	unmatched		
+stegseek	direct	stegseek	exact-validated
+stegsolve	direct	stegsolve	exact-validated
+stenographer	unmatched		
+stepic	unmatched		
+stews	unmatched		
+sticky-keys-hunter	unmatched		
+stig-viewer	unmatched		
+stk	unmatched		
+stompy	unmatched		
+stoq	unmatched		
+storm-ring	unmatched		
+stowaway	direct	stowaway	exact-validated
+strawberry	direct	strawberry	exact-validated
+streamfinder	unmatched		
+streamlink	direct	streamlink	exact-validated
+streamlink-twitch-gui-bin	unmatched		
+striker	unmatched		
+stringsifter	unmatched		
+striptls	unmatched		
+strutscan	unmatched		
+stunner	direct	stunner	exact-validated
+sub7	unmatched		
+subdomainer	unmatched		
+subfinder	direct	subfinder	exact-validated
+subjack	direct	subjack	exact-validated
+subjs	direct	subjs	exact-validated
+sublert	unmatched		
+sublist3r	unmatched		
+subover	unmatched		
+subscraper	unmatched		
+subterfuge	unmatched		
+subtitlecomposer	direct	subtitlecomposer	exact-validated
+subzy	unmatched		
+sucrack	unmatched		
+sudo	direct	sudo	exact-validated
+suid3num	unmatched		
+suil	direct	suil	exact-validated
+suitesparse	direct	suitesparse	exact-validated
+sulley	unmatched		
+superlu	direct	superlu	exact-validated
+superscan	unmatched		
+suricata	direct	suricata	exact-validated
+suricata-verify	unmatched		
+svn-extractor	unmatched		
+swamp	unmatched		
+swap-digger	unmatched		
+swarm	direct	swarm	exact-validated
+sweethome3d	unmatched		
+swfintruder	unmatched		
+syborg	unmatched		
+sylkie	unmatched		
+syms2elf	unmatched		
+synfig	unmatched		
+synfigstudio	direct	synfigstudio	exact-validated
+synflood	unmatched		
+synner	unmatched		
+synscan	unmatched		
+syringe	unmatched		
+sysinternals-suite	unmatched		
+sysprof	direct	sysprof	exact-validated
+systemd	direct	systemd	exact-validated
+systemd-sysvcompat	unmatched		
+t50	unmatched		
+tabi	unmatched		
+tachyon-scanner	unmatched		
+tactical-exploitation	unmatched		
+taglib1	unmatched		
+taipan	unmatched		
+takeover	unmatched		
+talon	unmatched		
+taof	unmatched		
+tar	unmatched		
+targetedkerberoast	unmatched		
+tbear	unmatched		
+tcgetkey	unmatched		
+tchunt-ng	unmatched		
+tcpcontrol-fuzzer	unmatched		
+tcpcopy	unmatched		
+tcpdstat	unmatched		
+tcpextract	unmatched		
+tcpjunk	unmatched		
+tcptrace	unmatched		
+tcptraceroute	direct	tcptraceroute	exact-validated
+tcpwatch	unmatched		
+tcpxtract	unmatched		
+teams-for-linux	direct	teams-for-linux	exact-validated
+teamsuserenum	unmatched		
+teardown	unmatched		
+tekdefense-automater	unmatched		
+tela-circle-icon-theme-dracula	unmatched		
+telegram-desktop	direct	telegram-desktop	exact-validated
+tell-me-your-secrets	direct	tell-me-your-secrets	exact-validated
+template-glib	direct	template-glib	exact-validated
+tempomail	unmatched		
+termineter	direct	termineter	exact-validated
+terminus-font	alias	terminus_font	hyphen-to-underscore
+terraform	direct	terraform	exact-validated
+tesseract-data-afr	unmatched		
+tesseract-data-eng	unmatched		
+tfsec	direct	tfsec	exact-validated
+tftp-bruteforce	unmatched		
+tftp-fuzz	unmatched		
+tftp-proxy	unmatched		
+tgcd	unmatched		
+thc-keyfinder	unmatched		
+thc-pptp-bruter	unmatched		
+thc-smartbrute	unmatched		
+thc-ssl-dos	unmatched		
+thcrut	unmatched		
+thedorkbox	unmatched		
+thefatrat	unmatched		
+thefuzz	unmatched		
+themole	unmatched		
+thermald	direct	thermald	exact-validated
+thezoo	unmatched		
+threat-dragon	unmatched		
+threatspec	unmatched		
+thumbcacheviewer	unmatched		
+thunar	direct	thunar	exact-validated
+thunar-archive-plugin	direct	thunar-archive-plugin	exact-validated
+thunar-media-tags-plugin	direct	thunar-media-tags-plugin	exact-validated
+thunar-volman	direct	thunar-volman	exact-validated
+thunderbird	direct	thunderbird	exact-validated
+tidos-framework	unmatched		
+tiger	unmatched		
+tilt	direct	tilt	exact-validated
+timegen	unmatched		
+timeverter	unmatched		
+tinfoleak	unmatched		
+tinfoleak2	unmatched		
+tinja	unmatched		
+tinyxml	direct	tinyxml	exact-validated
+tinyxml2	unmatched		
+tk	direct	tk	exact-validated
+tlottie	direct	tlottie	exact-validated
+tls-attacker	unmatched		
+tls-fingerprinting	unmatched		
+tls-map	unmatched		
+tls-prober	unmatched		
+tlsenum	unmatched		
+tlsfuzzer	unmatched		
+tlshelpers	unmatched		
+tlspretense	unmatched		
+tlssled	unmatched		
+tlsx	direct	tlsx	exact-validated
+tnscmd	unmatched		
+token-hunter	unmatched		
+token-reverser	unmatched		
+tomcatwardeployer	unmatched		
+topera	unmatched		
+topgrade	direct	topgrade	exact-validated
+tor	direct	tor	exact-validated
+tor-autocircuit	unmatched		
+tor-browser	direct	tor-browser	exact-validated
+tor-router	unmatched		
+torbrowser-launcher	unmatched		
+torcrawl	unmatched		
+torctl	direct	torctl	exact-validated
+torpy	unmatched		
+torshammer	unmatched		
+totem-pl-parser	direct	totem-pl-parser	exact-validated
+tpcat	unmatched		
+tplmap	unmatched		
+traceroute	direct	traceroute	exact-validated
+transmageddon	unmatched		
+trape	unmatched		
+traxss	unmatched		
+treasure	unmatched		
+tree-sitter	direct	tree-sitter	exact-validated
+trevorproxy	direct	trevorproxy	exact-validated
+trevorspray	direct	trevorspray	exact-validated
+trid	unmatched		
+trinity	unmatched		build-fails-linux-6.18-missing-atm-ioctls
+triton	direct	triton	exact-validated
+trixd00r	unmatched		
+trizen	unmatched		
+truecrack	direct	truecrack	exact-validated
+truegaze	unmatched		
+truehunter	unmatched		
+trufflehog	direct	trufflehog	exact-validated
+trusttrees	unmatched		
+tsh	unmatched		
+tsh-sctp	unmatched		
+ttf-dejavu	unmatched		
+ttf-fantasque-sans-mono	unmatched		
+ttf-fira-sans	unmatched		
+ttf-liberation	unmatched		
+ttf-opensans	unmatched		
+ttpassgen	unmatched		
+tumbler	direct	tumbler	exact-validated
+tunna	unmatched		
+turner	unmatched		
+tweets-analyzer	unmatched		
+tweetshell	unmatched		
+twofi	unmatched		
+typo3scan	unmatched		
+tyton	unmatched		
+u3-pwn	unmatched		
+uacme	direct	uacme	exact-validated
+uatester	unmatched		
+uberfile	unmatched		
+ubertooth	direct	ubertooth	exact-validated
+ubiquiti-probing	unmatched		
+ubitack	unmatched		
+uchardet	unmatched		
+udis86	direct	udis86	exact-validated
+udork	unmatched		
+udp-hunter	unmatched		
+udpastcp	unmatched		
+udptunnel	direct	udptunnel	exact-validated
+udsim	unmatched		
+uefi-firmware-parser	direct	uefi-firmware-parser	exact-validated
+uff	unmatched		
+ufo-wardriving	unmatched		
+ufonet	unmatched		
+ufw	unmatched		
+ugrep	direct	ugrep	exact-validated
+uhoh365	unmatched		
+ultimate-facebook-scraper	unmatched		
+umap	direct	umap	exact-validated
+umit	unmatched		
+unace	unmatched		
+unarchiver	unmatched		
+unarj	unmatched		
+unblob	direct	unblob	exact-validated
+uncaptcha2	unmatched		
+uncover	direct	uncover	exact-validated
+undbx	direct	undbx	exact-validated
+unfurl	direct	unfurl	exact-validated
+unibrute	unmatched		
+unicorn-powershell	unmatched		
+unifetch	unmatched		
+unifuzzer	unmatched		
+uniofuzz	unmatched		
+unisec	unmatched		
+unix-privesc-check	direct	unix-privesc-check	exact-validated
+unrar	direct	unrar	exact-validated
+unsecure	unmatched		
+unstrip	unmatched		
+untwister	unmatched		
+unzip	direct	unzip	exact-validated
+update-grub	unmatched		
+upnp-pentest-toolkit	unmatched		
+upnpscan	unmatched		
+uppwn	unmatched		
+uptux	unmatched		
+urlcrazy	unmatched		
+urldigger	unmatched		
+urlextractor	unmatched		
+urlview	unmatched		
+urx	direct	urx	exact-validated
+usb-canary	unmatched		
+usbip	unmatched		
+usbmuxd	direct	usbmuxd	exact-validated
+usbredir	direct	usbredir	exact-validated
+usbrip	direct	usbrip	exact-validated
+usbutils	direct	usbutils	exact-validated
+usd	unmatched		
+username-anarchy	direct	username-anarchy	exact-validated
+usernamer	unmatched		
+userrecon	unmatched		
+userrecon-py	unmatched		
+usnjrnl2csv	unmatched		
+usnparser	unmatched		
+uthash	direct	uthash	exact-validated
+util-linux	direct	util-linux	exact-validated
+uv	direct	uv	exact-validated
+uw-loveimap	unmatched		
+uw-offish	unmatched		
+uw-udpscan	unmatched		
+uw-zone	unmatched		
+v2ray-domain-list-community	direct	v2ray-domain-list-community	exact-validated
+v2ray-geoip	direct	v2ray-geoip	exact-validated
+v3n0m	unmatched		
+v4l2loopback-dkms	unmatched		
+vagrant	direct	vagrant	exact-validated
+vais	unmatched		
+vala	direct	vala	exact-validated
+valhalla-api	unmatched		
+vamp-plugin-sdk	direct	vamp-plugin-sdk	exact-validated
+vane	unmatched		
+vanguard	unmatched		
+variety	direct	variety	exact-validated
+vault-scanner	unmatched		
+vba2graph	unmatched		
+vbrute	unmatched		
+vbsmin	unmatched		
+vcsmap	unmatched		
+vde2	direct	vde2	exact-validated
+vega	unmatched		
+veil	unmatched		
+veles	unmatched		
+venom	unmatched		
+verinice	unmatched		
+vfeed	unmatched		
+vhostscan	unmatched		
+videosnarf	unmatched		
+villain	direct	villain	exact-validated
+vinetto	unmatched		
+viper	unmatched		
+vipermonkey	unmatched		
+virglrenderer	direct	virglrenderer	exact-validated
+virt-install	unmatched		
+virt-manager	direct	virt-manager	exact-validated
+virt-manager-meta	unmatched		
+virt-viewer	direct	virt-viewer	exact-validated
+virt-what	direct	virt-what	exact-validated
+virtiofsd	direct	virtiofsd	exact-validated
+virtualbox	direct	virtualbox	exact-validated
+virtualbox-ext-oracle	unmatched		
+virtualbox-ext-vnc	unmatched		
+virtualbox-guest-iso	unmatched		
+virtualbox-host-dkms	unmatched		
+virtualbox-meta	unmatched		
+virtualbox-sdk	unmatched		
+virustotal	unmatched		
+visql	unmatched		
+visual-studio-code-bin	unmatched		
+visualize-logs	unmatched		
+vivaldi	direct	vivaldi	exact-validated
+vivaldi-ffmpeg-codecs	direct	vivaldi-ffmpeg-codecs	exact-validated
+vivisect	direct	vivisect	exact-validated
+vlan-hopping	unmatched		
+vlany	unmatched		
+vlc	direct	vlc	exact-validated
+vlc-plugin-ffmpeg	unmatched		
+vmap	unmatched		
+vnak	unmatched		
+vnc-bypauth	unmatched		
+vncrack	unmatched		
+voiper	unmatched		
+voiphopper	unmatched		
+voipong	unmatched		
+volafox	unmatched		
+volana	unmatched		
+volatility-extra	unmatched		
+voltron	unmatched		
+vpnpivot	unmatched		
+vsaudit	unmatched		
+vscan	unmatched		
+vscodium	direct	vscodium	exact-validated
+vstt	unmatched		
+vsvbp	unmatched		
+vt-cli	direct	vt-cli	exact-validated
+vte-common	unmatched		
+vte3	unmatched		
+vte4	unmatched		
+vtk	direct	vtk	exact-validated
+vulmap	unmatched		
+vulnerabilities-spider	unmatched		
+vulnx	direct	vulnx	exact-validated
+vuls	direct	vuls	exact-validated
+w13scan	unmatched		
+wafninja	unmatched		
+wafp	unmatched		
+wafpass	unmatched		
+waidps	unmatched		
+waldo	unmatched		
+warp-terminal-preview	unmatched		
+warpinator	direct	warpinator	exact-validated
+wascan	unmatched		
+waybackpack	unmatched		
+waybackurls	direct	waybackurls	exact-validated
+waylandpp	direct	waylandpp	exact-validated
+waymore	direct	waymore	exact-validated
+wayparam	unmatched		
+wcc	direct	wcc	exact-validated
+wce	unmatched		
+wcvs	unmatched		
+wdict	unmatched		
+web-soul	unmatched		
+web2ldap	unmatched		
+webacoo	unmatched		
+webanalyze	direct	webanalyze	exact-validated
+webborer	unmatched		
+webenum	unmatched		
+webexploitationtool	unmatched		
+webfixy	unmatched		
+webhandler	unmatched		
+webhunter	unmatched		
+webkiller	unmatched		
+webkitgtk-6.0	unmatched		
+webpwn3r	unmatched		
+webrute	unmatched		
+webscarab	unmatched		
+websearch	unmatched		
+webshag	unmatched		
+webshells	unmatched		
+webslayer	unmatched		
+websockify	unmatched		
+webspa	unmatched		
+websploit	direct	websploit	exact-validated
+webtech	unmatched		
+webxploiter	unmatched		
+weebdns	unmatched		
+weeman	unmatched		
+weevely	direct	weevely	exact-validated
+weirdaal	unmatched		
+wepbuster	unmatched		
+wesng	unmatched		
+wfuzz	direct	wfuzz	exact-validated
+wget	direct	wget	exact-validated
+whapa	unmatched		
+whatbreach	unmatched		
+whatportis	unmatched		
+whatsmyname	unmatched		
+whatwaf	unmatched		
+which	direct	which	exact-validated
+whichcdn	unmatched		
+whispers	direct	whispers	exact-validated
+whitewidow	unmatched		
+whois	direct	whois	exact-validated
+whoxyrm	unmatched		
+wi-feye	unmatched		
+wifi-autopwner	unmatched		
+wifi-honey	unmatched		
+wifi-monitor	unmatched		
+wifi-pumpkin	unmatched		
+wifibroot	unmatched		
+wifichannelmonitor	unmatched		
+wificurse	unmatched		
+wifijammer	unmatched		
+wifiphisher	unmatched		
+wifiscanmap	unmatched		
+wifitap	unmatched		
+wig	unmatched		
+wikigen	unmatched		
+wildpwn	unmatched		
+winboat	direct	winboat	exact-validated
+windapsearch	unmatched		
+windivert	unmatched		
+windows-binaries	unmatched		
+windows-exploit-suggester	unmatched		
+windows-prefetch-parser	unmatched		
+windows-privesc-check	unmatched		
+windowsspyblocker	unmatched		
+winexe	unmatched		
+winfo	unmatched		
+wings3d	unmatched		
+winhex	unmatched		
+winpwn	unmatched		
+winregfs	unmatched		
+winrelay	unmatched		
+wire-desktop	direct	wire-desktop	exact-validated
+wireless-ids	unmatched		
+wireless-regdb	direct	wireless-regdb	exact-validated
+wireless_tools	unmatched		
+wireplumber	direct	wireplumber	exact-validated
+wirouter-keyrec	unmatched		
+witchxtool	unmatched		
+wl-clipboard	direct	wl-clipboard	exact-validated
+wlan2eth	unmatched		
+wmat	unmatched		
+wmbusmeters	direct	wmbusmeters	exact-validated
+wmd	unmatched		
+wmi-forensics	unmatched		
+wnmap	unmatched		
+wol-e	unmatched		
+wolfssl	unmatched		
+wolpertinger	unmatched		
+wondershaper	unmatched		
+wordbrutepress	unmatched		
+wordlistctl	unmatched		
+wordlister	unmatched		
+wordpot	unmatched		
+wordpress-exploit-framework	unmatched		
+wordpresscan	unmatched		
+wpa-bruteforcer	unmatched		
+wpa2-halfhandshake-crack	unmatched		
+wpbf	unmatched		
+wpbrute-rpc	unmatched		
+wpbullet	unmatched		
+wpforce	unmatched		
+wpintel	unmatched		
+wpseku	unmatched		
+wpsik	unmatched		
+wpsweep	unmatched		
+wqy-zenhei	alias	wqy_zenhei	hyphen-to-underscore
+wreckuests	unmatched		
+ws-attacker	unmatched		
+wscript	unmatched		
+wsfuzzer	unmatched		
+wssip	unmatched		
+wsuspect-proxy	unmatched		
+wups	unmatched		
+wuzz	direct	wuzz	exact-validated
+wxhexeditor	direct	wxhexeditor	exact-validated
+wxwidgets-common	unmatched		
+wxwidgets-gtk3	unmatched		
+wyd	unmatched		
+x-rsa	unmatched		
+x-scan	unmatched		
+x11vnc	direct	x11vnc	exact-validated
+x64dbg	unmatched		
+x8	unmatched		
+xapian-core	unmatched		
+xapp	direct	xapp	exact-validated
+xapp-symbolic-icons	direct	xapp-symbolic-icons	exact-validated
+xcat	direct	xcat	exact-validated
+xcavator	unmatched		
+xcname	unmatched		
+xdg-desktop-portal	direct	xdg-desktop-portal	exact-validated
+xdg-desktop-portal-gtk	direct	xdg-desktop-portal-gtk	exact-validated
+xdg-desktop-portal-kde	unmatched		
+xdg-user-dirs	direct	xdg-user-dirs	exact-validated
+xdg-utils	direct	xdg-utils	exact-validated
+xdman-beta-bin	unmatched		
+xerces-c	unmatched		
+xerosploit	unmatched		
+xf86-video-amdgpu	direct	xf86-video-amdgpu	exact-validated
+xfburn	direct	xfburn	exact-validated
+xfce4-appfinder	direct	xfce4-appfinder	exact-validated
+xfce4-battery-plugin	direct	xfce4-battery-plugin	exact-validated
+xfce4-clipman-plugin	direct	xfce4-clipman-plugin	exact-validated
+xfce4-cpufreq-plugin	direct	xfce4-cpufreq-plugin	exact-validated
+xfce4-cpugraph-plugin	direct	xfce4-cpugraph-plugin	exact-validated
+xfce4-dict	direct	xfce4-dict	exact-validated
+xfce4-diskperf-plugin	unmatched		
+xfce4-eyes-plugin	direct	xfce4-eyes-plugin	exact-validated
+xfce4-fsguard-plugin	direct	xfce4-fsguard-plugin	exact-validated
+xfce4-genmon-plugin	direct	xfce4-genmon-plugin	exact-validated
+xfce4-mailwatch-plugin	direct	xfce4-mailwatch-plugin	exact-validated
+xfce4-mount-plugin	unmatched		
+xfce4-mpc-plugin	direct	xfce4-mpc-plugin	exact-validated
+xfce4-netload-plugin	direct	xfce4-netload-plugin	exact-validated
+xfce4-notes-plugin	direct	xfce4-notes-plugin	exact-validated
+xfce4-notifyd	direct	xfce4-notifyd	exact-validated
+xfce4-panel	direct	xfce4-panel	exact-validated
+xfce4-places-plugin	unmatched		
+xfce4-power-manager	direct	xfce4-power-manager	exact-validated
+xfce4-pulseaudio-plugin	direct	xfce4-pulseaudio-plugin	exact-validated
+xfce4-screensaver	direct	xfce4-screensaver	exact-validated
+xfce4-screenshooter	direct	xfce4-screenshooter	exact-validated
+xfce4-sensors-plugin	direct	xfce4-sensors-plugin	exact-validated
+xfce4-session	direct	xfce4-session	exact-validated
+xfce4-settings	direct	xfce4-settings	exact-validated
+xfce4-smartbookmark-plugin	unmatched		
+xfce4-systemload-plugin	direct	xfce4-systemload-plugin	exact-validated
+xfce4-taskmanager	direct	xfce4-taskmanager	exact-validated
+xfce4-terminal	direct	xfce4-terminal	exact-validated
+xfce4-time-out-plugin	direct	xfce4-time-out-plugin	exact-validated
+xfce4-timer-plugin	direct	xfce4-timer-plugin	exact-validated
+xfce4-verve-plugin	direct	xfce4-verve-plugin	exact-validated
+xfce4-wavelan-plugin	unmatched		
+xfce4-weather-plugin	direct	xfce4-weather-plugin	exact-validated
+xfce4-whiskermenu-plugin	direct	xfce4-whiskermenu-plugin	exact-validated
+xfce4-xkb-plugin	direct	xfce4-xkb-plugin	exact-validated
+xfconf	direct	xfconf	exact-validated
+xfdesktop	direct	xfdesktop	exact-validated
+xfltreat	unmatched		
+xfsprogs	direct	xfsprogs	exact-validated
+xfwm4	direct	xfwm4	exact-validated
+xmlrpc-bruteforcer	unmatched		
+xorbruteforcer	unmatched		
+xorg-xwininfo	unmatched		
+xorsearch	unmatched		
+xpire-crossdomain-scanner	unmatched		
+xpl-search	unmatched		
+xplico	unmatched		
+xprobe2	unmatched		
+xray	direct	xray	exact-validated
+xrop	unmatched		
+xsel	direct	xsel	exact-validated
+xspear	unmatched		
+xspy	unmatched		
+xsrfprobe	unmatched		
+xss-freak	unmatched		
+xsscon	unmatched		
+xsscrapy	unmatched		
+xssless	unmatched		
+xsspy	unmatched		
+xsss	unmatched		
+xssscan	unmatched		
+xsssniper	unmatched		
+xsstrike	direct	xsstrike	exact-validated
+xssya	unmatched		
+xwaf	unmatched		
+xxeinjector	unmatched		
+xxeserv	unmatched		
+xxexploiter	unmatched		
+xxxpwn	unmatched		
+xxxpwn-smart	unmatched		
+xz	direct	xz	exact-validated
+yaaf	unmatched		
+yaf	unmatched		
+yajl	direct	yajl	exact-validated
+yakuake	unmatched		
+yaml-cpp	direct	yaml-cpp	exact-validated
+yasat	unmatched		
+yasca	unmatched		
+yasuo	unmatched		
+yate-bts	unmatched		
+yawast	unmatched		
+yay	direct	yay	exact-validated
+ycrawler	unmatched		
+ydotool	direct	ydotool	exact-validated
+yersinia	direct	yersinia	exact-validated
+yeti	unmatched		
+yinjector	unmatched		
+ysoserial	unmatched		
+yt-dlp	direct	yt-dlp	exact-validated
+yt-dlp-ejs	unmatched		
+zackattack	unmatched		
+zarn	unmatched		
+zarp	unmatched		
+zdns	direct	zdns	exact-validated
+zed	unmatched		
+zeek	direct	zeek	exact-validated
+zeek-aux	unmatched		
+zelos	unmatched		
+zenity	direct	zenity	exact-validated
+zeratool	unmatched		
+zerowine	unmatched		
+zeus	unmatched		
+zeus-scanner	unmatched		
+zgrab2	direct	zgrab2	exact-validated
+zip	direct	zip	exact-validated
+zipdump	unmatched		
+zipexec	unmatched		
+zirikatu	unmatched		
+zita-ajbridge	direct	zita-ajbridge	exact-validated
+zita-alsa-pcmi	direct	zita-alsa-pcmi	exact-validated
+zita-resampler	direct	zita-resampler	exact-validated
+zizzania	unmatched		
+zoom	unmatched		
+zsteg	direct	zsteg	exact-validated
+zulu	direct	zulu	exact-validated
+zulucrypt	unmatched		
+zykeys	unmatched		

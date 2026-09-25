@@ -1,0 +1,99 @@
+{
+   "blockdevices": [
+      {
+         "name": "sda",
+         "path": "/dev/sda",
+         "type": "disk",
+         "size": "476.9G",
+         "fstype": null,
+         "fsver": null,
+         "label": null,
+         "uuid": null,
+         "partuuid": null,
+         "mountpoints": [],
+         "children": [
+            {
+               "name": "sda1",
+               "path": "/dev/sda1",
+               "type": "part",
+               "size": "300M",
+               "fstype": "vfat",
+               "fsver": "FAT32",
+               "label": null,
+               "uuid": "EEDC-F5DC",
+               "partuuid": "3d087245-4e58-4511-9c66-0fb448ceaf8e",
+               "mountpoints": [
+                   "/boot/efi"
+               ]
+            },{
+               "name": "sda2",
+               "path": "/dev/sda2",
+               "type": "part",
+               "size": "467.8G",
+               "fstype": "crypto_LUKS",
+               "fsver": "1",
+               "label": null,
+               "uuid": "07e33bd6-d2f0-4c36-9bc5-ae60820d69f5",
+               "partuuid": "ef193bba-5d0b-45c1-81ec-88b199ea0ea4",
+               "mountpoints": [],
+               "children": [
+                  {
+                     "name": "luks-07e33bd6-d2f0-4c36-9bc5-ae60820d69f5",
+                     "path": "/dev/mapper/luks-07e33bd6-d2f0-4c36-9bc5-ae60820d69f5",
+                     "type": "crypt",
+                     "size": "467.8G",
+                     "fstype": "btrfs",
+                     "fsver": null,
+                     "label": null,
+                     "uuid": "19d889fc-b50a-4254-9623-682cfc89c838",
+                     "partuuid": null,
+                     "mountpoints": [
+                         "/nix", "/var/log", "/var/tmp", "/home", "/root", "/var/cache", "/srv", "/"
+                     ]
+                  }
+               ]
+            },{
+               "name": "sda3",
+               "path": "/dev/sda3",
+               "type": "part",
+               "size": "8.8G",
+               "fstype": "crypto_LUKS",
+               "fsver": "1",
+               "label": null,
+               "uuid": "b0ef1e9f-4a46-429e-9679-7297c9c0adf2",
+               "partuuid": "51fbbeda-6a20-4bab-8cd9-7f459caca931",
+               "mountpoints": [],
+               "children": [
+                  {
+                     "name": "luks-b0ef1e9f-4a46-429e-9679-7297c9c0adf2",
+                     "path": "/dev/mapper/luks-b0ef1e9f-4a46-429e-9679-7297c9c0adf2",
+                     "type": "crypt",
+                     "size": "8.8G",
+                     "fstype": "swap",
+                     "fsver": "1",
+                     "label": "swap",
+                     "uuid": "776110e6-5c7c-4a22-9e3e-435768064fad",
+                     "partuuid": null,
+                     "mountpoints": [
+                         "[SWAP]"
+                     ]
+                  }
+               ]
+            }
+         ]
+      },{
+         "name": "zram0",
+         "path": "/dev/zram0",
+         "type": "disk",
+         "size": "5.6G",
+         "fstype": "swap",
+         "fsver": "1",
+         "label": "zram0",
+         "uuid": "d3ea8ea8-e103-4326-bba2-8dbb31994b7d",
+         "partuuid": null,
+         "mountpoints": [
+             "[SWAP]"
+         ]
+      }
+   ]
+}
