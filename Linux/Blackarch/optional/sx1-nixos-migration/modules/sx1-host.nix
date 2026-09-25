@@ -9,7 +9,18 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 3240 5900 ];
+      allowedTCPPorts = [
+        22
+        3240
+        5900
+        14318
+        14319
+        14320
+        14321
+        14322
+        14323
+      ];
+      allowedUDPPorts = [ 5353 ];
     };
   };
 
