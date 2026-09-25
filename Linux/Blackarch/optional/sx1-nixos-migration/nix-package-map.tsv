@@ -1,7 +1,7 @@
 arch_name	status	nix_attr	mapping_kind
 0d1n	unmatched		
 0trace	unmatched		
-3proxy	unmatched		
+3proxy	alias	_3proxy	pname-validated
 3proxy-win32	unmatched		
 42zip	unmatched		
 7zip	unmatched		
@@ -314,7 +314,7 @@ bonesi	unmatched
 boofuzz	direct	boofuzz	exact-validated
 boopsuite	unmatched		
 bopscrk	unmatched		
-botan	unmatched		
+botan	alias	botan3	pname-validated
 botb	unmatched		
 bowcaster	unmatched		
 box-js	unmatched		
@@ -368,7 +368,7 @@ cafebabe	unmatched
 cai	direct	cai	exact-validated
 caido-cli	direct	caido-cli	exact-validated
 caido-desktop	direct	caido-desktop	exact-validated
-cairomm	unmatched		
+cairomm	alias	cairomm_1_0	pname-validated
 calf	direct	calf	exact-validated
 cameractrls	direct	cameractrls	exact-validated
 cameradar	direct	cameradar	exact-validated
@@ -495,7 +495,7 @@ cockpit-machines	direct	cockpit-machines	exact-validated
 codeql	direct	codeql	exact-validated
 codetective	unmatched		
 coercer	direct	coercer	exact-validated
-coin	unmatched		
+coin	alias	coin3d	pname-validated
 colord-gtk	direct	colord-gtk	exact-validated
 colord-gtk-common	unmatched		
 colord-sane	unmatched		
@@ -702,7 +702,7 @@ dnstwist	direct	dnstwist	exact-validated
 dnsvalidator	direct	dnsvalidator	exact-validated
 dnswatch	unmatched		
 dnsx	direct	dnsx	exact-validated
-docbook-xml	unmatched		
+docbook-xml	alias	docbook_xml_dtd_45	pname-validated
 docbook-xsl	alias	docbook_xsl	hyphen-to-underscore
 docem	unmatched		
 docker-compose	direct	docker-compose	exact-validated
@@ -761,7 +761,7 @@ dtp-spoof	unmatched
 dublin-traceroute	direct	dublin-traceroute	exact-validated
 ducktoolkit	unmatched		
 dumb0	unmatched		
-dump1090	unmatched		
+dump1090	alias	dump1090-fa	pname-validated
 dumpacl	unmatched		
 dumpsmbshare	unmatched		
 dumpusers	unmatched		
@@ -983,7 +983,7 @@ freecad	direct	freecad	exact-validated
 freedownloadmanager	unmatched		
 freetype2	unmatched		
 freewifi	unmatched		
-frei0r-plugins	unmatched		
+frei0r-plugins	alias	frei0r	pname-validated
 frida-extract	unmatched		
 frida-ios-dump	unmatched		
 fridump	unmatched		
@@ -1054,7 +1054,7 @@ gene	unmatched
 genisys	unmatched		
 genlist	unmatched		
 genymotion	unmatched		source-unavailable
-geocode-glib	unmatched		
+geocode-glib	alias	geocode-glib_2	pname-validated
 geoedge	unmatched		
 geoip	direct	geoip	exact-validated
 geoip-database	unmatched		
@@ -1790,7 +1790,7 @@ librewolf	direct	librewolf	exact-validated
 libsbsms	direct	libsbsms	exact-validated
 libshumate	direct	libshumate	exact-validated
 libsidplayfp	direct	libsidplayfp	exact-validated
-libsigc++	unmatched		
+libsigc++	alias	libsigcxx	pname-validated
 libsixel	direct	libsixel	exact-validated
 libslirp	direct	libslirp	exact-validated
 libsoup	unmatched		
@@ -1979,7 +1979,7 @@ melkor	unmatched
 memdump	unmatched		
 memfetch	unmatched		
 memimager	unmatched		
-memtest86+	unmatched		
+memtest86+	alias	memtest86plus	pname-validated
 mentalist	unmatched		
 mercury	direct	mercury	exact-validated
 merlin-server	unmatched		
@@ -2200,7 +2200,7 @@ nsec3map	unmatched
 nsec3walker	unmatched		
 nsntrace	unmatched		
 nsoq	unmatched		
-nss-mdns	unmatched		
+nss-mdns	alias	nssmdns	pname-validated
 ntds-decode	unmatched		
 ntdsxtract	unmatched		
 ntfs-3g	unmatched		
@@ -2309,7 +2309,7 @@ owabf	unmatched
 owasp-bywaf	unmatched		
 owasp-zsc	unmatched		
 owtf	unmatched		
-p8-platform	unmatched		
+p8-platform	alias	libcec_platform	pname-validated
 pacaur	unmatched		
 pack	direct	pack	exact-validated
 packagekit	direct	packagekit	exact-validated
@@ -2330,7 +2330,7 @@ pafish	unmatched
 pagodo	unmatched		
 paketto	unmatched		
 pamac	unmatched		
-pangomm	unmatched		
+pangomm	alias	pangomm_2_48	pname-validated
 panhunt	unmatched		
 panoptic	unmatched		
 pappy-proxy	unmatched		
@@ -2487,7 +2487,7 @@ poison	unmatched
 poly	direct	poly	exact-validated
 polyswarm	unmatched		
 pompem	unmatched		
-poppler-glib	unmatched		
+poppler-glib	alias	poppler_gi	pname-validated
 poracle	unmatched		
 portia	unmatched		
 portmanteau	unmatched		
@@ -2858,7 +2858,7 @@ rainbowcrack	unmatched
 ranger-scanner	unmatched		
 rapidscan	unmatched		
 rasenum	unmatched		
-rasqal	unmatched		
+rasqal	alias	librdf_rasqal	pname-validated
 rate-mirrors	unmatched		
 ratproxy	unmatched		
 rats	unmatched		
@@ -3263,7 +3263,7 @@ soot	unmatched
 sooty	unmatched		
 soqt	direct	soqt	exact-validated
 soundconverter	unmatched		install-check-none-args-typeerror
-soundwire	unmatched		
+soundwire	alias	soundwireserver	pname-validated
 sourcemapper	direct	sourcemapper	exact-validated
 sox	direct	sox	exact-validated
 spade	direct	spade	exact-validated
@@ -3486,7 +3486,7 @@ tinfoleak	unmatched
 tinfoleak2	unmatched		
 tinja	unmatched		
 tinyxml	direct	tinyxml	exact-validated
-tinyxml2	unmatched		
+tinyxml2	alias	tinyxml-2	pname-validated
 tk	direct	tk	exact-validated
 tlottie	direct	tlottie	exact-validated
 tls-attacker	unmatched		
@@ -3558,7 +3558,7 @@ uberfile	unmatched
 ubertooth	direct	ubertooth	exact-validated
 ubiquiti-probing	unmatched		
 ubitack	unmatched		
-uchardet	unmatched		
+uchardet	alias	libuchardet	pname-validated
 udis86	direct	udis86	exact-validated
 udork	unmatched		
 udp-hunter	unmatched		
@@ -3861,7 +3861,7 @@ xdg-desktop-portal-kde	unmatched
 xdg-user-dirs	direct	xdg-user-dirs	exact-validated
 xdg-utils	direct	xdg-utils	exact-validated
 xdman-beta-bin	unmatched		
-xerces-c	unmatched		
+xerces-c	alias	xercesc	pname-validated
 xerosploit	unmatched		
 xf86-video-amdgpu	direct	xf86-video-amdgpu	exact-validated
 xfburn	direct	xfburn	exact-validated
@@ -3978,7 +3978,7 @@ zita-ajbridge	direct	zita-ajbridge	exact-validated
 zita-alsa-pcmi	direct	zita-alsa-pcmi	exact-validated
 zita-resampler	direct	zita-resampler	exact-validated
 zizzania	unmatched		
-zoom	unmatched		
+zoom	alias	zoom-us	pname-validated
 zsteg	direct	zsteg	exact-validated
 zulu	direct	zulu	exact-validated
 zulucrypt	unmatched		

@@ -7,5 +7,6 @@
     ./packages-03.nix
     ./packages-04.nix
     ./packages-05.nix
+    ./packages-06.nix
   ];
 }

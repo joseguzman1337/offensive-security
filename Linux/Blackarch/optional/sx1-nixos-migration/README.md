@@ -28,8 +28,8 @@ have native derivations.
 
 The mapping was evaluated against `nixpkgs` revision
 `6774f7bc253789b113a4f39285dc0fa100abeacc`. The generated profiles contain
-983 exact attribute matches and 147 validated aliases. The remaining 2,854
-explicit Arch packages are intentionally not included. Sixteen initially
+983 exact attribute matches and 167 validated aliases. The remaining 2,834
+explicit Arch packages are intentionally not included. Twenty-two initially
 matching packages are recorded in `nix-exclusions.tsv` because full NixOS
 evaluation or build validation found insecure, license-gated, incompatible,
 unavailable, or heavyweight source-only closures.

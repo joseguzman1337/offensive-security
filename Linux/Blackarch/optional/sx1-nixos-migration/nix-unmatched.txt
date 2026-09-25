@@ -1,6 +1,5 @@
 0d1n
 0trace
-3proxy
 3proxy-win32
 42zip
 7zip
@@ -242,7 +241,6 @@ bof-detector
 bonesi
 boopsuite
 bopscrk
-botan
 botb
 bowcaster
 box-js
@@ -275,7 +273,6 @@ c5scan
 c7decrypt
 cachedump
 cafebabe
-cairomm
 camover
 camscan
 canalyzat0r
@@ -364,7 +361,6 @@ cmsscan
 cmsscanner
 cnamulator
 codetective
-coin
 colord-gtk-common
 colord-sane
 comission
@@ -513,7 +509,6 @@ dnssearch
 dnsspider
 dnsteal
 dnswatch
-docbook-xml
 docem
 dockerscan
 dolphin
@@ -560,7 +555,6 @@ dsxs
 dtp-spoof
 ducktoolkit
 dumb0
-dump1090
 dumpacl
 dumpsmbshare
 dumpusers
@@ -723,7 +717,6 @@ fred
 freedownloadmanager
 freetype2
 freewifi
-frei0r-plugins
 frida-extract
 frida-ios-dump
 fridump
@@ -782,7 +775,6 @@ gene
 genisys
 genlist
 genymotion
-geocode-glib
 geoedge
 geoip-database
 geoipgen
@@ -1299,7 +1291,6 @@ libpackagekit-glib
 libparistraceroute
 libpeas-2
 libquotient
-libsigc++
 libsoup
 libspeechd
 libstaroffice
@@ -1416,7 +1407,6 @@ melkor
 memdump
 memfetch
 memimager
-memtest86+
 mentalist
 merlin-server
 messagelib
@@ -1580,7 +1570,6 @@ nsec3map
 nsec3walker
 nsntrace
 nsoq
-nss-mdns
 ntds-decode
 ntdsxtract
 ntfs-3g
@@ -1660,7 +1649,6 @@ owabf
 owasp-bywaf
 owasp-zsc
 owtf
-p8-platform
 pacaur
 packagekit-qt6
 packerid
@@ -1675,7 +1663,6 @@ pafish
 pagodo
 paketto
 pamac
-pangomm
 panhunt
 panoptic
 pappy-proxy
@@ -1802,7 +1789,6 @@ podman-docker
 poison
 polyswarm
 pompem
-poppler-glib
 poracle
 portia
 portmanteau
@@ -2016,7 +2002,6 @@ rainbowcrack
 ranger-scanner
 rapidscan
 rasenum
-rasqal
 rate-mirrors
 ratproxy
 rats
@@ -2333,7 +2318,6 @@ sonar-scanner
 soot
 sooty
 soundconverter
-soundwire
 spaf
 sparrow-wifi
 sparta
@@ -2504,7 +2488,6 @@ timeverter
 tinfoleak
 tinfoleak2
 tinja
-tinyxml2
 tls-attacker
 tls-fingerprinting
 tls-map
@@ -2558,7 +2541,6 @@ uatester
 uberfile
 ubiquiti-probing
 ubitack
-uchardet
 udork
 udp-hunter
 udpastcp
@@ -2787,7 +2769,6 @@ xcavator
 xcname
 xdg-desktop-portal-kde
 xdman-beta-bin
-xerces-c
 xerosploit
 xfce4-diskperf-plugin
 xfce4-mount-plugin
@@ -2849,6 +2830,5 @@ zipdump
 zipexec
 zirikatu
 zizzania
-zoom
 zulucrypt
 zykeys

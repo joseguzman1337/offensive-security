@@ -15,3 +15,9 @@ python-cinemagoer	python3Packages.cinemagoer	derivation declares version 2025.12
 chipsec	chipsec	upstream test suite fails in CMOS dump and ACPI command tests
 soundconverter	soundconverter	install check crashes because its test runner receives None instead of arguments
 mongodb	mongodb	official nixpkgs derivation has no binary substitute and triggers a heavyweight source build
+klee	klee	marked broken in the pinned nixpkgs revision
+lunar	lunar	available only on aarch64-darwin, not x86_64-linux
+needle	needle	available only on aarch64-darwin, not x86_64-linux
+openwebrx	openwebrx	marked broken in the pinned nixpkgs revision
+rainbowcrack	rainbowcrack	metadata does not declare support for x86_64-linux
+sockstat	sockstat	available only on aarch64-darwin, not x86_64-linux

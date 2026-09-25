@@ -1,5 +1,5 @@
 nixpkgs_revision	6774f7bc253789b113a4f39285dc0fa100abeacc
-mapped_packages	1130
+mapped_packages	1150
 local_derivations	1352
 fetched_paths	3512
 download_mib	20270.11
