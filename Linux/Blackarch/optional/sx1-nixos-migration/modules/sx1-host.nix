@@ -27,6 +27,7 @@
 
   # sx1 has an AMD Picasso/Vega GPU.  Do not enable NVIDIA merely because the
   # old Arch installation contains NVIDIA compatibility packages.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
   hardware.graphics = {
     enable = true;
