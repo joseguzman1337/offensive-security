@@ -89,7 +89,7 @@ packageurl-python>=0.17.6
 pamqp>=4.0.1
 partd>=1.4.2
 pathy>=0.14.2
-Pillow==12.3.0
+Pillow==13.0.0
 pipx>=1.15.0
 pluggy>=1.6.0
 policy-sentry>=0.15.2
